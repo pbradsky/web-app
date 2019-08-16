@@ -10,6 +10,17 @@ class App extends Component {
     };
   }
 
+  handleClick = event => {
+    const { isLocked } = this.state;
+    // TODO: check if isLocked is undefined if
+    // anything happens, set isLocked to locked?
+
+    this.setState({
+      isLocked: !isLocked
+    });
+    event.preventDefault();
+  }
+
   render() {
     const { isLocked } = this.state;
 
@@ -25,6 +36,7 @@ class App extends Component {
           Click the button below to Lock/Unlock your car.
         </p>
         <div className='button'
+             onClick={this.handleClick}
         >
           {isLocked ? 'Unlock' : 'Lock'}
         </div>
