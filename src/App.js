@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import axios from 'axios';
+
+const BACKEND_BASE_URI = 'http://localhost:8000';
+const LOGIN_ENDPOINT = '/login';
+const config = {
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+    'Access-Control-Max-Age': '3600',
+    'Access-Control-Allow-Headers': 'x-requested-by'
+  }
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +35,21 @@ class App extends Component {
     event.preventDefault();
   }
 
+  handleAuth = event => {
+    axios.get(BACKEND_BASE_URI + LOGIN_ENDPOINT, config)
+      .then(response => {
+        console.log('RESPONSE');
+        console.log(response);
+        window.location.href = response.data;
+      })
+      .catch(error => {
+        console.log('ERROR');
+        console.log(error)
+      });
+
+    event.preventDefault();
+  }
+
   render() {
     const { isLocked } = this.state;
 
@@ -35,6 +64,11 @@ class App extends Component {
         <p>
           Click the button below to Lock/Unlock your car.
         </p>
+        <div className='button'
+             onClick={this.handleAuth}
+        >
+          Request Access
+        </div>
         <div className='button'
              onClick={this.handleClick}
         >
