@@ -1,63 +1,37 @@
 import React, { Component } from 'react';
-import queryString from 'query-string';
 import './App.css';
+import Smartcar from '@smartcar/auth';
 
-import axios from 'axios';
-
-const BACKEND_BASE_URI = 'http://localhost:8000';
-const LOGIN_ENDPOINT = '/login';
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
-    'Access-Control-Max-Age': '3600',
-    'Access-Control-Allow-Headers': 'x-requested-by'
-  }
-};
+// import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    const queryValues = queryString.parse(this.props.location.search);
-    const isLoggedIn = 'code' in queryValues ? true : false;
-
     this.state = {
-      accessCode: queryValues.code,  // accessCode is undefined if not logged in
-      isLoggedIn,
-      isLocked: true
+      vehicle: {},
     };
-  }
 
-  handleClick = event => {
-    const { isLocked } = this.state;
-    // TODO: check if isLocked is undefined if
-    // anything happens, set isLocked to locked?
-
-    this.setState({
-      isLocked: !isLocked
+    console.log(this.smartcar);
+    this.smartcar = new Smartcar({
+      clientId: process.env.REACT_APP_CLIENT_ID,
+      redirectUri: process.env.REACT_APP_REDIRECT_URI,
+      scope: ['required:read_vehicle_info'],
+      testMode: true,
+      onComplete: this.onAuthComplete,
     });
-    event.preventDefault();
   }
 
-  handleAuth = event => {
-    axios.get(BACKEND_BASE_URI + LOGIN_ENDPOINT, config)
-      .then(response => {
-        console.log('RESPONSE');
-        console.log(response);
-        window.location.href = response.data;
-      })
-      .catch(error => {
-        console.log('ERROR');
-        console.log(error)
-      });
+  onAuthComplete = (err, code, status) => {
+    console.log(code);
+  }
 
-    event.preventDefault();
+  handleAuth = () => {
+    this.smartcar.openDialog({forcePrompt: true});
   }
 
   render() {
-    const { accessCode, isLoggedIn, isLocked } = this.state;
+    const { vehicle } = this.state;
 
     return (
       <div className='app'>
@@ -68,19 +42,19 @@ class App extends Component {
           on our website.
         </p>
         <div className='greeting'>
-          {isLoggedIn
+          {Object.keys(vehicle).length !== 0
             ? 'Logged in! Choose an action below.'
             : 'Press the button below to log in.'
           }
         </div>
-        {isLoggedIn
+        {Object.keys(vehicle).length !== 0
         ?
           <div>
             <div
               className='button'
               onClick={this.handleClick}
             >
-              {isLocked ? 'Unlock' : 'Lock'}
+              Lock/Unlock
             </div>
           </div>
         :

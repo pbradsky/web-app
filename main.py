@@ -22,7 +22,7 @@ client = smartcar.AuthClient(
 @app.route('/login', methods=['GET'])
 def login():
     auth_url = client.get_auth_url()
-    return auth_url
+    return redirect(auth_url)
 
 
 @app.route('/exchange', methods=['GET'])
@@ -34,7 +34,7 @@ def exchange():
     # in a production app you'll want to store this in some kind of
     # persistent storage
     access = client.exchange_code(code)
-    return 'http://localhost:3000', 200
+    return '', 200
 
 
 @app.route('/vehicle', methods=['GET'])
