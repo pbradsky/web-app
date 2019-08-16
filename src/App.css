@@ -24,3 +24,7 @@ p {
 .button:hover {
   cursor: pointer;
 }
+
+.greeting {
+  margin-bottom: 20px;
+}

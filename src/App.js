@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import queryString from 'query-string';
 import './App.css';
 
 import axios from 'axios';
@@ -19,7 +20,12 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    const queryValues = queryString.parse(this.props.location.search);
+    const isLoggedIn = 'code' in queryValues ? true : false;
+
     this.state = {
+      accessCode: queryValues.code,  // accessCode is undefined if not logged in
+      isLoggedIn,
       isLocked: true
     };
   }
@@ -51,7 +57,7 @@ class App extends Component {
   }
 
   render() {
-    const { isLocked } = this.state;
+    const { accessCode, isLoggedIn, isLocked } = this.state;
 
     return (
       <div className='app'>
@@ -61,19 +67,30 @@ class App extends Component {
           Learn more about our services and see other details
           on our website.
         </p>
-        <p>
-          Click the button below to Lock/Unlock your car.
-        </p>
-        <div className='button'
-             onClick={this.handleAuth}
-        >
-          Request Access
+        <div className='greeting'>
+          {isLoggedIn
+            ? 'Logged in! Choose an action below.'
+            : 'Press the button below to log in.'
+          }
         </div>
-        <div className='button'
-             onClick={this.handleClick}
-        >
-          {isLocked ? 'Unlock' : 'Lock'}
-        </div>
+        {isLoggedIn
+        ?
+          <div>
+            <div
+              className='button'
+              onClick={this.handleClick}
+            >
+              {isLocked ? 'Unlock' : 'Lock'}
+            </div>
+          </div>
+        :
+          <div
+            className='button'
+            onClick={this.handleAuth}
+          >
+            Request Access
+          </div>
+        }
       </div>
     );
   }
