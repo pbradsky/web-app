@@ -1,6 +1,0 @@
-runtime: nodejs10
-service: default
-
-
-includes:
-  - env_variables.yaml

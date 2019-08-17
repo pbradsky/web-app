@@ -7,6 +7,3 @@ handlers:
     upload: build/index.html
   - url: /
     static_dir: build
-
-includes:
-  - env_variables.yaml
