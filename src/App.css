@@ -2,11 +2,18 @@
   text-align: center;
   width: 500px;
   margin: auto;
-  margin-top: 200px;
+  margin-top: 50px;
 }
 
 p {
   margin-bottom: 50px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 25px;
 }
 
 .button {
@@ -14,7 +21,7 @@ p {
   justify-content: center;
   align-items: center;
   height: 50px;
-  width: 200px;
+  width: 45%;
   margin: auto;
   border: 1px solid black;
   font-size: 24px;
@@ -35,4 +42,8 @@ p {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.indent {
+  padding-left: 75px;
 }

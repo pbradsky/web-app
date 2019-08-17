@@ -14,7 +14,8 @@ client = smartcar.AuthClient(
     client_id=os.environ.get('CLIENT_ID'),
     client_secret=os.environ.get('CLIENT_SECRET'),
     redirect_uri=os.environ.get('REDIRECT_URI'),
-    scope=['required:read_vehicle_info'],
+    scope=['required:read_vehicle_info', 'required:read_location',
+           'required:read_odometer', 'required:control_security'],
     test_mode=True
 )
 
@@ -52,6 +53,50 @@ def vehicle():
     print(info)
 
     return jsonify(info)
+
+
+@app.route('/location', methods=['GET'])
+def location():
+    # For now, just use the first vehicle every time
+    vehicle_ids = smartcar.get_vehicle_ids(
+        access['access_token'])['vehicles']
+    vehicle = smartcar.Vehicle(vehicle_ids[0], access['access_token'])
+
+    location = vehicle.location()['data']
+    print(location)
+
+    return jsonify(location)
+
+
+@app.route('/odometer', methods=['GET'])
+def odometer():
+    # For now, just use the first vehicle every time
+    vehicle_ids = smartcar.get_vehicle_ids(
+        access['access_token'])['vehicles']
+    vehicle = smartcar.Vehicle(vehicle_ids[0], access['access_token'])
+
+    odometer = vehicle.odometer()['data']
+    print(odometer)
+
+    return jsonify(odometer)
+
+
+@app.route('/control', methods=['POST'])
+def control():
+    lock = request.args.get('lock')
+
+    # For now, just use the first vehicle every time
+    vehicle_ids = smartcar.get_vehicle_ids(
+        access['access_token'])['vehicles']
+    vehicle = smartcar.Vehicle(vehicle_ids[0], access['access_token'])
+
+    if lock:
+        response = vehicle.lock()
+    else:
+        response = vehicle.unlock()
+    print(response)
+
+    return jsonify(response)
 
 
 if __name__ == '__main__':
