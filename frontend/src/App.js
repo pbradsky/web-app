@@ -22,7 +22,7 @@ class App extends Component {
       location: {},
       odometer: {}
     };
-
+    console.log('Hello app!');
     this.smartcar = new Smartcar({
       clientId: process.env.REACT_APP_CLIENT_ID,
       redirectUri: process.env.REACT_APP_REDIRECT_URI,
@@ -34,9 +34,12 @@ class App extends Component {
   }
 
   onAuthComplete = (err, code, status) => {
+    console.log('authenticating...');
+    console.log(err, code, status);
     return axios.get(process.env.REACT_APP_SERVER + '/exchange',
               {params: { code }})
       .then(() => {
+          console.log('exchange sent!')
           axios.get(process.env.REACT_APP_SERVER + '/vehicle')
             .then(res =>
               this.setState({vehicle: res.data})
@@ -49,6 +52,10 @@ class App extends Component {
             .then(res =>
               this.setState({odometer: res.data})
             );
+      })
+      .catch(error => {
+        console.log('ERROR IN EXCHANGE');
+        console.log(error);
       });
   }
 

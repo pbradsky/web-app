@@ -29,6 +29,7 @@ def login():
 
 @app.route('/exchange', methods=['GET'])
 def exchange():
+    print('EXCHANGE ROUTE')
     code = request.args.get('code')
 
     # access our global variable and store our access tokens
@@ -36,11 +37,13 @@ def exchange():
     # in a production app you'll want to store this in some kind of
     # persistent storage
     access = client.exchange_code(code)
+    print('EXCHANGED')
     return '', 200
 
 
 @app.route('/vehicle', methods=['GET'])
 def vehicle():
+    print('VEHICLE')
     # access our global variable to retrieve our access tokens
     global access
     # the list of vehicle ids

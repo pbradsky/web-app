@@ -1,0 +1,1 @@
+gcloud app deploy flask-app.yaml --project jurne-test-web-app
