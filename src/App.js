@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Smartcar from '@smartcar/auth';
+import axios from 'axios';
 
 // import axios from 'axios';
 
@@ -12,7 +13,7 @@ class App extends Component {
       vehicle: {},
     };
 
-    console.log(this.smartcar);
+    console.log(process.env);
     this.smartcar = new Smartcar({
       clientId: process.env.REACT_APP_CLIENT_ID,
       redirectUri: process.env.REACT_APP_REDIRECT_URI,
@@ -23,7 +24,14 @@ class App extends Component {
   }
 
   onAuthComplete = (err, code, status) => {
-    console.log(code);
+    return axios.get(process.env.REACT_APP_SERVER + '/exchange',
+              {params: { code }})
+      .then(() =>
+        axios.get(process.env.REACT_APP_SERVER + '/vehicle')
+      )
+      .then(res =>
+        this.setState({vehicle: res.data})
+      );
   }
 
   handleAuth = () => {
@@ -55,6 +63,14 @@ class App extends Component {
               onClick={this.handleClick}
             >
               Lock/Unlock
+            </div>
+            <div className='vehicle-info'>
+              <br />
+              <h2>Vehicle Information</h2>
+              <div>ID: {vehicle.id}</div>
+              <div>Make: {vehicle.make}</div>
+              <div>Model: {vehicle.model}</div>
+              <div>Year: {vehicle.year}</div>
             </div>
           </div>
         :

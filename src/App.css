@@ -28,3 +28,11 @@ p {
 .greeting {
   margin-bottom: 20px;
 }
+
+.vehicle-info {
+  margin: auto;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
