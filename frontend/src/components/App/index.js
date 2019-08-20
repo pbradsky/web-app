@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
 import Smartcar from '@smartcar/auth';
 import axios from 'axios';
+
+import './index.css';
 
 const config = {
   headers: {
