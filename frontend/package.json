@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gcloud app deploy react-app.yaml --project jurne-test-web-app"
+    "build-and-deploy": "npm run build && gcloud app deploy react-app.yaml --project jurne-test-web-app && echo 'Deployed ~ :)'"
   },
   "eslintConfig": {
     "extends": "react-app"
