@@ -37,6 +37,34 @@ class Firebase {
     doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password);
 
+    /* MERGE AUTH AND DB USER INFO */
+
+    onAuthUserListener = (next, fallback) =>
+        this.auth.onAuthStateChanged(authUser => {
+            if (authUser) {
+                this.user(authUser.uid)
+                    .once('value')
+                    .then(snapshot => {
+                        const dbUser = snapshot.val();
+
+                        if (!dbUser.roles) {
+                            dbUser.roles = {};
+                        }
+
+                        // merge
+                        authUser = {
+                            uid: authUser.uid,
+                            email: authUser.email,
+                            ...dbUser
+                        };
+
+                        next(authUser);
+                    });
+            } else {
+                fallback();
+            }
+        });
+
     /* USER API */
 
     user = uid => this.db.ref(`users/${uid}`);
