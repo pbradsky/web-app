@@ -1,9 +1,13 @@
 import smartcar
 from flask import Flask, redirect, request, jsonify
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
+from dotenv import load_dotenv
 
 import os
 
+from firebase import firebase
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
@@ -12,9 +16,9 @@ CORS(app)
 access = None
 
 client = smartcar.AuthClient(
-    client_id=os.environ.get('CLIENT_ID'),
-    client_secret=os.environ.get('CLIENT_SECRET'),
-    redirect_uri=os.environ.get('REDIRECT_URI'),
+    client_id=os.getenv('CLIENT_ID'),
+    client_secret=os.getenv('CLIENT_SECRET'),
+    redirect_uri=os.getenv('REDIRECT_URI'),
     scope=['required:read_vehicle_info', 'required:read_location',
            'required:read_odometer', 'required:control_security'],
     test_mode=True
@@ -55,6 +59,8 @@ def vehicle():
 
     info = vehicle.info()
     print(info)
+
+    firebase.set('vehicles', info['id'], info)
 
     return jsonify(info)
 

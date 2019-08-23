@@ -130,5 +130,7 @@ yarn-debug.log*
 yarn-error.log*
 
 *.code-workspace
-env_variables.yaml
+.env.yaml
 env_variables.sh
+
+firebase-private-key.json
