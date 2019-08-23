@@ -12,9 +12,6 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# global variable to save our access_token
-access = None
-
 client = smartcar.AuthClient(
     client_id=os.getenv('CLIENT_ID'),
     client_secret=os.getenv('CLIENT_SECRET'),
@@ -35,21 +32,23 @@ def login():
 def exchange():
     print('EXCHANGE ROUTE')
     code = request.args.get('code')
-
-    # access our global variable and store our access tokens
-    global access
     # in a production app you'll want to store this in some kind of
     # persistent storage
-    access = client.exchange_code(code)
     print('EXCHANGED')
+
+    access = client.exchange_code(code)
+    firebase.set_access_token(access)
+
     return '', 200
 
 
 @app.route('/vehicle', methods=['GET'])
 def vehicle():
     print('VEHICLE')
-    # access our global variable to retrieve our access tokens
-    global access
+    access = firebase.get_access_token()
+    if not access:
+        return redirect('/login')
+
     # the list of vehicle ids
     vehicle_ids = smartcar.get_vehicle_ids(
         access['access_token'])['vehicles']
@@ -67,6 +66,10 @@ def vehicle():
 
 @app.route('/location', methods=['GET'])
 def location():
+    access = firebase.get_access_token()
+    if not access:
+        return redirect('/login')
+
     # For now, just use the first vehicle every time
     vehicle_ids = smartcar.get_vehicle_ids(
         access['access_token'])['vehicles']
@@ -80,6 +83,10 @@ def location():
 
 @app.route('/odometer', methods=['GET'])
 def odometer():
+    access = firebase.get_access_token()
+    if not access:
+        return redirect('/login')
+
     # For now, just use the first vehicle every time
     vehicle_ids = smartcar.get_vehicle_ids(
         access['access_token'])['vehicles']
@@ -93,6 +100,10 @@ def odometer():
 
 @app.route('/control', methods=['POST'])
 def control():
+    access = firebase.get_access_token()
+    if not access:
+        return redirect('/login')
+
     lock = request.args.get('lock')
 
     # For now, just use the first vehicle every time
