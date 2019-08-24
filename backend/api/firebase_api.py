@@ -20,6 +20,7 @@ config = {
 
 class Firebase:
     def __init__(self, config):
+        print('NEW FIREBASE INIT')
         self.firebase = pyrebase.initialize_app(config)
         self.db = self.firebase.database()
 
