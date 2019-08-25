@@ -70,6 +70,12 @@ class Firebase {
     user = uid => this.db.ref(`users/${uid}`);
 
     users = () => this.db.ref('users');
+
+    /* VEHICLE API */
+
+    vehicle = vid => this.db.ref(`vehicles/${vid}`);
+
+    vehicles = () => this.db.ref('vehicles');
 }
 
 export default Firebase;

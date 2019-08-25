@@ -1,0 +1,72 @@
+import React, { Component } from 'react';
+import { compose } from 'recompose';
+
+import { withFirebase } from '../Firebase';
+import { withAuthorization } from '../Session';
+import * as CONDITIONS from '../../constants/conditions';
+
+class DrivePage extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loading: false,
+            vehicles: []
+        };
+    }
+
+    componentDidMount() {
+        this.setState({ loading: true });
+
+        this.props.firebase.vehicles().on('value', snapshot => {
+            const vehiclesObject = snapshot.val();
+
+            const vehiclesList = Object.keys(vehiclesObject).map(key => ({
+                ...vehiclesObject[key],
+                vid: key
+            }));
+
+            this.setState({
+                loading: false,
+                vehicles: vehiclesList
+            });
+        });
+    }
+
+    componentWillUnmount() {
+        this.props.firebase.vehicles().off();
+    }
+
+    render() {
+        const { loading, vehicles } = this.state;
+
+        return (
+            <div>
+                <h1>Our Fleet!</h1>
+
+                {loading && <div>Loading...</div>}
+
+                <VehicleList vehicles={vehicles} />
+            </div>
+        );
+    }
+}
+
+
+const VehicleList = ({ vehicles }) => (
+    <div>
+        <ul>
+            {vehicles.map(vehicle => (
+                <li key={vehicle.vid}>
+                    {vehicle.id}
+                    {vehicle.make}
+                </li>
+            ))}
+        </ul>
+    </div>
+);
+
+export default compose(
+    withAuthorization(CONDITIONS.isSignedInUser),
+    withFirebase
+)(DrivePage);
