@@ -3,7 +3,7 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
-import * as ROLES from '../../constants/roles';
+import * as CONDITIONS from '../../constants/conditions';
 
 class AdminPage extends Component {
   constructor(props) {
@@ -72,12 +72,9 @@ const UserList = ({ users }) => (
       </li>
     ))}
   </ul>
-)
-
-const condition = authUser =>
-  authUser && !!authUser.roles[ROLES.ADMIN];
+);
 
 export default compose(
-  withAuthorization(condition),
+  withAuthorization(CONDITIONS.isSignedInAdmin),
   withFirebase
 )(AdminPage);

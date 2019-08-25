@@ -4,6 +4,8 @@ import { withAuthorization, AuthUserContext } from '../Session';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
 
+import * as CONDITIONS from '../../constants/conditions';
+
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
@@ -16,6 +18,4 @@ const AccountPage = () => (
   </AuthUserContext.Consumer>
 );
 
-const condition = authUser => !!authUser;
-
-export default withAuthorization(condition)(AccountPage);
+export default withAuthorization(CONDITIONS.isSignedInUser)(AccountPage);
