@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { withAuthorization } from '../Session';
-import * as CONDITIONS from '../../constants/conditions';
-
-const Vehicle = () => (
+const VehicleItem = ({ vehicle }) => (
     <div>
-        Vehicle!
+        <h2>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
+        <p>Vehicle ID: {vehicle.vid}</p>
     </div>
 );
 
-export default withAuthorization(CONDITIONS.isSignedInUser)(Vehicle);
+export default VehicleItem;

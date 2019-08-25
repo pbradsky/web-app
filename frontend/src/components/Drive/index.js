@@ -3,6 +3,7 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
+import VehicleItem from '../Vehicle';
 import * as CONDITIONS from '../../constants/conditions';
 
 class DrivePage extends Component {
@@ -55,14 +56,9 @@ class DrivePage extends Component {
 
 const VehicleList = ({ vehicles }) => (
     <div>
-        <ul>
-            {vehicles.map(vehicle => (
-                <li key={vehicle.vid}>
-                    {vehicle.id}
-                    {vehicle.make}
-                </li>
-            ))}
-        </ul>
+        {vehicles.map(vehicle => (
+            <VehicleItem vehicle={vehicle} />
+        ))}
     </div>
 );
 
