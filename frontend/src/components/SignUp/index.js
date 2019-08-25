@@ -144,6 +144,12 @@ const SignUpLink = () => (
   </p>
 );
 
+const SignUpButton = () => (
+  <Link to={ROUTES.SIGN_UP}>
+    <button>Sign Up</button>
+  </Link>
+);
+
 export default SignUpPage;
 
-export { SignUpForm, SignUpLink };
+export { SignUpForm, SignUpLink, SignUpButton };
