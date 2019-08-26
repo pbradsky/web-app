@@ -25,7 +25,7 @@ def exchange():
 
     smartcar.exchange_code(code)
 
-    return '', 200
+    return redirect('/update_vehicles')
 
 
 @app.route('/vehicle', methods=['GET'])
