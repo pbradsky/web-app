@@ -46,6 +46,25 @@ def vehicle():
     return jsonify(info)
 
 
+@app.route('/update_vehicles', methods=['GET'])
+def update_vehicles():
+    print('UPDATE VEHICLES')
+
+    # the list of vehicle ids
+    vehicle_ids = smartcar.get_vehicle_ids()
+    vehicle_infos = {}
+
+    for vehicle_id in vehicle_ids:
+        vehicle = smartcar.get_vehicle(vehicle_id)
+
+        info = vehicle.info()
+        vehicle_infos[info['id']] = info
+
+        firebase.set('vehicles', info['id'], info)
+
+    return jsonify(vehicle_infos)
+
+
 @app.route('/location', methods=['GET'])
 def location():
     # For now, just use the first vehicle every time
