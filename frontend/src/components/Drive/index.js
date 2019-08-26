@@ -3,7 +3,7 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
-import VehicleItem from '../Vehicle';
+import { VehicleItem } from '../Vehicle';
 import * as CONDITIONS from '../../constants/conditions';
 
 class DrivePage extends Component {
