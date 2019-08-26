@@ -57,7 +57,7 @@ class DrivePage extends Component {
 const VehicleList = ({ vehicles }) => (
     <div>
         {vehicles.map(vehicle => (
-            <VehicleItem vehicle={vehicle} />
+            <VehicleItem key={vehicle.id} vehicle={vehicle} />
         ))}
     </div>
 );

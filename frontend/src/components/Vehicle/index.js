@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
@@ -32,6 +33,28 @@ class DriveVehiclePage extends Component {
             });
     }
 
+    handleLock = () => {
+        const params = {
+          params: {
+            lock: true
+          }
+        }
+
+        axios.post(process.env.REACT_APP_SERVER + '/control',
+                   { ...params});
+    }
+
+    handleUnlock = () => {
+      const params = {
+        params: {
+          lock: true
+        }
+      }
+
+      axios.post(process.env.REACT_APP_SERVER + '/control',
+                 { ...params});
+    }
+
     render() {
         const { loading, vehicle } = this.state;
 
@@ -45,6 +68,9 @@ class DriveVehiclePage extends Component {
                     <div>
                         <h2>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
                         <p>Vehicle ID: {vehicle.id}</p>
+                        <br />
+                        <button onClick={this.handleLock}>Lock</button>
+                        <button onClick={this.handleUnlock}>Unlock</button>
                     </div>
                 : null}
             </div>
