@@ -3,6 +3,8 @@ import React from 'react';
 import { SignInButton } from '../SignIn';
 import { SignUpButton } from '../SignUp';
 
+/* TODO: don't show this page / the signin/up buttons if user is logged in */
+
 const Landing = () =>
   <div>
     <h1>Jūrne</h1>
