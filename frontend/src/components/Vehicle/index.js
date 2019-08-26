@@ -14,7 +14,8 @@ class DriveVehiclePage extends Component {
 
         this.state = {
             loading: false,
-            vehicle: {}
+            vehicle: {},
+            status: null
         };
     }
 
@@ -33,12 +34,23 @@ class DriveVehiclePage extends Component {
             });
     }
 
+    handleUpdateStatus = status => {
+        this.setState({ status });
+        setTimeout(() => {
+            this.setState({
+                status: null
+            });
+        }, 1500);
+    }
+
     handleLock = vid => {
         axios.post(process.env.REACT_APP_SERVER + '/control', {
                 lock: true,
                 id: vid
             })
-            .then(res => console.log(res))
+            .then(res => {
+                this.handleUpdateStatus('Lock ' + res.data.status);
+            })
             .catch(err => console.log(err));
     }
 
@@ -47,12 +59,14 @@ class DriveVehiclePage extends Component {
                 lock: false,
                 id: vid
             })
-            .then(res => console.log(res))
+            .then(res => {
+                this.handleUpdateStatus('Unlock ' + res.data.status);
+            })
             .catch(err => console.log(err));
     }
 
     render() {
-        const { loading, vehicle } = this.state;
+        const { loading, vehicle, status } = this.state;
 
         return (
             <div>
@@ -67,6 +81,8 @@ class DriveVehiclePage extends Component {
                         <br />
                         <button onClick={() => this.handleLock(vehicle.id)}>Lock</button>
                         <button onClick={() => this.handleUnlock(vehicle.id)}>Unlock</button>
+                        <br />
+                        <p>{status}</p>
                     </div>
                 : null}
             </div>
