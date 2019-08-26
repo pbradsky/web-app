@@ -33,26 +33,22 @@ class DriveVehiclePage extends Component {
             });
     }
 
-    handleLock = () => {
-        const params = {
-          params: {
-            lock: true
-          }
-        }
-
-        axios.post(process.env.REACT_APP_SERVER + '/control',
-                   { ...params});
+    handleLock = vid => {
+        axios.post(process.env.REACT_APP_SERVER + '/control', {
+                lock: true,
+                id: vid
+            })
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
     }
 
-    handleUnlock = () => {
-      const params = {
-        params: {
-          lock: true
-        }
-      }
-
-      axios.post(process.env.REACT_APP_SERVER + '/control',
-                 { ...params});
+    handleUnlock = vid => {
+        axios.post(process.env.REACT_APP_SERVER + '/control', {
+                lock: false,
+                id: vid
+            })
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -69,8 +65,8 @@ class DriveVehiclePage extends Component {
                         <h2>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
                         <p>Vehicle ID: {vehicle.id}</p>
                         <br />
-                        <button onClick={this.handleLock}>Lock</button>
-                        <button onClick={this.handleUnlock}>Unlock</button>
+                        <button onClick={() => this.handleLock(vehicle.id)}>Lock</button>
+                        <button onClick={() => this.handleUnlock(vehicle.id)}>Unlock</button>
                     </div>
                 : null}
             </div>

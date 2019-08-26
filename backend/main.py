@@ -72,16 +72,19 @@ def odometer():
 
 @app.route('/control', methods=['POST'])
 def control():
-    lock = request.args.get('lock')
+    lock = request.json.get('lock')
+    vehicle_id = request.json.get('id')
+    print(vehicle_id)
 
     # For now, just use the first vehicle every time
-    vehicle_ids = smartcar.get_vehicle_ids()
-    vehicle = smartcar.get_vehicle(vehicle_ids[0])
+    vehicle = smartcar.get_vehicle(vehicle_id)
 
     if lock:
         response = vehicle.lock()
+        print(f'Locking VID: {vehicle_id}')
     else:
         response = vehicle.unlock()
+        print(f'Unlocking VID: {vehicle_id}')
     print(response)
 
     return jsonify(response)
