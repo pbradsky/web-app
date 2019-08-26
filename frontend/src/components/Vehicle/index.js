@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { Link } from 'react-router-dom';
 
@@ -7,17 +7,56 @@ import { withAuthorization } from '../Session';
 import * as CONDITIONS from '../../constants/conditions';
 import * as ROUTES from '../../constants/routes';
 
-const DriveVehiclePage = ({ match }) => (
-    <div>
-        VID: {match.params.vid}
-    </div>
-);
+class DriveVehiclePage extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loading: false,
+            vehicle: {}
+        };
+    }
+
+    componentDidMount() {
+        this.setState({ loading: true });
+
+        this.props.firebase.vehicle(this.props.match.params.id)
+            .once('value')
+            .then(snapshot => {
+                const vehicle = snapshot.val();
+
+                this.setState({
+                    loading: false,
+                    vehicle: vehicle
+                });
+            });
+    }
+
+    render() {
+        const { loading, vehicle } = this.state;
+
+        return (
+            <div>
+                <h1>Your Vehicle</h1>
+
+                {loading && <div>Loading</div>}
+
+                {Object.keys(vehicle).length !== 0 ?
+                    <div>
+                        <h2>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
+                        <p>Vehicle ID: {vehicle.id}</p>
+                    </div>
+                : null}
+            </div>
+        );
+    }
+}
 
 const VehicleItem = ({ vehicle }) => (
     <div>
         <h2>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
-        <p>Vehicle ID: {vehicle.vid}</p>
-        <Link to={ROUTES.DRIVE + `/${vehicle.vid}`}>
+        <p>Vehicle ID: {vehicle.id}</p>
+        <Link to={ROUTES.DRIVE + `/${vehicle.id}`}>
             Start Drive
         </Link>
     </div>

@@ -24,7 +24,7 @@ class DrivePage extends Component {
 
             const vehiclesList = Object.keys(vehiclesObject).map(key => ({
                 ...vehiclesObject[key],
-                vid: key
+                id: key
             }));
 
             this.setState({
