@@ -1,29 +1,17 @@
-import smartcar
 from flask import Flask, redirect, request, jsonify
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
-import os
+from api.firebase_api import firebase
+from api.smartcar_api import smartcar
 
 
 app = Flask(__name__)
 CORS(app)
 
-# global variable to save our access_token
-access = None
-
-client = smartcar.AuthClient(
-    client_id=os.environ.get('CLIENT_ID'),
-    client_secret=os.environ.get('CLIENT_SECRET'),
-    redirect_uri=os.environ.get('REDIRECT_URI'),
-    scope=['required:read_vehicle_info', 'required:read_location',
-           'required:read_odometer', 'required:control_security'],
-    test_mode=True
-)
-
 
 @app.route('/login', methods=['GET'])
 def login():
-    auth_url = client.get_auth_url()
+    auth_url = smartcar.get_auth_url()
     return redirect(auth_url)
 
 
@@ -31,30 +19,29 @@ def login():
 def exchange():
     print('EXCHANGE ROUTE')
     code = request.args.get('code')
-
-    # access our global variable and store our access tokens
-    global access
     # in a production app you'll want to store this in some kind of
     # persistent storage
-    access = client.exchange_code(code)
     print('EXCHANGED')
+
+    smartcar.exchange_code(code)
+
     return '', 200
 
 
 @app.route('/vehicle', methods=['GET'])
 def vehicle():
     print('VEHICLE')
-    # access our global variable to retrieve our access tokens
-    global access
+
     # the list of vehicle ids
-    vehicle_ids = smartcar.get_vehicle_ids(
-        access['access_token'])['vehicles']
+    vehicle_ids = smartcar.get_vehicle_ids()
 
     # instantiate the first vehicle in the vehicle id list
-    vehicle = smartcar.Vehicle(vehicle_ids[0], access['access_token'])
+    vehicle = smartcar.get_vehicle(vehicle_ids[0])
 
     info = vehicle.info()
     print(info)
+
+    firebase.set('vehicles', info['id'], info)
 
     return jsonify(info)
 
@@ -62,9 +49,8 @@ def vehicle():
 @app.route('/location', methods=['GET'])
 def location():
     # For now, just use the first vehicle every time
-    vehicle_ids = smartcar.get_vehicle_ids(
-        access['access_token'])['vehicles']
-    vehicle = smartcar.Vehicle(vehicle_ids[0], access['access_token'])
+    vehicle_ids = smartcar.get_vehicle_ids()
+    vehicle = smartcar.get_vehicle(vehicle_ids[0])
 
     location = vehicle.location()['data']
     print(location)
@@ -75,9 +61,8 @@ def location():
 @app.route('/odometer', methods=['GET'])
 def odometer():
     # For now, just use the first vehicle every time
-    vehicle_ids = smartcar.get_vehicle_ids(
-        access['access_token'])['vehicles']
-    vehicle = smartcar.Vehicle(vehicle_ids[0], access['access_token'])
+    vehicle_ids = smartcar.get_vehicle_ids()
+    vehicle = smartcar.get_vehicle(vehicle_ids[0])
 
     odometer = vehicle.odometer()['data']
     print(odometer)
@@ -87,17 +72,19 @@ def odometer():
 
 @app.route('/control', methods=['POST'])
 def control():
-    lock = request.args.get('lock')
+    lock = request.json.get('lock')
+    vehicle_id = request.json.get('id')
+    print(vehicle_id)
 
     # For now, just use the first vehicle every time
-    vehicle_ids = smartcar.get_vehicle_ids(
-        access['access_token'])['vehicles']
-    vehicle = smartcar.Vehicle(vehicle_ids[0], access['access_token'])
+    vehicle = smartcar.get_vehicle(vehicle_id)
 
     if lock:
         response = vehicle.lock()
+        print(f'Locking VID: {vehicle_id}')
     else:
         response = vehicle.unlock()
+        print(f'Unlocking VID: {vehicle_id}')
     print(response)
 
     return jsonify(response)

@@ -2,4 +2,4 @@ runtime: python37
 service: python
 
 includes:
-  - env_variables.yaml
+  - .env.yaml

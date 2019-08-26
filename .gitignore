@@ -122,11 +122,15 @@ node_modules/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.development
+.env.production
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 *.code-workspace
-env_variables.yaml
+.env.yaml
 env_variables.sh
+
+firebase-private-key.json

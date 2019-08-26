@@ -1,177 +1,36 @@
-import React, { Component } from 'react';
-import Smartcar from '@smartcar/auth';
-import axios from 'axios';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import './index.css';
+import Navigation from '../Navigation';
+import LandingPage from '../Landing';
+import SignUpPage from '../SignUp';
+import SignInPage from '../SignIn';
+import PasswordForgetPage from '../PasswordForget';
+import DrivePage from '../Drive';
+import DriveVehiclePage from '../Vehicle';
+import AccountPage from '../Account';
+import AdminPage from '../Admin';
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
-    'Access-Control-Max-Age': '3600',
-    'Access-Control-Allow-Headers': 'x-requested-by'
-  }
-};
+import { withAuthentication } from '../Session';
+import * as ROUTES from '../../constants/routes';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+const App = () => (
+  <Router>
+    <div>
+      <Navigation />
 
-    this.state = {
-      vehicle: {},
-      location: {},
-      odometer: {}
-    };
-    console.log('Hello app!');
-    this.smartcar = new Smartcar({
-      clientId: process.env.REACT_APP_CLIENT_ID,
-      redirectUri: process.env.REACT_APP_REDIRECT_URI,
-      scope: ['required:read_vehicle_info', 'required:read_location',
-              'required:read_odometer', 'required:control_security'],
-      testMode: true,
-      onComplete: this.onAuthComplete,
-    });
-  }
+      <hr />
 
-  onAuthComplete = (err, code, status) => {
-    console.log('authenticating...');
-    console.log(err, code, status);
-    return axios.get(process.env.REACT_APP_SERVER + '/exchange',
-              {params: { code }})
-      .then(() => {
-          console.log('exchange sent!')
-          axios.get(process.env.REACT_APP_SERVER + '/vehicle')
-            .then(res =>
-              this.setState({vehicle: res.data})
-            );
-          axios.get(process.env.REACT_APP_SERVER + '/location')
-            .then(res =>
-              this.setState({location: res.data})
-            );
-          axios.get(process.env.REACT_APP_SERVER + '/odometer')
-            .then(res =>
-              this.setState({odometer: res.data})
-            );
-      })
-      .catch(error => {
-        console.log('ERROR IN EXCHANGE');
-        console.log(error);
-      });
-  }
+      <Route exact path={ROUTES.LANDING} component={LandingPage} />
+      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+      <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+      <Route exact path={ROUTES.DRIVE} component={DrivePage} />
+      <Route path={ROUTES.DRIVE_VEHICLE} component={DriveVehiclePage} />
+      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+      <Route path={ROUTES.ADMIN} component={AdminPage} />
+    </div>
+  </Router>
+);
 
-  handleAuth = () => {
-    this.smartcar.openDialog({forcePrompt: true});
-  }
-
-  handleLock = () => {
-    const params = {
-      params: {
-        lock: true
-      }
-    }
-
-    axios.post(process.env.REACT_APP_SERVER + '/control',
-               { ...config, ...params});
-  }
-
-  handleUnlock = () => {
-    const params = {
-      params: {
-        lock: true
-      }
-    }
-
-    axios.post(process.env.REACT_APP_SERVER + '/control',
-               { ...config, ...params});
-  }
-
-  handleLocation = () => {
-    axios.get(process.env.REACT_APP_SERVER + '/location')
-      .then(res =>
-        this.setState({location: res.data})
-      );
-  }
-
-  handleOdometer = () => {
-    axios.get(process.env.REACT_APP_SERVER + '/odometer')
-      .then(res =>
-        this.setState({odometer: res.data})
-      );
-  }
-
-  render() {
-    const { vehicle, location, odometer } = this.state;
-
-    return (
-      <div className='app'>
-        <h1>Jūrne</h1>
-        <p>
-          Welcome ~ :) We are really happy to have you here.
-          Learn more about our services and see other details
-          on our website.
-        </p>
-        <div className='greeting'>
-          {Object.keys(vehicle).length !== 0
-            ? 'Logged in! Choose an action below.'
-            : 'Press the button below to log in.'
-          }
-        </div>
-        {Object.keys(vehicle).length !== 0
-        ?
-          <div>
-            <div className='button-row'>
-              <div
-                className='button'
-                onClick={this.handleLock}
-              >
-                Lock
-              </div>
-              <div
-                className='button'
-                onClick={this.handleUnlock}
-              >
-                Unlock
-              </div>
-            </div>
-            <div className='button-row'>
-              <div
-                className='button'
-                onClick={this.handleLocation}
-              >
-                Location
-              </div>
-              <div
-                className='button'
-                onClick={this.handleOdometer}
-              >
-                Odometer
-              </div>
-            </div>
-            <div className='vehicle-info'>
-              <br />
-              <h2>Vehicle Information</h2>
-              <div>ID: {vehicle.id}</div>
-              <div>Make: {vehicle.make}</div>
-              <div>Model: {vehicle.model}</div>
-              <div>Year: {vehicle.year}</div>
-              <div>Location: ({location.latitude},</div>
-              <div className='indent'>{location.longitude})</div>
-              <div>Odometer: {odometer.distance}</div>
-            </div>
-          </div>
-        :
-          <div
-            className='button'
-            onClick={this.handleAuth}
-          >
-            Request Access
-          </div>
-        }
-      </div>
-    );
-  }
-
-}
-
-export default App;
+export default withAuthentication(App);
