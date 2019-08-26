@@ -50,6 +50,7 @@ class Smartcar:
         return self.access
 
     def refresh_access_token(self):
+        print('Refreshing access token...')
         if self.access:
             access = self.access
         else:
@@ -57,8 +58,10 @@ class Smartcar:
         if not access:
             return None
 
+        print('    Ready to refresh...')
         self.access = self.client.exchange_refresh_token(
             access['refresh_token'])
+        print('    Refreshed! Printing new access token...')
         print(self.access)
         # Error check if valid refresh token / refresh expired
 
@@ -80,13 +83,63 @@ class Smartcar:
         if not self.load_access_token():
             return None
 
-        vehicle = sc.Vehicle(
+        vehicle = Vehicle(
             vehicle_id,
             self.access['access_token'])
         print(vehicle)
         # Error check if vehicle exists / access token expired
 
         return vehicle
+
+
+class Vehicle:
+    def __init__(self, vehicle_id, access_token):
+        self.vehicle_id = vehicle_id
+        self.access_token = access_token
+        self.vehicle = sc.Vehicle(
+            vehicle_id,
+            access_token
+        )
+
+    def _with_refresh(method):
+        def wrap(self, *args, **kwargs):
+            try:
+                return method(self, *args, **kwargs)
+            except sc.exceptions.AuthenticationException:
+                self.refresh_token()
+                return method(self, *args, **kwargs)
+        return wrap
+
+    @_with_refresh
+    def info(self):
+        return self.vehicle.info()
+
+    @_with_refresh
+    def location(self):
+        return self.vehicle.location()
+
+    @_with_refresh
+    def odometer(self):
+        return self.vehicle.odometer()
+
+    @_with_refresh
+    def lock(self):
+        return self.vehicle.lock()
+
+    @_with_refresh
+    def unlock(self):
+        return self.vehicle.unlock()
+
+    @_with_refresh
+    def vin(self):
+        return self.vehicle.vin()
+
+    def refresh_token(self):
+        self.access_token = smartcar.refresh_access_token()['access_token']
+        self.vehicle = sc.Vehicle(
+            self.vehicle_id,
+            self.access_token
+        )
 
 
 smartcar = Smartcar(client)
