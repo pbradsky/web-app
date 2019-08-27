@@ -7,6 +7,7 @@ import { PasswordForgetLink } from '../PasswordForget';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import * as ROLES from '../../constants/roles';
 
 const SignInPage = () => (
   <div>
@@ -30,6 +31,12 @@ class SignInFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
+  componentWillUnmount() {
+    if (this.listener) {
+      this.listener();
+    }
+  }
+
   onSubmit = event => {
     const { email, password } = this.state;
 
@@ -37,7 +44,17 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.DRIVE);
+
+        this.listener = this.props.firebase.onAuthUserListener(
+          authUser => {
+            if (authUser.roles[ROLES.APPROVED]) {
+              this.props.history.push(ROUTES.DRIVE)
+            } else {
+              this.props.history.push(ROUTES.HOLDING)
+            }
+          },
+          () => this.props.history.push(ROUTES.SIGN_IN)
+        );
       })
       .catch(error => {
         this.setState({ error });
