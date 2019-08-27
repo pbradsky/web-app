@@ -63,6 +63,6 @@ const VehicleList = ({ vehicles }) => (
 );
 
 export default compose(
-    withAuthorization(CONDITIONS.isSignedInUser),
+    withAuthorization(CONDITIONS.isSignedInApprovedUser),
     withFirebase
 )(DrivePage);

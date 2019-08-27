@@ -101,7 +101,7 @@ const VehicleItem = ({ vehicle }) => (
 );
 
 export default compose(
-    withAuthorization(CONDITIONS.isSignedInUser),
+    withAuthorization(CONDITIONS.isSignedInApprovedUser),
     withFirebase
 )(DriveVehiclePage);
 
