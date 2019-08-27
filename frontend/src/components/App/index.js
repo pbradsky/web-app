@@ -6,6 +6,7 @@ import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
+import HoldingPage from '../Holding';
 import DrivePage from '../Drive';
 import DriveVehiclePage from '../Vehicle';
 import AccountPage from '../Account';
@@ -25,6 +26,7 @@ const App = () => (
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+      <Route path={ROUTES.HOLDING} component={HoldingPage} />
       <Route exact path={ROUTES.DRIVE} component={DrivePage} />
       <Route path={ROUTES.DRIVE_VEHICLE} component={DriveVehiclePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />

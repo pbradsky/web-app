@@ -23,9 +23,18 @@ const Navigation = () => (
 
 const NavigationAuth = ({ authUser }) => (
     <ul>
-        <li>
-            <Link to={ROUTES.DRIVE}>Drive</Link>
-        </li>
+        {!!authUser.roles[ROLES.APPROVED]
+            ? (
+                <li>
+                    <Link to={ROUTES.DRIVE}>Drive</Link>
+                </li>
+            )
+            : (
+                <li>
+                    <Link to={ROUTES.HOLDING}>Holding</Link>
+                </li>
+            )
+        }
         <li>
             <Link to={ROUTES.ACCOUNT}>Account</Link>
         </li>
