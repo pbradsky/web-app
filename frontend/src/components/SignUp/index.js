@@ -19,6 +19,7 @@ const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
   isAdmin: false,
+  isApproved: false,
   error: null,
 };
 
@@ -30,12 +31,15 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin } = this.state;
+    const { username, email, passwordOne, isAdmin, isApproved } = this.state;
 
     const roles = {};
 
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
+    }
+    if (isApproved) {
+      roles[ROLES.APPROVED] = ROLES.APPROVED;
     }
 
     this.props.firebase
@@ -75,6 +79,7 @@ class SignUpFormBase extends Component {
       passwordOne,
       passwordTwo,
       isAdmin,
+      isApproved,
       error,
     } = this.state;
 
@@ -119,6 +124,15 @@ class SignUpFormBase extends Component {
           <input
             name="isAdmin"
             checked={isAdmin}
+            onChange={this.onChangeCheckbox}
+            type="checkbox"
+          />
+        </label>
+        <label>
+          Approved:
+          <input
+            name="isApproved"
+            checked={isApproved}
             onChange={this.onChangeCheckbox}
             type="checkbox"
           />
