@@ -5,19 +5,23 @@ import { SignUpButton } from '../SignUp';
 import './index.css';
 
 const Landing = () => (
-  <div className='right'>
-    <h1>Jurne</h1>
-    <p className='body-primary'>
-      Welcome! We are happy to see you here. Learn more about
-      our product on our website!
+  <div className="right">
+    <h1 className="left">JURNE</h1>
+    <p >
+      Residential Car-Share
     </p>
     <br />
-    <p className='body-secondary'>
-      Please log into your account below or sign up if you don't
-      have an account!
+    <p >
+      Unlock with the Push of a Button
     </p>
+    <br />
+    <p >
+      Helping Cars and Cities be Friends Again
+    </p>
+    <br />
 
     <SignInButton />
+    <br />
     <SignUpButton />
   </div>
 );

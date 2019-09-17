@@ -164,7 +164,7 @@ const SignUpLink = () => (
 
 const SignUpButton = () => (
   <Link to={ROUTES.SIGN_UP}>
-    <button>Sign Up</button>
+    <button className='jurne-button'>Sign Up</button>
   </Link>
 );
 
