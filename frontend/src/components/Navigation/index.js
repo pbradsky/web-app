@@ -8,6 +8,7 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 import { Navbar, Nav } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 const Navigation = () => (
     <div>
@@ -53,21 +54,20 @@ const NavigationAuth = ({ authUser }) => (
 
 const NavigationNonAuth = () => (
     <Navbar>
+
         <Navbar.Brand href="{ROUTES.LANDING}">
-            <img
-                src="spread.png"
-                height="50"
-                alt="brand image"
-                className="d-inline-block align-top" />
+            <Link to={ROUTES.LANDING}>
+                <img
+                    src="spread.png"
+                    height="50"
+                    alt="brand image"
+                    className="d-inline-block align-top" />
+            </Link>
         </Navbar.Brand>
-        <ul>
-            <li>
-            <Link to={ROUTES.LANDING}>Landing</Link>
-            </li>
-            <li>
-            <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-            </li>
-        </ul>
+
+
+            <Link to={ROUTES.SIGN_IN}><Button variant="outline-success">Sign In</Button></Link>
+
     </Navbar>
 );
 
