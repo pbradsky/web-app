@@ -67,7 +67,7 @@ APP_ID=1:123456789:web:abcdef123456
 Finally, run the backend Flask app with:
 ```sh
 $ cd backend/
-$ source env/backend/activate
+$ source env/bin/activate
 (env) $ python main.py
 ```
 
