@@ -1,6 +1,9 @@
 import React from 'react';
 import { SignInButton } from '../SignIn';
 import { SignUpButton } from '../SignUp';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+
 
 import './index.css';
 
@@ -19,6 +22,9 @@ const Landing = () => (
 
     <SignInButton />
     <SignUpButton />
+    <Button size='lg' variant='success'>Join Now</Button>
+    <Button size='lg' variant='outline-success'>Sign In</Button>
+
   </div>
 );
 
