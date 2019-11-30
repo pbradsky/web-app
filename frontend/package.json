@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@smartcar/auth": "^2.4.0",
+    "@smartcar/auth": "^2.5.0",
     "axios": "^0.19.0",
     "firebase": "^6.4.0",
     "query-string": "^6.8.2",
