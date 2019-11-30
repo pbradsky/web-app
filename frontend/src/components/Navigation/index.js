@@ -7,6 +7,8 @@ import { AuthUserContext } from '../Session';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
+import { Navbar, Nav } from 'react-bootstrap';
+
 const Navigation = () => (
     <div>
         <AuthUserContext.Consumer>
@@ -50,14 +52,23 @@ const NavigationAuth = ({ authUser }) => (
 );
 
 const NavigationNonAuth = () => (
-    <ul>
-        <li>
-        <Link to={ROUTES.LANDING}>Landing</Link>
-        </li>
-        <li>
-        <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-        </li>
-    </ul>
+    <Navbar>
+        <Navbar.Brand href="{ROUTES.LANDING}">
+            <img
+                src="spread.png"
+                height="50"
+                alt="brand image"
+                className="d-inline-block align-top" />
+        </Navbar.Brand>
+        <ul>
+            <li>
+            <Link to={ROUTES.LANDING}>Landing</Link>
+            </li>
+            <li>
+            <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+            </li>
+        </ul>
+    </Navbar>
 );
 
 export default Navigation;
