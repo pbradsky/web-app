@@ -8,7 +8,6 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 import { Navbar, Nav } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 import { SignInButton } from '../SignIn';
 import { JoinNowButton } from '../SignUp';
 
@@ -64,7 +63,7 @@ const NavigationNonAuth = () => (
                 <img
                     src="spread.png"
                     height="50"
-                    alt="brand image"
+                    alt='jurne logo'
                     className="d-inline-block align-top" />
             </Link>
         </Navbar.Brand>

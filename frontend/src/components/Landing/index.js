@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import { SignInButton } from '../SignIn';
-import { JoinNowButton } from '../SignUp';
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Card from 'react-bootstrap/Card';

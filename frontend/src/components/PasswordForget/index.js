@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import {Button, Card, Container, Form, Jumbotron} from 'react-bootstrap';
+import { Button, Card, Container, Form } from 'react-bootstrap';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';

@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import Button from 'react-bootstrap/Button';
-import {Card, Container, Form, Jumbotron} from 'react-bootstrap';
+import { Card, Container, Form } from 'react-bootstrap';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
