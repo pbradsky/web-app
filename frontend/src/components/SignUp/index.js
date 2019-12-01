@@ -164,12 +164,12 @@ const SignUpLink = () => (
   </p>
 );
 
-const SignUpButton = () => (
+const JoinNowButton = () => (
   <Link to={ROUTES.SIGN_UP}>
-    <Button variant="primary">Sign Up</Button>
+    <Button variant="primary" className="m-2">Join Now</Button>
   </Link>
 );
 
 export default SignUpPage;
 
-export { SignUpForm, SignUpLink, SignUpButton };
+export { SignUpForm, SignUpLink, JoinNowButton };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SignInButton } from '../SignIn';
-import { SignUpButton } from '../SignUp';
+import { JoinNowButton } from '../SignUp';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 
@@ -16,11 +16,6 @@ const Landing = () => (
       Please log into your account below or sign up if you don't
       have an account!
     </p>
-
-    <SignInButton />
-    <SignUpButton />
-    <Button size='lg' variant='success'></Button>
-    <Button size='lg' variant='outline-success'></Button>
 
   </div>
 );

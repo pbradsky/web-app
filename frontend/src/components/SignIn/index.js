@@ -102,7 +102,7 @@ class SignInFormBase extends Component {
 
 const SignInButton = () => (
   <Link to={ROUTES.SIGN_IN}>
-    <Button variant="outline-primary">Sign In</Button>
+    <Button variant="outline-primary" className='m-1'>Sign In</Button>
   </Link>
 );
 
