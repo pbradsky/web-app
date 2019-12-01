@@ -41,13 +41,15 @@ const Landing = () => (
     <Container>
       <AlertDismissible />
       <Card>
-        <Card.Header>Featured</Card.Header>
+        <Card.Header>What's new?</Card.Header>
         <Card.Body>
           <Card.Title>People are our purpose.</Card.Title>
           <Card.Text>
             If you are interested in joining our family, click the subscribe button below.
             Doing that will add you to our mailing list, where you will hear all about what's up-and-coming!
-            <br />Together we will do great things.
+            <br />
+            <br />
+            Together we will do great things.
           </Card.Text>
         </Card.Body>
         <Button variant="outline-primary">Subscribe</Button>

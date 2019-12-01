@@ -57,7 +57,7 @@ const NavigationAuth = ({ authUser }) => (
 );
 
 const NavigationNonAuth = () => (
-    <Navbar className="border-bottom">
+    <Navbar className="border-bottom" bg="white">
 
         <Navbar.Brand href="{ROUTES.LANDING}">
             <Link to={ROUTES.LANDING}>
