@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
+import Button from 'react-bootstrap/Button';
+
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
@@ -164,7 +166,7 @@ const SignUpLink = () => (
 
 const SignUpButton = () => (
   <Link to={ROUTES.SIGN_UP}>
-    <button>Sign Up</button>
+    <Button variant="primary">Sign Up</Button>
   </Link>
 );
 

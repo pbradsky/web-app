@@ -9,6 +9,10 @@ import * as ROLES from '../../constants/roles';
 
 import { Navbar, Nav } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { SignInButton } from '../SignIn';
+import { SignUpButton } from '../SignUp';
+
+
 
 const Navigation = () => (
     <div>
@@ -70,6 +74,9 @@ const NavigationNonAuth = () => (
             <Nav.Link href="#features">Features</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
+
+        <SignInButton />{' '}
+        <SignUpButton />{' '}
 
     </Navbar>
 );
