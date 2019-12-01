@@ -35,7 +35,7 @@ const Landing = () => (
     <Jumbotron>
       <h3>Welcome</h3>
       <p className='body-secondary'>
-        Jurne's website is currently under construction! Thanks for your patience.
+        Our website is currently under construction! Thanks for your patience.
       </p>
     </Jumbotron>
     <Container>
