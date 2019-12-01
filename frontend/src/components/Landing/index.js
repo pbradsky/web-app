@@ -7,6 +7,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
+import CardDeck from 'react-bootstrap/CardDeck'
 
 function AlertDismissible() {
   const [show, setShow] = useState(true);
@@ -30,30 +31,54 @@ function AlertDismissible() {
 }
 
 const Landing = () => (
-  <Container>
+  <div>
     <Jumbotron>
-      <h1>Welcome</h1>
+      <h3>Welcome</h3>
       <p className='body-secondary'>
-        Please log in to your account, or sign up if you don't
-        have one yet.
+        Jurne's website is currently under construction! Thanks for your patience.
       </p>
     </Jumbotron>
-    <AlertDismissible />
-    <Card>
-      <Card.Header>What's new?</Card.Header>
-      <Card.Body>
-        <Card.Title>People are our purpose.</Card.Title>
-        <Card.Text>
-          If you are interested in joining our family, click the subscribe button below.
-          Doing that will add you to our mailing list, where you will hear all about what's up-and-coming!
-          <br />
-          <br />
-          Together we will do great things.
-        </Card.Text>
-      </Card.Body>
-      <Button variant="outline-primary">Subscribe</Button>
-    </Card>
-  </Container>
+    <Container>
+      <CardDeck>
+        <Card>
+          <Card.Header as="h4">Coming Soon</Card.Header>
+          <Card.Body>
+            <Card.Title>What's New?</Card.Title>
+            <Card.Text>
+              January 2020, Jurne will have a new product hitting the market.
+              <br />
+              <hr />
+            </Card.Text>
+          </Card.Body>
+          <Button variant="outline-primary">Learn more</Button>
+        </Card>
+        <Card>
+          <Card.Header as='h4'>Recruiting</Card.Header>
+          <Card.Body>
+            <Card.Title>Join Us</Card.Title>
+            <Card.Text>
+              If you think you have what it takes, interviews for a Full-Stack Web Developer position are under way.
+              <hr />
+            </Card.Text>
+          </Card.Body>
+          <Button variant="outline-primary">Contact Us</Button>
+        </Card>
+        <Card>
+          <Card.Header as='h4'>Mailing List</Card.Header>
+          <Card.Body>
+            <Card.Title>Be In the Know</Card.Title>
+            <Card.Text>
+              We would love to be your friend.
+              <hr />
+              Click below to join our mailing list!
+            </Card.Text>
+          </Card.Body>
+          <Button variant="outline-primary">Subscribe</Button>
+        </Card>
+      </CardDeck>
+      <br />
+    </Container>
+  </div>
 );
 
 export default Landing;
