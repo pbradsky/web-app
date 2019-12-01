@@ -30,7 +30,7 @@ function AlertDismissible() {
 }
 
 const Landing = () => (
-  <div>
+  <Container>
     <Jumbotron>
       <h1>Welcome</h1>
       <p className='body-secondary'>
@@ -38,24 +38,22 @@ const Landing = () => (
         have one yet.
       </p>
     </Jumbotron>
-    <Container>
-      <AlertDismissible />
-      <Card>
-        <Card.Header>What's new?</Card.Header>
-        <Card.Body>
-          <Card.Title>People are our purpose.</Card.Title>
-          <Card.Text>
-            If you are interested in joining our family, click the subscribe button below.
-            Doing that will add you to our mailing list, where you will hear all about what's up-and-coming!
-            <br />
-            <br />
-            Together we will do great things.
-          </Card.Text>
-        </Card.Body>
-        <Button variant="outline-primary">Subscribe</Button>
-      </Card>
-    </Container>
-  </div>
+    <AlertDismissible />
+    <Card>
+      <Card.Header>What's new?</Card.Header>
+      <Card.Body>
+        <Card.Title>People are our purpose.</Card.Title>
+        <Card.Text>
+          If you are interested in joining our family, click the subscribe button below.
+          Doing that will add you to our mailing list, where you will hear all about what's up-and-coming!
+          <br />
+          <br />
+          Together we will do great things.
+        </Card.Text>
+      </Card.Body>
+      <Button variant="outline-primary">Subscribe</Button>
+    </Card>
+  </Container>
 );
 
 export default Landing;
