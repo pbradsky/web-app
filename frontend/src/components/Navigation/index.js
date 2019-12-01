@@ -66,12 +66,10 @@ const NavigationNonAuth = () => (
         </Navbar.Brand>
 
         <Nav className="mr-auto">
-            <Link to={ROUTES.LANDING}><Nav.Link>Home</Nav.Link></Link>
+            <Nav.Link href={ROUTES.LANDING}>Home</Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
-
-        <Link to={ROUTES.SIGN_IN}><Button variant="outline-success">Sign In</Button></Link>
 
     </Navbar>
 );
