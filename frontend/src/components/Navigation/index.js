@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import SignOutButton from '../SignOut';
 
+import './index.css';
+
 import { AuthUserContext } from '../Session';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
@@ -53,7 +55,7 @@ const NavigationAuth = ({ authUser }) => (
 );
 
 const NavigationNonAuth = () => (
-    <Navbar>
+    <Navbar className="border-bottom">
 
         <Navbar.Brand href="{ROUTES.LANDING}">
             <Link to={ROUTES.LANDING}>
@@ -66,7 +68,7 @@ const NavigationNonAuth = () => (
         </Navbar.Brand>
 
         <Nav className="mr-auto">
-            <Nav.Link href={ROUTES.LANDING}>Home</Nav.Link>
+            <Link to={ROUTES.LANDING}>Home</Link>
             <Nav.Link href="#features">Features</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>

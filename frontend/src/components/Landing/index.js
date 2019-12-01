@@ -4,9 +4,6 @@ import { SignUpButton } from '../SignUp';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 
-
-import './index.css';
-
 const Landing = () => (
   <div className='right'>
     <h1>Jurne</h1>
