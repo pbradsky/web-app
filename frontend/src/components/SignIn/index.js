@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { compose } from 'recompose';
 
+import Button from 'react-bootstrap/Button';
+
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 
@@ -88,9 +90,9 @@ class SignInFormBase extends Component {
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <Button disabled={isInvalid} type="submit" variant="outline-primary">
           Sign In
-        </button>
+        </Button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -100,7 +102,7 @@ class SignInFormBase extends Component {
 
 const SignInButton = () => (
   <Link to={ROUTES.SIGN_IN}>
-    <button className='jurne-button'>Sign In</button>
+    <Button variant="outline-primary">Sign In</Button>
   </Link>
 );
 

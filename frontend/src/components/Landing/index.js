@@ -19,8 +19,8 @@ const Landing = () => (
 
     <SignInButton />
     <SignUpButton />
-    <Button size='lg' variant='success'>Join Now</Button>
-    <Button size='lg' variant='outline-success'>Sign In</Button>
+    <Button size='lg' variant='success'></Button>
+    <Button size='lg' variant='outline-success'></Button>
 
   </div>
 );
