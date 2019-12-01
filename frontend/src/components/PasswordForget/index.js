@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import {Button, Card, Container, Form, Jumbotron} from 'react-bootstrap';
+
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const PasswordForgetPage = () => (
-  <div>
-    <h1>PasswordForget</h1>
-    <PasswordForgetForm />
-  </div>
+  <Container>
+    <br />
+    <Card style={{ width: '36rem' }}>
+      <Card.Header as='h4' className='p-auto'>Forgot your password?</Card.Header>
+      <Card.Body className='m-auto'>
+        <PasswordForgetForm />
+      </Card.Body>
+    </Card>
+  </Container>
 );
 
 const INITIAL_STATE = {
@@ -49,17 +56,22 @@ class PasswordForgetFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+        <Form.Label>Email Address</Form.Label>
+        <br />
         <input
+          className='p-1'
+          style={{ width: '30rem' }}
           name="email"
           value={this.state.email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
-        <button disabled={isInvalid} type="submit">
+        <br /><br />
+        <Button disabled={isInvalid} type="submit">
           Reset My Password
-        </button>
-
+        </Button>
+        <br /><br />
         {error && <p>{error.message}</p>}
       </form>
     );

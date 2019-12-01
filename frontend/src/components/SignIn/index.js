@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import Button from 'react-bootstrap/Button';
-import {Card, Container, Form, Jumbotron} from 'react-bootstrap';
+import {Button, Card, Container, Form, Jumbotron} from 'react-bootstrap';
 
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
