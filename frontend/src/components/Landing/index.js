@@ -45,8 +45,8 @@ const Landing = () => (
             <Card.Text>
               January 2020, we will have a new product hitting the market.
               <br />
-              <hr />
             </Card.Text>
+            <hr />
           </Card.Body>
           <Button variant="outline-primary">Learn more</Button>
         </Card>
@@ -56,8 +56,8 @@ const Landing = () => (
             <Card.Title className='text-muted'>Join Us</Card.Title>
             <Card.Text>
               If you think you have what it takes, interviews for a Full-Stack Web Developer position are under way.
-              <hr />
             </Card.Text>
+            <hr />
           </Card.Body>
           <Button variant="outline-primary">Contact Us</Button>
         </Card>
@@ -67,7 +67,9 @@ const Landing = () => (
             <Card.Title className='text-muted'>Be In the Know</Card.Title>
             <Card.Text>
               We would love to be your friend.
-              <hr />
+            </Card.Text>
+            <hr />
+            <Card.Text>
               Click below to join our mailing list!
             </Card.Text>
           </Card.Body>
