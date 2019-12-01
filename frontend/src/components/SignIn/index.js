@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import Button from 'react-bootstrap/Button';
+import {Card, Container, Form, Jumbotron} from 'react-bootstrap';
 
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
@@ -12,12 +13,19 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
-    <SignInForm />
-    <PasswordForgetLink />
-    <SignUpLink />
-  </div>
+  <Container>
+    <br />
+    <Card style={{ width: '36rem' }}>
+      <Card.Header as='h4' className='p-auto'>Sign In</Card.Header>
+      <Card.Body className="m-auto">
+        <SignInForm />
+        <br />
+        <PasswordForgetLink />
+        <SignUpLink />
+      </Card.Body>
+    </Card>
+  </Container>
+
 );
 
 const INITIAL_STATE = {
@@ -76,24 +84,34 @@ class SignInFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+        <Form.Label>Email Address</Form.Label>
+        <br />
         <input
+          className='p-1'
+          style={{ width: '30rem' }}
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
+        <br /><br />
+        <Form.Label>Password</Form.Label>
+        <br />
         <input
+          className="p-1"
+          style={{ width: '30rem' }}
           name="password"
           value={password}
           onChange={this.onChange}
           type="password"
           placeholder="Password"
         />
-        <Button disabled={isInvalid} type="submit" variant="outline-primary">
+        <br /><br />
+        <Button style={{ width: '30rem' }} disabled={isInvalid} type="submit" variant="primary">
           Sign In
         </Button>
-
+        <br /><br />
         {error && <p>{error.message}</p>}
       </form>
     );

@@ -3,16 +3,22 @@ import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import Button from 'react-bootstrap/Button';
+import {Card, Container, Form, Jumbotron} from 'react-bootstrap';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 const SignUpPage = () => (
-  <div>
-    <h1>Sign Up</h1>
-    <SignUpForm />
-  </div>
+  <Container>
+    <br />
+    <Card style={{ width: '36rem' }}>
+      <Card.Header as='h4' className='p-auto'>Sign Up</Card.Header>
+      <Card.Body className="m-auto">
+        <SignUpForm />
+      </Card.Body>
+    </Card>
+  </Container>
 );
 
 const INITIAL_STATE = {
@@ -97,55 +103,72 @@ class SignUpFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+        <Form.Label>Full Name</Form.Label>
+        <br />
         <input
+          className='p-1'
+          style={{ width: '30rem' }}
           name="username"
           value={username}
           onChange={this.onChange}
           type="text"
           placeholder="Full Name"
         />
+        <br /><br />
+        <Form.Label>Email Address</Form.Label>
+        <br />
         <input
+          className='p-1'
+          style={{ width: '30rem' }}
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
+        <br /><br />
+        <Form.Label>Password</Form.Label>
+        <br />
         <input
+          className='p-1'
+          style={{ width: '30rem' }}
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
           placeholder="Password"
         />
+        <br /><br />
+        <Form.Label>Confirm Password</Form.Label>
+        <br />
         <input
+          className='p-1'
+          style={{ width: '30rem' }}
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
           placeholder="Confirm Password"
         />
-        <label>
-          Admin:
+        <br /><br />
+        <Form.Label>Admin:&nbsp;</Form.Label>
           <input
             name="isAdmin"
             checked={isAdmin}
             onChange={this.onChangeCheckbox}
             type="checkbox"
           />
-        </label>
-        <label>
-          Approved:
+        <Form.Label>&nbsp;&nbsp;&nbsp;Approved:&nbsp;</Form.Label>
           <input
             name="isApproved"
             checked={isApproved}
             onChange={this.onChangeCheckbox}
             type="checkbox"
           />
-        </label>
-        <button disabled={isInvalid} type="submit">
+          <br /><br />
+        <Button disabled={isInvalid} type="submit">
           Sign Up
-        </button>
+        </Button>
 
         {error && <p>{error.message}</p>}
       </form>
