@@ -157,19 +157,19 @@ class SignUpFormBase extends Component {
             checked={isAdmin}
             onChange={this.onChangeCheckbox}
             type="checkbox"
-          />
-        <Form.Label>&nbsp;&nbsp;&nbsp;Approved:&nbsp;</Form.Label>
+        />
+        <br />
+        <Form.Label>Approved:&nbsp;</Form.Label>
           <input
             name="isApproved"
             checked={isApproved}
             onChange={this.onChangeCheckbox}
             type="checkbox"
           />
-          <br /><br />
-        <Button disabled={isInvalid} type="submit">
+        <br /><br />
+        <Button disabled={isInvalid} type="submit" style={{ width: '30rem' }}>
           Sign Up
         </Button>
-
         {error && <p>{error.message}</p>}
       </form>
     );
