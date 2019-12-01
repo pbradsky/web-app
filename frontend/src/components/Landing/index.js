@@ -43,9 +43,9 @@ const Landing = () => (
         <Card>
           <Card.Header as="h4">Coming Soon</Card.Header>
           <Card.Body>
-            <Card.Title>What's New?</Card.Title>
+            <Card.Title className='text-muted'>What's New?</Card.Title>
             <Card.Text>
-              January 2020, Jurne will have a new product hitting the market.
+              January 2020, we will have a new product hitting the market.
               <br />
               <hr />
             </Card.Text>
@@ -55,7 +55,7 @@ const Landing = () => (
         <Card>
           <Card.Header as='h4'>Recruiting</Card.Header>
           <Card.Body>
-            <Card.Title>Join Us</Card.Title>
+            <Card.Title className='text-muted'>Join Us</Card.Title>
             <Card.Text>
               If you think you have what it takes, interviews for a Full-Stack Web Developer position are under way.
               <hr />
@@ -66,7 +66,7 @@ const Landing = () => (
         <Card>
           <Card.Header as='h4'>Mailing List</Card.Header>
           <Card.Body>
-            <Card.Title>Be In the Know</Card.Title>
+            <Card.Title className='text-muted'>Be In the Know</Card.Title>
             <Card.Text>
               We would love to be your friend.
               <hr />
