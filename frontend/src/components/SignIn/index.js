@@ -57,9 +57,9 @@ class SignInFormBase extends Component {
         this.listener = this.props.firebase.onAuthUserListener(
           authUser => {
             if (authUser.roles[ROLES.APPROVED]) {
-              this.props.history.push(ROUTES.DRIVE)
+              this.props.history.push(ROUTES.LANDING)
             } else {
-              this.props.history.push(ROUTES.HOLDING)
+              this.props.history.push(ROUTES.LANDING)
             }
           },
           () => this.props.history.push(ROUTES.SIGN_IN)
