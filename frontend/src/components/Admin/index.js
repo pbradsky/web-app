@@ -76,7 +76,7 @@ const UserList = ({ users }) => (
           </Card.Text>
         </Card.Body>
         <Card.Footer className='text-muted'>
-          {user.roles && Object.keys(user.roles).map(role => <Badge variant='primary' className='m-1 p-2'>{role}</Badge>)}
+          {user.roles && Object.keys(user.roles).map( (role, index) => <Badge key={index} variant='primary' className='m-1 p-2'>{role}</Badge>)}
         </Card.Footer>
       </Card>
     ))}
