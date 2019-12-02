@@ -7,11 +7,9 @@ import { AuthUserContext } from '../Session';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav, Dropdown } from 'react-bootstrap';
 import { SignInButton } from '../SignIn';
 import { JoinNowButton } from '../SignUp';
-
-
 
 const Navigation = () => (
     <div>
@@ -46,17 +44,17 @@ const NavigationAuth = ({ authUser }) => (
             <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
 
+        <Dropdown drop='down'>
+            <Dropdown.Toggle id="dropdown-basic"></Dropdown.Toggle>
 
-        {!!authUser.roles[ROLES.ADMIN] && (
-                <Link to={ROUTES.ADMIN}>
-                    <Button variant="outline-primary" className="m-2">Admin</Button>
-                </Link>
-        )}
-        <SignOutButton />
-
-        <Link className='pl-2 pr-2' to={ROUTES.ACCOUNT}>
-            <img src='three-dot.svg' alt='account' height='20px' />
-        </Link>
+            <Dropdown.Menu style={{ right: '0', left: 'auto'}}>
+                <Dropdown.Item><Link to={ROUTES.ACCOUNT}>Account</Link></Dropdown.Item>
+                {!!authUser.roles[ROLES.ADMIN] && (
+                <Dropdown.Item><Link to={ROUTES.ADMIN}>Admin</Link></Dropdown.Item>
+                )}
+                <SignOutButton />
+            </Dropdown.Menu>
+        </Dropdown>
 
     </Navbar>
 );
