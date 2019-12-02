@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
+import { Container, Jumbotron, CardColumns, Card, Badge } from 'react-bootstrap';
+
 import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
 import * as CONDITIONS from '../../constants/conditions';
@@ -42,36 +44,43 @@ class AdminPage extends Component {
 
     return (
       <div>
-        <h1>Admin</h1>
-
         {loading && <div>Loading...</div>}
+        <Jumbotron>
+          <h3>Admin Page</h3>
+          <p className='body-secondary'>
+            This page is only accessible to signed in admin users.
+          </p>
+        </Jumbotron>
 
-        <p>
-          This page is only accessible by signed in admin users.
-        </p>
-
-        <UserList users={users} />
+        <Container>
+            <UserList users={users} />
+          <br />
+        </Container>
       </div>
     );
   }
 }
 
 const UserList = ({ users }) => (
-  <ul>
+  <CardColumns>
     {users.map(user => (
-      <li key={user.uid}>
-        <span>
-          <strong>ID:</strong> {user.uid}
-        </span>
-        <span>
-          <strong>Email:</strong> {user.email}
-        </span>
-        <span>
-          <strong>Username:</strong> {user.username}
-        </span>
-      </li>
+      <Card key={user.uid}>
+        <Card.Header as='h4'>{user.username}</Card.Header>
+        <Card.Body>
+          <Card.Text>
+            <strong>Email:</strong> {user.email}
+          </Card.Text>
+          <hr />
+          <Card.Text>
+            <strong>ID:</strong> {user.uid}
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer className='text-muted'>
+          {user.roles && Object.keys(user.roles).map(role => <Badge variant='primary' className='m-1 p-2'>{role}</Badge>)}
+        </Card.Footer>
+      </Card>
     ))}
-  </ul>
+  </CardColumns>
 );
 
 export default compose(
