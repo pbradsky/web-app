@@ -7,7 +7,7 @@ import { AuthUserContext } from '../Session';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 import { SignInButton } from '../SignIn';
 import { JoinNowButton } from '../SignUp';
 
@@ -28,31 +28,37 @@ const Navigation = () => (
 );
 
 const NavigationAuth = ({ authUser }) => (
-    <ul>
-        {!!authUser.roles[ROLES.APPROVED]
-            ? (
-                <li>
-                    <Link to={ROUTES.DRIVE}>Drive</Link>
-                </li>
-            )
-            : (
-                <li>
-                    <Link to={ROUTES.HOLDING}>Holding</Link>
-                </li>
-            )
-        }
-        <li>
-            <Link to={ROUTES.ACCOUNT}>Account</Link>
-        </li>
+    <Navbar className='border-bottom' bg='white'>
+
+        <Navbar.Brand>
+            <Link to={ROUTES.LANDING}>
+                <img
+                    src="spread.png"
+                    height="50"
+                    alt='jurne logo'
+                    className="d-inline-block align-top" />
+            </Link>
+        </Navbar.Brand>
+
+        <Nav className="mr-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+        </Nav>
+
+
         {!!authUser.roles[ROLES.ADMIN] && (
-            <li>
-                <Link to={ROUTES.ADMIN}>Admin</Link>
-            </li>
+                <Link to={ROUTES.ADMIN}>
+                    <Button variant="outline-primary" className="m-2">Admin</Button>
+                </Link>
         )}
-        <li>
-            <SignOutButton />
-        </li>
-    </ul>
+        <SignOutButton />
+
+        <Link className='pl-2 pr-2' to={ROUTES.ACCOUNT}>
+            <img src='account.svg' alt='account' height='20px' />
+        </Link>
+
+    </Navbar>
 );
 
 const NavigationNonAuth = () => (
