@@ -55,7 +55,7 @@ const NavigationAuth = ({ authUser }) => (
         <SignOutButton />
 
         <Link className='pl-2 pr-2' to={ROUTES.ACCOUNT}>
-            <img src='account.svg' alt='account' height='20px' />
+            <img src='three-dot.svg' alt='account' height='20px' />
         </Link>
 
     </Navbar>
