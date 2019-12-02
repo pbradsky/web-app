@@ -73,9 +73,11 @@ const Landing = () => (
               Click below to join our mailing list!
             </Card.Text>
           </Card.Body>
-          <Button variant="outline-primary">Subscribe</Button>
+          <Button variant='outline-primary'>Subscribe</Button>
         </Card>
       </CardDeck>
+      <br />
+      <AlertDismissible />
       <br />
     </Container>
   </div>
