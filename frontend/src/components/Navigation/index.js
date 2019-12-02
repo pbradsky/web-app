@@ -48,9 +48,9 @@ const NavigationAuth = ({ authUser }) => (
             <Dropdown.Toggle id="dropdown-basic"></Dropdown.Toggle>
 
             <Dropdown.Menu style={{ right: '0', left: 'auto'}}>
-                <Dropdown.Item><Link to={ROUTES.ACCOUNT}>Account</Link></Dropdown.Item>
+                <Dropdown.Item><Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ACCOUNT}>Account</Link></Dropdown.Item>
                 {!!authUser.roles[ROLES.ADMIN] && (
-                <Dropdown.Item><Link to={ROUTES.ADMIN}>Admin</Link></Dropdown.Item>
+                <Dropdown.Item><Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ADMIN}>Admin</Link></Dropdown.Item>
                 )}
                 <SignOutButton />
             </Dropdown.Menu>
