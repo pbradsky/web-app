@@ -27,50 +27,48 @@ const Navigation = () => (
 
 const NavigationAuth = ({ authUser }) => (
     <Navbar className='border-bottom' bg='white'>
-
-        <Navbar.Brand>
             <Link to={ROUTES.LANDING}>
                 <img
-                    src="spread.png"
-                    height="50"
+                    src='spread.png'
+                    height='50'
                     alt='jurne logo'
-                    className="d-inline-block align-top" />
+                />
             </Link>
-        </Navbar.Brand>
-
         <Nav className="ml-auto pr-2">
-            <Nav.Link ><Link style={{textDecoration: 'none', color: 'inherit'}} to={ROUTES.LANDING}>Home</Link></Nav.Link>
+            <Nav.Link><Link style={{textDecoration: 'none', color: 'inherit'}} to={ROUTES.LANDING}>Home</Link></Nav.Link>
         </Nav>
-
         <Dropdown drop='down'>
-            <Dropdown.Toggle variant='primary' id="dropdown-basic"></Dropdown.Toggle>
-
+            <Dropdown.Toggle variant='primary' id='dropdown-basic'></Dropdown.Toggle>
             <Dropdown.Menu style={{ right: '0', left: 'auto'}}>
-                <Dropdown.Item><Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ACCOUNT}>Account</Link></Dropdown.Item>
                 {!!authUser.roles[ROLES.ADMIN] && (
-                <Dropdown.Item><Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ADMIN}>Admin</Link></Dropdown.Item>
+                    <Dropdown.Item>
+                        <Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ADMIN}>Admin</Link>
+                    </Dropdown.Item>
                 )}
-                <SignOutButton />
+                    <Dropdown.Item>
+                        <Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ACCOUNT}>Account</Link>
+                    </Dropdown.Item>
+                    <SignOutButton />
             </Dropdown.Menu>
         </Dropdown>
-
     </Navbar>
 );
 
 const NavigationNonAuth = () => (
-    <Navbar className="border-bottom" bg="white">
+    <Navbar className='border-bottom' bg='white'>
 
         <Navbar.Brand>
             <Link to={ROUTES.LANDING}>
                 <img
-                    src="spread.png"
-                    height="50"
+                    src='spread.png'
+                    height='50'
                     alt='jurne logo'
-                    className="d-inline-block align-top" />
+                    className='d-inline-block align-top'
+                />
             </Link>
         </Navbar.Brand>
 
-        <Nav className="ml-auto pr-2">
+        <Nav className='ml-auto pr-2'>
             <Nav.Link><Link style={{textDecoration: 'none', color: 'inherit'}} to={ROUTES.LANDING}>Home</Link></Nav.Link>
         </Nav>
 
