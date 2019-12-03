@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
-import { Button, Container, Jumbotron, Accordion, Card, Badge, Spinner } from 'react-bootstrap';
+import { Container, Jumbotron, Accordion, Card, Badge, Spinner } from 'react-bootstrap';
 
 import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
@@ -66,25 +66,21 @@ const UserList = ({ users }) => (
   <Accordion>
     {users.map(user => (
       <Card key={user.uid}>
-        <Card.Header>
-          <Accordion.Toggle
-            as={Button}
-            variant="link"
-            eventKey={user.uid}
-            style={{textDecoration: 'none', color: 'inherit'}}>
-              {user.username}
-          </Accordion.Toggle>
-        </Card.Header>
+        <Accordion.Toggle
+          as={Card.Header}
+          eventKey={user.uid}
+          style={{textDecoration: 'none', color: 'inherit'}}>
+            {user.username}
+        </Accordion.Toggle>
         <Accordion.Collapse eventKey={user.uid}>
           <Card.Body>
             <Card.Text>
-              <strong>Email:</strong> {user.email}
+              Email: {user.email}
             </Card.Text>
             <hr />
             <Card.Text>
-              <strong>ID:</strong> {user.uid}
+              ID: {user.uid}
             </Card.Text>
-            <hr />
             {user.roles && Object.keys(user.roles).map( (role, index) =>
               <Badge key={index} variant='primary' className='m-1 p-2'>{role}</Badge>
             )}
