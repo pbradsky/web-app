@@ -38,10 +38,9 @@ const NavigationAuth = ({ authUser }) => (
             </Link>
         </Navbar.Brand>
 
-        <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+        <Nav className="ml-auto pr-2">
+            <Nav.Link ><Link style={{textDecoration: 'none', color: 'inherit'}} to={ROUTES.LANDING}>Home</Link></Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
 
         <Dropdown drop='down'>
@@ -72,10 +71,9 @@ const NavigationNonAuth = () => (
             </Link>
         </Navbar.Brand>
 
-        <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+        <Nav className="ml-auto pr-2">
+            <Nav.Link><Link style={{textDecoration: 'none', color: 'inherit'}} to={ROUTES.LANDING}>Home</Link></Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
 
         <SignInButton />
