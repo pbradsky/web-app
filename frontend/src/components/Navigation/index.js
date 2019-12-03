@@ -34,7 +34,10 @@ const NavigationAuth = ({ authUser }) => (
                 alt='jurne logo'
             />
         </Link>
-        <Navbar.Toggle aria-controls='responsive-navbar-nav' style={{border: '0px', outline: 'none'}} />
+        <Navbar.Toggle
+            aria-controls='responsive-navbar-nav'
+            style={{border: '0px', outline: 'none'}}
+        />
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className='ml-auto'>
                     <Link

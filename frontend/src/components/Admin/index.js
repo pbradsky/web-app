@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
-import { Container, Jumbotron, CardColumns, Card, Badge, Spinner } from 'react-bootstrap';
+import { Button, Container, Jumbotron, Accordion, Card, Badge, Spinner } from 'react-bootstrap';
 
 import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
@@ -63,25 +63,36 @@ class AdminPage extends Component {
 }
 
 const UserList = ({ users }) => (
-  <CardColumns>
+  <Accordion>
     {users.map(user => (
       <Card key={user.uid}>
-        <Card.Header as='h4'>{user.username}</Card.Header>
-        <Card.Body>
-          <Card.Text>
-            <strong>Email:</strong> {user.email}
-          </Card.Text>
-          <hr />
-          <Card.Text>
-            <strong>ID:</strong> {user.uid}
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer className='text-muted'>
-          {user.roles && Object.keys(user.roles).map( (role, index) => <Badge key={index} variant='primary' className='m-1 p-2'>{role}</Badge>)}
-        </Card.Footer>
+        <Card.Header>
+          <Accordion.Toggle
+            as={Button}
+            variant="link"
+            eventKey={user.uid}
+            style={{textDecoration: 'none', color: 'inherit'}}>
+              {user.username}
+          </Accordion.Toggle>
+        </Card.Header>
+        <Accordion.Collapse eventKey={user.uid}>
+          <Card.Body>
+            <Card.Text>
+              <strong>Email:</strong> {user.email}
+            </Card.Text>
+            <hr />
+            <Card.Text>
+              <strong>ID:</strong> {user.uid}
+            </Card.Text>
+            <hr />
+            {user.roles && Object.keys(user.roles).map( (role, index) =>
+              <Badge key={index} variant='primary' className='m-1 p-2'>{role}</Badge>
+            )}
+          </Card.Body>
+        </Accordion.Collapse>
       </Card>
     ))}
-  </CardColumns>
+  </Accordion>
 );
 
 export default compose(
