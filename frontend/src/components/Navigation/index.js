@@ -48,9 +48,6 @@ const NavigationAuth = ({ authUser }) => (
             <Dropdown.Toggle variant='primary' id="dropdown-basic"></Dropdown.Toggle>
 
             <Dropdown.Menu style={{ right: '0', left: 'auto'}}>
-                <Dropdown.Item>Home</Dropdown.Item>
-                <Dropdown.Item>Features</Dropdown.Item>
-                <Dropdown.Item>Pricing</Dropdown.Item>
                 <Dropdown.Item><Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ACCOUNT}>Account</Link></Dropdown.Item>
                 {!!authUser.roles[ROLES.ADMIN] && (
                 <Dropdown.Item><Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ADMIN}>Admin</Link></Dropdown.Item>
