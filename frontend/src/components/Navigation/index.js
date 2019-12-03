@@ -40,7 +40,6 @@ const NavigationAuth = ({ authUser }) => (
 
         <Nav className="ml-auto pr-2">
             <Nav.Link ><Link style={{textDecoration: 'none', color: 'inherit'}} to={ROUTES.LANDING}>Home</Link></Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
         </Nav>
 
         <Dropdown drop='down'>
@@ -73,7 +72,6 @@ const NavigationNonAuth = () => (
 
         <Nav className="ml-auto pr-2">
             <Nav.Link><Link style={{textDecoration: 'none', color: 'inherit'}} to={ROUTES.LANDING}>Home</Link></Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
         </Nav>
 
         <SignInButton />
