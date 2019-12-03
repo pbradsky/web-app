@@ -1,13 +1,12 @@
 import React from 'react';
 
-import Dropdown from 'react-bootstrap/Dropdown';
-
 import { withFirebase } from '../Firebase';
+import { Nav } from 'react-bootstrap';
 
 const SignOutButton = ({ firebase }) => (
-    <Dropdown.Item onClick={firebase.doSignOut}>
+    <Nav.Link onClick={firebase.doSignOut}>
         Sign Out
-    </Dropdown.Item>
+    </Nav.Link>
 );
 
 export default withFirebase(SignOutButton);

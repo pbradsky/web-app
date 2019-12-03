@@ -7,7 +7,7 @@ import { AuthUserContext } from '../Session';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
-import { Navbar, Nav, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { SignInButton } from '../SignIn';
 import { JoinNowButton } from '../SignUp';
 
@@ -26,31 +26,31 @@ const Navigation = () => (
 );
 
 const NavigationAuth = ({ authUser }) => (
-    <Navbar className='border-bottom' bg='white'>
-            <Link to={ROUTES.LANDING}>
-                <img
-                    src='spread.png'
-                    height='50'
-                    alt='jurne logo'
-                />
-            </Link>
-        <Nav className="ml-auto pr-2">
-            <Nav.Link><Link style={{textDecoration: 'none', color: 'inherit'}} to={ROUTES.LANDING}>Home</Link></Nav.Link>
-        </Nav>
-        <Dropdown drop='down'>
-            <Dropdown.Toggle variant='primary' id='dropdown-basic'></Dropdown.Toggle>
-            <Dropdown.Menu style={{ right: '0', left: 'auto'}}>
-                {!!authUser.roles[ROLES.ADMIN] && (
-                    <Dropdown.Item>
-                        <Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ADMIN}>Admin</Link>
-                    </Dropdown.Item>
-                )}
-                    <Dropdown.Item>
-                        <Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ACCOUNT}>Account</Link>
-                    </Dropdown.Item>
-                    <SignOutButton />
-            </Dropdown.Menu>
-        </Dropdown>
+    <Navbar collapseOnSelect expand='lg' className='border-bottom' bg='white'>
+        <Link to={ROUTES.LANDING}>
+            <img
+                src='spread.png'
+                height='50'
+                alt='jurne logo'
+            />
+        </Link>
+        <Navbar.Toggle aria-controls='responsive-navbar-nav' style={{border: '0px', outline: 'none'}} />
+        <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className='ml-auto'>
+                <Nav.Link>
+                    <Link style={{textDecoration: 'none', color: 'inherit'}} to={ROUTES.LANDING}>Home</Link>
+                </Nav.Link>
+            {!!authUser.roles[ROLES.ADMIN] && (
+                <Nav.Link>
+                    <Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ADMIN}>Admin</Link>
+                </Nav.Link>
+            )}
+                <Nav.Link>
+                    <Link style={{textDecoration: 'none', color: 'inherit' }} to={ROUTES.ACCOUNT}>Account</Link>
+                </Nav.Link>
+                <SignOutButton />
+            </Nav>
+        </Navbar.Collapse>
     </Navbar>
 );
 

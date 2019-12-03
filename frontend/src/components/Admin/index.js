@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
-import { Container, Jumbotron, CardColumns, Card, Badge } from 'react-bootstrap';
+import { Container, Jumbotron, CardColumns, Card, Badge, Spinner } from 'react-bootstrap';
 
 import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
@@ -43,20 +43,21 @@ class AdminPage extends Component {
     const { loading, users } = this.state;
 
     return (
-      <div>
-        {loading && <div>Loading...</div>}
+      <Container>
         <Jumbotron>
           <h3>Admin Page</h3>
           <p className='body-secondary'>
             This page is only accessible to signed in admin users.
           </p>
         </Jumbotron>
-
-        <Container>
-            <UserList users={users} />
-          <br />
-        </Container>
-      </div>
+        {loading &&
+            <Spinner animation='border' role='status' style={{display: 'block', margin: 'auto'}}>
+              <span className='sr-only'>Loading...</span>
+            </Spinner>
+        }
+        <UserList users={users} />
+        <br />
+      </Container>
     );
   }
 }
