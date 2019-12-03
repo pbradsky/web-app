@@ -12,14 +12,14 @@ function AlertDismissible() {
 
   return (
     <>
-      <Alert show={show} variant="info">
+      <Alert show={show} variant="primary" border='primary'>
         <Alert.Heading>Note</Alert.Heading>
         <p>
           We are currently under construction!
         </p>
         <hr />
         <div className="d-flex justify-content-end">
-          <Button onClick={() => setShow(false)} variant="outline-info">
+          <Button onClick={() => setShow(false)} variant="primary">
             Gotcha!
           </Button>
         </div>
