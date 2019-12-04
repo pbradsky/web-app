@@ -64,32 +64,37 @@ const NavigationAuth = ({ authUser }) => (
 );
 
 const NavigationNonAuth = () => (
-    <Navbar className='border-bottom' bg='white'>
+    <Navbar collapseOnSelect expand='md' className='border-bottom' bg='white'>
         <Link to={ROUTES.LANDING}>
             <img
                 src='spread.png'
                 height='50'
                 alt='jurne logo'
-                className='d-inline-block align-top'
             />
         </Link>
-        <Nav className='ml-auto'>
-            <Link
-                className='nav-link'
-                to={ROUTES.LANDING}>
-                    Home
-            </Link>
-            <Link
-                className='nav-link'
-                to={ROUTES.SIGN_IN}>
-                    Sign In
-            </Link>
-            <Link
-                className='nav-link'
-                to={ROUTES.SIGN_IN}>
-                    Join Now
-            </Link>
-        </Nav>
+        <Navbar.Toggle
+            aria-controls='responsive-navbar-nav'
+            style={{border: '0px', outline: 'none'}}
+        />
+        <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className='ml-auto'>
+                <Link
+                    className='nav-link'
+                    to={ROUTES.LANDING}>
+                        Home
+                </Link>
+                <Link
+                    className='nav-link'
+                    to={ROUTES.SIGN_IN}>
+                        Sign In
+                </Link>
+                <Link
+                    className='nav-link'
+                    to={ROUTES.SIGN_IN}>
+                        Join Now
+                </Link>
+            </Nav>
+        </Navbar.Collapse>
     </Navbar>
 );
 
