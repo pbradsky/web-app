@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Jumbotron, Card, Container } from 'react-bootstrap';
+import { Jumbotron, Card } from 'react-bootstrap';
+import Container from '../../styled/Container';
 
 import { withAuthorization, AuthUserContext } from '../Session';
 import PasswordChangeForm from '../PasswordChange';

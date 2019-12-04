@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
-import { Container, Jumbotron, Accordion, Card, Badge, Spinner } from 'react-bootstrap';
+import { Jumbotron, Accordion, Card, Badge, Spinner } from 'react-bootstrap';
+import Container from '../../styled/Container';
 
 import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
