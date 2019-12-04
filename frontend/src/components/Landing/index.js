@@ -22,6 +22,17 @@ const Landing = () => (
     <CardDeck>
       <Card>
         <Card.Body>
+          <Card.Title>Coming Soon</Card.Title>
+          <Card.Text>
+              We are very excited to announce that we will be live in just a few short weeks!
+              <br /><br />
+              All suggestions, questions, comments, critiques, and concerns are appreciated
+              as we prepare to venture out into the world.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <Card>
+        <Card.Body>
           <Card.Title>Reach Out</Card.Title>
           <Card.Text>
             If you have something to say,
@@ -30,17 +41,6 @@ const Landing = () => (
             We're here to listen.
           </Card.Text>
           <Link to={ROUTES.CONTACT}><Button block>Contact Us</Button></Link>
-        </Card.Body>
-      </Card>
-      <Card>
-        <Card.Body>
-          <Card.Title>Coming Soon</Card.Title>
-          <Card.Text>
-            We are very excited to announce that we will be live in just a few short weeks!
-            <br /><br />
-            All suggestions, questions, comments, critiques, and concerns are appreciated
-            as we prepare to venture out into the world.
-          </Card.Text>
         </Card.Body>
       </Card>
     </CardDeck>
