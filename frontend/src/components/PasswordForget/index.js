@@ -10,9 +10,9 @@ import * as ROUTES from '../../constants/routes';
 const PasswordForgetPage = () => (
   <Container>
     <br />
-    <Card style={{ width: '36rem' }}>
-      <Card.Header as='h4' className='p-auto'>Forgot your password?</Card.Header>
-      <Card.Body className='m-auto'>
+    <Card>
+      <Card.Header>Forgot your password?</Card.Header>
+      <Card.Body>
         <PasswordForgetForm />
       </Card.Body>
     </Card>
@@ -56,25 +56,22 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <Form onSubmit={this.onSubmit}>
         <Form.Label>Email Address</Form.Label>
-        <br />
-        <input
-          className='p-1'
-          style={{ width: '30rem' }}
+        <Form.Control
           name="email"
           value={this.state.email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
-        <br /><br />
+        <br />
         <Button disabled={isInvalid} type="submit">
           Reset My Password
         </Button>
         <br /><br />
         {error && <p>{error.message}</p>}
-      </form>
+      </Form>
     );
   }
 }
