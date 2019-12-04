@@ -14,12 +14,10 @@ import * as ROLES from '../../constants/roles';
 
 const SignInPage = () => (
   <Container>
-    <br />
-    <Card style={{ width: '36rem' }}>
-      <Card.Header as='h4' className='p-auto'>Sign In</Card.Header>
-      <Card.Body className="m-auto">
+    <Card>
+      <Card.Header>Sign In</Card.Header>
+      <Card.Body>
         <SignInForm />
-        <br />
         <PasswordForgetLink />
         <SignUpLink />
       </Card.Body>
@@ -83,44 +81,39 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <Form onSubmit={this.onSubmit}>
         <Form.Label>Email Address</Form.Label>
         <br />
-        <input
-          className='p-1'
-          style={{ width: '30rem' }}
-          name="email"
+        <Form.Control
+          name='email'
           value={email}
           onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
+          type='text'
+          placeholder='Email Address'
         />
-        <br /><br />
-        <Form.Label>Password</Form.Label>
         <br />
-        <input
-          className="p-1"
-          style={{ width: '30rem' }}
-          name="password"
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          name='password'
           value={password}
           onChange={this.onChange}
-          type="password"
-          placeholder="Password"
+          type='password'
+          placeholder='Password'
         />
-        <br /><br />
-        <Button style={{ width: '30rem' }} disabled={isInvalid} type="submit" variant="primary">
+        <br />
+        <Button disabled={isInvalid} type='submit' variant='primary'>
           Sign In
         </Button>
         <br /><br />
         {error && <p>{error.message}</p>}
-      </form>
+      </Form>
     );
   }
 }
 
 const SignInButton = () => (
   <Link to={ROUTES.SIGN_IN}>
-    <Button variant="outline-primary" className='m-2'>Sign In</Button>
+    <Button variant='outline-primary'>Sign In</Button>
   </Link>
 );
 
