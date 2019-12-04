@@ -10,9 +10,9 @@ const INITIAL_STATE = {
 };
 
 const PasswordChangeCard = props => (
-  <Card style={{width: '36rem'}}>
-    <Card.Header as='h4' className='p-auto'>Password Change</Card.Header>
-    <Card.Body className='m-auto'>
+  <Card>
+    <Card.Header>Password Change</Card.Header>
+    <Card.Body>
       <PasswordChangeForm {...props} />
     </Card.Body>
   </Card>
@@ -51,37 +51,31 @@ class PasswordChangeForm extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <Form onSubmit={this.onSubmit}>
         <Form.Label>New Password</Form.Label>
-        <br />
-        <input
-          className='p-1'
-          style={{ width: '30rem' }}
-          name="passwordOne"
+        <Form.Control
+          name='passwordOne'
           value={passwordOne}
           onChange={this.onChange}
-          type="password"
-          placeholder="New Password"
+          type='password'
+          placeholder='New Password'
         />
-        <br /><br />
-        <Form.Label>Confirm New Password</Form.Label>
         <br />
-        <input
-          className='p-1'
-          style={{ width: '30rem' }}
-          name="passwordTwo"
+        <Form.Label>Confirm New Password</Form.Label>
+        <Form.Control
+          name='passwordTwo'
           value={passwordTwo}
           onChange={this.onChange}
-          type="password"
-          placeholder="Confirm New Password"
+          type='password'
+          placeholder='Confirm New Password'
         />
-        <br /><br />
+        <br />
         <Button disabled={isInvalid} type="submit">
           Change My Password
         </Button>
         <br /><br />
         {error && <p>{error.message}</p>}
-      </form>
+      </Form>
     );
   }
 }
