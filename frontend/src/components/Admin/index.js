@@ -31,7 +31,8 @@ class AdminPage extends Component {
 
       this.setState({
         users: usersList,
-        loading: false
+        loading: false,
+        searchQuery: ''
       });
     });
   }
@@ -40,8 +41,18 @@ class AdminPage extends Component {
     this.props.firebase.users().off();
   }
 
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  usernameFilter = query => user => {
+    return user.username.toLowerCase().includes(query.toLowerCase());
+  }
+
   render() {
-    const { loading, users } = this.state;
+    const { loading, users, searchQuery } = this.state;
+
+    const searchedUsers = users.filter(this.usernameFilter(searchQuery)).sort();
 
     return (
       <Container>
@@ -56,7 +67,16 @@ class AdminPage extends Component {
               <span className='sr-only'>Loading...</span>
             </Spinner>
         }
-        <UserList users={users} />
+        <input
+          className='p-1'
+          style={{ width: '30rem' }}
+          name='searchQuery'
+          value={searchQuery}
+          onChange={this.onChange}
+          type='text'
+          placeholder='search'
+        />
+        <UserList users={searchedUsers} />
         <br />
       </Container>
     );
@@ -71,7 +91,7 @@ const UserList = ({ users }) => (
           as={Card.Header}
           eventKey={user.uid}
           style={{textDecoration: 'none', color: 'inherit'}}>
-            {user.username}
+          {user.username}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={user.uid}>
           <Card.Body>
@@ -82,8 +102,11 @@ const UserList = ({ users }) => (
             <Card.Text>
               ID: {user.uid}
             </Card.Text>
-            {user.roles && Object.keys(user.roles).map( (role, index) =>
-              <Badge key={index} variant='primary' className='m-1 p-2'>{role}</Badge>
+            {user.roles && Object.keys(user.roles).map((role, index) =>
+              <Badge
+                key={index}
+                variant='primary'
+                className='m-1 p-2'>{role}</Badge>
             )}
           </Card.Body>
         </Accordion.Collapse>
