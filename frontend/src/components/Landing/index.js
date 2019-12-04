@@ -1,9 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import Container from '../../styled/Container';
 import CardDeck from 'react-bootstrap/CardDeck';
+
+import * as ROUTES from '../../constants/routes';
+
+
 
 const Landing = () => (
   <Container>
@@ -16,18 +22,24 @@ const Landing = () => (
     <CardDeck>
       <Card>
         <Card.Body>
-          <Card.Title>Coming Soon</Card.Title>
+          <Card.Title>Reach Out</Card.Title>
           <Card.Text>
-            January 2020, we will have a new product hitting the market.
+            If you have something to say,
+            click the button below to get in touch.
+            <br /><br />
+            We're here to listen.
           </Card.Text>
+          <Link to={ROUTES.CONTACT}><Button block>Contact Us</Button></Link>
         </Card.Body>
       </Card>
       <Card>
         <Card.Body>
-          <Card.Title>Mailing List</Card.Title>
+          <Card.Title>Coming Soon</Card.Title>
           <Card.Text>
-            We would love to be your friend.
-            Click below to join our mailing list!
+            We are very excited to announce that we will be live in just a few short weeks!
+            <br /><br />
+            All suggestions, questions, comments, critiques, and concerns are appreciated
+            as we prepare to venture out into the world.
           </Card.Text>
         </Card.Body>
       </Card>
