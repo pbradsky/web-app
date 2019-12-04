@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
+import Container from '../../styled/Container';
 import Alert from 'react-bootstrap/Alert';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Row from 'react-bootstrap/Row';

@@ -13,9 +13,11 @@
     "react-dom": "^16.9.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "recompose": "^0.30.0"
+    "recompose": "^0.30.0",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
     "react-scripts": "3.1.1"
   },
   "scripts": {
@@ -28,6 +30,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "plugins": ["babel-plugin-styled-components"],
   "browserslist": {
     "production": [
       ">0.2%",
