@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Jumbotron } from 'react-bootstrap';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from '../../styled/Container';
 
 import { withAuthorization, AuthUserContext } from '../Session';

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import { Button, Card, Form } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 import Container from '../../styled/Container';
 
 import { SignUpLink } from '../SignUp';
