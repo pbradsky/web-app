@@ -17,6 +17,10 @@ const Footer = () => (
           to={ROUTES.PRIVACY}>
       Privacy
     </Link>
+    <Link className='nav-link'
+          to={ROUTES.CONTACT}>
+      Contact
+    </Link>
     <Navbar.Text className='ml-auto mr-auto'
                  style={{fontSize: '10px'}}>
       {copyright} 2019 Jurne Inc. All Rights Reserved

@@ -15,6 +15,7 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import TermsPage from '../Terms';
 import PrivacyPage from '../Privacy';
+import ContactPage from '../Contact';
 
 import { withAuthentication } from '../Session';
 import * as ROUTES from '../../constants/routes';
@@ -36,6 +37,7 @@ const App = () => (
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.TERMS} component={TermsPage} />
       <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
+      <Route path={ROUTES.CONTACT} component={ContactPage} />
 
       <Footer />
     </div>
