@@ -42,21 +42,18 @@ const NavigationAuth = ({ authUser }) => (
             <Nav className='ml-auto'>
                     <Link
                         className='nav-link'
-                        style={{textDecoration: 'none', color: 'muted'}}
                         to={ROUTES.LANDING}>
                             Home
                     </Link>
                 {!!authUser.roles[ROLES.ADMIN] && (
                     <Link
                         className='nav-link'
-                        style={{textDecoration: 'none', color: 'muted' }}
                         to={ROUTES.ADMIN}>
                             Admin
                     </Link>
                 )}
                     <Link
                         className='nav-link'
-                        style={{textDecoration: 'none', color: 'muted' }}
                         to={ROUTES.ACCOUNT}>
                             Account
                     </Link>
@@ -79,13 +76,20 @@ const NavigationNonAuth = () => (
         <Nav className='ml-auto'>
             <Link
                 className='nav-link'
-                style={{textDecoration: 'none', color: 'muted'}}
                 to={ROUTES.LANDING}>
                     Home
             </Link>
+            <Link
+                className='nav-link'
+                to={ROUTES.SIGN_IN}>
+                    Sign In
+            </Link>
+            <Link
+                className='nav-link'
+                to={ROUTES.SIGN_IN}>
+                    Join Now
+            </Link>
         </Nav>
-        <SignInButton />
-        <JoinNowButton />
     </Navbar>
 );
 
