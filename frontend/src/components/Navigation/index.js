@@ -36,7 +36,7 @@ const NavigationAuth = ({ authUser }) => (
             style={{border: '0px', outline: 'none'}}
         />
         <Navbar.Collapse>
-            <Nav className='ml-auto'>
+            <Nav className='mr-auto'>
                     <Link
                         className='nav-link'
                         to={ROUTES.LANDING}>
@@ -74,7 +74,7 @@ const NavigationNonAuth = () => (
             style={{border: '0px', outline: 'none'}}
         />
         <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className='ml-auto'>
+            <Nav className='mr-auto'>
                 <Link
                     className='nav-link'
                     to={ROUTES.LANDING}>
