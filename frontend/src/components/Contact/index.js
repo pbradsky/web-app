@@ -9,8 +9,8 @@ import Container from '../../styled/Container';
 const ContactPage = () => (
   <Container>
     <Card>
-      <Card.Header as='h4' className='p-auto'>Contact Us</Card.Header>
-      <Card.Body className='m-auto'>
+      <Card.Header>Contact Us</Card.Header>
+      <Card.Body>
         <ContactForm />
       </Card.Body>
     </Card>
@@ -55,33 +55,25 @@ class ContactFormBase extends Component {
     return (
       <Form onSubmit={this.onSubmit}>
         <Form.Label>Full Name</Form.Label>
-        <br />
         <Form.Control
-          className='p-1'
           name="name"
           value={name}
           onChange={this.onChange}
           type="text"
           placeholder="Full Name"
-          as='input'
         />
         <br />
         <Form.Label>Email Address</Form.Label>
-        <br />
         <Form.Control
-          className='p-1'
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
-          as='input'
         />
         <br />
         <Form.Label>Message</Form.Label>
-        <br />
         <Form.Control
-          className='p-1'
           name="message"
           value={message}
           onChange={this.onChange}
@@ -91,7 +83,7 @@ class ContactFormBase extends Component {
           rows='3'
         />
         <br />
-        <Button disabled={isInvalid} type="submit" style={{ width: '30rem' }}>
+        <Button disabled={isInvalid} type="submit">
           Send
         </Button>
       </Form>
