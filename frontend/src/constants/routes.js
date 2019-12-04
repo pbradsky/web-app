@@ -8,3 +8,5 @@ export const DRIVE_VEHICLE = '/drive/:id';
 export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
 export const PASSWORD_FORGET = '/pw-forget';
+export const TERMS = '/terms';
+export const PRIVACY = '/privacy';

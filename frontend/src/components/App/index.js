@@ -13,6 +13,8 @@ import DrivePage from '../Drive';
 import DriveVehiclePage from '../Vehicle';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
+import TermsPage from '../Terms';
+import PrivacyPage from '../Privacy';
 
 import { withAuthentication } from '../Session';
 import * as ROUTES from '../../constants/routes';
@@ -32,6 +34,8 @@ const App = () => (
       <Route path={ROUTES.DRIVE_VEHICLE} component={DriveVehiclePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
+      <Route path={ROUTES.TERMS} component={TermsPage} />
+      <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
 
       <Footer />
     </div>
