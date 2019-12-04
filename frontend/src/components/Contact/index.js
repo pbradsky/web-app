@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Button, Card, Form } from 'react-bootstrap';
+import { Button, Card, Form, FormControl } from 'react-bootstrap';
 import Container from '../../styled/Container';
 
 const ContactPage = () => (
@@ -54,40 +54,41 @@ class ContactFormBase extends Component {
       <form onSubmit={this.onSubmit}>
         <Form.Label>Full Name</Form.Label>
         <br />
-        <input
+        <Form.Control
           className='p-1'
-          style={{ width: '30rem' }}
           name="name"
           value={name}
           onChange={this.onChange}
           type="text"
           placeholder="Full Name"
+          as='input'
         />
-        <br /><br />
+        <br />
         <Form.Label>Email Address</Form.Label>
         <br />
-        <input
+        <Form.Control
           className='p-1'
-          style={{ width: '30rem' }}
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
+          as='input'
         />
-        <br /><br />
+        <br />
         <Form.Label>Message</Form.Label>
         <br />
-        <input
+        <Form.Control
           className='p-1'
-          style={{ width: '30rem' }}
           name="message"
           value={message}
           onChange={this.onChange}
           type="text"
           placeholder="Message (500 character limit)"
+          as='textarea'
+          rows='3'
         />
-        <br /><br />
+        <br />
         <Button disabled={isInvalid} type="submit" style={{ width: '30rem' }}>
           Send
         </Button>
