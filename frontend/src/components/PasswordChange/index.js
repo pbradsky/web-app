@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import { withFirebase } from '../Firebase';
-import { Form, Button, Card } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 const INITIAL_STATE = {
   passwordOne: '',

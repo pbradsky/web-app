@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
-import { Jumbotron, Accordion, Card, Badge, Spinner, FormControl } from 'react-bootstrap';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
+import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner';
 import Container from '../../styled/Container';
 
 import { withFirebase } from '../Firebase';
@@ -67,17 +72,15 @@ class AdminPage extends Component {
             <span className='sr-only'>Loading...</span>
           </Spinner>
         }
-        <FormControl
+        <Form.Control
           type='text'
           placeholder='Search'
-          className='mr-sm-2'
           name='searchQuery'
           value={searchQuery}
           onChange={this.onChange}
         />
         <br />
         <UserList users={searchedUsers} />
-        <br />
       </Container>
     );
   }
@@ -89,8 +92,7 @@ const UserList = ({ users }) => (
       <Card key={user.uid}>
         <Accordion.Toggle
           as={Card.Header}
-          eventKey={user.uid}
-          style={{textDecoration: 'none', color: 'inherit'}}>
+          eventKey={user.uid}>
           {user.username}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={user.uid}>
@@ -98,7 +100,6 @@ const UserList = ({ users }) => (
             <Card.Text>
               Email: {user.email}
             </Card.Text>
-            <hr />
             <Card.Text>
               ID: {user.uid}
             </Card.Text>

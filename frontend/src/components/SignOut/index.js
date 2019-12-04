@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { withFirebase } from '../Firebase';
-import { Nav } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
 
 const SignOutButton = ({ firebase }) => (
   <Nav.Link onClick={firebase.doSignOut}>

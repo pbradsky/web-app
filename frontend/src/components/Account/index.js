@@ -10,14 +10,13 @@ import PasswordChangeCard from '../PasswordChange';
 import DeleteAccountCard from '../DeleteAccount';
 
 import * as CONDITIONS from '../../constants/conditions';
-import Card from 'react-bootstrap/Card';
 
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
       <Container>
         <Jumbotron>
-          <h2>Account Page</h2>
+          <h1>Account Page</h1>
           {authUser.email}
         </Jumbotron>
         <Row>
