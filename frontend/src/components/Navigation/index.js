@@ -38,7 +38,7 @@ const NavigationAuth = ({ authUser }) => (
       style={{ border: '0px', outline: 'none' }}
     />
     <Navbar.Collapse>
-      <Nav style={{ alignItems: 'flex-end' }}>
+      <Nav>
         <Link className='nav-link'
               to={ROUTES.LANDING}>
           Home
@@ -75,7 +75,7 @@ const NavigationNonAuth = () => (
       style={{ border: '0px', outline: 'none' }}
     />
     <Navbar.Collapse id="responsive-navbar-nav">
-      <Nav style={{ alignItems: 'flex-end' }}>
+      <Nav>
         <Link className='nav-link'
               to={ROUTES.LANDING}>
           Home
