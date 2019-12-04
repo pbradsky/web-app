@@ -1,6 +1,7 @@
 export const LANDING = '/';
 export const SIGN_UP = '/signup';
 export const SIGN_IN = '/signin';
+export const CONTRACT = '/contract';
 export const HOLDING = '/holding';
 export const DRIVE = '/drive';
 export const DRIVE_VEHICLE = '/drive/:id';
