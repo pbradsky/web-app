@@ -31,9 +31,9 @@ function AlertDismissible() {
 const Landing = () => (
   <Container>
     <Jumbotron>
-      <h3>Welcome</h3>
-      <p className='body-secondary'>
-        Our website is currently under construction! Thanks for your patience.
+      <h1>Welcome</h1>
+      <p>
+        We're glad you're here!
       </p>
     </Jumbotron>
     <CardDeck>
@@ -65,9 +65,6 @@ const Landing = () => (
         </Card.Body>
       </Card>
     </CardDeck>
-    <br />
-    <AlertDismissible />
-    <br />
   </Container>
 );
 
