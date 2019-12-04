@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 
 import { withFirebase } from '../Firebase';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 
 const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
   error: null,
 };
+
+const PasswordChangeCard = props => (
+  <Card style={{width: '36rem'}}>
+    <Card.Header as='h4' className='p-auto'>Password Change</Card.Header>
+    <Card.Body className='m-auto'>
+      <PasswordChangeForm {...props} />
+    </Card.Body>
+  </Card>
+);
 
 class PasswordChangeForm extends Component {
   constructor(props) {
@@ -77,4 +86,4 @@ class PasswordChangeForm extends Component {
   }
 }
 
-export default withFirebase(PasswordChangeForm);
+export default withFirebase(PasswordChangeCard);

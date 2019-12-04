@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Jumbotron, Card } from 'react-bootstrap';
+import { Jumbotron } from 'react-bootstrap';
 import Container from '../../styled/Container';
 
 import { withAuthorization, AuthUserContext } from '../Session';
-import PasswordChangeForm from '../PasswordChange';
+import PasswordChangeCard from '../PasswordChange';
+import DeleteAccountCard from '../DeleteAccount';
 
 import * as CONDITIONS from '../../constants/conditions';
 
@@ -18,12 +19,8 @@ const AccountPage = () => (
       </Jumbotron>
       <Container>
         <br />
-        <Card style={{width: '36rem'}}>
-          <Card.Header as='h4' className='p-auto'>Password Change</Card.Header>
-          <Card.Body className='m-auto'>
-            <PasswordChangeForm />
-          </Card.Body>
-        </Card>
+        <PasswordChangeCard />
+        <DeleteAccountCard />
       </Container>
       </div>
     )}
