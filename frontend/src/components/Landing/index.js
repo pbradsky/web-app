@@ -2,7 +2,14 @@ import React, {useState} from 'react';
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Card from 'react-bootstrap/Card';
+<<<<<<< HEAD
 import Container from 'react-bootstrap/Container';
+=======
+import Button from 'react-bootstrap/Button';
+import Container from '../../styled/Container';
+import Alert from 'react-bootstrap/Alert';
+import CardDeck from 'react-bootstrap/CardDeck';
+>>>>>>> 5917a40248d81dbb9a8de5d5c8d2df334016ae3b
 import Row from 'react-bootstrap/Row';
 
 const Landing = () => (
