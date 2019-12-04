@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import Button from 'react-bootstrap/Button';
-import { Card, Container, Form } from 'react-bootstrap';
+import { Button, Card, Form } from 'react-bootstrap';
+import Container from '../../styled/Container';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
@@ -66,7 +66,7 @@ class SignUpFormBase extends Component {
         if (isApproved) {
           this.props.history.push(ROUTES.DRIVE);
         } else {
-          this.props.history.push(ROUTES.HOLDING);
+          this.props.history.push(ROUTES.CONTRACT);
         }
       })
       .catch(error => {

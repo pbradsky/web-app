@@ -7,11 +7,15 @@ import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
+import ContractPage from '../Contract';
 import HoldingPage from '../Holding';
 import DrivePage from '../Drive';
 import DriveVehiclePage from '../Vehicle';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
+import TermsPage from '../Terms';
+import PrivacyPage from '../Privacy';
+import ContactPage from '../Contact';
 
 import { withAuthentication } from '../Session';
 import * as ROUTES from '../../constants/routes';
@@ -25,11 +29,15 @@ const App = () => (
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+      <Route path={ROUTES.CONTRACT} component={ContractPage} />
       <Route path={ROUTES.HOLDING} component={HoldingPage} />
       <Route exact path={ROUTES.DRIVE} component={DrivePage} />
       <Route path={ROUTES.DRIVE_VEHICLE} component={DriveVehiclePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
+      <Route path={ROUTES.TERMS} component={TermsPage} />
+      <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
+      <Route path={ROUTES.CONTACT} component={ContactPage} />
 
       <Footer />
     </div>

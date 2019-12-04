@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button, Card, Container, Form } from 'react-bootstrap';
+import { Button, Card, Form } from 'react-bootstrap';
+import Container from '../../styled/Container';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
