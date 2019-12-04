@@ -30,7 +30,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "plugins": ["babel-plugin-styled-components"],
+  "plugins": [
+    "babel-plugin-styled-components"
+  ],
   "browserslist": {
     "production": [
       ">0.2%",
