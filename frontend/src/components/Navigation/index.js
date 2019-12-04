@@ -24,7 +24,7 @@ const Navigation = () => (
 );
 
 const NavigationAuth = ({ authUser }) => (
-    <Navbar collapseOnSelect expand='md' className='border-bottom' bg='white'>
+    <Navbar collapseOnSelect expand='none'>
         <Link to={ROUTES.LANDING}>
             <img
                 src='spread.png'
@@ -33,10 +33,9 @@ const NavigationAuth = ({ authUser }) => (
             />
         </Link>
         <Navbar.Toggle
-            aria-controls='responsive-navbar-nav'
             style={{border: '0px', outline: 'none'}}
         />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse>
             <Nav className='ml-auto'>
                     <Link
                         className='nav-link'
