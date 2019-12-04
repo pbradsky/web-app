@@ -25,7 +25,7 @@ const Navigation = () => (
 
 const NavigationAuth = ({ authUser }) => (
   <Navbar collapseOnSelect
-    className='border-bottom mb-5'
+    className='border-bottom mb-4'
     expand='none'
     style={{ backgroundColor: '#ffffff' }}>
     <Link to={ROUTES.LANDING}>
@@ -62,7 +62,7 @@ const NavigationAuth = ({ authUser }) => (
 const NavigationNonAuth = () => (
   <Navbar collapseOnSelect
           expand='none'
-          className='border-bottom mb-5'
+          className='border-bottom mb-4'
           style={{ backgroundColor: '#ffffff' }}>
     <Link to={ROUTES.LANDING}>
       <img src='spread.png'
