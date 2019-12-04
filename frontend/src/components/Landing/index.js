@@ -13,8 +13,9 @@ const Landing = () => (
         We're glad you're here!
       </p>
     </Jumbotron>
+    <Container>
     <Row>
-      <Card className='m-1 col-md-6 col-lg-4'>
+      <Card className='col-md-6 col-lg-4'>
         <Card.Body>
           <Card.Title>Coming Soon</Card.Title>
           <Card.Text>
@@ -22,7 +23,7 @@ const Landing = () => (
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card className='m-1 col-md-6 col-lg-4'>
+      <Card className='col-md-6 col-lg-4'>
         <Card.Body>
           <Card.Title>Recruiting</Card.Title>
           <Card.Text>
@@ -30,7 +31,7 @@ const Landing = () => (
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card className='m-1 col-md-6 col-lg-4'>
+      <Card className='col-md-6 col-lg-4'>
         <Card.Body>
           <Card.Title>Mailing List</Card.Title>
           <Card.Text>
@@ -42,6 +43,8 @@ const Landing = () => (
         </Card.Body>
       </Card>
     </Row>
+    </Container>
+
 
   </Container>
 );
