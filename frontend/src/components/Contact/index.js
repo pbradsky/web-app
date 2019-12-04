@@ -53,7 +53,7 @@ class ContactFormBase extends Component {
       message.length > 500;
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <Form onSubmit={this.onSubmit}>
         <Form.Label>Full Name</Form.Label>
         <br />
         <Form.Control
@@ -94,7 +94,7 @@ class ContactFormBase extends Component {
         <Button disabled={isInvalid} type="submit" style={{ width: '30rem' }}>
           Send
         </Button>
-      </form>
+      </Form>
     )
   }
 }
