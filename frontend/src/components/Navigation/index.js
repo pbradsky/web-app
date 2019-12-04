@@ -8,8 +8,6 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 import { Navbar, Nav } from 'react-bootstrap';
-import { SignInButton } from '../SignIn';
-import { JoinNowButton } from '../SignUp';
 
 const Navigation = () => (
     <div>
