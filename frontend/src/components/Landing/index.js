@@ -2,32 +2,8 @@ import React, {useState} from 'react';
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Alert from 'react-bootstrap/Alert';
-import CardDeck from 'react-bootstrap/CardDeck';
 import Row from 'react-bootstrap/Row';
-
-function AlertDismissible() {
-  const [show, setShow] = useState(true);
-
-  return (
-    <>
-      <Alert show={show} variant="primary" border='primary'>
-        <Alert.Heading>Note</Alert.Heading>
-        <p>
-          We are currently under construction!
-        </p>
-        <hr />
-        <div className="d-flex justify-content-end">
-          <Button onClick={() => setShow(false)} variant="primary">
-            Gotcha!
-          </Button>
-        </div>
-      </Alert>
-    </>
-  );
-}
 
 const Landing = () => (
   <Container>
@@ -71,4 +47,3 @@ const Landing = () => (
 );
 
 export default Landing;
-export { AlertDismissible };
