@@ -13,9 +13,9 @@ const INITIAL_STATE = {
 };
 
 const DeleteAccountCard = props => (
-  <Card style={{width: '36rem'}}>
-    <Card.Header as='h4' className='p-auto'>Delete Account</Card.Header>
-    <Card.Body className='m-auto'>
+  <Card>
+    <Card.Header>Delete Account</Card.Header>
+    <Card.Body>
       <DeleteAccountForm {...props} />
     </Card.Body>
   </Card>
@@ -53,25 +53,22 @@ class DeleteAccountForm extends Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <form onSubmit={this.onSubmit}>
+          <Form onSubmit={this.onSubmit}>
             <Form.Label>Confirm Email</Form.Label>
-            <br />
-            <input
-              className='p-1'
-              style={{ width: '30rem' }}
-              name="email"
+            <Form.Control
+              name='email'
               value={email}
               onChange={this.onChange}
-              type="email"
-              placeholder="Email Address"
+              type='email'
+              placeholder='Email Address'
             />
-            <br /><br />
-            <Button disabled={isInvalid(authUser)} type="submit">
+            <br />
+            <Button disabled={isInvalid(authUser)} type='submit'>
               Delete Account
             </Button>
-            <br /><br />
+            <br />
             {error && <p>{error.message}</p>}
-          </form>
+          </Form>
         )}
       </AuthUserContext.Consumer>
     );
