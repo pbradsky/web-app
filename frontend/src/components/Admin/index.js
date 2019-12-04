@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
-import { Jumbotron, Accordion, Card, Badge, Spinner } from 'react-bootstrap';
+import { Jumbotron, Accordion, Card, Badge, Spinner, FormControl } from 'react-bootstrap';
 import Container from '../../styled/Container';
 
 import { withFirebase } from '../Firebase';
@@ -63,19 +63,19 @@ class AdminPage extends Component {
           </p>
         </Jumbotron>
         {loading &&
-            <Spinner animation='border' role='status' style={{display: 'block', margin: 'auto'}}>
-              <span className='sr-only'>Loading...</span>
-            </Spinner>
+          <Spinner animation='border' role='status' style={{display: 'block', margin: 'auto'}}>
+            <span className='sr-only'>Loading...</span>
+          </Spinner>
         }
-        <input
-          className='p-1'
-          style={{ width: '30rem' }}
+        <FormControl
+          type='text'
+          placeholder='Search'
+          className='mr-sm-2'
           name='searchQuery'
           value={searchQuery}
           onChange={this.onChange}
-          type='text'
-          placeholder='search'
         />
+        <br />
         <UserList users={searchedUsers} />
         <br />
       </Container>
