@@ -5,7 +5,8 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
-import CardDeck from 'react-bootstrap/CardDeck'
+import CardDeck from 'react-bootstrap/CardDeck';
+import Row from 'react-bootstrap/Row';
 
 function AlertDismissible() {
   const [show, setShow] = useState(true);
@@ -36,26 +37,26 @@ const Landing = () => (
         We're glad you're here!
       </p>
     </Jumbotron>
-    <CardDeck>
-      <Card>
-        <Card.Header as="h4">Coming Soon</Card.Header>
+    <Row>
+      <Card className='m-1 col-md-6 col-lg-4'>
         <Card.Body>
+          <Card.Title>Coming Soon</Card.Title>
           <Card.Text>
             January 2020, we will have a new product hitting the market.
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card>
-        <Card.Header as='h4'>Recruiting</Card.Header>
+      <Card className='m-1 col-md-6 col-lg-4'>
         <Card.Body>
+          <Card.Title>Recruiting</Card.Title>
           <Card.Text>
             If you think you have what it takes, interviews for a Full-Stack Web Developer position are under way.
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card>
-        <Card.Header as='h4'>Mailing List</Card.Header>
+      <Card className='m-1 col-md-6 col-lg-4'>
         <Card.Body>
+          <Card.Title>Mailing List</Card.Title>
           <Card.Text>
             We would love to be your friend.
           </Card.Text>
@@ -64,7 +65,8 @@ const Landing = () => (
           </Card.Text>
         </Card.Body>
       </Card>
-    </CardDeck>
+    </Row>
+
   </Container>
 );
 

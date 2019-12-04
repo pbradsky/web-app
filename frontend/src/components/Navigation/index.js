@@ -87,7 +87,7 @@ const NavigationNonAuth = () => (
                 </Link>
                 <Link
                     className='nav-link'
-                    to={ROUTES.SIGN_IN}>
+                    to={ROUTES.SIGN_UP}>
                         Join Now
                 </Link>
             </Nav>
