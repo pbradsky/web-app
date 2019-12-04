@@ -3,7 +3,7 @@ import React from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Card from 'react-bootstrap/Card';
 import Container from '../../styled/Container';
-import Row from 'react-bootstrap/Row';
+import CardDeck from 'react-bootstrap/CardDeck';
 
 const Landing = () => (
   <Container>
@@ -13,9 +13,8 @@ const Landing = () => (
         We're glad you're here!
       </p>
     </Jumbotron>
-    <Container>
-    <Row>
-      <Card className='col-md-6 col-lg-4'>
+    <CardDeck>
+      <Card>
         <Card.Body>
           <Card.Title>Coming Soon</Card.Title>
           <Card.Text>
@@ -23,29 +22,16 @@ const Landing = () => (
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card className='col-md-6 col-lg-4'>
-        <Card.Body>
-          <Card.Title>Recruiting</Card.Title>
-          <Card.Text>
-            If you think you have what it takes, interviews for a Full-Stack Web Developer position are under way.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <Card className='col-md-6 col-lg-4'>
+      <Card>
         <Card.Body>
           <Card.Title>Mailing List</Card.Title>
           <Card.Text>
             We would love to be your friend.
-          </Card.Text>
-          <Card.Text>
             Click below to join our mailing list!
           </Card.Text>
         </Card.Body>
       </Card>
-    </Row>
-    </Container>
-
-
+    </CardDeck>
   </Container>
 );
 
