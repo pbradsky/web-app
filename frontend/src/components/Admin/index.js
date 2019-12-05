@@ -88,7 +88,9 @@ class AdminPage extends Component {
 
 const UserList = ({ users }) => (
   <Accordion>
-
+    <Card bg='secondary' text='white'>
+      <Card.Header as='h3'>User List</Card.Header>
+    </Card>
     {users.map(user => (
       <Card key={user.uid}>
         <Accordion.Toggle
@@ -99,12 +101,8 @@ const UserList = ({ users }) => (
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={user.uid}>
           <Card.Body>
-            <Card.Text>
-              Email: {user.email}
-            </Card.Text>
-            <Card.Text>
-              ID: {user.uid}
-            </Card.Text>
+            <Card.Text>Email: {user.email}</Card.Text>
+            <Card.Text>ID: {user.uid}</Card.Text>
             {user.roles && Object.keys(user.roles).map((role, index) =>
               <Badge
                 key={index}
