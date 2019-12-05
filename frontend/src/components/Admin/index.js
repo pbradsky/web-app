@@ -88,10 +88,12 @@ class AdminPage extends Component {
 
 const UserList = ({ users }) => (
   <Accordion>
+
     {users.map(user => (
       <Card key={user.uid}>
         <Accordion.Toggle
           as={Card.Header}
+          style={{cursor: 'pointer'}}
           eventKey={user.uid}>
           {user.username}
         </Accordion.Toggle>
