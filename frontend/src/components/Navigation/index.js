@@ -39,20 +39,20 @@ const NavigationAuth = ({ authUser }) => (
     />
     <Navbar.Collapse>
       <Nav>
-        <Link className='nav-link'
+        <Nav.Link href='#' as={Link}
               to={ROUTES.LANDING}>
           Home
-        </Link>
+        </Nav.Link>
         {!!authUser.roles[ROLES.ADMIN] && (
-          <Link className='nav-link'
+          <Nav.Link href='#' as={Link}
                 to={ROUTES.ADMIN}>
             Admin
-          </Link>
+          </Nav.Link>
         )}
-        <Link className='nav-link'
+        <Nav.Link href='#' as={Link}
               to={ROUTES.ACCOUNT}>
           Account
-        </Link>
+        </Nav.Link>
         <SignOutButton />
       </Nav>
     </Navbar.Collapse>
@@ -76,18 +76,18 @@ const NavigationNonAuth = () => (
     />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav>
-        <Link className='nav-link'
+        <Nav.Link href='#' as={Link}
               to={ROUTES.LANDING}>
           Home
-        </Link>
-        <Link className='nav-link'
+        </Nav.Link>
+        <Nav.Link href='#' as={Link}
               to={ROUTES.SIGN_IN}>
           Sign In
-        </Link>
-        <Link className='nav-link'
+        </Nav.Link>
+        <Nav.Link href='#' as={Link}
               to={ROUTES.SIGN_UP}>
           Join Now
-        </Link>
+        </Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
