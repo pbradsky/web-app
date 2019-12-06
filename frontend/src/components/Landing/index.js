@@ -40,7 +40,7 @@ const Landing = () => (
             <br /><br />
             We're here to listen.
           </Card.Text>
-          <Link to={ROUTES.CONTACT}><Button block>Contact Us</Button></Link>
+          <Link to={ROUTES.CONTACT}><Button block variant='secondary'>Contact Us</Button></Link>
         </Card.Body>
       </Card>
     </CardDeck>
