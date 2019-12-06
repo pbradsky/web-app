@@ -43,7 +43,9 @@ class ContractForm extends Component {
   render() {
     const { name, phone, address, apt, city, state, zip, license } = this.state;
 
-    const isInvalid = name === '';
+    const isInvalid = [
+      name, phone, address, apt, city, state, zip, license
+    ].some(field => field === '');
 
     return (
       <Form>
