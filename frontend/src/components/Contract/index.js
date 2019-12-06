@@ -1,82 +1,203 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 import Container from '../../styled/Container';
 
 import * as ROUTES from '../../constants/routes';
+import * as CONTRACT from '../../constants/contractText';
+import STATES from '../../constants/states';
 
-const ContractPage = () => (
-  <Container>
-    <Card>
-      <Card.Header as='h4' className='p-auto'>Contract</Card.Header>
-      <Card.Body className='m-auto'>
-        <Card.Text>
-          AGREEMENT FOR DEMONSTRATION USE OF VEHICLE
+const INITIAL_FORM_STATE = {
+  name: '',
+  phone: '',
+  address: '',
+  apt: '',
+  city: '',
+  state: '',
+  zip: '',
+  license: '',
+};
 
-          In consideration of the agreements contained herein, Dealer hereby permits Operator to possess and use the motor behicle descibed herein upon the terms and conditions set forth on both sides of this agreement.
+const INITIAL_CONTRACT_STATE = {
+  name: '',
+  phone: '',
+  fullAddress: '',
+  license: '',
+}
 
-          1.	Dealer and Operator expressly agree that for the term of this agreement Operator is not and does not become an agent, servant, or employee of Dealer in any manner whatsoever.
-          2.	Operator acknowledges that the vehicle is the rightful property of Dealer although registered title may be in some third party, and further acknowledges that he received said vehicle in good and safe mechanical condition and agrees that he will return said vehicle to Dealer at Dealer’s address herein the same condition as he received it, ordinary wear and tear excepted, on the return date stated or sooner upon demand of Dealer. In states where the law is so applicable, Operator acknowledges that failure to promptly return the vehicle may result in criminal prosecution after notification pursuant to said laws.
-          3.	Operator agrees that the vehicle will not be operated in violation of any law governing the use or return thereof, or in violation of any of the other terms and conditions set forth above.
-          4.	Operator agrees that he will not operate the vehicle outside the state of Washington.
-          5.	Operator expressly agrees that the motor vehicle given to him shall not be operated:
-          a.	To carry passengers for a consideration, express or implied, or in connection with the Operator’s employment;
-          b.	In violation of any terms and conditions of this agreement;
-          c.	In any race or speed test or contest;
-          d.	To propel or tow any trailer or vehicle used as a trailer;
-          e.	By any person under the influence of intoxicants or narcotics;
-          f.	By any person with a suspended or revoked or invalid driver’s license;
-          g.	For any illegal purpose;
-          h.	By any minor or anyone other than the Operator.
-          6.	The Dealer is not providing insurance of any nature or kind including but not limited to collision or public liability insurance. Operator must have his own insurance in order to be protected.
-          7.	Operator agrees to replace gasoling used if the vehicle is driven over 50 miles.
+class ContractForm extends Component {
+  constructor(props) {
+    super(props);
 
-          (This form must be carried in the vehicle at all times it is operated by you)
-          KEEP THIS FORM IN THE GLOVE COMPARTMENT OF THE VEHICLE YOU ARE USING
+    this.state = { ...INITIAL_FORM_STATE };
+  }
 
-          DEALER’S PERMIT FOR DEMONSTRATION
-        </Card.Text>
-        <Form>
-         Operator:
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
-          Name: <input>
-          Address: <input>
-          Phone Number: <input>
-          Operator License Number: <input>
+  render() {
+    const { name, phone, address, apt, city, state, zip, license } = this.state;
 
-          Proof of Insurance: <upload>
-          Picture of Driver’s License (front): <upload>
-          Picture of Driver’s License (back): <upload>
-        </Form>
-        <Card.Text>
-          IMPORTANT: READ BEFORE SIGNING
+    const isInvalid = name === '';
 
-          The above named operator is authorized to drive the described vehicle for the purpose of purchase during the period indicated below. This permit is subject to inspection by all law enforcement officers when the vehicle is being operated for demonstration.
+    return (
+      <Form>
+        <Form.Row>
+          <Form.Group as={Col}>
+            <Form.Label>Full Name</Form.Label>
+            <Form.Control
+              name='name'
+              value={name}
+              onChange={this.onChange}
+              placeholder='Johnny Appleseed' />
+          </Form.Group>
 
-          The undersigned Operator acknowledges that the dealer is not providing any type of insurance protection, including but not liimited to public liability or collision insurance, and is not collecting any charge therefor. The undersigned further acknowledges that the air bag(s) may have been deactivated or an air bag on/off switch may have been installed on this vehicle, that the dealer assumes no responsibility or liability for any such deactivation or installation, and that the dealer is not warranting the operability or reliability of any such air bag deactivation on/off switch.
+          <Form.Group as={Col}>
+            <Form.Label>Phone Number</Form.Label>
+            <Form.Control
+              name='phone'
+              value={phone}
+              onChange={this.onChange}
+              placeholder='555-333-4444' />
+          </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group as={Col}>
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              name='address'
+              value={address}
+              onChange={this.onChange}
+              placeholder='1234 Main St' />
+          </Form.Group>
+          <Form.Group as={Col}>
+            <Form.Label>Address 2</Form.Label>
+            <Form.Control
+              name='apt'
+              value={apt}
+              onChange={this.onChange}
+              placeholder='Apartment, studio, or floor' />
+          </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group as={Col}>
+            <Form.Label>City</Form.Label>
+            <Form.Control
+              name='city'
+              value={city}
+              onChange={this.onChange}
+              placeholder='New York City' />
+          </Form.Group>
+          <Form.Group as={Col}>
+            <Form.Label>State</Form.Label>
+            <Form.Control
+              name='state'
+              value={state}
+              onChange={this.onChange}
+              as='select'>
+              <option disabled>Choose a state...</option>
+              {Object.keys(STATES).map((state, index) => (
+                <option key={index} value={STATES[state]}>{state}</option>
+              ))}
+            </Form.Control>
+          </Form.Group>
+          <Form.Group as={Col}>
+            <Form.Label>Zip</Form.Label>
+            <Form.Control
+              name='zip'
+              value={zip}
+              onChange={this.onChange}
+              placeholder='11235' />
+          </Form.Group>
+        </Form.Row>
+        <Form.Group>
+          <Form.Label>License Number</Form.Label>
+          <Form.Control
+              name='license'
+              value={license}
+              onChange={this.onChange} />
+        </Form.Group>
+        <Form.Row>
+          <Form.Group as={Col}>
+            <Form.Label>Proof of Insurance</Form.Label>
+            <Form.Control type='file' />
+          </Form.Group>
+          <Form.Group as={Col}>
+            <Form.Label>Picture of Driver's License (front)</Form.Label>
+            <Form.Control type='file' />
+          </Form.Group>
+          <Form.Group as={Col}>
+            <Form.Label>Picture of Driver's License (back)</Form.Label>
+            <Form.Control type='file' />
+          </Form.Group>
+        </Form.Row>
+        <Button
+          variant='primary'
+          onClick={this.props.onSubmit(this.state)}
+          disabled={isInvalid}>
+          Submit
+        </Button>
+      </Form>
+    );
+  }
+}
 
-          In consideration of the foregoing and permission to use the vehicle, the undersigned Operator hereby waives any claim or cause of action against dealer resulting from the undersigned’s operation of the described vehicle, and agrees to pay for all loss and damage to the vehicle. The undersigned Operator further agrees to fully indemnify, protect, defend, and hold dealer harmless from any and all damages and liability, irrespective of fault, resulting in any way from Operator’s use of the vehicle.
-        </Card.Text>
-        <Form>
-          Operator’s Signature: <input>
-          Vehicle: <data upon selection>
-          Dealer:
-          Name: Klein Honda
-          Address: 10611 Evergreen Way Everett, WA 98204
-          Dealer’s Signature: #0335
-          Dealer Number: 425-355-7500
-          Date: <todays date>
+class ContractPage extends Component {
+  constructor(props) {
+    super(props);
 
-          2016  WSAD Services, Inc. Form #13
-          Revised 05/16
-          This form is property of WSAD Services, Inc. and is not to be reproduced or copied.
-          To reorder, call (800) 998-9723
-        </Form>
-        <Link to={ROUTES.HOLDING}>Done!</Link>
-      </Card.Body>
-    </Card>
-  </Container>
-);
+    this.state = { ...INITIAL_CONTRACT_STATE };
+  }
+
+  onSubmit = userInfo => event => {
+    const { name, phone, address, apt, city, state, zip, license } = userInfo;
+
+    const streetAddress = apt ? `${address}, ${apt}` : address;
+    const fullAddress = `${streetAddress}, ${city}, ${state} ${zip}`;
+
+    this.setState({
+      name,
+      phone,
+      fullAddress,
+      license,
+    });
+
+    event.preventDefault();
+  };
+
+  render() {
+    const { name, phone, fullAddress, license } = this.state;
+
+    return (
+      <Container>
+        <Card>
+          <Card.Header as='h4' className='p-auto'>Contract</Card.Header>
+          <Card.Body className='m-auto' style={{whiteSpace: 'pre-line'}}>
+            <ContractForm onSubmit={this.onSubmit} />
+            <br />
+            <Card.Text>
+              {CONTRACT.PREAMBLE}
+            </Card.Text>
+            <Card.Text>
+              {CONTRACT.CONTRACT_FORM(name, fullAddress, phone, license)}
+            </Card.Text>
+            <Card.Text>
+              {CONTRACT.SIGNATURE}
+            </Card.Text>
+            <Form>
+              {CONTRACT.SIGNATURE_FORM}
+            </Form>
+            <Link to={ROUTES.HOLDING}>Done!</Link>
+          </Card.Body>
+        </Card>
+      </Container>
+    );
+  }
+}
 
 export default ContractPage;
