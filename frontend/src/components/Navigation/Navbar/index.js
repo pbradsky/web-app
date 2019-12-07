@@ -8,8 +8,7 @@ import * as ROUTES from 'constants/routes';
 import * as ROLES from 'constants/roles';
 
 import { Navbar, Nav } from 'react-bootstrap';
-import NavLink from 'styled/Nav';
-
+import NavLinkRoute from './navLinkRoute';
 
 class Navigation extends Component {
   constructor(props) {
@@ -56,6 +55,7 @@ class Navigation extends Component {
             <NavContent
               authUser={authUser}
               setNav={this.setNav}
+              closeNav={this.closeNav}
               isExpanded={isExpanded} />}
         </AuthUserContext.Consumer>
       </div>
@@ -63,7 +63,7 @@ class Navigation extends Component {
   }
 }
 
-const NavContent = ({ authUser, setNav, isExpanded }) => (
+const NavContent = ({ authUser, setNav, closeNav, isExpanded }) => (
   <Navbar
     collapseOnSelect
     className='border-bottom mb-4'
@@ -85,45 +85,35 @@ const NavContent = ({ authUser, setNav, isExpanded }) => (
       style={{ border: '0px', outline: 'none' }}
     />
     <Navbar.Collapse id='responsive-navbar-nav'>
-      {authUser
-      ? <AuthNavLinks authUser={authUser} />
-      : <NonAuthNavLinks />}
+      <NavLinks closeNav={closeNav} authUser={authUser} />
     </Navbar.Collapse>
   </Navbar>
 );
 
-const NonAuthNavLinks = () => (
-  <Nav>
-    <NavLink href='#' as={Link} to={ROUTES.LANDING}>
-      Home
-    </NavLink>
-    <NavLink href='#' as={Link} to={ROUTES.SIGN_IN}>
-      Sign In
-    </NavLink>
-    <NavLink href='#' as={Link} to={ROUTES.SIGN_UP}>
-      Join Now
-    </NavLink>
-  </Nav>
-);
+const NavLinks = ({ authUser, closeNav }) => {
+  const isSignedIn = !!authUser;
+  const isAdmin = isSignedIn && !!authUser.roles[ROLES.ADMIN];
 
-const AuthNavLinks = ({ authUser }) => (
-  <Nav>
-    <NavLink href='#' as={Link}
-          to={ROUTES.LANDING}>
-      Home
-    </NavLink>
-    {!!authUser.roles[ROLES.ADMIN] && (
-      <NavLink href='#' as={Link}
-            to={ROUTES.ADMIN}>
+  return (
+    <Nav>
+      <NavLinkRoute to={ROUTES.LANDING} onClick={closeNav}>
+        Home
+      </NavLinkRoute>
+      <NavLinkRoute to={ROUTES.ADMIN} onClick={closeNav} show={isAdmin}>
         Admin
-      </NavLink>
-    )}
-    <NavLink href='#' as={Link}
-          to={ROUTES.ACCOUNT}>
-      Account
-    </NavLink>
-    <SignOutButton />
-  </Nav>
-);
+      </NavLinkRoute>
+      <NavLinkRoute to={ROUTES.ACCOUNT} onClick={closeNav} show={isSignedIn}>
+        Account
+      </NavLinkRoute>
+      <NavLinkRoute to={ROUTES.SIGN_IN} onClick={closeNav} show={!isSignedIn}>
+        Sign In
+      </NavLinkRoute>
+      <NavLinkRoute to={ROUTES.SIGN_UP} onClick={closeNav} show={!isSignedIn}>
+        Join Now
+      </NavLinkRoute>
+      {isSignedIn && <SignOutButton onClick={closeNav} />}
+    </Nav>
+  );
+}
 
 export default Navigation;
