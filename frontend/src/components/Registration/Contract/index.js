@@ -80,6 +80,11 @@ class ContractPage extends Component {
     event.preventDefault();
 
     const { formData } = this.state;
+    const contract = {
+      signature: userInfo.signature,
+      vehicle: userInfo.vehicle,
+      date: userInfo.date,
+    };
     this.listener = this.props.firebase.onAuthUserListener(
       authUser => {
         this.props.firebase
@@ -94,9 +99,7 @@ class ContractPage extends Component {
             state: formData.state,
             zip: formData.zip,
             license: formData.license,
-            contractSignature: userInfo.signature,
-            contractVehicle: userInfo.vehicle,
-            contractDate: userInfo.date,
+            contract,
           })
           .then(() => console.log('submitted contract!'))
           .catch(

@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Row from 'react-bootstrap/Row';
 import Container from 'styled/Container';
 
 import { withAuthorization } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
+import * as ROLES from 'constants/roles';
 import * as ROUTES from 'constants/routes';
 
 class ApprovalPage extends Component {
@@ -35,6 +37,30 @@ class ApprovalPage extends Component {
       });
   }
 
+  onToggleApproval = () => {
+    const { user } = this.state;
+
+    const roles = {
+      ...user.roles,
+    };
+
+    if (roles[ROLES.APPROVED]) {
+      delete roles[ROLES.APPROVED];
+    } else {
+      roles[ROLES.APPROVED] = ROLES.APPROVED;
+    }
+
+    user.roles = roles;
+    this.setState({ user });
+    this.props.firebase
+      .user(user.uid)
+      .set({
+        ...user,
+      })
+      .then(() => console.log('updated approval!'))
+      .catch(error => console.log(error));
+  }
+
   render() {
     const { user, loading } = this.state;
 
@@ -48,7 +74,11 @@ class ApprovalPage extends Component {
               {user.email}
             </Jumbotron>
             <Row>
-              {user.username}
+              <Card.Text>{user.username}</Card.Text>
+              <Card.Text>isApproved: {CONDITIONS.isSignedInApprovedUser(user) ? 'YES' : 'NO'}</Card.Text>
+              <Button onClick={this.onToggleApproval}>
+                Toggle Approval
+              </Button>
             </Row>
           </>
         }
