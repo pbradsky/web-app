@@ -8,6 +8,8 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 import { Navbar, Nav } from 'react-bootstrap';
+import NavLink from '../../styled/Nav';
+
 
 const Navigation = () => (
   <div>
@@ -39,20 +41,20 @@ const NavigationAuth = ({ authUser }) => (
     />
     <Navbar.Collapse>
       <Nav>
-        <Nav.Link href='#' as={Link}
+        <NavLink href='#' as={Link}
               to={ROUTES.LANDING}>
           Home
-        </Nav.Link>
+        </NavLink>
         {!!authUser.roles[ROLES.ADMIN] && (
-          <Nav.Link href='#' as={Link}
+          <NavLink href='#' as={Link}
                 to={ROUTES.ADMIN}>
             Admin
-          </Nav.Link>
+          </NavLink>
         )}
-        <Nav.Link href='#' as={Link}
+        <NavLink href='#' as={Link}
               to={ROUTES.ACCOUNT}>
           Account
-        </Nav.Link>
+        </NavLink>
         <SignOutButton />
       </Nav>
     </Navbar.Collapse>
@@ -76,18 +78,18 @@ const NavigationNonAuth = () => (
     />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav>
-        <Nav.Link href='#' as={Link}
+        <NavLink href='#' as={Link}
               to={ROUTES.LANDING}>
           Home
-        </Nav.Link>
-        <Nav.Link href='#' as={Link}
+        </NavLink>
+        <NavLink href='#' as={Link}
               to={ROUTES.SIGN_IN}>
           Sign In
-        </Nav.Link>
-        <Nav.Link href='#' as={Link}
+        </NavLink>
+        <NavLink href='#' as={Link}
               to={ROUTES.SIGN_UP}>
           Join Now
-        </Nav.Link>
+        </NavLink>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
