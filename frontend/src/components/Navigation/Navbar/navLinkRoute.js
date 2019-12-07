@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import NavLink from 'styled/Nav';
 
-const NavLinkRoute = props => {
-  const show = props.show == null || props.show;
-  if (!show) {
+const NavLinkRoute = ({show, ...props}) => {
+  const showLink = show == null || show;
+  if (!showLink) {
     return null;
   }
 
