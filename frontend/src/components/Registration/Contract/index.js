@@ -79,12 +79,13 @@ class ContractPage extends Component {
     });
     event.preventDefault();
 
-    const { formData, signatureData } = this.state;
+    const { formData } = this.state;
     this.listener = this.props.firebase.onAuthUserListener(
       authUser => {
         this.props.firebase
           .user(authUser.uid)
           .set({
+            ...authUser,
             fullName: formData.name,
             phone: formData.phone,
             address: formData.address,
@@ -93,12 +94,9 @@ class ContractPage extends Component {
             state: formData.state,
             zip: formData.zip,
             license: formData.license,
-            contract: {
-              signature: signatureData.signature,
-              vehicle: signatureData.vehicle,
-              date: signatureData.date,
-            }
-
+            contractSignature: userInfo.signature,
+            contractVehicle: userInfo.vehicle,
+            contractDate: userInfo.date,
           })
           .then(() => console.log('submitted contract!'))
           .catch(

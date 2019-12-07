@@ -28,6 +28,18 @@ const UserList = ({ users, isDev }) => (
           <Card.Body>
             <Card.Text>Email: {user.email}</Card.Text>
             <Card.Text>ID: {user.uid}</Card.Text>
+            <Card.Text>fullName: {user.fullName}</Card.Text>
+            <Card.Text>phone: {user.phone}</Card.Text>
+            <Card.Text>address: {user.address}</Card.Text>
+            <Card.Text>apt: {user.apt}</Card.Text>
+            <Card.Text>city: {user.city}</Card.Text>
+            <Card.Text>state: {user.state}</Card.Text>
+            <Card.Text>zip: {user.zip}</Card.Text>
+            <Card.Text>license: {user.license}</Card.Text>
+            <Card.Text>contractData... </Card.Text>
+            <Card.Text>signature: {user.contractSignature}</Card.Text>
+            <Card.Text>vehicle: {user.contractVehicle}</Card.Text>
+            <Card.Text>date: {user.contractDate}</Card.Text>
             {user.roles && Object.keys(user.roles).map((role, index) =>
               <Badge
                 key={index}
