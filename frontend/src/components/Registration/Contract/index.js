@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'styled/Container';
 import ContractForm from './form';
 import SignatureForm from './signature';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 import * as CONTRACT from 'constants/contractText';
 import * as ROUTES from 'constants/routes';
+
+const stages = {
+  FORM: 0,
+  SIGNATURE: 1,
+  DONE: 2,
+};
+const NUM_STAGES = Object.keys(stages).length;
 
 const INITIAL_STATE = {
   name: '',
@@ -17,6 +26,7 @@ const INITIAL_STATE = {
   signature: '',
   vehicle: '',
   date: '',
+  stage: stages.FORM,
 };
 
 class ContractPage extends Component {
@@ -37,6 +47,7 @@ class ContractPage extends Component {
       phone,
       fullAddress,
       license,
+      stage: stages.SIGNATURE,
     });
 
     event.preventDefault();
@@ -48,23 +59,45 @@ class ContractPage extends Component {
     this.setState({
       signature,
       vehicle,
-      date
+      date,
+      stage: stages.DONE,
     });
 
     this.props.history.push(ROUTES.CONFIRMATION);
     event.preventDefault();
   }
 
-  render() {
-    const { name, phone, fullAddress, license } = this.state;
+  onChangeState = delta => event => {
+    const { stage } = this.state;
 
-    return (
-      <Container>
-        <Card>
-          <Card.Header as='h4'>Contract</Card.Header>
-          <Card.Body style={{whiteSpace: 'pre-line'}}>
-            <ContractForm onSubmit={this.onFormSubmit} />
-            <br />
+    let newStage = stage + delta;
+    if (newStage < 0) {
+      newStage = 0;
+    } else if (newStage >= NUM_STAGES) {
+      newStage = NUM_STAGES - 1;
+    }
+
+    this.setState({
+      stage: newStage,
+    });
+  }
+
+  render() {
+    const { name, phone, fullAddress, license, stage } = this.state;
+
+    const progress = (stage + 1) / NUM_STAGES * 100;
+    const progressText = `${stage + 1} / ${NUM_STAGES}`;
+
+    let stageContent = null;
+    switch (stage) {
+      case stages.FORM:
+        stageContent = (
+          <ContractForm onSubmit={this.onFormSubmit} />
+        );
+        break;
+      case stages.SIGNATURE:
+        stageContent = (
+          <>
             <Card.Text>
               {CONTRACT.PREAMBLE}
             </Card.Text>
@@ -78,6 +111,32 @@ class ContractPage extends Component {
               {CONTRACT.SIGNATURE_FORM}
             </Card.Text>
             <SignatureForm onSubmit={this.onSignatureSubmit} />
+          </>
+        );
+        break;
+      default:
+        break;
+    }
+
+    return (
+      <Container>
+        <Card>
+          <Card.Header as='h4'>
+            Contract
+            <ProgressBar now={progress} label={progressText} />
+            <Button
+              disabled={stage <= 0}
+              onClick={this.onChangeState(-1)}>
+                Back
+            </Button>
+            <Button
+              disabled={stage >= NUM_STAGES - 1}
+              onClick={this.onChangeState(1)}>
+                Forward
+            </Button>
+          </Card.Header>
+          <Card.Body style={{whiteSpace: 'pre-line'}}>
+            {stageContent}
           </Card.Body>
         </Card>
       </Container>
