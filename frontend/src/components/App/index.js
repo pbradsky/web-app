@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Navigation from '../Navigation';
+import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer';
 import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
@@ -9,7 +9,7 @@ import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import ContractPage from '../Contract';
 import ConfirmationPage from '../Confirmation';
-import AccountPage from '../Account';
+import AccountPage from '../User/Account';
 import AdminPage from '../Admin';
 import TermsPage from '../Terms';
 import PrivacyPage from '../Privacy';

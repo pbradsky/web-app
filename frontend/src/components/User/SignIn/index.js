@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Container from '../../styled/Container';
 
-import { SignUpLink } from '../SignUp';
+import { SignUpLink } from '../../Registration/SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 
 import { withFirebase } from '../Firebase';
