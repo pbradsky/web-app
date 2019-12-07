@@ -5,6 +5,7 @@ const navHeight = 91;
 const footerHeight = 72;
 
 const Container = styled(BootstrapContainer)`
+    padding-top: ${navHeight}px;
     min-height: calc(100vh - ${navHeight + footerHeight}px);
 `;
 

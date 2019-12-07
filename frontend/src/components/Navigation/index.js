@@ -24,6 +24,7 @@ const NavContent = ({ authUser }) => (
     collapseOnSelect
     className='border-bottom mb-4'
     expand='none'
+    fixed='top'
     style={{ backgroundColor: '#ffffff' }}
   >
     <Link to={ROUTES.LANDING}>
@@ -37,7 +38,7 @@ const NavContent = ({ authUser }) => (
       aria-controls='responsive-navbar-nav'
       style={{ border: '0px', outline: 'none' }}
     />
-    <Navbar.Collapse id="responsive-navbar-nav">
+    <Navbar.Collapse id='responsive-navbar-nav'>
       {authUser
       ? <AuthNavLinks authUser={authUser} />
       : <NonAuthNavLinks />}
