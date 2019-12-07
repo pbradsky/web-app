@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
-import Form from 'react-bootstrap/Form';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Spinner from 'react-bootstrap/Spinner';
 import Container from 'styled/Container';
 import UserList from 'components/User/UserList';
+import Loading from 'components/Util/Loading';
+import Search from 'components/Util/Search';
 
 import { withAuthorization } from 'api/Session';
 import { withFirebase } from 'api/Firebase';
@@ -16,8 +16,9 @@ class AdminPage extends Component {
     super(props);
 
     this.state = {
+      users: [],
       loading: false,
-      users: []
+      searchQuery: '',
     };
   }
 
@@ -35,7 +36,6 @@ class AdminPage extends Component {
       this.setState({
         users: usersList,
         loading: false,
-        searchQuery: ''
       });
     });
   }
@@ -65,18 +65,8 @@ class AdminPage extends Component {
             This page is only accessible to signed in admin users.
           </p>
         </Jumbotron>
-        {loading &&
-          <Spinner animation='border' role='status' style={{display: 'block', margin: 'auto'}}>
-            <span className='sr-only'>Loading...</span>
-          </Spinner>
-        }
-        <Form.Control
-          type='text'
-          placeholder='Search'
-          name='searchQuery'
-          value={searchQuery}
-          onChange={this.onChange}
-        />
+        <Loading loading={loading} />
+        <Search searchQuery={searchQuery} onChange={this.onChange} />
         <br />
         <UserList users={searchedUsers} />
       </Container>

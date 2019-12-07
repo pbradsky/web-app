@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 
 import UserList from 'components/User/UserList';
+import Loading from 'components/Util/Loading';
+import Search from 'components/Util/Search';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Form from 'react-bootstrap/Form';
-import Spinner from 'react-bootstrap/Spinner';
 import Container from 'styled/Container';
 
 import { withFirebase } from 'api/Firebase';
@@ -16,8 +16,9 @@ class DevPage extends Component {
     super(props);
 
     this.state = {
+      users: [],
       loading: false,
-      users: []
+      searchQuery: '',
     };
   }
 
@@ -35,7 +36,6 @@ class DevPage extends Component {
       this.setState({
         users: usersList,
         loading: false,
-        searchQuery: ''
       });
     });
   }
@@ -65,18 +65,8 @@ class DevPage extends Component {
             This page is only accessible to signed in dev users.
           </p>
         </Jumbotron>
-        {loading &&
-          <Spinner animation='border' role='status' style={{display: 'block', margin: 'auto'}}>
-            <span className='sr-only'>Loading...</span>
-          </Spinner>
-        }
-        <Form.Control
-          type='text'
-          placeholder='Search'
-          name='searchQuery'
-          value={searchQuery}
-          onChange={this.onChange}
-        />
+        <Loading loading={loading} />
+        <Search searchQuery={searchQuery} onChange={this.onChange} />
         <br />
         <UserList users={searchedUsers} isDev={true} />
       </Container>
