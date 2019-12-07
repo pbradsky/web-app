@@ -108,15 +108,17 @@ class ContractForm extends Component {
               placeholder='11235' />
           </Form.Group>
         </Form.Row>
-        <Form.Group>
-          <Form.Label>License Number</Form.Label>
-          <Form.Control
-              name='license'
-              value={license}
-              onChange={this.onChange} />
-        </Form.Group>
         <Form.Row>
-          <Form.Group className='col-lg-4 col-sm-12 input-group'>
+          <Form.Group as={Col}>
+            <Form.Label>License Number</Form.Label>
+            <Form.Control
+                name='license'
+                value={license}
+                onChange={this.onChange} />
+          </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group as={Col} className='col-lg-4 col-sm-12 input-group'>
             <Form.Row>
               <Form.Label>Driver's License (front)</Form.Label>
               <Form.Group className="custom-file">
@@ -132,7 +134,7 @@ class ContractForm extends Component {
               </Form.Group>
             </Form.Row>
           </Form.Group>
-          <Form.Group className='col-lg-4 col-sm-12 input-group'>
+          <Form.Group as={Col} className='col-lg-4 col-sm-12 input-group'>
             <Form.Row>
               <Form.Label>Driver's License (front)</Form.Label>
               <div className="custom-file">
@@ -148,7 +150,7 @@ class ContractForm extends Component {
               </div>
             </Form.Row>
           </Form.Group>
-          <Form.Group className='col-lg-4 col-sm-12 input-group'>
+          <Form.Group as={Col} className='col-lg-4 col-sm-12 input-group'>
             <Form.Row>
               <Form.Label>Driver's License (front)</Form.Label>
               <div className="custom-file">
