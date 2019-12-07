@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Container from '../../styled/Container';
 import CardDeck from 'react-bootstrap/CardDeck';
+import Container from 'styled/Container';
 
-import * as ROUTES from '../../constants/routes';
+import * as ROUTES from 'constants/routes';
 
 
 

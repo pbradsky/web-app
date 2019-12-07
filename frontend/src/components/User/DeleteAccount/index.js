@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
-import { withAuthorization, AuthUserContext } from '../Session';
-import { withFirebase } from '../Firebase';
+import { withAuthorization, AuthUserContext } from 'api/Session';
+import { withFirebase } from 'api/Firebase';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 
-import * as CONDITIONS from '../../constants/conditions';
+import * as CONDITIONS from 'constants/conditions';
 
 const INITIAL_STATE = {
   email: '',

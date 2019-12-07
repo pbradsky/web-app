@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import Container from '../../styled/Container';
+import Container from 'styled/Container';
 
 const ContactPage = () => (
   <Container>

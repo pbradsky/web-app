@@ -5,14 +5,14 @@ import { compose } from 'recompose';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import Container from '../../styled/Container';
+import Container from 'styled/Container';
 
-import { SignUpLink } from '../../Registration/SignUp';
+import { SignUpLink } from 'components/Registration/SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
-import * as ROLES from '../../constants/roles';
+import { withFirebase } from 'api/Firebase';
+import * as ROUTES from 'constants/routes';
+import * as ROLES from 'constants/roles';
 
 const SignInPage = () => (
   <Container>

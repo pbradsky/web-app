@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Navbar from 'react-bootstrap/Navbar';
 
-import * as ROUTES from '../../constants/routes';
+import * as ROUTES from 'constants/routes';
 
 const copyright = '\u00a9';
 

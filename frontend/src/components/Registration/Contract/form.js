@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
-import STATES from '../../constants/states';
+import STATES from 'constants/states';
 
 const INITIAL_STATE = {
   name: '',

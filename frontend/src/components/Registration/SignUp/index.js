@@ -5,12 +5,12 @@ import { compose } from 'recompose';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import Container from '../../styled/Container';
+import Container from 'styled/Container';
 
 
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
-import * as ROLES from '../../constants/roles';
+import { withFirebase } from 'api/Firebase';
+import * as ROUTES from 'constants/routes';
+import * as ROLES from 'constants/roles';
 
 const SignUpPage = () => (
   <Container>

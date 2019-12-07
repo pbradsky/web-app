@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
-import Container from '../../styled/Container';
+import Container from 'styled/Container';
 import ContractForm from './form';
 import SignatureForm from './signature';
 
-import * as CONTRACT from '../../constants/contractText';
-import * as ROUTES from '../../constants/routes';
+import * as CONTRACT from 'constants/contractText';
+import * as ROUTES from 'constants/routes';
 
 const INITIAL_STATE = {
   name: '',

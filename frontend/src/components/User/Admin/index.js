@@ -7,11 +7,11 @@ import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import Form from 'react-bootstrap/Form';
 import Spinner from 'react-bootstrap/Spinner';
-import Container from '../../../styled/Container';
+import Container from 'styled/Container';
 
-import { withFirebase } from '../../Firebase';
-import { withAuthorization } from '../../Session';
-import * as CONDITIONS from '../../../constants/conditions';
+import { withFirebase } from 'api/Firebase';
+import { withAuthorization } from 'api/Session';
+import * as CONDITIONS from 'constants/conditions';
 
 class AdminPage extends Component {
   constructor(props) {
