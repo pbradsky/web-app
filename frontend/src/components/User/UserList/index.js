@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
+import { ApprovalLink } from 'components/User/Approval';
 
 import * as CONDITIONS from 'constants/conditions';
-import * as ROUTES from 'constants/routes';
 
 const UserList = ({ users, isDev }) => (
   <Accordion>
@@ -36,11 +34,7 @@ const UserList = ({ users, isDev }) => (
                 variant='primary'
                 className='m-1 p-2'>{role}</Badge>
             )}
-            {isDev &&
-              <Link to={ROUTES.APPROVAL}>
-                <Button>Approval Page</Button>
-              </Link>
-            }
+            <ApprovalLink isDev={isDev} uid={user.uid} />
           </Card.Body>
         </Accordion.Collapse>
       </Card>
