@@ -8,7 +8,7 @@ import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import ContractPage from '../Contract';
-import HoldingPage from '../Holding';
+import ConfirmationPage from '../Confirmation';
 import DrivePage from '../Drive';
 import DriveVehiclePage from '../Vehicle';
 import AccountPage from '../Account';
@@ -30,7 +30,7 @@ const App = () => (
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
       <Route path={ROUTES.CONTRACT} component={ContractPage} />
-      <Route path={ROUTES.HOLDING} component={HoldingPage} />
+      <Route path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
       <Route exact path={ROUTES.DRIVE} component={DrivePage} />
       <Route path={ROUTES.DRIVE_VEHICLE} component={DriveVehiclePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
