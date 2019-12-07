@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import AccountPage from 'components/User/Account';
 import AdminPage from 'components/User/Admin';
+import ApprovalPage from 'components/User/Approval';
 import ConfirmationPage from 'components/Registration/Confirmation';
 import ContactPage from 'components/Legal/Contact';
 import ContractPage from 'components/Registration/Contract';
@@ -32,6 +33,7 @@ const App = () => (
       <Route path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
+      <Route path={ROUTES.APPROVAL} component={ApprovalPage} />
       <Route path={ROUTES.DEV} component={DevPage} />
       <Route path={ROUTES.TERMS} component={TermsPage} />
       <Route path={ROUTES.PRIVACY} component={PrivacyPage} />

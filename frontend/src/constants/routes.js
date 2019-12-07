@@ -1,5 +1,6 @@
-export const ADMIN = '/admin';
 export const ACCOUNT = '/account';
+export const ADMIN = '/admin';
+export const APPROVAL = '/approval';
 export const CONFIRMATION = '/confirmation';
 export const CONTACT = '/contact';
 export const CONTRACT = '/contract';
