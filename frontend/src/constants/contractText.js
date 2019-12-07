@@ -17,7 +17,7 @@ f.	By any person with a suspended or revoked or invalid driver’s license;
 g.	For any illegal purpose;
 h.	By any minor or anyone other than the Operator.
 6.	The Dealer is not providing insurance of any nature or kind including but not limited to collision or public liability insurance. Operator must have his own insurance in order to be protected.
-7.	Operator agrees to replace gasoling used if the vehicle is driven over 50 miles.
+7.	Operator agrees to replace gasoline used if the vehicle is driven over 50 miles.
 
 (This form must be carried in the vehicle at all times it is operated by you)
 KEEP THIS FORM IN THE GLOVE COMPARTMENT OF THE VEHICLE YOU ARE USING
