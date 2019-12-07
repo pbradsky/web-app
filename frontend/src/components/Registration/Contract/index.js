@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -8,6 +9,7 @@ import ContractForm from './form';
 import SignatureForm from './signature';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
+import { withFirebase } from 'api/Firebase';
 import * as CONTRACT from 'constants/contractText';
 import * as ROUTES from 'constants/routes';
 
@@ -75,9 +77,44 @@ class ContractPage extends Component {
       stage: stages.DONE,
       maxStage: stages.DONE,
     });
+    event.preventDefault();
+
+    const { formData, signatureData } = this.state;
+    this.listener = this.props.firebase.onAuthUserListener(
+      authUser => {
+        this.props.firebase
+          .user(authUser.uid)
+          .set({
+            fullName: formData.name,
+            phone: formData.phone,
+            address: formData.address,
+            apt: formData.apt,
+            city: formData.city,
+            state: formData.state,
+            zip: formData.zip,
+            license: formData.license,
+            contract: {
+              signature: signatureData.signature,
+              vehicle: signatureData.vehicle,
+              date: signatureData.date,
+            }
+
+          })
+          .then(() => console.log('submitted contract!'))
+          .catch(
+            error => {
+              console.log(error);
+              this.setState({
+                stage: stages.SIGNATURE,
+                maxStage: stages.SIGNATURE
+              });
+            }
+          );
+      },
+      () => this.props.history.push(ROUTES.SIGN_IN)
+    );
 
     this.props.history.push(ROUTES.CONFIRMATION);
-    event.preventDefault();
   }
 
   onChangeState = delta => event => {
@@ -93,6 +130,7 @@ class ContractPage extends Component {
     this.setState({
       stage: newStage,
     });
+    event.preventDefault();
   }
 
   render() {
@@ -165,4 +203,7 @@ class ContractPage extends Component {
   }
 }
 
-export default withRouter(ContractPage);
+export default compose(
+  withRouter,
+  withFirebase
+)(ContractPage);
