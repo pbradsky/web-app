@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import BootstrapContainer from 'react-bootstrap/Container';
+import styled from 'styled-components';
 
 const navHeight = 91;
 const footerHeight = 72;

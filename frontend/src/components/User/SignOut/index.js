@@ -2,9 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { compose } from 'recompose';
 
-import { withFirebase } from 'api/Firebase';
 import NavLink from 'styled/Nav';
 
+import { withFirebase } from 'api/Firebase';
 import * as ROUTES from 'constants/routes';
 
 const SignOutButton = ({ firebase, onClick, ...props }) => {

@@ -1,14 +1,14 @@
 import React from 'react';
 
+import Col from 'react-bootstrap/Col';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Container from 'styled/Container';
 
-import { withAuthorization, AuthUserContext } from 'api/Session';
 import PasswordChangeCard from '../PasswordChange';
 import DeleteAccountCard from '../DeleteAccount';
 
+import { withAuthorization, AuthUserContext } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
 
 const AccountPage = () => (

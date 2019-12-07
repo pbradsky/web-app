@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
 import SignOutButton from 'components/User/SignOut';
+import NavLinkRoute from './navLinkRoute';
 
 import { AuthUserContext } from 'api/Session';
-import * as ROUTES from 'constants/routes';
 import * as ROLES from 'constants/roles';
-
-import { Navbar, Nav } from 'react-bootstrap';
-import NavLinkRoute from './navLinkRoute';
+import * as ROUTES from 'constants/routes';
 
 class Navigation extends Component {
   constructor(props) {

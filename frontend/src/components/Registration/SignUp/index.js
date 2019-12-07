@@ -7,7 +7,6 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Container from 'styled/Container';
 
-
 import { withFirebase } from 'api/Firebase';
 import * as ROUTES from 'constants/routes';
 import * as ROLES from 'constants/roles';
