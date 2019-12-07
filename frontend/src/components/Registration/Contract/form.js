@@ -21,7 +21,11 @@ class ContractForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...INITIAL_STATE };
+    if (props.formData.filled) {
+      this.state = { ...props.formData };
+    } else {
+      this.state = { ...INITIAL_STATE };
+    }
   }
 
   onChange = event => {

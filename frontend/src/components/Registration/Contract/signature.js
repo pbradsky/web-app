@@ -14,7 +14,11 @@ class SignatureForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...INITIAL_STATE };
+    if (props.signatureData.filled) {
+      this.state = { ...props.signatureData };
+    } else {
+      this.state = { ...INITIAL_STATE };
+    }
   }
 
   onChange = event => {

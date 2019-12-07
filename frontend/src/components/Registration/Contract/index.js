@@ -19,15 +19,32 @@ const stages = {
 const NUM_STAGES = Object.keys(stages).length;
 
 const INITIAL_STATE = {
-  name: '',
-  phone: '',
-  fullAddress: '',
-  license: '',
-  signature: '',
-  vehicle: '',
-  date: '',
+  formData: {
+    name: '',
+    phone: '',
+    address: '',
+    apt: '',
+    city: '',
+    state: '',
+    zip: '',
+    license: '',
+    filled: false,
+  },
+  signatureData: {
+    signature: '',
+    vehicle: '',
+    date: '',
+    filled: false,
+  },
   stage: stages.FORM,
+  maxStage: stages.FORM,
 };
+
+const toFullAddress = (formData) => {
+  const { address, apt, city, state, zip } = formData;
+  const streetAddress = apt ? `${address}, ${apt}` : address;
+  return `${streetAddress}, ${city}, ${state} ${zip}`;
+}
 
 class ContractPage extends Component {
   constructor(props) {
@@ -37,30 +54,26 @@ class ContractPage extends Component {
   }
 
   onFormSubmit = userInfo => event => {
-    const { name, phone, address, apt, city, state, zip, license } = userInfo;
-
-    const streetAddress = apt ? `${address}, ${apt}` : address;
-    const fullAddress = `${streetAddress}, ${city}, ${state} ${zip}`;
-
     this.setState({
-      name,
-      phone,
-      fullAddress,
-      license,
+      formData: {
+        ...userInfo,
+        filled: true,
+      },
       stage: stages.SIGNATURE,
+      maxStage: stages.SIGNATURE,
     });
 
     event.preventDefault();
   };
 
   onSignatureSubmit = userInfo => event => {
-    const { signature, vehicle, date } = userInfo;
-
     this.setState({
-      signature,
-      vehicle,
-      date,
+      signatureData: {
+        ...userInfo,
+        filled: true,
+      },
       stage: stages.DONE,
+      maxStage: stages.DONE,
     });
 
     this.props.history.push(ROUTES.CONFIRMATION);
@@ -83,16 +96,18 @@ class ContractPage extends Component {
   }
 
   render() {
-    const { name, phone, fullAddress, license, stage } = this.state;
+    const { formData, signatureData, stage, maxStage } = this.state;
+    const { name, phone, license } = formData;
 
     const progress = (stage + 1) / NUM_STAGES * 100;
     const progressText = `${stage + 1} / ${NUM_STAGES}`;
+    const fullAddress = toFullAddress(formData);
 
     let stageContent = null;
     switch (stage) {
       case stages.FORM:
         stageContent = (
-          <ContractForm onSubmit={this.onFormSubmit} />
+          <ContractForm onSubmit={this.onFormSubmit} formData={formData} />
         );
         break;
       case stages.SIGNATURE:
@@ -110,7 +125,9 @@ class ContractPage extends Component {
             <Card.Text>
               {CONTRACT.SIGNATURE_FORM}
             </Card.Text>
-            <SignatureForm onSubmit={this.onSignatureSubmit} />
+            <SignatureForm
+              onSubmit={this.onSignatureSubmit}
+              signatureData={signatureData} />
           </>
         );
         break;
@@ -130,7 +147,7 @@ class ContractPage extends Component {
                 Back
             </Button>
             <Button
-              disabled={stage >= NUM_STAGES - 1}
+              disabled={stage >= maxStage}
               onClick={this.onChangeState(1)}>
                 Forward
             </Button>
