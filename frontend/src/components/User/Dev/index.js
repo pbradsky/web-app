@@ -16,8 +16,9 @@ class DevPage extends Component {
     super(props);
 
     this.state = {
+      users: [],
       loading: false,
-      users: []
+      searchQuery: '',
     };
   }
 
@@ -35,7 +36,6 @@ class DevPage extends Component {
       this.setState({
         users: usersList,
         loading: false,
-        searchQuery: ''
       });
     });
   }
