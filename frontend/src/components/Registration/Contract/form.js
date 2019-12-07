@@ -116,17 +116,53 @@ class ContractForm extends Component {
               onChange={this.onChange} />
         </Form.Group>
         <Form.Row>
-          <Form.Group as={Col}>
-            <Form.Label>Proof of Insurance</Form.Label>
-            <Form.Control type='file'/>
+          <Form.Group className='col-lg-4 col-sm-12 input-group'>
+            <Form.Row>
+              <Form.Label>Driver's License (front)</Form.Label>
+              <Form.Group className="custom-file">
+                <Form.Control
+                  type="file"
+                  className="custom-file-input"
+                  id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01"
+                />
+                <Form.Label className="custom-file-label" htmlFor="inputGroupFile01">
+                  Choose file
+                </Form.Label>
+              </Form.Group>
+            </Form.Row>
           </Form.Group>
-          <Form.Group as={Col}>
-            <Form.Label>Picture of Driver's License (front)</Form.Label>
-            <Form.Control type='file' />
+          <Form.Group className='col-lg-4 col-sm-12 input-group'>
+            <Form.Row>
+              <Form.Label>Driver's License (front)</Form.Label>
+              <div className="custom-file">
+                <input
+                  type="file"
+                  className="custom-file-input"
+                  id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01"
+                />
+                <label className="custom-file-label" htmlFor="inputGroupFile01">
+                  Choose file
+                </label>
+              </div>
+            </Form.Row>
           </Form.Group>
-          <Form.Group as={Col}>
-            <Form.Label>Picture of Driver's License (back)</Form.Label>
-            <Form.Control type='file' />
+          <Form.Group className='col-lg-4 col-sm-12 input-group'>
+            <Form.Row>
+              <Form.Label>Driver's License (front)</Form.Label>
+              <div className="custom-file">
+                <input
+                  type="file"
+                  className="custom-file-input"
+                  id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01"
+                />
+                <label className="custom-file-label" htmlFor="inputGroupFile01">
+                  Choose file
+                </label>
+              </div>
+            </Form.Row>
           </Form.Group>
         </Form.Row>
         <Button
