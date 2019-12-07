@@ -95,6 +95,11 @@ const NavLinks = ({ authUser, closeNav }) => {
   const isAdmin = CONDITIONS.isSignedInAdmin(authUser);
   const isDev = CONDITIONS.isSignedInDev(authUser);
 
+  console.log('IS signedin, admin, dev: ');
+  console.log(isSignedIn);
+  console.log(isAdmin);
+  console.log(isDev);
+
   return (
     <Nav>
       <NavLinkRoute to={ROUTES.LANDING} onClick={closeNav}>
