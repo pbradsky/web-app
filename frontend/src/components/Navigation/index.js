@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import SignOutButton from '../SignOut';
@@ -11,21 +11,67 @@ import { Navbar, Nav } from 'react-bootstrap';
 import NavLink from '../../styled/Nav';
 
 
-const Navigation = () => (
-  <div>
-    <AuthUserContext.Consumer>
-      {authUser => <NavContent authUser={authUser} />}
-    </AuthUserContext.Consumer>
-  </div>
-);
+class Navigation extends Component {
+  constructor(props) {
+    super(props);
 
-const NavContent = ({ authUser }) => (
+    this.state = {
+      isExpanded: false,
+    };
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleDocumentClick, true);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleDocumentClick, true);
+  }
+
+  setNav = isExpanded => {
+    this.setState({ isExpanded });
+  }
+
+  closeNav = () => {
+    this.setState({
+      isExpanded: false,
+    });
+  }
+
+  handleDocumentClick = event => {
+    if (this._element.contains(event.target)) {
+      return;
+    }
+
+    this.closeNav();
+  }
+
+  render() {
+    const { isExpanded } = this.state;
+
+    return (
+      <div ref={c => this._element = c}>
+        <AuthUserContext.Consumer>
+          {authUser =>
+            <NavContent
+              authUser={authUser}
+              setNav={this.setNav}
+              isExpanded={isExpanded} />}
+        </AuthUserContext.Consumer>
+      </div>
+    );
+  }
+}
+
+const NavContent = ({ authUser, setNav, isExpanded }) => (
   <Navbar
     collapseOnSelect
     className='border-bottom mb-4'
     expand='none'
     fixed='top'
     style={{ backgroundColor: '#ffffff' }}
+    expanded={isExpanded}
+    onToggle={setNav}
   >
     <Link to={ROUTES.LANDING}>
       <img
