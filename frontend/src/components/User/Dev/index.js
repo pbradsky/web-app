@@ -78,7 +78,7 @@ class DevPage extends Component {
           onChange={this.onChange}
         />
         <br />
-        <UserList users={searchedUsers} />
+        <UserList users={searchedUsers} isDev={true} />
       </Container>
     );
   }

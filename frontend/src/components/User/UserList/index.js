@@ -4,7 +4,9 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 
-const UserList = ({ users }) => (
+import * as CONDITIONS from 'constants/conditions';
+
+const UserList = ({ users, isDev }) => (
   <Accordion>
     <Card bg='secondary' text='white'>
       <Card.Header as='h3'>User List</Card.Header>
@@ -16,6 +18,10 @@ const UserList = ({ users }) => (
           style={{cursor: 'pointer'}}
           eventKey={user.uid}>
           {user.username}
+          {isDev && !CONDITIONS.isSignedInApprovedUser(user) &&
+            <Badge
+              variant='danger'
+              className='m-1 p-2'>NOT APPROVED</Badge>}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={user.uid}>
           <Card.Body>
