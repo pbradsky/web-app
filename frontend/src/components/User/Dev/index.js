@@ -11,7 +11,7 @@ import { withFirebase } from 'api/Firebase';
 import { withAuthorization } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
 
-class AdminPage extends Component {
+class DevPage extends Component {
   constructor(props) {
     super(props);
 
@@ -60,9 +60,9 @@ class AdminPage extends Component {
     return (
       <Container>
         <Jumbotron>
-          <h3>Admin Page</h3>
+          <h3>Dev Page</h3>
           <p className='body-secondary'>
-            This page is only accessible to signed in admin users.
+            This page is only accessible to signed in dev users.
           </p>
         </Jumbotron>
         {loading &&
@@ -85,6 +85,6 @@ class AdminPage extends Component {
 }
 
 export default compose(
-  withAuthorization(CONDITIONS.isSignedInAdmin),
+  withAuthorization(CONDITIONS.isSignedInDev),
   withFirebase
-)(AdminPage);
+)(DevPage);

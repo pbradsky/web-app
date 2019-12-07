@@ -11,6 +11,7 @@ import ContractPage from 'components/Registration/Contract';
 import ConfirmationPage from 'components/Registration/Confirmation';
 import AccountPage from 'components/User/Account';
 import AdminPage from 'components/User/Admin';
+import DevPage from 'components/User/Dev';
 import TermsPage from 'components/Legal/Terms';
 import PrivacyPage from 'components/Legal/Privacy';
 import ContactPage from 'components/Legal/Contact';
@@ -31,6 +32,7 @@ const App = () => (
       <Route path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
+      <Route path={ROUTES.DEV} component={DevPage} />
       <Route path={ROUTES.TERMS} component={TermsPage} />
       <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
       <Route path={ROUTES.CONTACT} component={ContactPage} />

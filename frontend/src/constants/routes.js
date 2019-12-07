@@ -5,6 +5,7 @@ export const CONTRACT = '/contract';
 export const CONFIRMATION = '/confirmation';
 export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
+export const DEV = '/dev';
 export const PASSWORD_FORGET = '/pw-forget';
 export const TERMS = '/terms';
 export const PRIVACY = '/privacy';

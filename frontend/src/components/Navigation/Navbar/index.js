@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavLinkRoute from './navLinkRoute';
 import SignOutButton from 'components/User/SignOut';
 
 import { AuthUserContext } from 'api/Session';
 import * as ROUTES from 'constants/routes';
-import * as ROLES from 'constants/roles';
-
-import { Navbar, Nav } from 'react-bootstrap';
-import NavLinkRoute from './navLinkRoute';
+import * as CONDITIONS from 'constants/conditions';
 
 class Navigation extends Component {
   constructor(props) {
@@ -91,8 +91,9 @@ const NavContent = ({ authUser, setNav, closeNav, isExpanded }) => (
 );
 
 const NavLinks = ({ authUser, closeNav }) => {
-  const isSignedIn = !!authUser;
-  const isAdmin = isSignedIn && !!authUser.roles[ROLES.ADMIN];
+  const isSignedIn = CONDITIONS.isSignedInUser(authUser);
+  const isAdmin = CONDITIONS.isSignedInAdmin(authUser);
+  const isDev = CONDITIONS.isSignedInDev(authUser);
 
   return (
     <Nav>
@@ -101,6 +102,9 @@ const NavLinks = ({ authUser, closeNav }) => {
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.ADMIN} onClick={closeNav} show={isAdmin}>
         Admin
+      </NavLinkRoute>
+      <NavLinkRoute to={ROUTES.DEV} onClick={closeNav} show={isDev}>
+        Dev
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.ACCOUNT} onClick={closeNav} show={isSignedIn}>
         Account
