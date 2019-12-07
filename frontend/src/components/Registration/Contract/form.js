@@ -118,7 +118,7 @@ class ContractForm extends Component {
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>Proof of Insurance</Form.Label>
-            <Form.Control type='file' />
+            <Form.Control type='file'/>
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Picture of Driver's License (front)</Form.Label>

@@ -11,13 +11,11 @@ const ConfirmationPage = () => (
     <Card>
       <Card.Header>Confirmation</Card.Header>
       <Card.Body>
-        <p>
-          Please wait while your account is approved.
-          This process can take a few business days.
-          <br />
-          <br />
-          Thank you for your patience!
-        </p>
+        <Card.Title>All done!</Card.Title>
+        <Card.Text>
+          Your information has been submitted.
+          Thank you for choosing Jurne, we hope you enjoy the ride!
+        </Card.Text>
       </Card.Body>
     </Card>
   </Container>

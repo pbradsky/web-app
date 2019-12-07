@@ -140,13 +140,17 @@ class ContractPage extends Component {
         <Card>
           <Card.Header as='h4'>
             Contract
+            <br /><br />
             <ProgressBar now={progress} label={progressText} />
+            <br />
             <Button
+              className='mr-2'
               disabled={stage <= 0}
               onClick={this.onChangeState(-1)}>
                 Back
             </Button>
             <Button
+              className='ml-2'
               disabled={stage >= maxStage}
               onClick={this.onChangeState(1)}>
                 Forward

@@ -1,20 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Navigation from 'components/Navigation/Navbar';
-import Footer from 'components/Navigation/Footer';
-import LandingPage from 'components/Landing';
-import SignUpPage from 'components/Registration/SignUp';
-import SignInPage from 'components/User/SignIn';
-import PasswordForgetPage from 'components/User/PasswordForget';
-import ContractPage from 'components/Registration/Contract';
-import ConfirmationPage from 'components/Registration/Confirmation';
 import AccountPage from 'components/User/Account';
 import AdminPage from 'components/User/Admin';
-import DevPage from 'components/User/Dev';
-import TermsPage from 'components/Legal/Terms';
-import PrivacyPage from 'components/Legal/Privacy';
+import ConfirmationPage from 'components/Registration/Confirmation';
 import ContactPage from 'components/Legal/Contact';
+import ContractPage from 'components/Registration/Contract';
+import DevPage from 'components/User/Dev';
+import Footer from 'components/Navigation/Footer';
+import LandingPage from 'components/Landing';
+import Navigation from 'components/Navigation/Navbar';
+import PasswordForgetPage from 'components/User/PasswordForget';
+import PrivacyPage from 'components/Legal/Privacy';
+import SignInPage from 'components/User/SignIn';
+import SignUpPage from 'components/Registration/SignUp';
+import TermsPage from 'components/Legal/Terms';
 
 import { withAuthentication } from 'api/Session';
 import * as ROUTES from 'constants/routes';

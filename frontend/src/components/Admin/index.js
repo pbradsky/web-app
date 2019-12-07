@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 
-import Jumbotron from 'react-bootstrap/Jumbotron';
 import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 import Spinner from 'react-bootstrap/Spinner';
 import Container from '../../../styled/Container';
 
-import { withFirebase } from '../../Firebase';
 import { withAuthorization } from '../../Session';
+import { withFirebase } from '../../Firebase';
 import * as CONDITIONS from '../../../constants/conditions';
 
 class AdminPage extends Component {
