@@ -51,7 +51,7 @@ class ContractPage extends Component {
       date
     });
 
-    this.props.history.push(ROUTES.HOLDING);
+    this.props.history.push(ROUTES.CONFIRMATION);
     event.preventDefault();
   }
 
@@ -61,8 +61,8 @@ class ContractPage extends Component {
     return (
       <Container>
         <Card>
-          <Card.Header as='h4' className='p-auto'>Contract</Card.Header>
-          <Card.Body className='m-auto' style={{whiteSpace: 'pre-line'}}>
+          <Card.Header as='h4'>Contract</Card.Header>
+          <Card.Body style={{whiteSpace: 'pre-line'}}>
             <ContractForm onSubmit={this.onFormSubmit} />
             <br />
             <Card.Text>
