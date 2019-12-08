@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
 import STATES from 'constants/states';
 
@@ -118,27 +119,24 @@ class ContractForm extends Component {
           </Form.Group>
         </Form.Row>
         <Form.Row>
-          <Form.Group as={Col} className='col-lg-4 col-sm-12 input-group'>
-            <Form.Row>
-              <Form.Label>Driver's License (front)</Form.Label>
-              <Form.Group className="custom-file">
+          <Form.Group as={Col} className='col-md-4 col-sm-12 col-12'>
+              <Form.Label>Proof of Insurance</Form.Label>
+              <div className="custom-file">
                 <Form.Control
                   type="file"
                   className="custom-file-input"
                   id="inputGroupFile01"
                   aria-describedby="inputGroupFileAddon01"
                 />
-                <Form.Label className="custom-file-label" htmlFor="inputGroupFile01">
+                <label className="custom-file-label" htmlFor="inputGroupFile01">
                   Choose file
-                </Form.Label>
-              </Form.Group>
-            </Form.Row>
+                </label>
+              </div>
           </Form.Group>
-          <Form.Group as={Col} className='col-lg-4 col-sm-12 input-group'>
-            <Form.Row>
+          <Form.Group as={Col} className='col-md-4 col-sm-12 col-12'>
               <Form.Label>Driver's License (front)</Form.Label>
               <div className="custom-file">
-                <input
+                <Form.Control
                   type="file"
                   className="custom-file-input"
                   id="inputGroupFile01"
@@ -148,13 +146,11 @@ class ContractForm extends Component {
                   Choose file
                 </label>
               </div>
-            </Form.Row>
           </Form.Group>
-          <Form.Group as={Col} className='col-lg-4 col-sm-12 input-group'>
-            <Form.Row>
-              <Form.Label>Driver's License (front)</Form.Label>
+          <Form.Group as={Col} className='col-md-4 col-sm-12 col-12'>
+              <Form.Label>Driver's License (back)</Form.Label>
               <div className="custom-file">
-                <input
+                <Form.Control
                   type="file"
                   className="custom-file-input"
                   id="inputGroupFile01"
@@ -164,7 +160,6 @@ class ContractForm extends Component {
                   Choose file
                 </label>
               </div>
-            </Form.Row>
           </Form.Group>
         </Form.Row>
         <Button
