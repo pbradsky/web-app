@@ -6,9 +6,10 @@ import Container from 'styled/Container';
 const TermsPage = () => (
   <Container>
     <Card>
-      <Card.Header>Terms</Card.Header>
       <Card.Body>
-        <Card.Text>Here are our terms.</Card.Text>
+        <Card.Title style={{color: '#27A745'}}>Contact Us</Card.Title>
+        <hr />
+        <Card.Text>Here are our terms of service.</Card.Text>
       </Card.Body>
     </Card>
   </Container>

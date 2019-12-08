@@ -27,12 +27,12 @@ const Landing = () => (
     <CardDeck>
       <Card>
         <Card.Body>
-          <Card.Title as='h3' style={{color: '#27A745'}}>Reach out</Card.Title>
+          <Card.Title style={{color: '#27A745'}}>Reach out</Card.Title>
+          <hr />
           <Card.Text>
             If you have feedback,
             click the button below to get in touch.
           </Card.Text>
-          <hr />
           <Card.Text>
             We're here to listen.
           </Card.Text>

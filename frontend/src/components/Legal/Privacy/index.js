@@ -6,9 +6,10 @@ import Container from 'styled/Container';
 const PrivacyPage = () => (
   <Container>
     <Card>
-      <Card.Header>Privacy</Card.Header>
       <Card.Body>
-        <Card.Text>Here are our privacy.</Card.Text>
+        <Card.Title style={{color: '#27A745'}}>Contact Us</Card.Title>
+        <hr />
+        <Card.Text>Here is our privacy policy.</Card.Text>
       </Card.Body>
     </Card>
   </Container>

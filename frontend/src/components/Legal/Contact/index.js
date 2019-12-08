@@ -9,8 +9,9 @@ import Form from 'react-bootstrap/Form';
 const ContactPage = () => (
   <Container>
     <Card>
-      <Card.Header>Contact Us</Card.Header>
       <Card.Body>
+        <Card.Title style={{color: '#27A745'}}>Contact Us</Card.Title>
+        <hr />
         <ContactForm />
       </Card.Body>
     </Card>
@@ -83,7 +84,7 @@ class ContactFormBase extends Component {
           rows='3'
         />
         <br />
-        <Button disabled={isInvalid} type="submit">
+        <Button disabled={isInvalid} variant='success' type="submit">
           Send
         </Button>
       </Form>
