@@ -6,6 +6,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavLinkRoute from './navLinkRoute';
 import SignOutButton from 'components/User/SignOut';
 
+import Spread from 'assets/spread.png'
+
 import { AuthUserContext } from 'api/Session';
 import * as ROUTES from 'constants/routes';
 import * as CONDITIONS from 'constants/conditions';
@@ -75,7 +77,7 @@ const NavContent = ({ authUser, setNav, closeNav, isExpanded }) => (
   >
     <Link to={ROUTES.LANDING}>
       <img
-        src='spread.png'
+        src={Spread}
         height='50'
         alt='jurne logo'
       />
