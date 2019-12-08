@@ -60,14 +60,14 @@ class DevPage extends Component {
     return (
       <Container>
         <Jumbotron>
-          <h3>Dev Page</h3>
-          <p className='body-secondary'>
-            This page is only accessible to signed in dev users.
+          <h3>Developer Page</h3>
+          <p>
+            This page is only accessible to signed in developers.
           </p>
         </Jumbotron>
-        <Loading loading={loading} />
         <Search searchQuery={searchQuery} onChange={this.onChange} />
         <br />
+        <Loading loading={loading} />
         <UserList users={searchedUsers} isDev={true} />
       </Container>
     );

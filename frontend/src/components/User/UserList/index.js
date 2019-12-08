@@ -30,8 +30,9 @@ const UserList = ({ users, isDev }) => (
           {user.username}
           {isDev && !CONDITIONS.isSignedInApprovedUser(user) &&
             <Badge
-              variant='danger'
-              className='m-1 p-2'>NOT APPROVED</Badge>}
+              style={{float: 'right'}}
+              variant='warning'
+              className='p-2'>INCOMPLETE</Badge>}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={user.uid}>
           <Card.Body>
