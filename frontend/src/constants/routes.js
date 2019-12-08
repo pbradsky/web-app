@@ -4,6 +4,7 @@ export const APPROVAL = '/approval';
 export const CONFIRMATION = '/confirmation';
 export const CONTACT = '/contact';
 export const CONTRACT = '/contract';
+export const DEALERS = '/dealers';
 export const DEV = '/dev';
 export const LANDING = '/';
 export const PASSWORD_FORGET = '/pw-forget';
