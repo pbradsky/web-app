@@ -6,6 +6,15 @@ import Badge from 'react-bootstrap/Badge';
 import { ApprovalLink } from 'components/User/Approval';
 
 import * as CONDITIONS from 'constants/conditions';
+import formatAddress from 'utils/address';
+
+const DataCard = ({ label, data }) => (
+  !!data
+    ? <Card.Text>
+        {label}: {data}
+      </Card.Text>
+    : null
+);
 
 const UserList = ({ users, isDev }) => (
   <Accordion>
@@ -26,22 +35,18 @@ const UserList = ({ users, isDev }) => (
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={user.uid}>
           <Card.Body>
-            <Card.Text>Email: {user.email}</Card.Text>
-            <Card.Text>ID: {user.uid}</Card.Text>
-            <Card.Text>fullName: {user.fullName}</Card.Text>
-            <Card.Text>phone: {user.phone}</Card.Text>
-            <Card.Text>address: {user.address}</Card.Text>
-            <Card.Text>apt: {user.apt}</Card.Text>
-            <Card.Text>city: {user.city}</Card.Text>
-            <Card.Text>state: {user.state}</Card.Text>
-            <Card.Text>zip: {user.zip}</Card.Text>
-            <Card.Text>license: {user.license}</Card.Text>
+            <DataCard label='Email' data={user.email} />
+            <DataCard label='ID' data={user.uid} />
+            <DataCard label='Full Name' data={user.fullName} />
+            <DataCard label='Phone Number' data={user.phone} />
+            <DataCard label='Address' data={formatAddress(user)} />
+            <DataCard label='License No' data={user.license} />
             {user.contract &&
               <>
-                <Card.Text>contractData... </Card.Text>
-                <Card.Text>signature: {user.contract.signature}</Card.Text>
-                <Card.Text>vehicle: {user.contract.vehicle}</Card.Text>
-                <Card.Text>date: {user.contract.date}</Card.Text>
+                <Card.Text>Contract data below: </Card.Text>
+                <DataCard label='Signature' data={user.contract.signature} />
+                <DataCard label='Vehicle' data={user.contract.vehicle} />
+                <DataCard label='Date' data={user.contract.date} />
               </>}
             {user.roles && Object.keys(user.roles).map((role, index) =>
               <Badge
