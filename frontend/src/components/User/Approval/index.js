@@ -40,10 +40,7 @@ class ApprovalPage extends Component {
   onToggleApproval = () => {
     const { user } = this.state;
 
-    const roles = {
-      ...user.roles,
-    };
-
+    const roles = { ...user.roles };
     if (roles[ROLES.APPROVED]) {
       delete roles[ROLES.APPROVED];
     } else {
@@ -51,13 +48,12 @@ class ApprovalPage extends Component {
     }
 
     user.roles = roles;
-    this.setState({ user });
     this.props.firebase
       .user(user.uid)
       .set({
         ...user,
       })
-      .then(() => console.log('updated approval!'))
+      .then(() => this.setState({ user }))
       .catch(error => console.log(error));
   }
 

@@ -12,6 +12,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import { withFirebase } from 'api/Firebase';
 import * as CONTRACT from 'constants/contractText';
 import * as ROUTES from 'constants/routes';
+import formatAddress from 'utils/address';
 
 const stages = {
   FORM: 0,
@@ -42,12 +43,6 @@ const INITIAL_STATE = {
   maxStage: stages.FORM,
 };
 
-const toFullAddress = (formData) => {
-  const { address, apt, city, state, zip } = formData;
-  const streetAddress = apt ? `${address}, ${apt}` : address;
-  return `${streetAddress}, ${city}, ${state} ${zip}`;
-}
-
 class ContractPage extends Component {
   constructor(props) {
     super(props);
@@ -69,14 +64,6 @@ class ContractPage extends Component {
   };
 
   onSignatureSubmit = userInfo => event => {
-    this.setState({
-      signatureData: {
-        ...userInfo,
-        filled: true,
-      },
-      stage: stages.DONE,
-      maxStage: stages.DONE,
-    });
     event.preventDefault();
 
     const { formData } = this.state;
@@ -101,21 +88,27 @@ class ContractPage extends Component {
             license: formData.license,
             contract,
           })
-          .then(() => console.log('submitted contract!'))
-          .catch(
-            error => {
-              console.log(error);
-              this.setState({
-                stage: stages.SIGNATURE,
-                maxStage: stages.SIGNATURE
-              });
-            }
-          );
+          .then(() => {
+            this.setState({
+              signatureData: {
+                ...userInfo,
+                filled: true,
+              },
+              stage: stages.DONE,
+              maxStage: stages.DONE,
+            });
+            this.props.history.push(ROUTES.CONFIRMATION);
+          })
+          .catch(error => {
+            console.log(error);
+            this.setState({
+              stage: stages.SIGNATURE,
+              maxStage: stages.SIGNATURE
+            });
+          });
       },
       () => this.props.history.push(ROUTES.SIGN_IN)
     );
-
-    this.props.history.push(ROUTES.CONFIRMATION);
   }
 
   onChangeState = delta => event => {
@@ -140,7 +133,7 @@ class ContractPage extends Component {
 
     const progress = (stage + 1) / NUM_STAGES * 100;
     const progressText = `${stage + 1} / ${NUM_STAGES}`;
-    const fullAddress = toFullAddress(formData);
+    const fullAddress = formatAddress(formData);
 
     let stageContent = null;
     switch (stage) {
