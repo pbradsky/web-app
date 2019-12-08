@@ -9,13 +9,16 @@ import * as CONDITIONS from 'constants/conditions';
 const ConfirmationPage = () => (
   <Container>
     <Card>
-      <Card.Header>Confirmation</Card.Header>
       <Card.Body>
-        <Card.Title>All done!</Card.Title>
+      <Card.Title style={{color: '#27A745'}}>All done!</Card.Title>
+        <hr />
+        <Card.Text>
+          Thank you for letting us be a part of your process!
+        </Card.Text>
         <Card.Text>
           Your information has been submitted.
-          Thank you for choosing Jurne, we hope you enjoy the ride!
         </Card.Text>
+
       </Card.Body>
     </Card>
   </Container>

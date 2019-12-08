@@ -17,7 +17,7 @@ const SignInPage = () => (
   <Container>
     <Card>
       <Card.Body>
-        <Card.Title style={{color: '#27A745'}}>Sign Up</Card.Title>
+        <Card.Title style={{color: '#27A745'}}>Sign In</Card.Title>
         <hr />
         <SignInForm />
         <PasswordForgetLink />
