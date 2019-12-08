@@ -7,7 +7,7 @@ const TermsPage = () => (
   <Container>
     <Card>
       <Card.Body>
-        <Card.Title style={{color: '#27A745'}}>Contact Us</Card.Title>
+        <Card.Title style={{color: '#27A745'}}>Terms of Service</Card.Title>
         <hr />
         <Card.Text>Here are our terms of service.</Card.Text>
       </Card.Body>

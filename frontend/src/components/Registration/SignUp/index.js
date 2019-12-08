@@ -14,8 +14,9 @@ import * as ROLES from 'constants/roles';
 const SignUpPage = () => (
   <Container>
     <Card>
-      <Card.Header>Sign Up</Card.Header>
       <Card.Body>
+        <Card.Title style={{color: '#27A745'}}>Sign Up</Card.Title>
+        <hr />
         <SignUpForm />
       </Card.Body>
     </Card>
@@ -160,15 +161,6 @@ class SignUpFormBase extends Component {
               onChange={this.onChangeCheckbox}
               type='checkbox'
               label='Admin'
-            />
-          </Form.Group>
-          <Form.Group className='col-3'>
-            <Form.Check
-              name='isApproved'
-              checked={isApproved}
-              onChange={this.onChangeCheckbox}
-              type='checkbox'
-              label='Approved'
             />
           </Form.Group>
           <Form.Group className='col-3'>
