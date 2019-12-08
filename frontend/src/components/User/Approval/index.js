@@ -66,7 +66,7 @@ class ApprovalPage extends Component {
         {user &&
           <>
             <Jumbotron>
-              <h1>User Approval</h1>
+              <h1>User Details</h1>
               {user.email}
             </Jumbotron>
             <Row>
