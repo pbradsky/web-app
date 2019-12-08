@@ -7,6 +7,8 @@ import UserList from 'components/User/UserList';
 import Loading from 'components/Util/Loading';
 import Search from 'components/Util/Search';
 
+import jumboimage from 'components/Landing/jumbo.jpg'
+
 import { withAuthorization } from 'api/Session';
 import { withFirebase } from 'api/Firebase';
 import * as CONDITIONS from 'constants/conditions';
@@ -59,11 +61,11 @@ class AdminPage extends Component {
 
     return (
       <Container>
-        <Jumbotron>
-          <h3>Admin Page</h3>
-          <p className='body-secondary'>
-            This page is only accessible to signed in admin users.
-          </p>
+        <Jumbotron style={{ backgroundImage: `url(${jumboimage})`, backgroundSize: 'cover' }}>
+          <h1 style={{color: 'white'}}>Admin</h1>
+          <p style={{color: 'white'}}>This page is only accessible to Admins.</p>
+          <hr className='col-6' style={{float: 'left', borderColor: 'white'}} />
+          <br /><br />
         </Jumbotron>
         <Loading loading={loading} />
         <Search searchQuery={searchQuery} onChange={this.onChange} />
