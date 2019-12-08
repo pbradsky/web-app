@@ -109,7 +109,7 @@ class SignUpFormBase extends Component {
     return (
       <Form onSubmit={this.onSubmit}>
         <Form.Row>
-          <Form.Group className='col-md-6'>
+          <Form.Group className='col-md-12 col-lg-6'>
             <Form.Label>Full Name</Form.Label>
             <Form.Control
               name='username'
@@ -119,7 +119,7 @@ class SignUpFormBase extends Component {
               placeholder='Full Name'
             />
           </Form.Group>
-          <Form.Group className='col-md-6'>
+          <Form.Group className='col-md-12 col-lg-6'>
             <Form.Label>Email Address</Form.Label>
             <Form.Control
               name='email'
@@ -181,7 +181,7 @@ class SignUpFormBase extends Component {
             />
           </Form.Group>
         </Form.Row>
-        <Button disabled={isInvalid} type='submit'>
+        <Button disabled={isInvalid} type='submit' variant='success'>
           Sign Up
         </Button>
         <br /><br />
@@ -198,16 +198,12 @@ const SignUpForm = compose(
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up!</Link>
+    Don't have an account? <Link to={ROUTES.SIGN_UP}style={{color: '#27A745', textDecoration: 'none'}}>
+      Sign Up!
+    </Link>
   </p>
-);
-
-const JoinNowButton = () => (
-  <Link to={ROUTES.SIGN_UP}>
-    <Button variant="primary" className="m-2">Join Now</Button>
-  </Link>
 );
 
 export default SignUpPage;
 
-export { SignUpForm, SignUpLink, JoinNowButton };
+export { SignUpForm, SignUpLink };

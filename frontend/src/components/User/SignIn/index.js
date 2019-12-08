@@ -16,7 +16,7 @@ import * as ROUTES from 'constants/routes';
 const SignInPage = () => (
   <Container>
     <Card>
-      <Card.Header>Sign In</Card.Header>
+      <Card.Header as='h4'>Sign In</Card.Header>
       <Card.Body>
         <SignInForm />
         <PasswordForgetLink />
@@ -98,7 +98,7 @@ class SignInFormBase extends Component {
           placeholder='Password'
         />
         <br />
-        <Button disabled={isInvalid} type='submit' variant='primary'>
+        <Button disabled={isInvalid} type='submit' variant='success'>
           Sign In
         </Button>
         <br /><br />
@@ -108,12 +108,6 @@ class SignInFormBase extends Component {
   }
 }
 
-const SignInButton = () => (
-  <Link to={ROUTES.SIGN_IN}>
-    <Button variant='outline-primary'>Sign In</Button>
-  </Link>
-);
-
 const SignInForm = compose(
   withRouter,
   withFirebase,
@@ -121,4 +115,4 @@ const SignInForm = compose(
 
 export default SignInPage;
 
-export { SignInForm, SignInButton };
+export { SignInForm };
