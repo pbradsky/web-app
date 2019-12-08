@@ -99,7 +99,6 @@ class SignUpFormBase extends Component {
       passwordOne,
       passwordTwo,
       isAdmin,
-      isApproved,
       isDev,
       error,
     } = this.state;
