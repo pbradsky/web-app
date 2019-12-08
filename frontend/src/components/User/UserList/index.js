@@ -18,7 +18,7 @@ const DataCard = ({ label, data }) => (
 
 const UserList = ({ users, isDev }) => (
   <Accordion>
-    <Card bg='secondary' text='white'>
+    <Card bg='success' text='white'>
       <Card.Header as='h3'>User List</Card.Header>
     </Card>
     {users.map(user => (
@@ -35,25 +35,34 @@ const UserList = ({ users, isDev }) => (
               className='p-2'>INCOMPLETE</Badge>}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={user.uid}>
-          <Card.Body>
-            <DataCard label='Email' data={user.email} />
-            <DataCard label='ID' data={user.uid} />
-            <DataCard label='Full Name' data={user.fullName} />
-            <DataCard label='Phone Number' data={user.phone} />
-            <DataCard label='Address' data={formatAddress(user)} />
-            <DataCard label='License No' data={user.license} />
+            <Card.Body>
+              <Card className='m-2'>
+                <Card.Body>
+                  <Card.Title style={{color: '#27A745'}}>Account Info</Card.Title>
+                  <hr />
+                  <DataCard label='Full Name' data={user.fullName} />
+                  <DataCard label='Email' data={user.email} />
+                  <DataCard label='Phone Number' data={user.phone} />
+                  <DataCard label='Address' data={formatAddress(user)} />
+                  <DataCard label='License No' data={user.license} />
+                  <DataCard label='ID' data={user.uid} />
+                </Card.Body>
+              </Card>
             {user.contract &&
-              <>
-                <Card.Text>Contract data below: </Card.Text>
-                <DataCard label='Signature' data={user.contract.signature} />
-                <DataCard label='Vehicle' data={user.contract.vehicle} />
-                <DataCard label='Date' data={user.contract.date} />
-              </>}
+              <Card className='m-2'>
+                <Card.Body>
+                  <Card.Title style={{color: '#27A745'}}>Contract Info</Card.Title>
+                  <hr />
+                  <DataCard label='Signature' data={user.contract.signature} />
+                  <DataCard label='Vehicle' data={user.contract.vehicle} />
+                  <DataCard label='Date' data={user.contract.date} />
+                </Card.Body>
+              </Card>}
             {user.roles && Object.keys(user.roles).map((role, index) =>
               <Badge
                 key={index}
-                variant='primary'
-                className='m-1 p-2'>{role}</Badge>
+                variant='success'
+                className='m-2 p-2'>{role}</Badge>
             )}
             <ApprovalLink isDev={isDev} uid={user.uid} />
           </Card.Body>
