@@ -7,7 +7,7 @@ import UserList from 'components/User/UserList';
 import Loading from 'components/Util/Loading';
 import Search from 'components/Util/Search';
 
-import jumboimage from 'components/Landing/jumbo.jpg';
+import jumboimage from 'assets/jumbo.jpg';
 
 import { withAuthorization } from 'api/Session';
 import { withFirebase } from 'api/Firebase';

@@ -8,7 +8,7 @@ import Container from 'styled/Container';
 import PasswordChangeCard from '../PasswordChange';
 import DeleteAccountCard from '../DeleteAccount';
 
-import jumboimage from 'components/Landing/jumbo.jpg';
+import jumboimage from 'assets/jumbo.jpg';
 
 import { withAuthorization, AuthUserContext } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
