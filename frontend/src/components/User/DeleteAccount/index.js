@@ -16,8 +16,9 @@ const INITIAL_STATE = {
 
 const DeleteAccountCard = props => (
   <Card>
-    <Card.Header>Delete Account</Card.Header>
     <Card.Body>
+      <Card.Title style={{color: '#27A745'}}>Delete Account</Card.Title>
+      <hr />
       <DeleteAccountForm {...props} />
     </Card.Body>
   </Card>
@@ -65,7 +66,7 @@ class DeleteAccountForm extends Component {
               placeholder='Email Address'
             />
             <br />
-            <Button disabled={isInvalid(authUser)} type='submit'>
+            <Button disabled={isInvalid(authUser)} variant='success' type='submit'>
               Delete Account
             </Button>
             <br />

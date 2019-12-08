@@ -8,6 +8,8 @@ import Container from 'styled/Container';
 import PasswordChangeCard from '../PasswordChange';
 import DeleteAccountCard from '../DeleteAccount';
 
+import jumboimage from 'components/Landing/jumbo.jpg';
+
 import { withAuthorization, AuthUserContext } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
 
@@ -15,9 +17,11 @@ const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
       <Container>
-        <Jumbotron>
-          <h1>Account Page</h1>
-          {authUser.email}
+        <Jumbotron style={{ backgroundImage: `url(${jumboimage})`, backgroundSize: 'cover' }}>
+          <h1 style={{color: 'white'}}>Account Settings</h1>
+          <p style={{color: 'white'}}>{authUser.email}</p>
+          <hr className='col-6' style={{float: 'left', borderColor: 'white'}} />
+          <br /><br />
         </Jumbotron>
         <Row>
             <Col md>

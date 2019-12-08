@@ -170,18 +170,20 @@ class ContractPage extends Component {
     return (
       <Container>
         <Card>
-          <Card.Header as='h4'>
+          <Card.Header style={{color: '#27A745'}} as='h3'>
             Contract
-            <br /><br />
-            <ProgressBar now={progress} label={progressText} />
+            <hr />
+            <ProgressBar variant='success' now={progress} label={progressText} />
             <br />
             <Button
+              variant='success'
               className='mr-2'
               disabled={stage <= 0}
               onClick={this.onChangeState(-1)}>
                 Back
             </Button>
             <Button
+              variant='success'
               className='ml-2'
               disabled={stage >= maxStage}
               onClick={this.onChangeState(1)}>
@@ -191,6 +193,23 @@ class ContractPage extends Component {
           <Card.Body style={{whiteSpace: 'pre-line'}}>
             {stageContent}
           </Card.Body>
+          <Card.Footer>
+            <br />
+            <Button
+              variant='success'
+              className='mr-2'
+              disabled={stage <= 0}
+              onClick={this.onChangeState(-1)}>
+                Back
+            </Button>
+            <Button
+              variant='success'
+              className='ml-2'
+              disabled={stage >= maxStage}
+              onClick={this.onChangeState(1)}>
+                Forward
+            </Button>
+          </Card.Footer>
         </Card>
       </Container>
     );
