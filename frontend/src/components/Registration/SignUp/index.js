@@ -7,6 +7,8 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Container from 'styled/Container';
 
+import SignInLink from 'components/User/SignInLink';
+
 import { withFirebase } from 'api/Firebase';
 import * as ROUTES from 'constants/routes';
 import * as ROLES from 'constants/roles';
@@ -18,6 +20,7 @@ const SignUpPage = () => (
         <Card.Title style={{color: '#27A745'}}>Sign Up</Card.Title>
         <hr />
         <SignUpForm />
+        <SignInLink />
       </Card.Body>
     </Card>
   </Container>
@@ -190,7 +193,7 @@ const SignUpForm = compose(
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}style={{color: '#27A745', textDecoration: 'none'}}>
+    Don't have an account? <Link to={ROUTES.SIGN_UP} style={{color: '#27A745', textDecoration: 'none'}}>
       Sign Up!
     </Link>
   </p>

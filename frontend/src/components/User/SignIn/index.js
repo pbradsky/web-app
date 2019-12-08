@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import Button from 'react-bootstrap/Button';
@@ -16,8 +16,9 @@ import * as ROUTES from 'constants/routes';
 const SignInPage = () => (
   <Container>
     <Card>
-      <Card.Header as='h4'>Sign In</Card.Header>
       <Card.Body>
+        <Card.Title style={{color: '#27A745'}}>Sign Up</Card.Title>
+        <hr />
         <SignInForm />
         <PasswordForgetLink />
         <SignUpLink />
