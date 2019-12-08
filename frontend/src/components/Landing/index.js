@@ -8,7 +8,7 @@ import Container from 'styled/Container';
 import JumboButton from 'styled/JumboButton';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
-import jumboimage from '../jumbo.jpg';
+import jumboimage from './jumbo.jpg';
 
 import * as ROUTES from 'constants/routes';
 
