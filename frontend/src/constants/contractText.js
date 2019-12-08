@@ -3,24 +3,21 @@ AGREEMENT FOR DEMONSTRATION USE OF VEHICLE
 
 In consideration of the agreements contained herein, Dealer hereby permits Operator to possess and use the motor behicle descibed herein upon the terms and conditions set forth on both sides of this agreement.
 
-1.	Dealer and Operator expressly agree that for the term of this agreement Operator is not and does not become an agent, servant, or employee of Dealer in any manner whatsoever.
-2.	Operator acknowledges that the vehicle is the rightful property of Dealer although registered title may be in some third party, and further acknowledges that he received said vehicle in good and safe mechanical condition and agrees that he will return said vehicle to Dealer at Dealer’s address herein the same condition as he received it, ordinary wear and tear excepted, on the return date stated or sooner upon demand of Dealer. In states where the law is so applicable, Operator acknowledges that failure to promptly return the vehicle may result in criminal prosecution after notification pursuant to said laws.
-3.	Operator agrees that the vehicle will not be operated in violation of any law governing the use or return thereof, or in violation of any of the other terms and conditions set forth above.
-4.	Operator agrees that he will not operate the vehicle outside the state of Washington.
-5.	Operator expressly agrees that the motor vehicle given to him shall not be operated:
-a.	To carry passengers for a consideration, express or implied, or in connection with the Operator’s employment;
-b.	In violation of any terms and conditions of this agreement;
-c.	In any race or speed test or contest;
-d.	To propel or tow any trailer or vehicle used as a trailer;
-e.	By any person under the influence of intoxicants or narcotics;
-f.	By any person with a suspended or revoked or invalid driver’s license;
-g.	For any illegal purpose;
-h.	By any minor or anyone other than the Operator.
-6.	The Dealer is not providing insurance of any nature or kind including but not limited to collision or public liability insurance. Operator must have his own insurance in order to be protected.
-7.	Operator agrees to replace gasoline used if the vehicle is driven over 50 miles.
-
-(This form must be carried in the vehicle at all times it is operated by you)
-KEEP THIS FORM IN THE GLOVE COMPARTMENT OF THE VEHICLE YOU ARE USING
+  1.	Dealer and Operator expressly agree that for the term of this agreement Operator is not and does not become an agent, servant, or employee of Dealer in any manner whatsoever.
+  2.	Operator acknowledges that the vehicle is the rightful property of Dealer although registered title may be in some third party, and further acknowledges that he received said vehicle in good and safe mechanical condition and agrees that he will return said vehicle to Dealer at Dealer’s address herein the same condition as he received it, ordinary wear and tear excepted, on the return date stated or sooner upon demand of Dealer. In states where the law is so applicable, Operator acknowledges that failure to promptly return the vehicle may result in criminal prosecution after notification pursuant to said laws.
+  3.	Operator agrees that the vehicle will not be operated in violation of any law governing the use or return thereof, or in violation of any of the other terms and conditions set forth above.
+  4.	Operator agrees that he will not operate the vehicle outside the state of Washington.
+  5.	Operator expressly agrees that the motor vehicle given to him shall not be operated:
+  a.	To carry passengers for a consideration, express or implied, or in connection with the Operator’s employment;
+  b.	In violation of any terms and conditions of this agreement;
+  c.	In any race or speed test or contest;
+  d.	To propel or tow any trailer or vehicle used as a trailer;
+  e.	By any person under the influence of intoxicants or narcotics;
+  f.	By any person with a suspended or revoked or invalid driver’s license;
+  g.	For any illegal purpose;
+  h.	By any minor or anyone other than the Operator.
+  6.	The Dealer is not providing insurance of any nature or kind including but not limited to collision or public liability insurance. Operator must have his own insurance in order to be protected.
+  7.	Operator agrees to replace gasoline used if the vehicle is driven over 50 miles.
 
 DEALER’S PERMIT FOR DEMONSTRATION
 `;
@@ -57,11 +54,6 @@ Address: 10611 Evergreen Way Everett, WA 98204
 Dealer’s Signature: #0335
 Dealer Number: 425-355-7500
 Date: [todays date]
-
-2016  WSAD Services, Inc. Form #13
-Revised 05/16
-This form is property of WSAD Services, Inc. and is not to be reproduced or copied.
-To reorder, call (800) 998-9723
 `;
 
 export { PREAMBLE, CONTRACT_FORM, SIGNATURE, SIGNATURE_FORM };

@@ -162,7 +162,7 @@ class ContractForm extends Component {
           </Form.Group>
         </Form.Row>
         <Button
-          variant='primary'
+          variant='success'
           onClick={this.props.onSubmit(this.state)}
           disabled={isInvalid}>
           Submit
