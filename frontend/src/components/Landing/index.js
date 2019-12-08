@@ -5,42 +5,38 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Container from 'styled/Container';
+import JumboButton from 'styled/JumboButton';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+
+import jumboimage from '../jumbo.jpg';
 
 import * as ROUTES from 'constants/routes';
 
 
 
+
 const Landing = () => (
   <Container>
-    <Jumbotron>
-      <h1>Welcome</h1>
-      <p>
-        We're glad you're here!
-      </p>
+    <Jumbotron style={{ backgroundImage: `url(${jumboimage})`, backgroundSize: 'cover' }}>
+      <h1 style={{color: 'white'}}>Your drive starts here</h1>
+      <p style={{color: 'white'}}>Time is precious. Why waste it at a desk?</p>
+      <hr className='col-6' style={{float: 'left', borderColor: 'white'}} />
+      <br /><br />
+      <Link to={ROUTES.SIGN_UP}><JumboButton variant='outline-light' size='xl'>JOIN NOW</JumboButton></Link>
     </Jumbotron>
     <CardDeck>
       <Card>
         <Card.Body>
-          <Card.Title>Coming Soon</Card.Title>
+          <Card.Title as='h3' style={{color: '#27A745'}}>Reach out</Card.Title>
           <Card.Text>
-              We are very excited to announce that we will be live in just a few short weeks!
-              <br /><br />
-              All suggestions, questions, comments, critiques, and concerns are appreciated
-              as we prepare to venture out into the world.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <Card>
-        <Card.Body>
-          <Card.Title>Reach Out</Card.Title>
-          <Card.Text>
-            If you have something to say,
+            If you have feedback,
             click the button below to get in touch.
-            <br /><br />
+          </Card.Text>
+          <hr />
+          <Card.Text>
             We're here to listen.
           </Card.Text>
-          <Link to={ROUTES.CONTACT}><Button block variant='secondary'>Contact Us</Button></Link>
+          <Link to={ROUTES.CONTACT} style={{textDecoration: 'none'}}><Button block variant='outline-success'>Contact Us</Button></Link>
         </Card.Body>
       </Card>
     </CardDeck>
