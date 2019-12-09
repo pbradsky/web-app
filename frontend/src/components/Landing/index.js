@@ -18,7 +18,7 @@ const Landing = () => (
       <h1>Your drive starts here</h1>
       <p>Time is precious. Why waste it at a desk?</p>
       <hr />
-      <Link to={ROUTES.SIGN_UP}><Button variant='primary' size='xl'>JOIN NOW</Button></Link>
+      <Link to={ROUTES.SIGN_UP}><Button>JOIN NOW</Button></Link>
     </Jumbotron>
     <CardDeck>
       <Card>
@@ -32,7 +32,7 @@ const Landing = () => (
           <Card.Text>
             We're here to listen.
           </Card.Text>
-          <Link to={ROUTES.CONTACT} style={{textDecoration: 'none'}}><Button variant='outline-primary'>Contact Us</Button></Link>
+          <Link to={ROUTES.CONTACT}><Button variant='outline-primary'>Contact Us</Button></Link>
         </Card.Body>
       </Card>
     </CardDeck>
