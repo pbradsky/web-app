@@ -13,7 +13,7 @@ const ConfirmationPage = () => (
   <Container>
     <Card>
       <Card.Body>
-      <Card.Title style={{color: '#27A745'}}>All done!</Card.Title>
+        <Card.Title>All done!</Card.Title>
         <hr />
         <Card.Text>
           Thank you for letting us be a part of your process!
