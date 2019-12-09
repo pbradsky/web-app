@@ -7,14 +7,10 @@ import Card from 'react-bootstrap/Card';
 
 import jumboimage from 'assets/jumbo.jpg';
 
+import dealers from 'constants/dealers';
 import * as ROUTES from 'constants/routes';
 
-const dealers = [
-  'Klein Honda',
-  'Other Dealer',
-];
-
-const DealerPage = () => (
+const ChooseDealerPage = () => (
   <Container>
     <Jumbotron style={{ backgroundImage: `url(${jumboimage})`, backgroundSize: 'cover' }}>
       <h1 style={{color: 'white'}}>Choose a Dealership</h1>
@@ -22,7 +18,7 @@ const DealerPage = () => (
       <hr className='col-6' style={{float: 'left', borderColor: 'white'}} />
       <br /><br />
     </Jumbotron>
-    <DealerList dealers={dealers} />
+    <DealerList dealers={Object.values(dealers)} />
   </Container>
 );
 
@@ -38,4 +34,4 @@ const DealerList = ({ dealers }) => (
   ))
 );
 
-export default DealerPage;
+export default ChooseDealerPage;

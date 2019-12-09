@@ -9,10 +9,9 @@ import Container from 'styled/Container';
 
 import { withAuthorization } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
-import * as ROLES from 'constants/roles';
 import * as ROUTES from 'constants/routes';
 
-class ApprovalPage extends Component {
+class UserDetailsPage extends Component {
   constructor(props) {
     super(props);
 
@@ -37,26 +36,6 @@ class ApprovalPage extends Component {
       });
   }
 
-  onToggleApproval = () => {
-    const { user } = this.state;
-
-    const roles = { ...user.roles };
-    if (roles[ROLES.APPROVED]) {
-      delete roles[ROLES.APPROVED];
-    } else {
-      roles[ROLES.APPROVED] = ROLES.APPROVED;
-    }
-
-    user.roles = roles;
-    this.props.firebase
-      .user(user.uid)
-      .set({
-        ...user,
-      })
-      .then(() => this.setState({ user }))
-      .catch(error => console.log(error));
-  }
-
   render() {
     const { user, loading } = this.state;
 
@@ -71,10 +50,6 @@ class ApprovalPage extends Component {
             </Jumbotron>
             <Row>
               <Card.Text>{user.username}</Card.Text>
-              <Card.Text>isApproved: {CONDITIONS.isSignedInApprovedUser(user) ? 'YES' : 'NO'}</Card.Text>
-              <Button onClick={this.onToggleApproval}>
-                Toggle Approval
-              </Button>
             </Row>
           </>
         }
@@ -83,13 +58,13 @@ class ApprovalPage extends Component {
   }
 }
 
-const ApprovalLink = ({ isDev, uid }) => (
+const UserDetailsLink = ({ isDev, uid }) => (
   isDev
-    ? <Link to={ROUTES.APPROVAL + `/${uid}`}>
-        <Button>Approval Page</Button>
+    ? <Link to={ROUTES.USER_DETAILS + `/${uid}`}>
+        <Button>User Details Page</Button>
       </Link>
     : null
 );
 
-export { ApprovalLink };
-export default withAuthorization(CONDITIONS.isSignedInDev)(ApprovalPage);
+export { UserDetailsLink };
+export default withAuthorization(CONDITIONS.isSignedInDev)(UserDetailsPage);

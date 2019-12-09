@@ -3,7 +3,7 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
-import { ApprovalLink } from 'components/User/Approval';
+import { UserDetailsLink } from 'components/User/UserDetails';
 
 import * as CONDITIONS from 'constants/conditions';
 import formatAddress from 'utils/address';
@@ -69,7 +69,7 @@ const UserList = ({ users, isDev }) => {
                   variant='success'
                   className='m-2 p-2'>{role}</Badge>
               )}
-              <ApprovalLink isDev={isDev} uid={user.uid} />
+              <UserDetailsLink isDev={isDev} uid={user.uid} />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
