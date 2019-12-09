@@ -21,6 +21,7 @@ const SignUpPage = () => (
         <Card.Title>Sign Up</Card.Title>
         <hr />
         <SignUpForm />
+        <hr />
         <SignInLink />
       </Card.Body>
     </Card>
@@ -146,6 +147,7 @@ class SignUpFormBase extends Component {
             />
           </Form.Group>
         </Form.Row>
+        <br />
         <Form.Row>
           <Form.Group className='col-12'>
             <Form.Check
