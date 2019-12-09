@@ -11,8 +11,7 @@ import * as ROUTES from 'constants/routes';
 const ChooseDealerPage = () => (
   <Container>
     <Jumbotron>
-      <h1>Choose a Dealership</h1>
-      <p>On this page.</p>
+      <h1>Dealership Select</h1>
     </Jumbotron>
     <DealerList dealers={Object.values(dealers)} />
   </Container>
@@ -20,10 +19,10 @@ const ChooseDealerPage = () => (
 
 const DealerList = ({ dealers }) => (
   dealers.map((dealer, index) => (
-    <Link to={ROUTES.CONTRACT} key={index}>
-      <Card>
+    <Link to={ROUTES.CONTRACT} key={index} style={{textDecoration: 'none'}}>
+      <Card bg='primary' text='white'>
         <Card.Body>
-          <Card.Title>{dealer}</Card.Title>
+          <Card.Title className='m-2'>{dealer}</Card.Title>
         </Card.Body>
       </Card>
     </Link>
