@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import getTodaysDate from 'utils/date';
+import { getTodaysDate } from 'utils/date';
 
 const INITIAL_STATE = {
   signature: '',
@@ -27,7 +27,7 @@ class SignatureForm extends Component {
 
   render() {
     const { signature, date } = this.state;
-    const { name } = this.props;
+    const { name, errors } = this.props;
 
     const isInvalid = [
       signature, date
@@ -58,6 +58,7 @@ class SignatureForm extends Component {
           disabled={isInvalid}>
           Submit
         </Button>
+        {errors.map((error, index) => <p key={index}>{error}</p>)}
       </Form>
     );
   }

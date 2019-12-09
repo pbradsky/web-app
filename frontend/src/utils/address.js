@@ -1,4 +1,4 @@
-const formatAddress = (addressData) => {
+const formatAddress = addressData => {
   const { address, apt, city, state, zip } = addressData;
   if (!address)
     return null;

@@ -1,6 +1,9 @@
 const getTodaysDate = () => {
-  const d = new Date();
-  return d.getMonth() + '/' + d.getDate() + '/' + d.getFullYear();
+  const today = new Date();
+  return formatDate(today);
 }
 
-export default getTodaysDate;
+const formatDate = date =>
+  `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+
+export { getTodaysDate, formatDate };
