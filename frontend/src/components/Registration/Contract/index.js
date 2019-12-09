@@ -153,18 +153,24 @@ class ContractPage extends Component {
       case stages.SIGNATURE:
         stageContent = (
           <>
-            <Card.Text style={{overflowY: 'scroll', height:'50%'}}>
-              {CONTRACT.PREAMBLE}
-            </Card.Text>
-            <Card.Text>
-              {CONTRACT.CONTRACT_FORM(name, fullAddress, phone, license)}
-            </Card.Text>
-            <Card.Text>
-              {CONTRACT.SIGNATURE}
-            </Card.Text>
-            <Card.Text>
-              {CONTRACT.SIGNATURE_FORM}
-            </Card.Text>
+            <h4>Dealer's Permit for Demonstration</h4>
+            <Card style={{overflowY: 'scroll', height: '50vh'}}>
+              <Card.Body>
+                <Card.Text>
+                  {CONTRACT.CONTRACT_FORM(name, fullAddress, phone, license)}
+                </Card.Text>
+                <Card.Text>
+                  {CONTRACT.SIGNATURE_FORM}
+                </Card.Text>
+                <Card.Text>
+                  {CONTRACT.SIGNATURE}
+                </Card.Text>
+                <Card.Text>
+                  {CONTRACT.PREAMBLE}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <br />
             <SignatureForm
               onSubmit={this.onSignatureSubmit}
               signatureData={signatureData}

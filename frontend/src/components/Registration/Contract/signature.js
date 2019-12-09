@@ -58,6 +58,7 @@ class SignatureForm extends Component {
           disabled={isInvalid}>
           Submit
         </Button>
+        <br /><br />
         {errors.map((error, index) => <p key={index}>{error}</p>)}
       </Form>
     );

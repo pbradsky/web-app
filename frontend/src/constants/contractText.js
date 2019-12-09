@@ -36,7 +36,7 @@ h.	By any minor or anyone other than the Operator.
 `;
 
 const CONTRACT_FORM = (name, address, phone, license) => `\
-DEALER’S PERMIT FOR DEMONSTRATION
+IMPORTANT: READ BEFORE SIGNING
 
 Operator:
 
@@ -47,8 +47,6 @@ Operator License Number: ${license}
 `;
 
 const SIGNATURE = `\
-IMPORTANT: READ BEFORE SIGNING
-
 The above named operator is authorized to drive the described vehicle for the purpose of purchase during the period indicated below. This permit is subject to inspection by all law enforcement officers when the vehicle is being operated for demonstration.
 
 The undersigned Operator acknowledges that the dealer is not providing any type of insurance protection, including but not liimited to public liability or collision insurance, and is not collecting any charge therefor. The undersigned further acknowledges that the air bag(s) may have been deactivated or an air bag on/off switch may have been installed on this vehicle, that the dealer assumes no responsibility or liability for any such deactivation or installation, and that the dealer is not warranting the operability or reliability of any such air bag deactivation on/off switch.
