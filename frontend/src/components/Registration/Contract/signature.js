@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
+import getTodaysDate from 'utils/date'
+
 const INITIAL_STATE = {
   signature: '',
   vehicle: '',
@@ -57,7 +59,7 @@ class SignatureForm extends Component {
               name='date'
               value={date}
               onChange={this.onChange}
-              placeholder='11/22/2019' />
+              placeholder={getTodaysDate()} />
           </Form.Group>
         </Form.Row>
         <Button
