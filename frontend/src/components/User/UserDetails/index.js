@@ -9,6 +9,7 @@ import Container from 'styled/Container';
 
 import { withAuthorization } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
+import * as ROLES from 'constants/roles';
 import * as ROUTES from 'constants/routes';
 
 class UserDetailsPage extends Component {
@@ -36,6 +37,30 @@ class UserDetailsPage extends Component {
       });
   }
 
+  onToggleRole = role => () => {
+    const { user } = this.state;
+
+    const roles = {
+      ...user.roles,
+    };
+
+    if (roles[role]) {
+      delete roles[role];
+    } else {
+      roles[role] = role;
+    }
+
+    user.roles = roles;
+    this.setState({ user });
+    this.props.firebase
+      .user(user.uid)
+      .set({
+        ...user,
+      })
+      .then(() => console.log(`Updated role '${role}'!`))
+      .catch(error => console.log(error));
+  }
+
   render() {
     const { user, loading } = this.state;
 
@@ -50,6 +75,14 @@ class UserDetailsPage extends Component {
             </Jumbotron>
             <Row>
               <Card.Text>{user.username}</Card.Text>
+              <Card.Text>isAdmin: {CONDITIONS.isSignedInAdmin(user) ? 'YES' : 'NO'}</Card.Text>
+              <Card.Text>isDealer: {CONDITIONS.isSignedInDealer(user) ? 'YES' : 'NO'}</Card.Text>
+              <Button onClick={this.onToggleRole(ROLES.ADMIN)}>
+                Toggle Admin Role
+              </Button>
+              <Button onClick={this.onToggleRole(ROLES.DEALER)}>
+                Toggle Dealer Role
+              </Button>
             </Row>
           </>
         }
