@@ -13,6 +13,7 @@ import SignInLink from 'components/User/SignInLink';
 import { withFirebase } from 'api/Firebase';
 import * as ROUTES from 'constants/routes';
 import * as ROLES from 'constants/roles';
+import { validateCreateUser } from 'utils/validation';
 
 const SignUpPage = () => (
   <Container>
@@ -36,6 +37,7 @@ const INITIAL_STATE = {
   isApproved: false,
   isDealer: false,
   agreeTOS: false,
+  errors: [],
   error: null,
 };
 
@@ -48,6 +50,14 @@ class SignUpFormBase extends Component {
 
   onSubmit = event => {
     const { username, email, passwordOne, isAdmin, isApproved, isDealer } = this.state;
+
+    event.preventDefault();
+
+    const errors = validateCreateUser(email);
+    this.setState({ errors });
+    if (errors.length > 0) {
+      return;
+    }
 
     const roles = {};
     if (isAdmin) {
@@ -84,8 +94,6 @@ class SignUpFormBase extends Component {
       .catch(error => {
         this.setState({ error });
       });
-
-    event.preventDefault();
   }
 
   onChange = event => {
@@ -105,6 +113,7 @@ class SignUpFormBase extends Component {
       isAdmin,
       isDealer,
       agreeTOS,
+      errors,
       error,
     } = this.state;
 
@@ -196,6 +205,7 @@ class SignUpFormBase extends Component {
           Sign Up
         </Button>
         <br /><br />
+        {errors.map((error, index) => <p key={index}>{error}</p>)}
         {error && <p>{error.message}</p>}
       </Form>
     );
