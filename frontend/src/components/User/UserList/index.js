@@ -43,7 +43,7 @@ const UserList = ({ users, isAdmin }) => {
               <Card.Body>
                 <Card className='m-2'>
                   <Card.Body>
-                    <Card.Title style={{color: '#27A745'}}>Account Info</Card.Title>
+                    <Card.Title>Account Info</Card.Title>
                     <hr />
                     <DataCard label='Full Name' data={user.fullName} />
                     <DataCard label='Email' data={user.email} />
@@ -56,7 +56,7 @@ const UserList = ({ users, isAdmin }) => {
               {user.contract &&
                 <Card className='m-2'>
                   <Card.Body>
-                    <Card.Title style={{color: '#27A745'}}>Contract Info</Card.Title>
+                    <Card.Title>Contract Info</Card.Title>
                     <hr />
                     <DataCard label='Signature' data={user.contract.signature} />
                     <DataCard label='Date' data={user.contract.date} />
@@ -65,7 +65,6 @@ const UserList = ({ users, isAdmin }) => {
               {user.roles && Object.keys(user.roles).map((role, index) =>
                 <Badge
                   key={index}
-                  variant='success'
                   className='m-2 p-2'>{role}</Badge>
               )}
               <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />

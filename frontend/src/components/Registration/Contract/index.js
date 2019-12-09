@@ -145,7 +145,7 @@ class ContractPage extends Component {
       case stages.SIGNATURE:
         stageContent = (
           <>
-            <Card.Text>
+            <Card.Text style={{overflowY: 'scroll', height:'50%'}}>
               {CONTRACT.PREAMBLE}
             </Card.Text>
             <Card.Text>
