@@ -7,7 +7,7 @@ const PrivacyPage = () => (
   <Container>
     <Card>
       <Card.Body>
-        <Card.Title style={{color: '#27A745'}}>Privacy Policy</Card.Title>
+        <Card.Title>Privacy Policy</Card.Title>
         <hr />
         <Card.Text>Here is our privacy policy.</Card.Text>
       </Card.Body>

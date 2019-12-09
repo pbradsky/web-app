@@ -5,26 +5,22 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Container from 'styled/Container';
-import JumboButton from 'styled/JumboButton';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-
-import jumboimage from 'assets/jumbo.jpg';
 
 import * as ROUTES from 'constants/routes';
 
 const Landing = () => (
   <Container>
-    <Jumbotron style={{ backgroundImage: `url(${jumboimage})`, backgroundSize: 'cover' }}>
-      <h1 style={{color: 'white'}}>Your drive starts here</h1>
-      <p style={{color: 'white'}}>Time is precious. Why waste it at a desk?</p>
-      <hr className='col-6' style={{float: 'left', borderColor: 'white'}} />
-      <br /><br />
-      <Link to={ROUTES.SIGN_UP}><JumboButton variant='outline-light' size='xl'>JOIN NOW</JumboButton></Link>
+    <Jumbotron>
+      <h1>Your drive starts here</h1>
+      <p>Time is precious. Why waste it at a desk?</p>
+      <hr />
+      <Link to={ROUTES.SIGN_UP}><Button>JOIN NOW</Button></Link>
     </Jumbotron>
     <CardDeck>
       <Card>
         <Card.Body>
-          <Card.Title style={{color: '#27A745'}}>Reach out</Card.Title>
+          <Card.Title>Reach out</Card.Title>
           <hr />
           <Card.Text>
             If you have feedback,
@@ -33,7 +29,7 @@ const Landing = () => (
           <Card.Text>
             We're here to listen.
           </Card.Text>
-          <Link to={ROUTES.CONTACT} style={{textDecoration: 'none'}}><Button block variant='outline-success'>Contact Us</Button></Link>
+          <Link to={ROUTES.CONTACT}><Button variant='outline-primary'>Contact Us</Button></Link>
         </Card.Body>
       </Card>
     </CardDeck>

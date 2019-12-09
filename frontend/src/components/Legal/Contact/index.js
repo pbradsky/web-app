@@ -10,7 +10,7 @@ const ContactPage = () => (
   <Container>
     <Card>
       <Card.Body>
-        <Card.Title style={{color: '#27A745'}}>Contact Us</Card.Title>
+        <Card.Title>Contact Us</Card.Title>
         <hr />
         <ContactForm />
       </Card.Body>
@@ -57,34 +57,34 @@ class ContactFormBase extends Component {
       <Form onSubmit={this.onSubmit}>
         <Form.Label>Full Name</Form.Label>
         <Form.Control
-          name="name"
+          name='name'
           value={name}
           onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
+          type='text'
+          placeholder='Full Name'
         />
         <br />
         <Form.Label>Email Address</Form.Label>
         <Form.Control
-          name="email"
+          name='email'
           value={email}
           onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
+          type='text'
+          placeholder='Email Address'
         />
         <br />
         <Form.Label>Message</Form.Label>
         <Form.Control
-          name="message"
+          name='message'
           value={message}
           onChange={this.onChange}
-          type="text"
-          placeholder="Message (500 character limit)"
+          type='text'
+          placeholder='Message (500 character limit)'
           as='textarea'
           rows='3'
         />
         <br />
-        <Button disabled={isInvalid} variant='success' type="submit">
+        <Button disabled={isInvalid} type='submit'>
           Send
         </Button>
       </Form>
