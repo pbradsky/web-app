@@ -34,7 +34,7 @@ const INITIAL_STATE = {
   passwordTwo: '',
   isAdmin: false,
   isApproved: false,
-  isDev: false,
+  isDealer: false,
   agreeTOS: false,
   error: null,
 };
@@ -47,7 +47,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin, isApproved, isDev } = this.state;
+    const { username, email, passwordOne, isAdmin, isApproved, isDealer } = this.state;
 
     const roles = {};
     if (isAdmin) {
@@ -56,8 +56,8 @@ class SignUpFormBase extends Component {
     if (isApproved) {
       roles[ROLES.APPROVED] = ROLES.APPROVED;
     }
-    if (isDev) {
-      roles[ROLES.DEV] = ROLES.DEV;
+    if (isDealer) {
+      roles[ROLES.DEALER] = ROLES.DEALER;
     }
 
     this.props.firebase
@@ -73,7 +73,9 @@ class SignUpFormBase extends Component {
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        if (isApproved) {
+        if (isDealer || isAdmin) {
+          this.props.history.push(ROUTES.LANDING);
+        } else if (isApproved) {
           this.props.history.push(ROUTES.CONFIRMATION);
         } else {
           this.props.history.push(ROUTES.CHOOSE_DEALER);
@@ -101,7 +103,7 @@ class SignUpFormBase extends Component {
       passwordOne,
       passwordTwo,
       isAdmin,
-      isDev,
+      isDealer,
       agreeTOS,
       error,
     } = this.state;
@@ -182,11 +184,11 @@ class SignUpFormBase extends Component {
           </Form.Group>
           <Form.Group className='col-3'>
             <Form.Check
-              name='isDev'
-              checked={isDev}
+              name='isDealer'
+              checked={isDealer}
               onChange={this.onChangeCheckbox}
               type='checkbox'
-              label='Dev'
+              label='Dealer'
             />
           </Form.Group>
         </Form.Row>

@@ -95,7 +95,7 @@ const NavContent = ({ authUser, setNav, closeNav, isExpanded }) => (
 const NavLinks = ({ authUser, closeNav }) => {
   const isSignedIn = CONDITIONS.isSignedInUser(authUser);
   const isAdmin = CONDITIONS.isSignedInAdmin(authUser);
-  const isDev = CONDITIONS.isSignedInDev(authUser);
+  const isDealer = CONDITIONS.isSignedInDealer(authUser);
 
   return (
     <Nav>
@@ -105,11 +105,11 @@ const NavLinks = ({ authUser, closeNav }) => {
       <NavLinkRoute to={ROUTES.CHOOSE_DEALER} onClick={closeNav} show={isSignedIn}>
         Dealerships
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.DEALER} onClick={closeNav} show={isAdmin}>
+      <NavLinkRoute to={ROUTES.DEALER} onClick={closeNav} show={isDealer}>
         Dealer Dashboard
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.DEV} onClick={closeNav} show={isDev}>
-        Dev Dashboard
+      <NavLinkRoute to={ROUTES.ADMIN} onClick={closeNav} show={isAdmin}>
+        Admin Dashboard
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.ACCOUNT} onClick={closeNav} show={isSignedIn}>
         Account

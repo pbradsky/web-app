@@ -18,7 +18,6 @@ const ConfirmationPage = () => (
         <Card.Text>
           Your information has been submitted.
         </Card.Text>
-
       </Card.Body>
     </Card>
   </Container>

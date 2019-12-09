@@ -1,10 +1,10 @@
+export const ADMIN = '/admin';
 export const ACCOUNT = '/account';
 export const CHOOSE_DEALER = '/choose-dealer';
 export const CONFIRMATION = '/confirmation';
 export const CONTACT = '/contact';
 export const CONTRACT = '/contract';
 export const DEALER = '/dealer';
-export const DEV = '/dev';
 export const LANDING = '/';
 export const PASSWORD_FORGET = '/pw-forget';
 export const PRIVACY = '/privacy';
