@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import AccountPage from 'components/User/Account';
 import AdminPage from 'components/User/Admin';
-import ApprovalPage from 'components/User/Approval';
 import ConfirmationPage from 'components/Registration/Confirmation';
 import ContactPage from 'components/Legal/Contact';
 import ContractPage from 'components/Registration/Contract';
@@ -17,6 +16,7 @@ import PrivacyPage from 'components/Legal/Privacy';
 import SignInPage from 'components/User/SignIn';
 import SignUpPage from 'components/Registration/SignUp';
 import TermsPage from 'components/Legal/Terms';
+import UserDetailsPage from 'components/User/UserDetails';
 
 import { withAuthentication } from 'api/Session';
 import * as ROUTES from 'constants/routes';
@@ -28,7 +28,7 @@ const App = () => (
 
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
-      <Route exact path={ROUTES.APPROVAL + '/:id'} component={ApprovalPage} />
+      <Route exact path={ROUTES.USER_DETAILS + '/:id'} component={UserDetailsPage} />
       <Route path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
       <Route path={ROUTES.CONTACT} component={ContactPage} />
       <Route path={ROUTES.CONTRACT} component={ContractPage} />
