@@ -16,10 +16,10 @@ const ConfirmationPage = () => (
         <Card.Title>All done!</Card.Title>
         <hr />
         <Card.Text>
-          Thank you for letting us be a part of your process!
+          Your information has been processed.
         </Card.Text>
         <Card.Text>
-          Your information has been submitted.
+          If you would like to resubmit the form, press the button below.
         </Card.Text>
         <Link to={ROUTES.CONTRACT}>
           <Button>Edit Contract</Button>
