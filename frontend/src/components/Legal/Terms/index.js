@@ -8,7 +8,7 @@ import * as ROUTES from 'constants/routes';
 
 const agreeTextTOS = (
   <Card.Text>
-    I agree to the <Link to={ROUTES.TERMS}>Terms of Service</Link>.
+    I agree to the <Link to={ROUTES.TERMS} style={{textDecoration: 'none'}}>Terms of Service</Link>.
   </Card.Text>
 );
 
