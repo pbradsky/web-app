@@ -9,9 +9,6 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 
 import * as ROUTES from 'constants/routes';
 
-
-
-
 const Landing = () => (
   <Container>
     <Jumbotron>
