@@ -34,7 +34,6 @@ const INITIAL_STATE = {
   },
   signatureData: {
     signature: '',
-    vehicle: '',
     date: '',
     filled: false,
   },
@@ -74,7 +73,6 @@ class ContractPage extends Component {
     const { formData } = this.state;
     const contract = {
       signature: userInfo.signature,
-      vehicle: userInfo.vehicle,
       date: userInfo.date,
     };
     this.listener = this.props.firebase.onAuthUserListener(

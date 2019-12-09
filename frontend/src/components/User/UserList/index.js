@@ -59,7 +59,6 @@ const UserList = ({ users, isAdmin }) => {
                     <Card.Title style={{color: '#27A745'}}>Contract Info</Card.Title>
                     <hr />
                     <DataCard label='Signature' data={user.contract.signature} />
-                    <DataCard label='Vehicle' data={user.contract.vehicle} />
                     <DataCard label='Date' data={user.contract.date} />
                   </Card.Body>
                 </Card>}

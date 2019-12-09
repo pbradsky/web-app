@@ -8,7 +8,6 @@ import getTodaysDate from 'utils/date';
 
 const INITIAL_STATE = {
   signature: '',
-  vehicle: '',
   date: '',
 };
 
@@ -28,11 +27,11 @@ class SignatureForm extends Component {
   };
 
   render() {
-    const { signature, vehicle, date } = this.state;
+    const { signature, date } = this.state;
     const { name } = this.props;
 
     const isInvalid = [
-      signature, vehicle, date
+      signature, date
     ].some(field => field === '');
 
     return (
