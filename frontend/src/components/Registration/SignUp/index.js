@@ -12,7 +12,6 @@ import SignInLink from 'components/User/SignInLink';
 
 import { withFirebase } from 'api/Firebase';
 import * as ROUTES from 'constants/routes';
-import * as ROLES from 'constants/roles';
 import { validateCreateUser } from 'utils/validation';
 
 const SignUpPage = () => (
@@ -33,9 +32,6 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
-  isAdmin: false,
-  isApproved: false,
-  isDealer: false,
   agreeTOS: false,
   errors: [],
   error: null,
@@ -49,7 +45,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin, isApproved, isDealer } = this.state;
+    const { username, email, passwordOne } = this.state;
 
     event.preventDefault();
 
@@ -57,17 +53,6 @@ class SignUpFormBase extends Component {
     this.setState({ errors });
     if (errors.length > 0) {
       return;
-    }
-
-    const roles = {};
-    if (isAdmin) {
-      roles[ROLES.ADMIN] = ROLES.ADMIN;
-    }
-    if (isApproved) {
-      roles[ROLES.APPROVED] = ROLES.APPROVED;
-    }
-    if (isDealer) {
-      roles[ROLES.DEALER] = ROLES.DEALER;
     }
 
     this.props.firebase
@@ -78,19 +63,12 @@ class SignUpFormBase extends Component {
           .set({
             ...authUser,
             username,
-            email,
-            roles
+            email
           });
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        if (isDealer || isAdmin) {
-          this.props.history.push(ROUTES.LANDING);
-        } else if (isApproved) {
-          this.props.history.push(ROUTES.CONFIRMATION);
-        } else {
-          this.props.history.push(ROUTES.CHOOSE_DEALER);
-        }
+        this.props.history.push(ROUTES.CHOOSE_DEALER);
       })
       .catch(error => {
         this.setState({ error });
@@ -111,8 +89,6 @@ class SignUpFormBase extends Component {
       email,
       passwordOne,
       passwordTwo,
-      isAdmin,
-      isDealer,
       agreeTOS,
       errors,
       error,
@@ -179,26 +155,6 @@ class SignUpFormBase extends Component {
               onChange={this.onChangeCheckbox}
               type='checkbox'
               label={agreeTextTOS}
-            />
-          </Form.Group>
-        </Form.Row>
-        <Form.Row>
-          <Form.Group className='col-3'>
-            <Form.Check
-              name='isAdmin'
-              checked={isAdmin}
-              onChange={this.onChangeCheckbox}
-              type='checkbox'
-              label='Admin'
-            />
-          </Form.Group>
-          <Form.Group className='col-3'>
-            <Form.Check
-              name='isDealer'
-              checked={isDealer}
-              onChange={this.onChangeCheckbox}
-              type='checkbox'
-              label='Dealer'
             />
           </Form.Group>
         </Form.Row>
