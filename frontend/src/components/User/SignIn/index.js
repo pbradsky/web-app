@@ -17,7 +17,7 @@ const SignInPage = () => (
   <Container>
     <Card>
       <Card.Body>
-        <Card.Title style={{color: '#27A745'}}>Sign In</Card.Title>
+        <Card.Title>Sign In</Card.Title>
         <hr />
         <SignInForm />
         <PasswordForgetLink />
@@ -99,7 +99,7 @@ class SignInFormBase extends Component {
           placeholder='Password'
         />
         <br />
-        <Button disabled={isInvalid} type='submit' variant='success'>
+        <Button disabled={isInvalid} type='submit'>
           Sign In
         </Button>
         <br /><br />
