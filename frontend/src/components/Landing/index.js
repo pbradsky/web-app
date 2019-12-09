@@ -12,9 +12,6 @@ import jumboimage from 'assets/jumbo.jpg';
 
 import * as ROUTES from 'constants/routes';
 
-
-
-
 const Landing = () => (
   <Container>
     <Jumbotron style={{ backgroundImage: `url(${jumboimage})`, backgroundSize: 'cover' }}>

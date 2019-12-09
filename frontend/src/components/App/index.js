@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import AdminPage from 'components/User/Admin';
 import AccountPage from 'components/User/Account';
 import ChooseDealerPage from 'components/Registration/ChooseDealer';
 import ConfirmationPage from 'components/Registration/Confirmation';
 import ContactPage from 'components/Legal/Contact';
 import ContractPage from 'components/Registration/Contract';
 import DealerPage from 'components/User/Dealer';
-import DevPage from 'components/User/Dev';
 import Footer from 'components/Navigation/Footer';
 import LandingPage from 'components/Landing';
 import Navigation from 'components/Navigation/Navbar';
@@ -26,6 +26,7 @@ const App = () => (
     <div style={{backgroundColor: '#f9f9f9'}}>
       <Navigation />
 
+      <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route exact path={ROUTES.USER_DETAILS + '/:id'} component={UserDetailsPage} />
       <Route path={ROUTES.CHOOSE_DEALER} component={ChooseDealerPage} />
@@ -33,7 +34,6 @@ const App = () => (
       <Route path={ROUTES.CONTACT} component={ContactPage} />
       <Route path={ROUTES.CONTRACT} component={ContractPage} />
       <Route path={ROUTES.DEALER} component={DealerPage} />
-      <Route path={ROUTES.DEV} component={DevPage} />
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
       <Route path={ROUTES.PRIVACY} component={PrivacyPage} />

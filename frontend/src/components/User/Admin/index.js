@@ -11,7 +11,7 @@ import { withFirebase } from 'api/Firebase';
 import { withAuthorization } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
 
-class DevPage extends Component {
+class AdminPage extends Component {
   constructor(props) {
     super(props);
 
@@ -60,21 +60,21 @@ class DevPage extends Component {
     return (
       <Container>
         <Jumbotron>
-          <h3>Developer Dashboard</h3>
+          <h3>Admin Dashboard</h3>
           <p>
-            This page is only accessible to signed in developers.
+            This page is only accessible to signed in admins.
           </p>
         </Jumbotron>
         <Search searchQuery={searchQuery} onChange={this.onChange} />
         <br />
         <Loading loading={loading} />
-        <UserList users={searchedUsers} isDev={true} />
+        <UserList users={searchedUsers} isAdmin={true} />
       </Container>
     );
   }
 }
 
 export default compose(
-  withAuthorization(CONDITIONS.isSignedInDev),
+  withAuthorization(CONDITIONS.isSignedInAdmin),
   withFirebase
-)(DevPage);
+)(AdminPage);

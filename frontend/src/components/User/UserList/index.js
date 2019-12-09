@@ -16,8 +16,8 @@ const DataCard = ({ label, data }) => (
     : null
 );
 
-const UserList = ({ users, isDev }) => {
-  const filteredUsers = isDev
+const UserList = ({ users, isAdmin }) => {
+  const filteredUsers = isAdmin
     ? users
     : users.filter(CONDITIONS.isDealerViewable);
 
@@ -33,7 +33,7 @@ const UserList = ({ users, isDev }) => {
             style={{cursor: 'pointer'}}
             eventKey={user.uid}>
             {user.username}
-            {isDev && !CONDITIONS.isSignedInApprovedUser(user) &&
+            {isAdmin && !CONDITIONS.isSignedInApprovedUser(user) &&
               <Badge
                 style={{float: 'right'}}
                 variant='warning'
@@ -69,7 +69,7 @@ const UserList = ({ users, isDev }) => {
                   variant='success'
                   className='m-2 p-2'>{role}</Badge>
               )}
-              <UserDetailsLink isDev={isDev} uid={user.uid} />
+              <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />
             </Card.Body>
           </Accordion.Collapse>
         </Card>

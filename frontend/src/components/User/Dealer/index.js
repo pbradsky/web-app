@@ -77,6 +77,6 @@ class DealerPage extends Component {
 }
 
 export default compose(
-  withAuthorization(CONDITIONS.isSignedInAdmin),
+  withAuthorization(CONDITIONS.isSignedInDealer),
   withFirebase
 )(DealerPage);

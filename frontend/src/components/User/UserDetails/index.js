@@ -58,8 +58,8 @@ class UserDetailsPage extends Component {
   }
 }
 
-const UserDetailsLink = ({ isDev, uid }) => (
-  isDev
+const UserDetailsLink = ({ isAdmin, uid }) => (
+  isAdmin
     ? <Link to={ROUTES.USER_DETAILS + `/${uid}`}>
         <Button>User Details Page</Button>
       </Link>
@@ -67,4 +67,4 @@ const UserDetailsLink = ({ isDev, uid }) => (
 );
 
 export { UserDetailsLink };
-export default withAuthorization(CONDITIONS.isSignedInDev)(UserDetailsPage);
+export default withAuthorization(CONDITIONS.isSignedInAdmin)(UserDetailsPage);
