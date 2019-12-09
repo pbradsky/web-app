@@ -82,6 +82,7 @@ const NavContent = ({ authUser, setNav, closeNav, isExpanded }) => (
         alt='jurne logo'
       />
     </Link>
+    <NavName authUser={authUser}/>
     <Navbar.Toggle
       aria-controls='responsive-navbar-nav'
       style={{ border: '0px', outline: 'none' }}
@@ -91,6 +92,15 @@ const NavContent = ({ authUser, setNav, closeNav, isExpanded }) => (
     </Navbar.Collapse>
   </Navbar>
 );
+
+const NavName = ({authUser}) => {
+  const isSignedIn = CONDITIONS.isSignedInUser(authUser);
+  return (
+    isSignedIn
+      ? <Navbar.Brand className="ml-auto"> {authUser.username} </Navbar.Brand>
+      : null
+  )
+}
 
 const NavLinks = ({ authUser, closeNav }) => {
   const isSignedIn = CONDITIONS.isSignedInUser(authUser);
