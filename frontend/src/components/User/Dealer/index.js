@@ -7,8 +7,6 @@ import UserList from 'components/User/UserList';
 import Loading from 'components/Util/Loading';
 import Search from 'components/Util/Search';
 
-import jumboimage from 'assets/jumbo.jpg';
-
 import { withAuthorization } from 'api/Session';
 import { withFirebase } from 'api/Firebase';
 import * as CONDITIONS from 'constants/conditions';
@@ -61,11 +59,9 @@ class DealerPage extends Component {
 
     return (
       <Container>
-        <Jumbotron style={{ backgroundImage: `url(${jumboimage})`, backgroundSize: 'cover' }}>
-          <h1 style={{color: 'white'}}>Dealer Dashboard</h1>
-          <p style={{color: 'white'}}>This page is only accessible to our Dealership partners.</p>
-          <hr className='col-6' style={{float: 'left', borderColor: 'white'}} />
-          <br /><br />
+        <Jumbotron>
+          <h1>Dealer Dashboard</h1>
+          <p>This page is only accessible to our Dealership partners.</p>
         </Jumbotron>
         <Loading loading={loading} />
         <Search searchQuery={searchQuery} onChange={this.onChange} />
