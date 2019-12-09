@@ -13,6 +13,7 @@ import { withFirebase } from 'api/Firebase';
 import * as CONTRACT from 'constants/contractText';
 import * as ROUTES from 'constants/routes';
 import formatAddress from 'utils/address';
+import { validateSignature } from 'utils/validation';
 
 const stages = {
   FORM: 0,
@@ -39,6 +40,7 @@ const INITIAL_STATE = {
   },
   stage: stages.FORM,
   maxStage: stages.FORM,
+  errors: [],
 };
 
 class ContractPage extends Component {
@@ -69,6 +71,12 @@ class ContractPage extends Component {
 
   onSignatureSubmit = userInfo => event => {
     event.preventDefault();
+
+    const errors = validateSignature(userInfo.date);
+    this.setState({ errors });
+    if (errors.length > 0) {
+      return;
+    }
 
     const { formData } = this.state;
     const contract = {
@@ -129,7 +137,7 @@ class ContractPage extends Component {
   }
 
   render() {
-    const { formData, signatureData, stage, maxStage } = this.state;
+    const { formData, signatureData, stage, maxStage, errors } = this.state;
     const { name, phone, license } = formData;
 
     const progress = (stage + 1) / NUM_STAGES * 100;
@@ -160,7 +168,8 @@ class ContractPage extends Component {
             <SignatureForm
               onSubmit={this.onSignatureSubmit}
               signatureData={signatureData}
-              name={name} />
+              name={name}
+              errors={errors} />
           </>
         );
         break;
