@@ -63,6 +63,12 @@ class ContractPage extends Component {
     event.preventDefault();
   };
 
+  componentWillUnmount() {
+    if (this.listener) {
+      this.listener();
+    }
+  }
+
   onSignatureSubmit = userInfo => event => {
     event.preventDefault();
 
