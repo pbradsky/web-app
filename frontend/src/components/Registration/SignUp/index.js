@@ -74,7 +74,7 @@ class SignUpFormBase extends Component {
         if (isApproved) {
           this.props.history.push(ROUTES.CONFIRMATION);
         } else {
-          this.props.history.push(ROUTES.CONTRACT);
+          this.props.history.push(ROUTES.DEALERS);
         }
       })
       .catch(error => {
