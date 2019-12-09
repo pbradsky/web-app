@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
 import getTodaysDate from 'utils/date';
@@ -37,7 +36,7 @@ class SignatureForm extends Component {
     return (
       <Form>
         <Form.Row>
-          <Form.Group as={Col}>
+          <Form.Group className='col-sm-8'>
             <Form.Label>Signature</Form.Label>
             <Form.Control
               name='signature'
@@ -45,7 +44,7 @@ class SignatureForm extends Component {
               onChange={this.onChange}
               placeholder={name} />
           </Form.Group>
-          <Form.Group as={Col}>
+          <Form.Group className='col-sm-4'>
             <Form.Label>Date</Form.Label>
             <Form.Control
               name='date'
