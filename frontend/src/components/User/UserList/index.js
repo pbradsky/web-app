@@ -23,7 +23,7 @@ const UserList = ({ users, isAdmin }) => {
 
   return (
     <Accordion>
-      <Card bg='success' text='white'>
+      <Card bg='primary' text='white'>
         <Card.Header as='h3'>User List</Card.Header>
       </Card>
       {filteredUsers.map(user => (
@@ -36,8 +36,8 @@ const UserList = ({ users, isAdmin }) => {
             {isAdmin && !CONDITIONS.isSignedInApprovedUser(user) &&
               <Badge
                 style={{float: 'right'}}
-                variant='warning'
-                className='p-2'>INCOMPLETE</Badge>}
+                variant='secondary'
+                className='p-2'>Incomplete</Badge>}
           </Accordion.Toggle>
           <Accordion.Collapse eventKey={user.uid}>
               <Card.Body>
@@ -62,12 +62,13 @@ const UserList = ({ users, isAdmin }) => {
                     <DataCard label='Date' data={user.contract.date} />
                   </Card.Body>
                 </Card>}
+                <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />
               {user.roles && Object.keys(user.roles).map((role, index) =>
                 <Badge
+                  variant='secondary'
                   key={index}
                   className='m-2 p-2'>{role}</Badge>
               )}
-              <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />
             </Card.Body>
           </Accordion.Collapse>
         </Card>

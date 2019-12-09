@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Row from 'react-bootstrap/Row';
 import Container from 'styled/Container';
 
 import { withAuthorization } from 'api/Session';
@@ -75,17 +74,22 @@ class UserDetailsPage extends Component {
               <h1>User Details</h1>
               {user.email}
             </Jumbotron>
-            <Row>
-              <Card.Text>{user.username}</Card.Text>
-              <Card.Text>isAdmin: {CONDITIONS.isSignedInAdmin(user) ? 'YES' : 'NO'}</Card.Text>
-              <Card.Text>isDealer: {CONDITIONS.isSignedInDealer(user) ? 'YES' : 'NO'}</Card.Text>
-              <Button onClick={this.onToggleRole(ROLES.ADMIN)}>
-                Toggle Admin Role
-              </Button>
-              <Button onClick={this.onToggleRole(ROLES.DEALER)}>
-                Toggle Dealer Role
-              </Button>
-            </Row>
+            <Card>
+              <Card.Body>
+                <Card.Title>{user.username}</Card.Title>
+                <hr />
+                <Card.Text>Admin Permissions: {CONDITIONS.isSignedInAdmin(user) ? 'Yes' : 'No'}</Card.Text>
+                <Button className='mb-2' onClick={this.onToggleRole(ROLES.ADMIN)}>
+                  Toggle Admin
+                </Button>
+                <hr />
+                <Card.Text>Dealer Permissions: {CONDITIONS.isSignedInDealer(user) ? 'Yes' : 'No'}</Card.Text>
+                <Button className='mb-2' onClick={this.onToggleRole(ROLES.DEALER)}>
+                  Toggle Dealer
+                </Button>
+              </Card.Body>
+
+            </Card>
           </>
         }
       </Container>
@@ -95,8 +99,8 @@ class UserDetailsPage extends Component {
 
 const UserDetailsLink = ({ isAdmin, uid }) => (
   isAdmin
-    ? <Link to={ROUTES.USER_DETAILS + `/${uid}`}>
-        <Button>User Details Page</Button>
+    ? <Link className='m-2' to={ROUTES.USER_DETAILS + `/${uid}`}>
+        <Button size='sm'>Edit User</Button>
       </Link>
     : null
 );
