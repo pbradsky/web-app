@@ -51,11 +51,13 @@ class UserDetailsPage extends Component {
     }
 
     user.roles = roles;
+    console.log(user.roles, roles, user);
     this.setState({ user });
     this.props.firebase
       .user(user.uid)
       .set({
         ...user,
+        roles,
       })
       .then(() => console.log(`Updated role '${role}'!`))
       .catch(error => console.log(error));

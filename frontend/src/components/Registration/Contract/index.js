@@ -17,7 +17,6 @@ import formatAddress from 'utils/address';
 const stages = {
   FORM: 0,
   SIGNATURE: 1,
-  DONE: 2,
 };
 const NUM_STAGES = Object.keys(stages).length;
 
@@ -99,9 +98,7 @@ class ContractPage extends Component {
               signatureData: {
                 ...userInfo,
                 filled: true,
-              },
-              stage: stages.DONE,
-              maxStage: stages.DONE,
+              }
             });
             this.props.history.push(ROUTES.CONFIRMATION);
           })
@@ -138,7 +135,6 @@ class ContractPage extends Component {
     const { name, phone, license } = formData;
 
     const progress = (stage + 1) / NUM_STAGES * 100;
-    const progressText = `${stage + 1} / ${NUM_STAGES}`;
     const fullAddress = formatAddress(formData);
 
     let stageContent = null;
@@ -179,7 +175,7 @@ class ContractPage extends Component {
           <Card.Header style={{color: '#27A745'}} as='h3'>
             Contract
             <hr />
-            <ProgressBar variant='success' now={progress} label={progressText} />
+            <ProgressBar variant='success' now={progress} />
             <br />
             <Button
               variant='success'
