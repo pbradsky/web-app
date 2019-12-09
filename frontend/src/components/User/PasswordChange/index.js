@@ -15,7 +15,7 @@ const INITIAL_STATE = {
 const PasswordChangeCard = props => (
   <Card>
     <Card.Body>
-      <Card.Title style={{color: '#27A745'}}>Change Password</Card.Title>
+      <Card.Title>Change Password</Card.Title>
       <hr />
       <PasswordChangeForm {...props} />
     </Card.Body>
@@ -74,7 +74,7 @@ class PasswordChangeForm extends Component {
           placeholder='Confirm New Password'
         />
         <br />
-        <Button disabled={isInvalid} type="submit" variant='success'>
+        <Button disabled={isInvalid} type='submit'>
           Change My Password
         </Button>
         <br /><br />

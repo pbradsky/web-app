@@ -19,7 +19,7 @@ const SignUpPage = () => (
   <Container>
     <Card>
       <Card.Body>
-        <Card.Title style={{color: '#27A745'}}>Sign Up</Card.Title>
+        <Card.Title>Sign Up</Card.Title>
         <hr />
         <SignUpForm />
         <SignInLink />
@@ -201,7 +201,7 @@ class SignUpFormBase extends Component {
             />
           </Form.Group>
         </Form.Row>
-        <Button disabled={isInvalid} type='submit' variant='success'>
+        <Button disabled={isInvalid} type='submit'>
           Sign Up
         </Button>
         <br /><br />
@@ -219,7 +219,7 @@ const SignUpForm = compose(
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP} style={{color: '#27A745', textDecoration: 'none'}}>
+    Don't have an account? <Link to={ROUTES.SIGN_UP} style={{textDecoration: 'none'}}>
       Sign Up!
     </Link>
   </p>
