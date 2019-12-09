@@ -7,6 +7,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Container from 'styled/Container';
 
+import { agreeTextTOS } from 'components/Legal/Terms';
 import SignInLink from 'components/User/SignInLink';
 
 import { withFirebase } from 'api/Firebase';
@@ -34,6 +35,7 @@ const INITIAL_STATE = {
   isAdmin: false,
   isApproved: false,
   isDev: false,
+  agreeTOS: false,
   error: null,
 };
 
@@ -100,6 +102,7 @@ class SignUpFormBase extends Component {
       passwordTwo,
       isAdmin,
       isDev,
+      agreeTOS,
       error,
     } = this.state;
 
@@ -107,7 +110,8 @@ class SignUpFormBase extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
-      username === '';
+      username === '' ||
+      agreeTOS === false;
 
     return (
       <Form onSubmit={this.onSubmit}>
@@ -152,6 +156,17 @@ class SignUpFormBase extends Component {
               onChange={this.onChange}
               type='password'
               placeholder='Confirm Password'
+            />
+          </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group className='col-12'>
+            <Form.Check
+              name='agreeTOS'
+              checked={agreeTOS}
+              onChange={this.onChangeCheckbox}
+              type='checkbox'
+              label={agreeTextTOS}
             />
           </Form.Group>
         </Form.Row>

@@ -1,7 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 import Container from 'styled/Container';
+
+import * as ROUTES from 'constants/routes';
+
+const agreeTextTOS = (
+  <Card.Text>
+    I agree to the <Link to={ROUTES.TERMS}>Terms of Service</Link>.
+  </Card.Text>
+);
 
 const TermsPage = () => (
   <Container>
@@ -15,4 +24,5 @@ const TermsPage = () => (
   </Container>
 );
 
+export { agreeTextTOS };
 export default TermsPage;
