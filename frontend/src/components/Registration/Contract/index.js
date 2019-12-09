@@ -161,7 +161,8 @@ class ContractPage extends Component {
             </Card.Text>
             <SignatureForm
               onSubmit={this.onSignatureSubmit}
-              signatureData={signatureData} />
+              signatureData={signatureData}
+              name={name} />
           </>
         );
         break;
@@ -172,20 +173,18 @@ class ContractPage extends Component {
     return (
       <Container>
         <Card>
-          <Card.Header style={{color: '#27A745'}} as='h3'>
+          <Card.Header as='h3'>
             Contract
             <hr />
-            <ProgressBar variant='success' now={progress} />
+            <ProgressBar now={progress} />
             <br />
             <Button
-              variant='success'
               className='mr-2'
               disabled={stage <= 0}
               onClick={this.onChangeState(-1)}>
                 Back
             </Button>
             <Button
-              variant='success'
               className='ml-2'
               disabled={stage >= maxStage}
               onClick={this.onChangeState(1)}>
@@ -198,14 +197,12 @@ class ContractPage extends Component {
           <Card.Footer>
             <br />
             <Button
-              variant='success'
               className='mr-2'
               disabled={stage <= 0}
               onClick={this.onChangeState(-1)}>
                 Back
             </Button>
             <Button
-              variant='success'
               className='ml-2'
               disabled={stage >= maxStage}
               onClick={this.onChangeState(1)}>

@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
-import getTodaysDate from 'utils/date'
+import getTodaysDate from 'utils/date';
 
 const INITIAL_STATE = {
   signature: '',
@@ -29,6 +29,7 @@ class SignatureForm extends Component {
 
   render() {
     const { signature, vehicle, date } = this.state;
+    const { name } = this.props;
 
     const isInvalid = [
       signature, vehicle, date
@@ -43,15 +44,7 @@ class SignatureForm extends Component {
               name='signature'
               value={signature}
               onChange={this.onChange}
-              placeholder='Johnny Appleseed' />
-          </Form.Group>
-          <Form.Group as={Col}>
-            <Form.Label>Vehicle</Form.Label>
-            <Form.Control
-              name='vehicle'
-              value={vehicle}
-              onChange={this.onChange}
-              placeholder='Honda Civic' />
+              placeholder={name} />
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Date</Form.Label>
@@ -63,7 +56,6 @@ class SignatureForm extends Component {
           </Form.Group>
         </Form.Row>
         <Button
-          variant='primary'
           onClick={this.props.onSubmit(this.state)}
           disabled={isInvalid}>
           Submit
