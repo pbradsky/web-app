@@ -60,7 +60,7 @@ class DevPage extends Component {
     return (
       <Container>
         <Jumbotron>
-          <h3>Developer Page</h3>
+          <h3>Developer Dashboard</h3>
           <p>
             This page is only accessible to signed in developers.
           </p>

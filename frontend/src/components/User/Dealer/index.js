@@ -13,7 +13,7 @@ import { withAuthorization } from 'api/Session';
 import { withFirebase } from 'api/Firebase';
 import * as CONDITIONS from 'constants/conditions';
 
-class AdminPage extends Component {
+class DealerPage extends Component {
   constructor(props) {
     super(props);
 
@@ -62,8 +62,8 @@ class AdminPage extends Component {
     return (
       <Container>
         <Jumbotron style={{ backgroundImage: `url(${jumboimage})`, backgroundSize: 'cover' }}>
-          <h1 style={{color: 'white'}}>Admin</h1>
-          <p style={{color: 'white'}}>This page is only accessible to Admins.</p>
+          <h1 style={{color: 'white'}}>Dealer Dashboard</h1>
+          <p style={{color: 'white'}}>This page is only accessible to our Dealership partners.</p>
           <hr className='col-6' style={{float: 'left', borderColor: 'white'}} />
           <br /><br />
         </Jumbotron>
@@ -79,4 +79,4 @@ class AdminPage extends Component {
 export default compose(
   withAuthorization(CONDITIONS.isSignedInAdmin),
   withFirebase
-)(AdminPage);
+)(DealerPage);
