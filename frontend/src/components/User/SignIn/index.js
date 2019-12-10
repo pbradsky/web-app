@@ -41,12 +41,6 @@ class SignInFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  componentWillUnmount() {
-    if (this.listener) {
-      this.listener();
-    }
-  }
-
   onSubmit = event => {
     const { email, password } = this.state;
 
@@ -54,13 +48,7 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-
-        this.listener = this.props.firebase.onAuthUserListener(
-          authUser => {
-            this.props.history.push(ROUTES.LANDING)
-          },
-          () => this.props.history.push(ROUTES.SIGN_IN)
-        );
+        this.props.history.push(ROUTES.LANDING)
       })
       .catch(error => {
         this.setState({ error });

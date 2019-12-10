@@ -10,6 +10,7 @@ import SignatureForm from './signature';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 import { withFirebase } from 'api/Firebase';
+import withUser from 'api/Session/withUser';
 import * as CONTRACT from 'constants/contractText';
 import * as ROUTES from 'constants/routes';
 import formatAddress from 'utils/address';
@@ -86,12 +87,6 @@ class ContractPage extends Component {
     }
   }
 
-  componentWillUnmount() {
-    if (this.listener) {
-      this.listener();
-    }
-  }
-
   onSignatureSubmit = userInfo => event => {
     event.preventDefault();
 
@@ -106,41 +101,32 @@ class ContractPage extends Component {
       signature: userInfo.signature,
       date: userInfo.date,
     };
-    this.listener = this.props.firebase.onAuthUserListener(
-      authUser => {
-        this.props.firebase
-          .user(authUser.uid)
-          .set({
-            ...authUser,
-            fullName: formData.name,
-            phone: formData.phone,
-            address: formData.address,
-            apt: formData.apt,
-            city: formData.city,
-            state: formData.state,
-            zip: formData.zip,
-            license: formData.license,
-            contract,
-          })
-          .then(() => {
-            this.setState({
-              signatureData: {
-                ...userInfo,
-                filled: true,
-              }
-            });
-            this.props.history.push(ROUTES.CONFIRMATION);
-          })
-          .catch(error => {
-            console.log(error);
-            this.setState({
-              stage: stages.SIGNATURE,
-              maxStage: stages.SIGNATURE
-            });
-          });
-      },
-      () => this.props.history.push(ROUTES.SIGN_IN)
-    );
+
+    if (this.props.authUser) {
+      this.props.firebase
+        .user(this.props.authUser.uid)
+        .set({
+          ...this.props.authUser,
+          fullName: formData.name,
+          phone: formData.phone,
+          address: formData.address,
+          apt: formData.apt,
+          city: formData.city,
+          state: formData.state,
+          zip: formData.zip,
+          license: formData.license,
+          contract,
+        })
+      this.setState({
+        signatureData: {
+          ...userInfo,
+          filled: true,
+        }
+      });
+      this.props.history.push(ROUTES.CONFIRMATION);
+    } else {
+      this.props.history.push(ROUTES.SIGN_IN)
+    }
   }
 
   onChangeState = delta => event => {
@@ -252,6 +238,7 @@ class ContractPage extends Component {
 }
 
 export default compose(
+  withUser,
   withRouter,
   withFirebase
 )(ContractPage);
