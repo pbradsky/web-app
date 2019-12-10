@@ -65,8 +65,7 @@ class SignUpFormBase extends Component {
         .then(authUser => {
           anonAuthUser.username = username;
           anonAuthUser.email = email;
-          console.log(anonAuthUser);
-          console.log(authUser.user);
+
           return this.props.firebase
             .user(authUser.user.uid)
             .set({
