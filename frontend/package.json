@@ -10,6 +10,7 @@
     "react-dom": "^16.9.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
+    "react-to-print": "^2.5.0",
     "recompose": "^0.30.0",
     "styled-components": "^4.4.1",
     "validator": "^12.1.0"

@@ -97,7 +97,7 @@ const NavName = ({authUser}) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   return (
     isSignedIn
-      ? <Navbar.Brand className="ml-auto"> {authUser.username} </Navbar.Brand>
+      ? <Navbar.Brand className="ml-auto p-0" style={{color: '#7f7f7f', lineHeight: '38px'}}> {authUser.username} </Navbar.Brand>
       : null
   )
 }
