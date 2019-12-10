@@ -29,4 +29,4 @@ const ConfirmationPage = () => (
   </Container>
 );
 
-export default withAuthorization(CONDITIONS.isSignedInUser)(ConfirmationPage);
+export default withAuthorization(CONDITIONS.isUser)(ConfirmationPage);

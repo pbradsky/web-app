@@ -17,7 +17,7 @@ const Landing = () => (
       <h1>Your drive starts here</h1>
       <p>Time is precious. Why waste it at a desk?</p>
       <AuthUserContext.Consumer>
-        {authUser => !CONDITIONS.isSignedInUser(authUser) &&
+        {authUser => !CONDITIONS.isSignedInKnownUser(authUser) &&
           <>
             <hr />
             <Link to={ROUTES.SIGN_UP}><Button>JOIN NOW</Button></Link>

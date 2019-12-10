@@ -79,6 +79,8 @@ class ContractPage extends Component {
             .set({
               uid: authUser.user.uid,
               isAnon: authUser.user.isAnonymous,
+              username: 'Anonymous User',
+              email: 'none',
             });
         })
     }

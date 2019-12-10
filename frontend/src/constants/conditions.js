@@ -1,11 +1,11 @@
 import * as ROLES from './roles';
 
-export const isSignedInUser = authUser => !!authUser;
+export const isUser = authUser => !!authUser;
+export const isSignedInKnownUser = authUser => !!authUser && !authUser.isAnon;
 export const isSignedInAdmin = authUser =>
   !!authUser && !!authUser.roles && !!authUser.roles[ROLES.ADMIN];
 export const isSignedInCompleteUser = authUser =>
-  !!authUser && !!authUser.roles && !!authUser.contract &&
-  !!authUser.contract.signature;
+  !!authUser && !!authUser.contract && !!authUser.contract.signature;
 export const isSignedInDealer = authUser =>
   !!authUser && !!authUser.roles && !!authUser.roles[ROLES.DEALER];
 export const isDealerViewable = user =>

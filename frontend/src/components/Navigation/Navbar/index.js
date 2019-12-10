@@ -94,7 +94,7 @@ const NavContent = ({ authUser, setNav, closeNav, isExpanded }) => (
 );
 
 const NavName = ({authUser}) => {
-  const isSignedIn = CONDITIONS.isSignedInUser(authUser);
+  const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   return (
     isSignedIn
       ? <Navbar.Brand className="ml-auto"> {authUser.username} </Navbar.Brand>
@@ -103,7 +103,7 @@ const NavName = ({authUser}) => {
 }
 
 const NavLinks = ({ authUser, closeNav }) => {
-  const isSignedIn = CONDITIONS.isSignedInUser(authUser);
+  const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   const isAdmin = CONDITIONS.isSignedInAdmin(authUser);
   const isDealer = CONDITIONS.isSignedInDealer(authUser);
 

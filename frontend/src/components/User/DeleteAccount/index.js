@@ -79,6 +79,6 @@ class DeleteAccountForm extends Component {
 }
 
 export default compose(
-  withAuthorization(CONDITIONS.isSignedInUser),
+  withAuthorization(CONDITIONS.isSignedInKnownUser),
   withFirebase
 )(DeleteAccountCard);

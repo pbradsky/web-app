@@ -33,4 +33,4 @@ const AccountPage = () => (
   </AuthUserContext.Consumer>
 );
 
-export default withAuthorization(CONDITIONS.isSignedInUser)(AccountPage);
+export default withAuthorization(CONDITIONS.isSignedInKnownUser)(AccountPage);
