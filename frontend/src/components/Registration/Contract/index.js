@@ -231,12 +231,21 @@ class ContractPage extends Component {
               onClick={this.onChangeState(-1)}>
                 Back
             </Button>
+          { stage === maxStage ?
             <Button
-              className='ml-2'
-              disabled={stage >= maxStage}
-              onClick={this.onChangeState(1)}>
-                Forward
+            className='ml-2'
+            disabled={stage >= NUM_STAGES - 1}
+            onClick={this.onChangeState(1)}>
+              Finish
             </Button>
+          :
+            <Button
+            className='ml-2'
+            disabled={stage >= NUM_STAGES - 1}
+            onClick={this.onChangeState(1)}>
+              Forward
+            </Button>
+          }
           </Card.Header>
           <Card.Body style={{whiteSpace: 'pre-line'}}>
             {stageContent}
@@ -249,12 +258,21 @@ class ContractPage extends Component {
               onClick={this.onChangeState(-1)}>
                 Back
             </Button>
+          { stage === maxStage ?
             <Button
-              className='ml-2'
-              disabled={stage >= maxStage}
-              onClick={this.onChangeState(1)}>
-                Forward
+            className='ml-2'
+            disabled={stage >= maxStage}
+            onClick={this.onChangeState(1)}>
+              Finish
             </Button>
+          :
+            <Button
+            className='ml-2'
+            disabled={stage >= maxStage}
+            onClick={this.onChangeState(1)}>
+              Forward
+            </Button>
+          }
           </Card.Footer>
         </Card>
       </Container>
