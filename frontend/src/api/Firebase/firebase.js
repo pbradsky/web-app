@@ -28,6 +28,9 @@ class Firebase {
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
+  doSignInAnonymously = () =>
+    this.auth.signInAnonymously();
+
   doSignInWithPopup = () => {
     const provider = new app.auth.GoogleAuthProvider();
     this.auth.signInWithPopup(provider);

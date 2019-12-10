@@ -4,6 +4,7 @@ export const CHOOSE_DEALER = '/choose-dealer';
 export const CONFIRMATION = '/confirmation';
 export const CONTACT = '/contact';
 export const CONTRACT = '/contract';
+export const CONTRACT_ONESHOT = '/contract/oneshot';
 export const DEALER = '/dealer';
 export const LANDING = '/';
 export const PASSWORD_FORGET = '/pw-forget';

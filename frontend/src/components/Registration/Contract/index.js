@@ -38,6 +38,7 @@ const INITIAL_STATE = {
     date: '',
     filled: false,
   },
+  oneShot: false,
   stage: stages.FORM,
   maxStage: stages.FORM,
   errors: [],
@@ -47,6 +48,9 @@ class ContractPage extends Component {
   constructor(props) {
     super(props);
 
+    if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
+      INITIAL_STATE.oneShot = true;
+    }
     this.state = { ...INITIAL_STATE };
   }
 
@@ -62,6 +66,23 @@ class ContractPage extends Component {
 
     event.preventDefault();
   };
+
+  componentDidMount() {
+    const { oneShot } = this.state;
+
+    if (oneShot) {
+      this.props.firebase
+        .doSignInAnonymously()
+        .then(authUser => {
+          return this.props.firebase
+            .user(authUser.user.uid)
+            .set({
+              uid: authUser.user.uid,
+              isAnon: authUser.user.isAnonymous,
+            });
+        })
+    }
+  }
 
   componentWillUnmount() {
     if (this.listener) {

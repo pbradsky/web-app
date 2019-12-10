@@ -62,7 +62,7 @@ class SignUpFormBase extends Component {
         return this.props.firebase
           .user(authUser.user.uid)
           .set({
-            uid:authUser.user.uid,
+            uid: authUser.user.uid,
             username,
             email
           });

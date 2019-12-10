@@ -12,7 +12,7 @@ const withAuthentication = Component => {
 
       this.state = {
         authUser: null,
-        loading: false,
+        loading: true,
       };
     }
 

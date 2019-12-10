@@ -32,7 +32,8 @@ const App = () => (
       <Route path={ROUTES.CHOOSE_DEALER} component={ChooseDealerPage} />
       <Route path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
       <Route path={ROUTES.CONTACT} component={ContactPage} />
-      <Route path={ROUTES.CONTRACT} component={ContractPage} />
+      <Route exact path={ROUTES.CONTRACT} component={ContractPage} />
+      <Route exact path={ROUTES.CONTRACT_ONESHOT} component={ContractPage} />
       <Route path={ROUTES.DEALER} component={DealerPage} />
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
