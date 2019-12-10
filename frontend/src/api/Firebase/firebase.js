@@ -54,7 +54,6 @@ class Firebase {
           .once('value')
           .then(snapshot => {
             const dbUser = snapshot.val();
-
             if (!dbUser.roles) {
               dbUser.roles = {};
             }
