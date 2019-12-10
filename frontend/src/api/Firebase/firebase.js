@@ -48,6 +48,11 @@ class Firebase {
   doAccountDelete = () =>
     this.auth.currentUser.delete();
 
+  doLinkWithEmailAndPassword = (email, password) => {
+    const credential = app.auth.EmailAuthProvider.credential(email, password);
+    return this.auth.currentUser.linkWithCredential(credential);
+  }
+
   /* MERGE AUTH AND DB USER INFO */
 
   onAuthUserListener = (next, fallback) =>

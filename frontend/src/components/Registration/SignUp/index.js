@@ -11,6 +11,8 @@ import { agreeTextTOS } from 'components/Legal/Terms';
 import SignInLink from 'components/User/SignInLink';
 
 import { withFirebase } from 'api/Firebase';
+import withUser from 'api/Session/withUser';
+import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
 import { validateCreateUser } from 'utils/validation';
 
@@ -56,24 +58,52 @@ class SignUpFormBase extends Component {
       return;
     }
 
-    this.props.firebase
-      .doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
-        return this.props.firebase
-          .user(authUser.user.uid)
-          .set({
-            uid: authUser.user.uid,
-            username,
-            email
-          });
-      })
-      .then(() => {
-        this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.CHOOSE_DEALER);
-      })
-      .catch(error => {
-        this.setState({ error });
-      });
+    if (CONDITIONS.isSignedInAnonUser(this.props.authUser)) {
+      const anonAuthUser = this.props.authUser;
+      this.props.firebase
+        .doLinkWithEmailAndPassword(email, passwordOne)
+        .then(authUser => {
+          anonAuthUser.username = username;
+          anonAuthUser.email = email;
+          console.log(anonAuthUser);
+          console.log(authUser.user);
+          return this.props.firebase
+            .user(authUser.user.uid)
+            .set({
+              ...anonAuthUser
+            });
+        })
+        .then(() => {
+          this.setState({ ...INITIAL_STATE });
+          if (CONDITIONS.isSignedInCompleteUser(anonAuthUser)) {
+            this.props.history.push(ROUTES.CONFIRMATION);
+          } else {
+            this.props.history.push(ROUTES.CHOOSE_DEALER);
+          }
+        })
+        .catch(error => {
+          this.setState({ error });
+        });
+    } else {
+      this.props.firebase
+        .doCreateUserWithEmailAndPassword(email, passwordOne)
+        .then(authUser => {
+          return this.props.firebase
+            .user(authUser.user.uid)
+            .set({
+              uid: authUser.user.uid,
+              username,
+              email
+            });
+        })
+        .then(() => {
+          this.setState({ ...INITIAL_STATE });
+          this.props.history.push(ROUTES.CHOOSE_DEALER);
+        })
+        .catch(error => {
+          this.setState({ error });
+        });
+    }
   }
 
   onChange = event => {
@@ -172,6 +202,7 @@ class SignUpFormBase extends Component {
 }
 
 const SignUpForm = compose(
+  withUser,
   withRouter,
   withFirebase,
 )(SignUpFormBase);
