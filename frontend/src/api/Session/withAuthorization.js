@@ -6,38 +6,39 @@ import AuthUserContext from './context';
 import { withFirebase } from 'api/Firebase';
 import * as ROUTES from 'constants/routes';
 
-const withAuthorization = condition => Component => {
-    class WithAuthorization extends React.Component {
-        componentDidMount() {
-            this.listener = this.props.firebase.onAuthUserListener(
-                authUser => {
-                    if (!condition(authUser)) {
-                        this.props.history.push(ROUTES.SIGN_IN);
-                    }
-                },
-                () => this.props.history.push(ROUTES.SIGN_IN)
-            );
-        }
-
-        componentWillUnmount() {
-            this.listener();
-        }
-
-        render () {
-            return (
-                <AuthUserContext.Consumer>
-                    {authUser =>
-                        condition(authUser) ? <Component {...this.props} /> : null
-                    }
-                </AuthUserContext.Consumer>
-            );
-        }
+const withAuthorization = (condition, redirect) => Component => {
+  class WithAuthorization extends React.Component {
+    componentDidMount() {
+      const redirectRoute = redirect || ROUTES.SIGN_IN;
+      this.listener = this.props.firebase.onAuthUserListener(
+        authUser => {
+          if (!condition(authUser)) {
+            this.props.history.push(redirectRoute);
+          }
+        },
+        () => this.props.history.push(redirectRoute)
+      );
     }
 
-    return compose(
-        withRouter,
-        withFirebase,
-    )(WithAuthorization);
+    componentWillUnmount() {
+      this.listener();
+    }
+
+    render() {
+      return (
+        <AuthUserContext.Consumer>
+          {authUser =>
+            condition(authUser) ? <Component {...this.props} /> : null
+          }
+        </AuthUserContext.Consumer>
+      );
+    }
+  }
+
+  return compose(
+    withRouter,
+    withFirebase,
+  )(WithAuthorization);
 };
 
 export default withAuthorization;
