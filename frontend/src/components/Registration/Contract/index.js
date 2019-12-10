@@ -11,6 +11,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 
 import { withFirebase } from 'api/Firebase';
 import withUser from 'api/Session/withUser';
+import * as CONDITIONS from 'constants/conditions';
 import * as CONTRACT from 'constants/contractText';
 import * as ROUTES from 'constants/routes';
 import formatAddress from 'utils/address';
@@ -52,7 +53,31 @@ class ContractPage extends Component {
     if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
       INITIAL_STATE.oneShot = true;
     }
-    this.state = { ...INITIAL_STATE };
+    if (!CONDITIONS.isUser(this.props.authUser)) {
+      this.state = { ...INITIAL_STATE };
+    } else {
+      const {
+        fullName, phone, address, apt, city, state, zip, license
+      } = this.props.authUser;
+      this.state = {
+        formData: {
+          name: fullName,
+          phone,
+          address,
+          apt,
+          city,
+          state,
+          zip,
+          license,
+          filled: true,
+        },
+        signatureData: INITIAL_STATE.signatureData,
+        oneShot: INITIAL_STATE.oneShot,
+        stage: INITIAL_STATE.stage,
+        maxStage: stages.SIGNATURE,
+        errors: INITIAL_STATE.errors,
+      };
+    }
   }
 
   onFormSubmit = userInfo => event => {
@@ -71,7 +96,7 @@ class ContractPage extends Component {
   componentDidMount() {
     const { oneShot } = this.state;
 
-    if (oneShot) {
+    if (oneShot && !CONDITIONS.isUser(this.props.authUser)) {
       this.props.firebase
         .doSignInAnonymously()
         .then(authUser => {
