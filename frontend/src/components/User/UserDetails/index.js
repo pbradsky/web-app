@@ -91,9 +91,9 @@ class UserDetailsPage extends Component {
                 <Button className='mb-2' onClick={this.onToggleRole(ROLES.DEALER)}>
                   Toggle Dealer
                 </Button>
-                <hr />
                 {user.contract &&
                   <>
+                    <hr />
                     <ReactToPrint
                       trigger={this.printTrigger}
                       content={() => this.printComponentRef}
