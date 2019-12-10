@@ -41,6 +41,8 @@ class ContractForm extends Component {
 
     return (
       <Form>
+        <h4>Personal Information</h4>
+        <hr />
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>Full Name</Form.Label>
