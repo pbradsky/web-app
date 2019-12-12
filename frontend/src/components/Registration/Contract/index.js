@@ -90,11 +90,9 @@ class ContractPage extends Component {
   }
 
   onFormChange = event => {
-    this.setState({
-      formData: {
-        [event.target.name]: event.target.value
-      }
-    });
+    const { formData } = this.state;
+    formData[event.target.name] = event.target.value;
+    this.setState({ formData });
   }
 
   onSignatureChange = event => {
@@ -103,12 +101,12 @@ class ContractPage extends Component {
     this.setState({ signatureData });
   };
 
-  onFormSubmit = userInfo => event => {
+  onFormSubmit = event => {
+    const { formData } = this.state;
+    formData.filled = true;
+
     this.setState({
-      formData: {
-        ...userInfo,
-        filled: true,
-      },
+      formData,
       stage: stages.SIGNATURE,
       maxStage: stages.SIGNATURE,
     });
@@ -194,7 +192,10 @@ class ContractPage extends Component {
     switch (stage) {
       case stages.FORM:
         stageContent = (
-          <ContractForm onSubmit={this.onFormSubmit} formData={formData} />
+          <ContractForm
+            formData={formData}
+            onChange={this.onFormChange}
+            onSubmit={this.onFormSubmit} />
         );
         break;
       case stages.SIGNATURE:
