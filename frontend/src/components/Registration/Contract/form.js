@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import STATES from 'constants/states';
 
 const INITIAL_STATE = {
-  name: '',
+  fullName: '',
   phone: '',
   address: '',
   apt: '',
@@ -33,10 +33,10 @@ class ContractForm extends Component {
   };
 
   render() {
-    const { name, phone, address, apt, city, state, zip, license } = this.state;
+    const { fullName, phone, address, apt, city, state, zip, license } = this.state;
 
     const isInvalid = [
-      name, phone, address, city, state, zip, license
+      fullName, phone, address, city, state, zip, license
     ].some(field => field === '');
 
     return (
@@ -47,8 +47,8 @@ class ContractForm extends Component {
           <Form.Group as={Col}>
             <Form.Label>Full Name</Form.Label>
             <Form.Control
-              name='name'
-              value={name}
+              name='fullName'
+              value={fullName}
               onChange={this.onChange}
               placeholder='Johnny Appleseed' />
           </Form.Group>
