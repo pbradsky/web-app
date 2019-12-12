@@ -16,6 +16,7 @@ import * as CONTRACT from 'constants/contractText';
 import * as ROUTES from 'constants/routes';
 import formatAddress from 'utils/address';
 import { validateSignature } from 'utils/validation';
+import { sanitizeFormData } from 'utils/sanitize';
 
 const stages = {
   FORM: 0,
@@ -124,9 +125,11 @@ class ContractPage extends Component {
       return;
     }
 
-    const { formData } = this.state;
+    const rawFormData = this.state.formData;
     const contract = { signature, date };
-    delete formData.filled;
+    delete rawFormData.filled;
+
+    const formData = sanitizeFormData(rawFormData);
 
     if (this.props.authUser) {
       this.props.firebase
