@@ -28,27 +28,115 @@ const TermsPage = () => (
         <Card.Text className='text-center'><strong>PLEASE READ THE FOLLOWING TERMS CAREFULLY.</strong></Card.Text>
         <Card.Text><strong>BY CLICKING </strong>“<strong>I ACCEPT,</strong>”<strong> OR BY DOWNLOADING, INSTALLING,
           OR OTHERWISE ACCESSING OR USING THE SERVICE,</strong>
-        </Card.Text>
-        <Card.Text>YOU AGREE THAT YOU HAVE READ AND UNDERSTOOD, AND, AS A CONDITION TO YOUR USE OF THE SERVICE,
+          YOU AGREE THAT YOU HAVE READ AND UNDERSTOOD, AND, AS A CONDITION TO YOUR USE OF THE SERVICE,
           YOU AGREE TO BE BOUND BY, THE FOLLOWING TERMS AND CONDITIONS, INCLUDING JURNE’S PRIVACY POLICY
           (TOGETHER, THESE “<strong>TERMS</strong>”). IF YOU ARE NOT ELIGIBLE, OR DO NOT AGREE TO THE TERMS,
           THEN YOU DO NOT HAVE OUR PERMISSION TO USE THE SERVICE. YOUR USE OF THE SERVICE, AND JURNE’S PROVISION
           OF THE SERVICE TO YOU, CONSTITUTES AN AGREEMENT BY JURNE AND BY YOU TO BE BOUND BY THESE TERMS.
         </Card.Text>
+        <Card.Text>
+          <strong>ARBITRATION NOTICE.</strong> Except for certain kinds of disputes described in Section
+          15, you agree that disputes arising under these Terms will be resolved by binding, individual
+          arbitration, and BY ACCEPTING THESE TERMS, YOU AND JURNE ARE EACH WAIVING THE RIGHT TO A TRIAL
+          BY JURY OR TO PARTICIPATE IN ANY CLASS ACTION OR REPRESENTATIVE PROCEEDING. YOU AGREE TO
+          GIVE UP YOUR RIGHT TO GO TO COURT to assert or defend your rights under this contract (except
+          for matters that may be taken to small claims court). Your rights will be determined by a
+          NEUTRAL ARBITRATOR and NOT a judge or jury. (See Section 15.)
+        </Card.Text>
+        <Card.Text>
+          <strong>ELECTRONIC SIGNATURES.</strong> By agreeing to these Terms, you consent to signing certain
+          legal documents electronically, as further described in Section 6.
+        </Card.Text>
+        <ol className='pl-3'>
+            <li>
+              <strong>Jurne Service Overview.</strong> We offer a platform that is free for consumers who would
+              like to test drive a car (the “Test Drive”) at one of our partner dealerships (the “Dealership”)
+              to fill out the necessary paperwork online (the “Test Drive Application”). In other words, we are an
+              intermediary streamlining the initial interactions between you and the Dealership.
+            </li>
+            <li>
+              <strong>Eligibility.</strong> You must be at least 18 years old and have a valid driver’s
+              license to use the Service. Depending on the Dealership, you may be required to provide additional
+              information such as proof of insurance to complete a Test Drive Application. By agreeing to these
+              Terms, you represent and warrant to us that: (a) you are at least 18 years old; (b) you have a
+              valid driver’s license; (c) you have not previously been suspended or removed from the Service; and
+              (d) your registration and your use of the Service is in compliance with any and all applicable laws
+              and regulations. If you are an entity, organization, or company, the individual accepting these
+              Terms on your behalf represents and warrants that they have authority to bind you to these Terms
+              and you agree to be bound by these Terms.
+            </li>
+            <li>
+              <strong>Accounts and Registration.</strong> To access most features of the Service, you must register
+              for an account. When you register for an account, you may be required to provide us with some
+              information about yourself, such as your name, email address, phone number, or other contact
+              information, and your date of birth. You agree that the information you provide to us is accurate and
+              that you will keep it accurate and up-to-date at all times. When you register, you will be asked to
+              provide a password. You are solely responsible for maintaining the confidentiality of your account
+              and password, and you accept responsibility for all activities that occur under your account. If you
+              believe that your account is no longer secure, then you must immediately notify us at David@thejurne.com.
+            </li>
+            <li>
+              <strong>Licenses</strong>
+                <p>
+                  4.1	<strong>Limited License.</strong> Subject to your complete and ongoing compliance with these Terms, Jurne grants
+                  you, solely for your personal, non-commercial use, a limited, non-exclusive, non-transferable,
+                  non-sublicensable, revocable license to: (a) install and use one object code copy of any mobile
+                  application associated with the Service obtained from a legitimate marketplace (whether installed
+                  by you or pre-installed on your mobile device by the device manufacturer) on a mobile device that
+                  you own or control; and (b) access and use the Service.
+                </p>
+                <p>
+                  4.2 <strong>License Restrictions.</strong> Except and solely to the extent such a restriction is impermissible under
+                  applicable law, you may not: (a) reproduce, distribute, publicly display, or publicly perform the
+                  Service; (b) make modifications to the Service; or (c) interfere with or circumvent any feature of
+                  the Service, including any security or access control mechanism. If you are prohibited under
+                  applicable law from using the Service, you may not use it.
+                </p>
+                <p>
+                  4.3	<strong>Feedback.</strong> If you choose to provide input and suggestions regarding problems with or proposed
+                  modifications or improvements to the Service (“Feedback”), then you hereby grant Jurne an
+                  unrestricted, perpetual, irrevocable, non-exclusive, fully-paid, royalty-free right to exploit the
+                  Feedback in any manner and for any purpose, including to improve the Service and create other
+                  products and services.
+                </p>
+            </li>
+            <li>
+              <strong>Ownership; Proprietary Rights.</strong> The Service is owned and operated by Jurne. The
+              visual interfaces, graphics, design, compilation, information, data, computer code (including
+              source code or object code), products, software, services, and all other elements of the Service
+              (“Materials”) provided by Jurne are protected by intellectual property and other laws. All Materials
+              included in the Service are the property of Jurne or its third party licensors. Except as expressly
+              authorized by Jurne, you may not make use of the Materials. Jurne reserves all rights to the Materials
+              not granted expressly in these Terms.
+            </li>
+            <li>
+              <strong>Consent to E-Signatures.</strong> By signing and submitting a Test Drive Application on the
+              Service, you consent to signing the Test Drive Application electronically and to have Jurne collect,
+              retain, and provide your e-signature to the Dealership for the sole purpose of providing the Service.
+              You represent and warrant that you would only sign the Test Drive Application on your own behalf
+              (or, on behalf of the organization for which you are authorized to sign).
+            </li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+        <Card.Text></Card.Text>
+        <Card.Text></Card.Text>
+        <Card.Text></Card.Text>
+
 
 <Card.Text>
 
-                    Arbitration NOTICE. Except for certain kinds of disputes described in Section 15, you agree that disputes arising under these Terms will be resolved by binding, individual arbitration, and BY ACCEPTING THESE TERMS, YOU AND JURNE ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE IN ANY CLASS ACTION OR REPRESENTATIVE PROCEEDING. YOU AGREE TO GIVE UP YOUR RIGHT TO GO TO COURT to assert or defend your rights under this contract (except for matters that may be taken to small claims court). Your rights will be determined by a NEUTRAL ARBITRATOR and NOT a judge or jury. (See Section 15.)
-                    ELECTRONIC SIGNATURES. By agreeing to these Terms, you consent to signing certain legal documents electronically, as further described in Section 6.
-                    1.	Jurne Service Overview. We offer a platform that is free for consumers who would like to test drive a car (the “Test Drive”) at one of our partner dealerships (the “Dealership”) to fill out the necessary paperwork online (the “Test Drive Application”). In other words, we are an intermediary streamlining the initial interactions between you and the Dealership.
-                    2.	Eligibility. You must be at least 18 years old and have a valid driver’s license to use the Service. Depending on the Dealership, you may be required to provide additional information such as proof of insurance to complete a Test Drive Application. By agreeing to these Terms, you represent and warrant to us that: (a) you are at least 18 years old; (b) you have a valid driver’s license; (c) you have not previously been suspended or removed from the Service; and (d) your registration and your use of the Service is in compliance with any and all applicable laws and regulations. If you are an entity, organization, or company, the individual accepting these Terms on your behalf represents and warrants that they have authority to bind you to these Terms and you agree to be bound by these Terms.
-                    3.	Accounts and Registration. To access most features of the Service, you must register for an account. When you register for an account, you may be required to provide us with some information about yourself, such as your name, email address, phone number, or other contact information, and your date of birth. You agree that the information you provide to us is accurate and that you will keep it accurate and up-to-date at all times. When you register, you will be asked to provide a password. You are solely responsible for maintaining the confidentiality of your account and password, and you accept responsibility for all activities that occur under your account. If you believe that your account is no longer secure, then you must immediately notify us at David@thejurne.com.
-                    4.	Licenses
-                    4.1	Limited License. Subject to your complete and ongoing compliance with these Terms, Jurne grants you, solely for your personal, non-commercial use, a limited, non-exclusive, non-transferable, non-sublicensable, revocable license to: (a) install and use one object code copy of any mobile application associated with the Service obtained from a legitimate marketplace (whether installed by you or pre-installed on your mobile device by the device manufacturer) on a mobile device that you own or control; and (b) access and use the Service.
-                    4.2	License Restrictions. Except and solely to the extent such a restriction is impermissible under applicable law, you may not: (a) reproduce, distribute, publicly display, or publicly perform the Service; (b) make modifications to the Service; or (c) interfere with or circumvent any feature of the Service, including any security or access control mechanism. If you are prohibited under applicable law from using the Service, you may not use it.
-                    4.3	Feedback. If you choose to provide input and suggestions regarding problems with or proposed modifications or improvements to the Service (“Feedback”), then you hereby grant Jurne an unrestricted, perpetual, irrevocable, non-exclusive, fully-paid, royalty-free right to exploit the Feedback in any manner and for any purpose, including to improve the Service and create other products and services.
-                    5.	Ownership; Proprietary Rights. The Service is owned and operated by Jurne. The visual interfaces, graphics, design, compilation, information, data, computer code (including source code or object code), products, software, services, and all other elements of the Service (“Materials”) provided by Jurne are protected by intellectual property and other laws. All Materials included in the Service are the property of Jurne or its third party licensors. Except as expressly authorized by Jurne, you may not make use of the Materials. Jurne reserves all rights to the Materials not granted expressly in these Terms.
-                    6.	Consent to E-Signatures. By signing and submitting a Test Drive Application on the Service, you consent to signing the Test Drive Application electronically and to have Jurne collect, retain, and provide your e-signature to the Dealership for the sole purpose of providing the Service. You represent and warrant that you would only sign the Test Drive Application on your own behalf (or, on behalf of the organization for which you are authorized to sign).
+
+
                     7.	Third Party Terms
                     7.1	Third Party Services and Linked Websites. Jurne may provide tools through the Service that enable you to export information to third party services. By using one of these tools, you agree that Jurne may transfer that information to the applicable third party service. Third party services are not under Jurne’s control, and, to the fullest extent permitted by law, Jurne is not responsible for any third party service’s use of your exported information. The Service may also contain links to third party websites, such as websites of the Dealerships. Linked websites are not under Jurne’s control, and Jurne is not responsible for their content.
                     7.2	Third Party Software. The Service may include or incorporate third party software components that are generally available free of charge under licenses granting recipients broad rights to copy, modify, and distribute those components (“Third Party Components”). Although the Service is provided to you subject to these Terms, nothing in these Terms prevents, restricts, or is intended to prevent or restrict you from obtaining Third Party Components under the applicable third party licenses or to limit your use of Third Party Components under those third party licenses.
