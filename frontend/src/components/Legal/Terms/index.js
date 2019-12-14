@@ -116,8 +116,30 @@ const TermsPage = () => (
               You represent and warrant that you would only sign the Test Drive Application on your own behalf
               (or, on behalf of the organization for which you are authorized to sign).
             </li>
-            <li></li>
-            <li></li>
+            <li>
+              <strong>Third Party Terms</strong>
+                <p>
+                  7.1 <strong>Third Party Services and Linked Websites.</strong> Jurne may provide tools through the Service
+                  that enable you to export information to third party services. By using one of these tools,
+                  you agree that Jurne may transfer that information to the applicable third party service. Third
+                  party services are not under Jurne’s control, and, to the fullest extent permitted by law, Jurne
+                  is not responsible for any third party service’s use of your exported information. The Service
+                  may also contain links to third party websites, such as websites of the Dealerships. Linked
+                  websites are not under Jurne’s control, and Jurne is not responsible for their content.
+                </p>
+                <p>
+                  7.2	<strong>Third Party Software.</strong> The Service may include or incorporate third
+                  party software components that are generally available free of charge under licenses granting
+                  recipients broad rights to copy, modify, and distribute those components (“Third Party
+                  Components”). Although the Service is provided to you subject to these Terms, nothing in these
+                  Terms prevents, restricts, or is intended to prevent or restrict you from obtaining Third Party
+                  Components under the applicable third party licenses or to limit your use of Third Party
+                  Components under those third party licenses.
+                </p>
+            </li>
+            <li>
+              <strong>Communications.</strong>
+            </li>
             <li></li>
             <li></li>
             <li></li>
@@ -137,10 +159,6 @@ const TermsPage = () => (
 
 
 
-                    7.	Third Party Terms
-                    7.1	Third Party Services and Linked Websites. Jurne may provide tools through the Service that enable you to export information to third party services. By using one of these tools, you agree that Jurne may transfer that information to the applicable third party service. Third party services are not under Jurne’s control, and, to the fullest extent permitted by law, Jurne is not responsible for any third party service’s use of your exported information. The Service may also contain links to third party websites, such as websites of the Dealerships. Linked websites are not under Jurne’s control, and Jurne is not responsible for their content.
-                    7.2	Third Party Software. The Service may include or incorporate third party software components that are generally available free of charge under licenses granting recipients broad rights to copy, modify, and distribute those components (“Third Party Components”). Although the Service is provided to you subject to these Terms, nothing in these Terms prevents, restricts, or is intended to prevent or restrict you from obtaining Third Party Components under the applicable third party licenses or to limit your use of Third Party Components under those third party licenses.
-                    8.	Communications.
                     8.1	Push Notifications. When you install our app on your mobile device, you agree to receive push notifications, which are messages an app sends you on your mobile device when the app is not on. You can turn off notifications by visiting your mobile device’s “settings” page.
                     8.2	Email. We will send you emails to notify you when your account is created, to send you a link to recover your account password, or to answer your questions. We may send you emails concerning our products and services, as well as those of third parties. You may opt out of promotional emails by following the unsubscribe instructions in the promotional email itself.
                     9.	Prohibited Conduct. BY USING THE SERVICE YOU AGREE NOT TO:
