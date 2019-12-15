@@ -48,57 +48,60 @@ const TermsPage = () => (
           legal documents electronically, as further described in Section 6.
         </Card.Text>
         <ol className='pl-3'>
-            <li>
-              <strong>Jurne Service Overview.</strong> We offer a platform that is free for consumers who would
-              like to test drive a car (the “Test Drive”) at one of our partner dealerships (the “Dealership”)
-              to fill out the necessary paperwork online (the “Test Drive Application”). In other words, we are an
-              intermediary streamlining the initial interactions between you and the Dealership.
-            </li>
-            <li>
-              <strong>Eligibility.</strong> You must be at least 18 years old and have a valid driver’s
-              license to use the Service. Depending on the Dealership, you may be required to provide additional
-              information such as proof of insurance to complete a Test Drive Application. By agreeing to these
-              Terms, you represent and warrant to us that: (a) you are at least 18 years old; (b) you have a
-              valid driver’s license; (c) you have not previously been suspended or removed from the Service; and
-              (d) your registration and your use of the Service is in compliance with any and all applicable laws
-              and regulations. If you are an entity, organization, or company, the individual accepting these
-              Terms on your behalf represents and warrants that they have authority to bind you to these Terms
-              and you agree to be bound by these Terms.
-            </li>
-            <li>
-              <strong>Accounts and Registration.</strong> To access most features of the Service, you must register
-              for an account. When you register for an account, you may be required to provide us with some
-              information about yourself, such as your name, email address, phone number, or other contact
-              information, and your date of birth. You agree that the information you provide to us is accurate and
-              that you will keep it accurate and up-to-date at all times. When you register, you will be asked to
-              provide a password. You are solely responsible for maintaining the confidentiality of your account
-              and password, and you accept responsibility for all activities that occur under your account. If you
-              believe that your account is no longer secure, then you must immediately notify us at David@thejurne.com.
-            </li>
+          <li>
+            <strong>Jurne Service Overview.</strong> We offer a platform that is free for consumers who would
+            like to test drive a car (the “<strong>Test Drive</strong>”) at one of our partner dealerships (the “<strong>Dealership</strong>”)
+            to fill out the necessary paperwork online (the “<strong>Test Drive Application</strong>”). In other words, we are an
+            intermediary streamlining the initial interactions between you and the Dealership.
+          </li>
+          <li>
+            <strong>Eligibility.</strong> You must be at least 18 years old and have a valid driver’s
+            license to use the Service. Depending on the Dealership, you may be required to provide additional
+            information such as proof of insurance to complete a Test Drive Application. By agreeing to these
+            Terms, you represent and warrant to us that: (a) you are at least 18 years old; (b) you have a
+            valid driver’s license; (c) you have not previously been suspended or removed from the Service; and
+            (d) your registration and your use of the Service is in compliance with any and all applicable laws
+            and regulations. If you are an entity, organization, or company, the individual accepting these
+            Terms on your behalf represents and warrants that they have authority to bind you to these Terms
+            and you agree to be bound by these Terms.
+          </li>
+          <li>
+            <strong>Accounts and Registration.</strong> To access most features of the Service, you must register
+            for an account. When you register for an account, you may be required to provide us with some
+            information about yourself, such as your name, email address, phone number, or other contact
+            information, and your date of birth. You agree that the information you provide to us is accurate and
+            that you will keep it accurate and up-to-date at all times. When you register, you will be asked to
+            provide a password. You are solely responsible for maintaining the confidentiality of your account
+            and password, and you accept responsibility for all activities that occur under your account. If you
+            believe that your account is no longer secure, then you must immediately notify us at david@thejurne.com.
+          </li>
             <li>
               <strong>Licenses</strong>
-                <p>
+              <ol type='decimal'>
+                <li>
                   4.1	<strong>Limited License.</strong> Subject to your complete and ongoing compliance with these Terms, Jurne grants
                   you, solely for your personal, non-commercial use, a limited, non-exclusive, non-transferable,
                   non-sublicensable, revocable license to: (a) install and use one object code copy of any mobile
                   application associated with the Service obtained from a legitimate marketplace (whether installed
                   by you or pre-installed on your mobile device by the device manufacturer) on a mobile device that
                   you own or control; and (b) access and use the Service.
-                </p>
-                <p>
+                </li>
+                <li>
                   4.2 <strong>License Restrictions.</strong> Except and solely to the extent such a restriction is impermissible under
                   applicable law, you may not: (a) reproduce, distribute, publicly display, or publicly perform the
                   Service; (b) make modifications to the Service; or (c) interfere with or circumvent any feature of
                   the Service, including any security or access control mechanism. If you are prohibited under
                   applicable law from using the Service, you may not use it.
-                </p>
-                <p>
+                </li>
+                <li>
                   4.3	<strong>Feedback.</strong> If you choose to provide input and suggestions regarding problems with or proposed
                   modifications or improvements to the Service (“<strong>Feedback</strong>”), then you hereby grant Jurne an
                   unrestricted, perpetual, irrevocable, non-exclusive, fully-paid, royalty-free right to exploit the
                   Feedback in any manner and for any purpose, including to improve the Service and create other
                   products and services.
-                </p>
+                </li>
+              </ol>
+
             </li>
             <li>
               <strong>Ownership; Proprietary Rights.</strong> The Service is owned and operated by Jurne. The
@@ -410,37 +413,105 @@ const TermsPage = () => (
             </li>
             <li>
               <strong>Miscellaneous</strong>
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
+              <p>
+                16.1	<strong>General Terms.</strong> These Terms, together with the Privacy Policy and any
+                other agreements expressly incorporated by reference into these Terms, are the entire and
+                exclusive understanding and agreement between you and Jurne regarding your use of the Service.
+                You may not assign or transfer these Terms or your rights under these Terms, in whole or in part,
+                by operation of law or otherwise, without our prior written consent. We may assign these Terms at
+                any time without notice or consent. These Terms are between you and Jurne (or its assigns), and
+                there are no intended third party beneficiaries under these Terms. The failure to require performance
+                of any provision will not affect our right to require performance at any other time after that, nor
+                will a waiver by us of any breach or default of these Terms, or any provision of these Terms, be a
+                waiver of any subsequent breach or default or a waiver of the provision itself. Use of section
+                headers in these Terms is for convenience only and will not have any impact on the interpretation
+                of any provision. Throughout these Terms the use of the word “including” means “including but not
+                limited to”. If any part of these Terms is held to be invalid or unenforceable, the unenforceable
+                part will be given effect to the greatest extent possible, and the remaining parts will remain in
+                full force and effect.
+              </p>
+              <p>
+                16.2	<strong>Governing Law.</strong> These Terms are governed by the laws of the State of Washington
+                without regard to conflict of law principles. You and Jurne submit to the personal and exclusive
+                jurisdiction of the state courts and federal courts located within King County, Washington for
+                resolution of any lawsuit or court proceeding permitted under these Terms. We operate the Service
+                from our offices in Washington, and we make no representation that Materials included in the Service
+                are appropriate or available for use in other locations.
+              </p>
+              <p>
+                16.3	<strong>Privacy Policy.</strong> Please read the
+                Jurne <Link to={ROUTES.PRIVACY}>Privacy Policy</Link> carefully for information relating to our
+                collection, use, storage, disclosure of your personal information. The Jurne Privacy Policy is
+                incorporated by this reference into, and made a part of, these Terms.
+              </p>
+              <p>
+                16.4	<strong>Additional Terms.</strong> Your use of the Service is subject to all additional
+                terms, policies, rules, or guidelines applicable to the Service or certain features of the
+                Service that we may post on or link to from the Service (the “Additional Terms”). All Additional
+                Terms are incorporated by this reference into, and made a part of, these Terms. For clarity,
+                any terms in the Test Drive Applications or any other Dealership Agreements are not part of
+                these Terms.
+              </p>
+              <p>
+                16.5	<strong>Consent to Electronic Communications.</strong> By using the Service, you consent
+                to receiving certain electronic communications from us as further described in our Privacy
+                Policy. Please read our Privacy Policy to learn more about our electronic communications
+                practices. You agree that any notices, agreements, disclosures, or other communications that
+                we send to you electronically will satisfy any legal communication requirements, including that
+                those communications be in writing.
+              </p>
+              <p>
+                16.6	<strong>Contact Information.</strong> The Service is offered by Jurne, Inc., located at
+                1901 148th St. SE, Mill Creek, WA 98012. You may contact us by sending correspondence to that
+                address or by emailing us at David@thejurne.com.
+              </p>
+              <p>
+               16.7	<strong>Notice to California Residents.</strong> If you are a California resident, under
+               California Civil Code Section 1789.3, you may contact the Complaint Assistance Unit of the
+               Division of Consumer Services of the California Department of Consumer Affairs in writing at
+               1625 N. Market Blvd., Suite S-202, Sacramento, California 95834, or by telephone at (800) 952-5210
+               in order to resolve a complaint regarding the Service or to receive further information regarding
+               use of the Service.
+              </p>
+              <p>
+                16.8	<strong>No Support.</strong> We are under no obligation to provide support for the Service.
+                In instances where we may offer support, the support will be subject to published policies.
+              </p>
+              <p>
+                16.9	<strong>International Use.</strong> The Service is intended for visitors located within
+                the United States. We make no representation that the Service is appropriate or available for
+                use outside of the United States. Access to the Service from countries or territories or by
+                individuals where such access is illegal is prohibited.
+              </p>
             </li>
-            <li></li>
+            <li>
+              <strong>Notice Regarding Apple.</strong> This Section 17 only applies to the extent you are using
+              our mobile application on an iOS device. You acknowledge that these Terms are between you and
+              Jurne only, not with Apple Inc. (“<strong>Apple</strong>”), and Apple is not responsible for the Service or the
+              content thereof. Apple has no obligation to furnish any maintenance and support services with
+              respect to the Service. If the Service fails to conform to any applicable warranty, you may notify
+              Apple and Apple will refund any applicable purchase price for the mobile application to you; and,
+              to the maximum extent permitted by applicable law, Apple has no other warranty obligation with
+              respect to the Service. Apple is not responsible for addressing any claims by you or any third
+              party relating to the Service or your possession and/or use of the Service, including: (a) product
+              liability claims; (b) any claim that the Service fails to conform to any applicable legal or
+              regulatory requirement; or (c) claims arising under consumer protection or similar legislation.
+              Apple is not responsible for the investigation, defense, settlement and discharge of any third
+              party claim that the Service and/or your possession and use of the Service infringe a third party’s
+              intellectual property rights. You agree to comply with any applicable third party terms when using
+              the Service. Apple and Apple’s subsidiaries are third party beneficiaries of these Terms, and upon
+              your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the
+              right) to enforce these Terms against you as a third party beneficiary of these Terms. You hereby
+              represent and warrant that: (i) you are not located in a country that is subject to a U.S. Government
+              embargo, or that has been designated by the U.S. Government as a “terrorist supporting” country;
+              and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.
+            </li>
         </ol>
-        <Card.Text></Card.Text>
-        <Card.Text></Card.Text>
-        <Card.Text></Card.Text>
-
 
 <Card.Text>
 
 
 
-                    16.1	General Terms. These Terms, together with the Privacy Policy and any other agreements expressly incorporated by reference into these Terms, are the entire and exclusive understanding and agreement between you and Jurne regarding your use of the Service. You may not assign or transfer these Terms or your rights under these Terms, in whole or in part, by operation of law or otherwise, without our prior written consent. We may assign these Terms at any time without notice or consent. These Terms are between you and Jurne (or its assigns), and there are no intended third party beneficiaries under these Terms. The failure to require performance of any provision will not affect our right to require performance at any other time after that, nor will a waiver by us of any breach or default of these Terms, or any provision of these Terms, be a waiver of any subsequent breach or default or a waiver of the provision itself. Use of section headers in these Terms is for convenience only and will not have any impact on the interpretation of any provision. Throughout these Terms the use of the word “including” means “including but not limited to”. If any part of these Terms is held to be invalid or unenforceable, the unenforceable part will be given effect to the greatest extent possible, and the remaining parts will remain in full force and effect.
-                    16.2	Governing Law. These Terms are governed by the laws of the State of Washington without regard to conflict of law principles. You and Jurne submit to the personal and exclusive jurisdiction of the state courts and federal courts located within King County, Washington for resolution of any lawsuit or court proceeding permitted under these Terms. We operate the Service from our offices in Washington, and we make no representation that Materials included in the Service are appropriate or available for use in other locations.
-                    16.3	Privacy Policy. Please read the Jurne Privacy Policy [link to privacy policy] carefully for information relating to our collection, use, storage, disclosure of your personal information. The Jurne Privacy Policy is incorporated by this reference into, and made a part of, these Terms.
-                    16.4	Additional Terms. Your use of the Service is subject to all additional terms, policies, rules, or guidelines applicable to the Service or certain features of the Service that we may post on or link to from the Service (the “Additional Terms”). All Additional Terms are incorporated by this reference into, and made a part of, these Terms. For clarity, any terms in the Test Drive Applications or any other Dealership Agreements are not part of these Terms.
-                    16.5	Consent to Electronic Communications. By using the Service, you consent to receiving certain electronic communications from us as further described in our Privacy Policy. Please read our Privacy Policy to learn more about our electronic communications practices. You agree that any notices, agreements, disclosures, or other communications that we send to you electronically will satisfy any legal communication requirements, including that those communications be in writing.
-                    16.6	Contact Information. The Service is offered by Jurne, Inc., located at 1901 148th St. SE, Mill Creek, WA 98012. You may contact us by sending correspondence to that address or by emailing us at David@thejurne.com.
-                    16.7	Notice to California Residents. If you are a California resident, under California Civil Code Section 1789.3, you may contact the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs in writing at 1625 N. Market Blvd., Suite S-202, Sacramento, California 95834, or by telephone at (800) 952-5210 in order to resolve a complaint regarding the Service or to receive further information regarding use of the Service.
-                    16.8	No Support. We are under no obligation to provide support for the Service. In instances where we may offer support, the support will be subject to published policies.
-                    16.9	International Use. The Service is intended for visitors located within the United States. We make no representation that the Service is appropriate or available for use outside of the United States. Access to the Service from countries or territories or by individuals where such access is illegal is prohibited.
-                    17.	Notice Regarding Apple. This Section 17 only applies to the extent you are using our mobile application on an iOS device. You acknowledge that these Terms are between you and Jurne only, not with Apple Inc. (“Apple”), and Apple is not responsible for the Service or the content thereof. Apple has no obligation to furnish any maintenance and support services with respect to the Service. If the Service fails to conform to any applicable warranty, you may notify Apple and Apple will refund any applicable purchase price for the mobile application to you; and, to the maximum extent permitted by applicable law, Apple has no other warranty obligation with respect to the Service. Apple is not responsible for addressing any claims by you or any third party relating to the Service or your possession and/or use of the Service, including: (a) product liability claims; (b) any claim that the Service fails to conform to any applicable legal or regulatory requirement; or (c) claims arising under consumer protection or similar legislation. Apple is not responsible for the investigation, defense, settlement and discharge of any third party claim that the Service and/or your possession and use of the Service infringe a third party’s intellectual property rights. You agree to comply with any applicable third party terms when using the Service. Apple and Apple’s subsidiaries are third party beneficiaries of these Terms, and upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third party beneficiary of these Terms. You hereby represent and warrant that: (i) you are not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a “terrorist supporting” country; and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.
                     </Card.Text>
       </Card.Body>
     </Card>
