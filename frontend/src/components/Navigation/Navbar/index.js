@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavLinkRoute from './navLinkRoute';
 import SignOutButton from 'components/User/SignOut';
+import Badge from 'react-bootstrap/Badge';
 
 import Spread from 'assets/spread.png'
 
@@ -94,16 +95,16 @@ const NavContent = ({ authUser, setNav, closeNav, isExpanded }) => (
 );
 
 const NavName = ({authUser}) => {
-  const isSignedIn = CONDITIONS.isSignedInUser(authUser);
+  const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   return (
     isSignedIn
-      ? <Navbar.Brand className="ml-auto"> {authUser.username} </Navbar.Brand>
+      ? <Badge className="ml-auto mr-3 p-2" variant='primary'> {authUser.username} </Badge>
       : null
   )
 }
 
 const NavLinks = ({ authUser, closeNav }) => {
-  const isSignedIn = CONDITIONS.isSignedInUser(authUser);
+  const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   const isAdmin = CONDITIONS.isSignedInAdmin(authUser);
   const isDealer = CONDITIONS.isSignedInDealer(authUser);
 

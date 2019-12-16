@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ReactToPrint from 'react-to-print';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'styled/Container';
+import PrintableContract from 'components/Registration/Contract/print';
 
 import { withAuthorization } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
@@ -62,6 +64,8 @@ class UserDetailsPage extends Component {
       .catch(error => console.log(error));
   }
 
+  printTrigger = () => <Button className='mb-2'>Print Contract</Button>;
+
   render() {
     const { user, loading } = this.state;
 
@@ -87,8 +91,21 @@ class UserDetailsPage extends Component {
                 <Button className='mb-2' onClick={this.onToggleRole(ROLES.DEALER)}>
                   Toggle Dealer
                 </Button>
+                {user.contract &&
+                  <>
+                    <hr />
+                    <ReactToPrint
+                      trigger={this.printTrigger}
+                      content={() => this.printComponentRef}
+                    />
+                    <div style={{display: 'none'}}>
+                      <PrintableContract
+                        ref={el => (this.printComponentRef = el)}
+                        user={user}
+                      />
+                    </div>
+                  </>}
               </Card.Body>
-
             </Card>
           </>
         }

@@ -33,7 +33,7 @@ const UserList = ({ users, isAdmin }) => {
             style={{cursor: 'pointer'}}
             eventKey={user.uid}>
             {user.username}
-            {isAdmin && !CONDITIONS.isSignedInApprovedUser(user) &&
+            {isAdmin && !CONDITIONS.isSignedInCompleteUser(user) &&
               <Badge
                 style={{float: 'right'}}
                 variant='secondary'

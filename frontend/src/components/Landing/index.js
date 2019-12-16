@@ -7,6 +7,8 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import Container from 'styled/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
+import { AuthUserContext } from 'api/Session';
+import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
 
 const Landing = () => (
@@ -14,8 +16,13 @@ const Landing = () => (
     <Jumbotron>
       <h1>Your drive starts here</h1>
       <p>Time is precious. Why waste it at a desk?</p>
-      <hr />
-      <Link to={ROUTES.SIGN_UP}><Button>JOIN NOW</Button></Link>
+      <AuthUserContext.Consumer>
+        {authUser => !CONDITIONS.isSignedInKnownUser(authUser) &&
+          <>
+            <hr />
+            <Link to={ROUTES.SIGN_UP}><Button>JOIN NOW</Button></Link>
+          </>}
+      </AuthUserContext.Consumer>
     </Jumbotron>
     <CardDeck>
       <Card>

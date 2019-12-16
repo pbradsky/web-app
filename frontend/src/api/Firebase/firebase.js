@@ -28,6 +28,9 @@ class Firebase {
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
+  doSignInAnonymously = () =>
+    this.auth.signInAnonymously();
+
   doSignInWithPopup = () => {
     const provider = new app.auth.GoogleAuthProvider();
     this.auth.signInWithPopup(provider);
@@ -44,6 +47,11 @@ class Firebase {
 
   doAccountDelete = () =>
     this.auth.currentUser.delete();
+
+  doLinkWithEmailAndPassword = (email, password) => {
+    const credential = app.auth.EmailAuthProvider.credential(email, password);
+    return this.auth.currentUser.linkWithCredential(credential);
+  }
 
   /* MERGE AUTH AND DB USER INFO */
 

@@ -5,15 +5,18 @@ import { compose } from 'recompose';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'styled/Container';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import ContractForm from './form';
 import SignatureForm from './signature';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 
 import { withFirebase } from 'api/Firebase';
+import withUser from 'api/Session/withUser';
+import * as CONDITIONS from 'constants/conditions';
 import * as CONTRACT from 'constants/contractText';
 import * as ROUTES from 'constants/routes';
 import formatAddress from 'utils/address';
 import { validateSignature } from 'utils/validation';
+import { sanitizeFormData } from 'utils/sanitize';
 
 const stages = {
   FORM: 0,
@@ -23,7 +26,7 @@ const NUM_STAGES = Object.keys(stages).length;
 
 const INITIAL_STATE = {
   formData: {
-    name: '',
+    fullName: '',
     phone: '',
     address: '',
     apt: '',
@@ -38,6 +41,7 @@ const INITIAL_STATE = {
     date: '',
     filled: false,
   },
+  oneShot: false,
   stage: stages.FORM,
   maxStage: stages.FORM,
   errors: [],
@@ -47,15 +51,63 @@ class ContractPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...INITIAL_STATE };
+    if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
+      INITIAL_STATE.oneShot = true;
+    }
+    if (!CONDITIONS.isUser(this.props.authUser)) {
+      this.state = { ...INITIAL_STATE };
+    } else {
+      const {
+        fullName, phone, address, apt, city, state, zip, license
+      } = this.props.authUser;
+      this.state = {
+        ...INITIAL_STATE,
+        formData: {
+          fullName, phone, address, apt, city, state, zip, license,
+          filled: true,
+        },
+        maxStage: stages.SIGNATURE,
+      };
+    }
   }
 
-  onFormSubmit = userInfo => event => {
+  componentDidMount() {
+    const { oneShot } = this.state;
+
+    if (oneShot && !CONDITIONS.isUser(this.props.authUser)) {
+      this.props.firebase
+        .doSignInAnonymously()
+        .then(authUser => {
+          return this.props.firebase
+            .user(authUser.user.uid)
+            .set({
+              uid: authUser.user.uid,
+              isAnon: authUser.user.isAnonymous,
+              username: 'Anonymous User',
+              email: 'none',
+            });
+        })
+    }
+  }
+
+  onFormChange = event => {
+    const { formData } = this.state;
+    formData[event.target.name] = event.target.value;
+    this.setState({ formData });
+  }
+
+  onSignatureChange = event => {
+    const { signatureData } = this.state;
+    signatureData[event.target.name] = event.target.value;
+    this.setState({ signatureData });
+  };
+
+  onFormSubmit = event => {
+    const { formData } = this.state;
+    formData.filled = true;
+
     this.setState({
-      formData: {
-        ...userInfo,
-        filled: true,
-      },
+      formData,
       stage: stages.SIGNATURE,
       maxStage: stages.SIGNATURE,
     });
@@ -63,61 +115,34 @@ class ContractPage extends Component {
     event.preventDefault();
   };
 
-  componentWillUnmount() {
-    if (this.listener) {
-      this.listener();
-    }
-  }
-
-  onSignatureSubmit = userInfo => event => {
+  onSignatureSubmit = event => {
+    const { signature, date } = this.state.signatureData;
     event.preventDefault();
 
-    const errors = validateSignature(userInfo.date);
-    this.setState({ errors });
+    const errors = validateSignature(date);
     if (errors.length > 0) {
+      this.setState({ errors });
       return;
     }
 
-    const { formData } = this.state;
-    const contract = {
-      signature: userInfo.signature,
-      date: userInfo.date,
-    };
-    this.listener = this.props.firebase.onAuthUserListener(
-      authUser => {
-        this.props.firebase
-          .user(authUser.uid)
-          .set({
-            ...authUser,
-            fullName: formData.name,
-            phone: formData.phone,
-            address: formData.address,
-            apt: formData.apt,
-            city: formData.city,
-            state: formData.state,
-            zip: formData.zip,
-            license: formData.license,
-            contract,
-          })
-          .then(() => {
-            this.setState({
-              signatureData: {
-                ...userInfo,
-                filled: true,
-              }
-            });
-            this.props.history.push(ROUTES.CONFIRMATION);
-          })
-          .catch(error => {
-            console.log(error);
-            this.setState({
-              stage: stages.SIGNATURE,
-              maxStage: stages.SIGNATURE
-            });
-          });
-      },
-      () => this.props.history.push(ROUTES.SIGN_IN)
-    );
+    const rawFormData = this.state.formData;
+    const contract = { signature, date };
+    delete rawFormData.filled;
+
+    const formData = sanitizeFormData(rawFormData);
+
+    if (this.props.authUser) {
+      this.props.firebase
+        .user(this.props.authUser.uid)
+        .set({
+          ...this.props.authUser,
+          ...formData,
+          contract,
+        })
+      this.props.history.push(ROUTES.CONFIRMATION);
+    } else {
+      this.props.history.push(ROUTES.SIGN_IN)
+    }
   }
 
   onChangeState = delta => event => {
@@ -138,16 +163,42 @@ class ContractPage extends Component {
 
   render() {
     const { formData, signatureData, stage, maxStage, errors } = this.state;
-    const { name, phone, license } = formData;
+    const { fullName, phone, license } = formData;
 
     const progress = (stage + 1) / NUM_STAGES * 100;
     const fullAddress = formatAddress(formData);
+
+    const ContractNav = (
+      <>
+        <Button
+          className='mr-2'
+          disabled={stage <= 0}
+          onClick={this.onChangeState(-1)}>
+            Back
+        </Button>
+        {stage >= NUM_STAGES - 1
+          ? <Button
+              className='ml-2'
+              onClick={this.onSignatureSubmit}>
+                Finish
+            </Button>
+          : <Button
+              className='ml-2'
+              disabled={stage >= maxStage}
+              onClick={this.onChangeState(1)}>
+                Forward
+            </Button>}
+      </>
+    );
 
     let stageContent = null;
     switch (stage) {
       case stages.FORM:
         stageContent = (
-          <ContractForm onSubmit={this.onFormSubmit} formData={formData} />
+          <ContractForm
+            formData={formData}
+            onChange={this.onFormChange}
+            onSubmit={this.onFormSubmit} />
         );
         break;
       case stages.SIGNATURE:
@@ -157,7 +208,7 @@ class ContractPage extends Component {
             <Card style={{overflowY: 'scroll', height: '50vh'}}>
               <Card.Body>
                 <Card.Text>
-                  {CONTRACT.CONTRACT_FORM(name, fullAddress, phone, license)}
+                  {CONTRACT.CONTRACT_FORM(fullName, fullAddress, phone, license)}
                 </Card.Text>
                 <Card.Text>
                   {CONTRACT.SIGNATURE_FORM}
@@ -172,10 +223,10 @@ class ContractPage extends Component {
             </Card>
             <br />
             <SignatureForm
-              onSubmit={this.onSignatureSubmit}
               signatureData={signatureData}
-              name={name}
-              errors={errors} />
+              name={fullName}
+              errors={errors}
+              onChange={this.onSignatureChange} />
           </>
         );
         break;
@@ -191,36 +242,14 @@ class ContractPage extends Component {
             <hr />
             <ProgressBar now={progress} />
             <br />
-            <Button
-              className='mr-2'
-              disabled={stage <= 0}
-              onClick={this.onChangeState(-1)}>
-                Back
-            </Button>
-            <Button
-              className='ml-2'
-              disabled={stage >= maxStage}
-              onClick={this.onChangeState(1)}>
-                Forward
-            </Button>
+            {ContractNav}
           </Card.Header>
           <Card.Body style={{whiteSpace: 'pre-line'}}>
             {stageContent}
           </Card.Body>
           <Card.Footer>
             <br />
-            <Button
-              className='mr-2'
-              disabled={stage <= 0}
-              onClick={this.onChangeState(-1)}>
-                Back
-            </Button>
-            <Button
-              className='ml-2'
-              disabled={stage >= maxStage}
-              onClick={this.onChangeState(1)}>
-                Forward
-            </Button>
+            {ContractNav}
           </Card.Footer>
         </Card>
       </Container>
@@ -229,6 +258,7 @@ class ContractPage extends Component {
 }
 
 export default compose(
+  withUser,
   withRouter,
   withFirebase
 )(ContractPage);

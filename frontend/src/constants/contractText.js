@@ -1,3 +1,31 @@
+const CONTRACT_FORM = (name, address, phone, license) => `\
+IMPORTANT: READ BEFORE SIGNING
+
+Operator:
+
+Name: ${name}
+Address: ${address}
+Phone Number: ${phone}
+Operator License Number: ${license}
+`;
+
+const SIGNATURE_FORM = `\
+Dealer:
+
+Name: Klein Honda
+Address: 10611 Evergreen Way Everett, WA 98204
+Dealer’s Signature: #0335
+Dealer Number: 425-355-7500
+`;
+
+const SIGNATURE = `\
+The above named operator is authorized to drive the described vehicle for the purpose of purchase during the period indicated below. This permit is subject to inspection by all law enforcement officers when the vehicle is being operated for demonstration.
+
+The undersigned Operator acknowledges that the dealer is not providing any type of insurance protection, including but not liimited to public liability or collision insurance, and is not collecting any charge therefor. The undersigned further acknowledges that the air bag(s) may have been deactivated or an air bag on/off switch may have been installed on this vehicle, that the dealer assumes no responsibility or liability for any such deactivation or installation, and that the dealer is not warranting the operability or reliability of any such air bag deactivation on/off switch.
+
+In consideration of the foregoing and permission to use the vehicle, the undersigned Operator hereby waives any claim or cause of action against dealer resulting from the undersigned’s operation of the described vehicle, and agrees to pay for all loss and damage to the vehicle. The undersigned Operator further agrees to fully indemnify, protect, defend, and hold dealer harmless from any and all damages and liability, irrespective of fault, resulting in any way from Operator’s use of the vehicle.
+`;
+
 const PREAMBLE = `\
 AGREEMENT FOR DEMONSTRATION USE OF VEHICLE
 
@@ -35,32 +63,9 @@ h.	By any minor or anyone other than the Operator.
 
 `;
 
-const CONTRACT_FORM = (name, address, phone, license) => `\
-IMPORTANT: READ BEFORE SIGNING
-
-Operator:
-
-Name: ${name}
-Address: ${address}
-Phone Number: ${phone}
-Operator License Number: ${license}
+const SIGNED_USER = ({ signature, date }) => `\
+Signature: ${signature}
+Date: ${date}
 `;
 
-const SIGNATURE = `\
-The above named operator is authorized to drive the described vehicle for the purpose of purchase during the period indicated below. This permit is subject to inspection by all law enforcement officers when the vehicle is being operated for demonstration.
-
-The undersigned Operator acknowledges that the dealer is not providing any type of insurance protection, including but not liimited to public liability or collision insurance, and is not collecting any charge therefor. The undersigned further acknowledges that the air bag(s) may have been deactivated or an air bag on/off switch may have been installed on this vehicle, that the dealer assumes no responsibility or liability for any such deactivation or installation, and that the dealer is not warranting the operability or reliability of any such air bag deactivation on/off switch.
-
-In consideration of the foregoing and permission to use the vehicle, the undersigned Operator hereby waives any claim or cause of action against dealer resulting from the undersigned’s operation of the described vehicle, and agrees to pay for all loss and damage to the vehicle. The undersigned Operator further agrees to fully indemnify, protect, defend, and hold dealer harmless from any and all damages and liability, irrespective of fault, resulting in any way from Operator’s use of the vehicle.
-`;
-
-const SIGNATURE_FORM = `\
-Dealer:
-
-Name: Klein Honda
-Address: 10611 Evergreen Way Everett, WA 98204
-Dealer’s Signature: #0335
-Dealer Number: 425-355-7500
-`;
-
-export { PREAMBLE, CONTRACT_FORM, SIGNATURE, SIGNATURE_FORM };
+export { PREAMBLE, CONTRACT_FORM, SIGNATURE, SIGNATURE_FORM, SIGNED_USER };
