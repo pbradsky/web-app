@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavLinkRoute from './navLinkRoute';
@@ -99,7 +100,8 @@ const NavName = ({authUser}) => {
   return (
     isSignedIn
       ? <Badge className="ml-auto mr-3 p-2" variant='primary'> {authUser.username} </Badge>
-      : null
+      : <Link to={ROUTES.SIGN_UP} className='ml-auto mr-3'><Button size='sm'>JOIN NOW</Button></Link>
+
   )
 }
 
