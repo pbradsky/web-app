@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'styled/Container';
 import Form from 'react-bootstrap/Form';
+
+import * as ROUTES from 'constants/routes';
 
 const ContactPage = () => (
   <Container>
@@ -92,6 +94,32 @@ class ContactFormBase extends Component {
   }
 }
 
+const ContactUsButton = () => (
+  <Link to={ROUTES.CONTACT}>
+    <Button variant='outline-primary'>
+      Contact Us
+    </Button>
+  </Link>
+);
+
+const ContactCard = () => (
+  <Card>
+    <Card.Body>
+      <Card.Title>Reach out</Card.Title>
+      <hr />
+      <Card.Text>
+        If you have feedback,
+        click the button below to get in touch.
+      </Card.Text>
+      <Card.Text>
+        We're here to listen.
+      </Card.Text>
+      <ContactUsButton />
+    </Card.Body>
+  </Card>
+);
+
 const ContactForm = withRouter(ContactFormBase);
 
 export default ContactPage;
+export { ContactCard };
