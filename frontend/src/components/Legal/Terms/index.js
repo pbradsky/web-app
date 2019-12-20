@@ -48,13 +48,13 @@ const TermsPage = () => (
           legal documents electronically, as further described in Section 6.
         </Card.Text>
         <ol className='pl-3'>
-          <li>
+          <li className='mb-2 mt-2'>
             <strong>Jurne Service Overview.</strong> We offer a platform that is free for consumers who would
             like to test drive a car (the “<strong>Test Drive</strong>”) at one of our partner dealerships (the “<strong>Dealership</strong>”)
             to fill out the necessary paperwork online (the “<strong>Test Drive Application</strong>”). In other words, we are an
             intermediary streamlining the initial interactions between you and the Dealership.
           </li>
-          <li>
+          <li className='mb-2 mt-2'>
             <strong>Eligibility.</strong> You must be at least 18 years old and have a valid driver’s
             license to use the Service. Depending on the Dealership, you may be required to provide additional
             information such as proof of insurance to complete a Test Drive Application. By agreeing to these
@@ -65,7 +65,7 @@ const TermsPage = () => (
             Terms on your behalf represents and warrants that they have authority to bind you to these Terms
             and you agree to be bound by these Terms.
           </li>
-          <li>
+          <li className='mb-2 mt-2'>
             <strong>Accounts and Registration.</strong> To access most features of the Service, you must register
             for an account. When you register for an account, you may be required to provide us with some
             information about yourself, such as your name, email address, phone number, or other contact
@@ -75,10 +75,10 @@ const TermsPage = () => (
             and password, and you accept responsibility for all activities that occur under your account. If you
             believe that your account is no longer secure, then you must immediately notify us at david@thejurne.com.
           </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Licenses</strong>
-              <ol type='decimal'>
-                <li>
+              <ul type='none'>
+                <li className='mb-2 mt-2'>
                   4.1	<strong>Limited License.</strong> Subject to your complete and ongoing compliance with these Terms, Jurne grants
                   you, solely for your personal, non-commercial use, a limited, non-exclusive, non-transferable,
                   non-sublicensable, revocable license to: (a) install and use one object code copy of any mobile
@@ -86,24 +86,23 @@ const TermsPage = () => (
                   by you or pre-installed on your mobile device by the device manufacturer) on a mobile device that
                   you own or control; and (b) access and use the Service.
                 </li>
-                <li>
+                <li className='mb-2 mt-2'>
                   4.2 <strong>License Restrictions.</strong> Except and solely to the extent such a restriction is impermissible under
                   applicable law, you may not: (a) reproduce, distribute, publicly display, or publicly perform the
                   Service; (b) make modifications to the Service; or (c) interfere with or circumvent any feature of
                   the Service, including any security or access control mechanism. If you are prohibited under
                   applicable law from using the Service, you may not use it.
                 </li>
-                <li>
+                <li className='mb-2 mt-2'>
                   4.3	<strong>Feedback.</strong> If you choose to provide input and suggestions regarding problems with or proposed
                   modifications or improvements to the Service (“<strong>Feedback</strong>”), then you hereby grant Jurne an
                   unrestricted, perpetual, irrevocable, non-exclusive, fully-paid, royalty-free right to exploit the
                   Feedback in any manner and for any purpose, including to improve the Service and create other
                   products and services.
                 </li>
-              </ol>
-
+              </ul>
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Ownership; Proprietary Rights.</strong> The Service is owned and operated by Jurne. The
               visual interfaces, graphics, design, compilation, information, data, computer code (including
               source code or object code), products, software, services, and all other elements of the Service
@@ -112,89 +111,93 @@ const TermsPage = () => (
               authorized by Jurne, you may not make use of the Materials. Jurne reserves all rights to the Materials
               not granted expressly in these Terms.
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Consent to E-Signatures.</strong> By signing and submitting a Test Drive Application on the
               Service, you consent to signing the Test Drive Application electronically and to have Jurne collect,
               retain, and provide your e-signature to the Dealership for the sole purpose of providing the Service.
               You represent and warrant that you would only sign the Test Drive Application on your own behalf
               (or, on behalf of the organization for which you are authorized to sign).
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Third Party Terms</strong>
-                <p>
-                  7.1 <strong>Third Party Services and Linked Websites.</strong> Jurne may provide tools through the Service
-                  that enable you to export information to third party services. By using one of these tools,
-                  you agree that Jurne may transfer that information to the applicable third party service. Third
-                  party services are not under Jurne’s control, and, to the fullest extent permitted by law, Jurne
-                  is not responsible for any third party service’s use of your exported information. The Service
-                  may also contain links to third party websites, such as websites of the Dealerships. Linked
-                  websites are not under Jurne’s control, and Jurne is not responsible for their content.
-                </p>
-                <p>
-                  7.2	<strong>Third Party Software.</strong> The Service may include or incorporate third
-                  party software components that are generally available free of charge under licenses granting
-                  recipients broad rights to copy, modify, and distribute those components (“<strong>Third Party
-                  Components</strong>”). Although the Service is provided to you subject to these Terms, nothing in these
-                  Terms prevents, restricts, or is intended to prevent or restrict you from obtaining Third Party
-                  Components under the applicable third party licenses or to limit your use of Third Party
-                  Components under those third party licenses.
-                </p>
+              <ul type='none'>
+                <li className='mb-2 mt-2'>
+                    7.1 <strong>Third Party Services and Linked Websites.</strong> Jurne may provide tools through the Service
+                    that enable you to export information to third party services. By using one of these tools,
+                    you agree that Jurne may transfer that information to the applicable third party service. Third
+                    party services are not under Jurne’s control, and, to the fullest extent permitted by law, Jurne
+                    is not responsible for any third party service’s use of your exported information. The Service
+                    may also contain links to third party websites, such as websites of the Dealerships. Linked
+                    websites are not under Jurne’s control, and Jurne is not responsible for their content.
+                  </li>
+                  <li className='mb-2 mt-2'>
+                    7.2	<strong>Third Party Software.</strong> The Service may include or incorporate third
+                    party software components that are generally available free of charge under licenses granting
+                    recipients broad rights to copy, modify, and distribute those components (“<strong>Third Party
+                    Components</strong>”). Although the Service is provided to you subject to these Terms, nothing in these
+                    Terms prevents, restricts, or is intended to prevent or restrict you from obtaining Third Party
+                    Components under the applicable third party licenses or to limit your use of Third Party
+                    Components under those third party licenses.
+                  </li>
+              </ul>
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Communications.</strong>
-              <p>
-                8.1	<strong>Push Notifications.</strong> When you install our app on your mobile device,
-                you agree to receive push notifications, which are messages an app sends you on your mobile
-                device when the app is not on. You can turn off notifications by visiting your mobile device’s
-                “settings” page.
-              </p>
-              <p>
-                8.2	<strong>Email.</strong> We will send you emails to notify you when your account is created,
-                to send you a link to recover your account password, or to answer your questions. We may send
-                you emails concerning our products and services, as well as those of third parties. You may opt
-                out of promotional emails by following the unsubscribe instructions in the promotional email itself.
-              </p>
+              <ul type='none'>
+                <li className='mb-2 mt-2'>
+                  8.1	<strong>Push Notifications.</strong> When you install our app on your mobile device,
+                  you agree to receive push notifications, which are messages an app sends you on your mobile
+                  device when the app is not on. You can turn off notifications by visiting your mobile device’s
+                  “settings” page.
+                </li>
+                <li className='mb-2 mt-2'>
+                  8.2	<strong>Email.</strong> We will send you emails to notify you when your account is created,
+                  to send you a link to recover your account password, or to answer your questions. We may send
+                  you emails concerning our products and services, as well as those of third parties. You may opt
+                  out of promotional emails by following the unsubscribe instructions in the promotional email itself.
+                </li>
+              </ul>
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Prohibited Conduct.</strong> BY USING THE SERVICE YOU AGREE NOT TO:
               <ol type='a'>
-                <li>
+                <li className='mb-2 mt-2'>
                   use the Service for any illegal purpose or in violation of any local, state, national, or
                   international law;
                 </li>
-                <li>
+                <li className='mb-2 mt-2'>
                   violate, or encourage others to violate, any right of a third party, including by infringing
                   or misappropriating any third party intellectual property right;
                 </li>
-                <li>
+                <li className='mb-2 mt-2'>
                   interfere with security-related features of the Service, including by: (i) disabling or
                   circumventing features that prevent or limit use or copying of any content; or (ii) reverse
                   engineering or otherwise attempting to discover the source code of any portion of the Service
                   except to the extent that the activity is expressly permitted by applicable law;
                 </li>
-                <li>
+                <li className='mb-2 mt-2'>
                   interfere with the operation of the Service or any user’s enjoyment of the Service, including
                   by: (i) uploading or otherwise disseminating any virus, adware, spyware, worm, or other
                   malicious code; (ii) collecting personal information about another user or third party without
                   consent; or (iii) interfering with or disrupting any network, equipment, or server connected
                   to or used to provide the Service;
                 </li>
-                <li>
+                <li className='mb-2 mt-2'>
                   perform any fraudulent activity including impersonating any person or entity, claiming a false
                   affiliation, accessing any other Service account without permission, or falsifying your age
                   or date of birth;
                 </li>
-                <li>
+                <li className='mb-2 mt-2'>
                   sell or otherwise transfer the access granted under these Terms or any Materials (as defined
                   in Section 5) or any right or ability to view, access, or use any Materials; or
                 </li>
-                <li>
+                <li className='mb-2 mt-2'>
                   attempt to do any of the acts described in this Section 9 or assist or permit any person in
                   engaging in any of the acts described in this Section 9.
                 </li>
               </ol>
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Modification of these Terms.</strong> We reserve the right to change these Terms on a
               going-forward basis at any time upon 7 days’ notice. Please check these Terms periodically for
               changes. If a change to these Terms materially modifies your rights or obligations, we may require
@@ -205,36 +208,38 @@ const TermsPage = () => (
               arising under these Terms will be resolved in accordance with the version of these Terms that was
               in effect at the time the dispute arose.
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Term, Termination and Modification of the Service</strong>
-              <p>
-                11.1	<strong>Term.</strong> These Terms are effective beginning when you accept the Terms or
-                first download, install, access, or use the Service, and ending when terminated as described in
-                Section 11.2.
-              </p>
-              <p>
-                11.2	<strong>Termination.</strong> If you violate any provision of these Terms, your
-                authorization to access the Service and these Terms automatically terminate. In addition,
-                Jurne may, at its sole discretion, terminate these Terms or your account on the Service, or
-                suspend or terminate your access to the Service, at any time for any reason or no reason, with
-                or without notice. You may terminate your account and these Terms at any time by contacting
-                customer service at David@thejurne.com.
-              </p>
-              <p>
-                11.3	<strong>Effect of Termination.</strong> Upon termination of these Terms: (a) your license
-                rights will terminate and you must immediately cease all use of the Service; and (b) you will
-                no longer be authorized to access your account or the Service. Sections [4.3, 5, 11.3, 12, 13,
-                14, 15, 16 and 17] will survive.
-              </p>
-              <p>
-                11.4	<strong>Modification of the Service.</strong> Jurne reserves the right to modify or
-                discontinue the Service at any time (including by limiting or discontinuing certain features
-                of the Service), temporarily or permanently, without notice to you. Jurne will have no liability
-                for any change to the Service or any suspension or termination of your access to or use of the
-                Service.
-              </p>
+              <ul type='none'>
+                <li className='mb-2 mt-2'>
+                  11.1	<strong>Term.</strong> These Terms are effective beginning when you accept the Terms or
+                  first download, install, access, or use the Service, and ending when terminated as described in
+                  Section 11.2.
+                </li>
+                <li className='mb-2 mt-2'>
+                  11.2	<strong>Termination.</strong> If you violate any provision of these Terms, your
+                  authorization to access the Service and these Terms automatically terminate. In addition,
+                  Jurne may, at its sole discretion, terminate these Terms or your account on the Service, or
+                  suspend or terminate your access to the Service, at any time for any reason or no reason, with
+                  or without notice. You may terminate your account and these Terms at any time by contacting
+                  customer service at David@thejurne.com.
+                </li>
+                <li className='mb-2 mt-2'>
+                  11.3	<strong>Effect of Termination.</strong> Upon termination of these Terms: (a) your license
+                  rights will terminate and you must immediately cease all use of the Service; and (b) you will
+                  no longer be authorized to access your account or the Service. Sections [4.3, 5, 11.3, 12, 13,
+                  14, 15, 16 and 17] will survive.
+                </li>
+                <li className='mb-2 mt-2'>
+                  11.4	<strong>Modification of the Service.</strong> Jurne reserves the right to modify or
+                  discontinue the Service at any time (including by limiting or discontinuing certain features
+                  of the Service), temporarily or permanently, without notice to you. Jurne will have no liability
+                  for any change to the Service or any suspension or termination of your access to or use of the
+                  Service.
+                </li>
+              </ul>
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Indemnity.</strong> To the fullest extent permitted by law, you are responsible for your
               use of the Service, and you will defend and indemnify Jurne and its officers, directors, employees,
               consultants, affiliates, subsidiaries and agents (together, the “Jurne Entities”) from and against
@@ -250,7 +255,7 @@ const TermsPage = () => (
               of those claims.
 
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Disclaimers; No Warranties</strong>
               <p>
                 THE TEST DRIVE APPLICATIONS AND ANY AND ALL OTHER AGREEMENTS THAT YOU MAY ENTER INTO WITH A
@@ -286,7 +291,7 @@ const TermsPage = () => (
                 disclaiming under applicable law.
               </p>
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Limitation of Liability</strong>
               <p>
                 TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT WILL THE JURNE ENTITIES BE LIABLE TO YOU FOR
@@ -311,180 +316,184 @@ const TermsPage = () => (
                 ITS ESSENTIAL PURPOSE.
               </p>
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Dispute Resolution and Arbitration</strong>
-              <p>
-                15.1	<strong>Generally.</strong> In the interest of resolving disputes between you and Jurne
-                in the most expedient and cost effective manner, and except as described in Section 15.2 and
-                15.3, you and Jurne agree that every dispute arising in connection with these Terms will be
-                resolved by binding arbitration. Arbitration is less formal than a lawsuit in court. Arbitration
-                uses a neutral arbitrator instead of a judge or jury, may allow for more limited discovery than
-                in court, and can be subject to very limited review by courts. Arbitrators can award the same
-                damages and relief that a court can award. This agreement to arbitrate disputes includes all
-                claims arising out of or relating to any aspect of these Terms, whether based in contract, tort,
-                statute, fraud, misrepresentation, or any other legal theory, and regardless of whether a claim
-                arises during or after the termination of these Terms. YOU UNDERSTAND AND AGREE THAT, BY ENTERING
-                INTO THESE TERMS, YOU AND JURNE ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE
-                IN A CLASS ACTION.
-              </p>
-              <p>
-                15.2	<strong>Exceptions.</strong> Despite the provisions of Section 15.1, nothing in these Terms
-                will be deemed to waive, preclude, or otherwise limit the right of either party to: (a) bring an
-                individual action in small claims court; (b) pursue an enforcement action through the applicable
-                federal, state, or local agency if that action is available; (c) seek injunctive relief in a court
-                of law in aid of arbitration; or (d) to file suit in a court of law to address an intellectual
-                property infringement claim.
-              </p>
-              <p>
-                15.3	<strong>Opt-Out.</strong> If you do not wish to resolve disputes by binding arbitration,
-                you may opt out of the provisions of this Section 15 within 30 days after the date that you agree
-                to these Terms by sending a letter to Jurne, Inc., Attention: Legal Department – Arbitration
-                Opt-Out, 1901 148th St. SE, Mill Creek, WA 98012, that specifies: your full legal name, the email
-                address associated with your account on the Service, and a statement that you wish to opt out of
-                arbitration (“<strong>Opt-Out Notice</strong>”). Once Jurne receives your Opt-Out Notice, this
-                Section 15 will be void and any action arising out of these Terms will be resolved as set forth
-                in Section 16.2. The remaining provisions of these Terms will not be affected by your Opt-Out Notice.
-              </p>
-              <p>
-                15.4	<strong>Arbitrator.</strong> Any arbitration between you and Jurne will be settled under the
-                Federal Arbitration Act and administered by the American Arbitration Association
-                (“<strong>AAA</strong>”) under its Consumer Arbitration Rules (collectively,
-                “<strong>AAA Rules</strong>”) as modified by these Terms. The AAA Rules and filing forms are
-                available online at <a href='https://www.adr.org'>www.adr.org</a>, by calling the AAA at
-                1-800-778-7879, or by contacting Jurne. The arbitrator has exclusive authority to resolve any
-                dispute relating to the interpretation, applicability, or enforceability of this binding arbitration
-                agreement.
-              </p>
-              <p>
-                15.5	<strong>Notice of Arbitration; Process.</strong> A party who intends to seek arbitration must
-                first send a written notice of the dispute to the other party by certified U.S. Mail or by Federal
-                Express (signature required) or, only if that other party has not provided a current physical
-                address, then by electronic mail (“<strong>Notice of Arbitration</strong>”). Jurne’s address for
-                Notice is: Jurne, Inc., 1901 148th St. SE, Mill Creek, WA 98012. The Notice of Arbitration must:
-                (a) describe the nature and basis of the claim or dispute; and (b) set forth the specific relief sought
-                (“<strong>Demand</strong>”). The parties will make good faith efforts to resolve the claim directly,
-                but if the parties do not reach an agreement to do so within 30 days after the Notice of Arbitration is received, you or Jurne
-                may commence an arbitration proceeding. All arbitration proceedings between the parties will be
-                confidential unless otherwise agreed by the parties in writing. During the arbitration, the amount
-                of any settlement offer made by you or Jurne must not be disclosed to the arbitrator until after the
-                arbitrator makes a final decision and award, if any. If the arbitrator awards you an amount higher
-                than the last written settlement amount offered by Jurne in settlement of the dispute prior to the
-                award, Jurne will pay to you the higher of: (i) the amount awarded by the arbitrator; or (ii) $10,000.
-              </p>
-              <p>
-                15.6	<strong>Fees.</strong> If you commence arbitration in accordance with these Terms, Jurne will
-                reimburse you for your payment of the filing fee, unless your claim is for more than $10,000, in
-                which case the payment of any fees will be decided by the AAA Rules. Any arbitration hearing will
-                take place at a location to be agreed upon in King County, Washington, but if the claim is for
-                $10,000 or less, you may choose whether the arbitration will be conducted: (a) solely on the basis of
-                documents submitted to the arbitrator; (b) through a non-appearance based telephone hearing; or (c)
-                by an in-person hearing as established by the AAA Rules in the county (or parish) of your billing
-                address. If the arbitrator finds that either the substance of your claim or the relief sought in the
-                Demand is frivolous or brought for an improper purpose (as measured by the standards set forth in
-                Federal Rule of Civil Procedure 11(b)), then the payment of all fees will be governed by the AAA
-                Rules. In that case, you agree to reimburse Jurne for all monies previously disbursed by it that
-                are otherwise your obligation to pay under the AAA Rules. Regardless of the manner in which the
-                arbitration is conducted, the arbitrator must issue a reasoned written decision sufficient to explain
-                the essential findings and conclusions on which the decision and award, if any, are based. The
-                arbitrator may make rulings and resolve disputes as to the payment and reimbursement of fees or
-                expenses at any time during the proceeding and upon request from either party made within 14 days
-                of the arbitrator’s ruling on the merits.
-              </p>
-              <p>
-                15.7	<strong>No Class Actions.</strong> YOU AND JURNE AGREE THAT EACH MAY BRING CLAIMS AGAINST
-                THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY
-                PURPORTED CLASS OR REPRESENTATIVE PROCEEDING. Further, unless both you and Jurne agree otherwise,
-                the arbitrator may not consolidate more than one person’s claims, and may not otherwise preside
-                over any form of a representative or class proceeding.
-              </p>
-              <p>
-                15.8	<strong>Modifications to this Arbitration Provision.</strong> If Jurne makes any future change
-                to this arbitration provision, other than a change to Jurne’s address for Notice of Arbitration,
-                you may reject the change by sending us written notice within 30 days of the change to Jurne’s address
-                for Notice of Arbitration, in which case your account with Jurne will be immediately terminated and this
-                arbitration provision, as in effect immediately prior to the changes you rejected will survive.
-              </p>
-              <p>
-                15.9	<strong>Enforceability.</strong> If Section 15.7 or the entirety of this Section 15 is found
-                to be unenforceable, or if Jurne receives an Opt-Out Notice from you, then the entirety of this
-                Section 15 will be null and void and, in that case, exclusive jurisdiction and venue described in
-                Section 16.2 will govern any action arising out of or related to these Terms.
-              </p>
+              <ul type='none'>
+                <li className='mb-2 mt-2'>
+                  15.1	<strong>Generally.</strong> In the interest of resolving disputes between you and Jurne
+                  in the most expedient and cost effective manner, and except as described in Section 15.2 and
+                  15.3, you and Jurne agree that every dispute arising in connection with these Terms will be
+                  resolved by binding arbitration. Arbitration is less formal than a lawsuit in court. Arbitration
+                  uses a neutral arbitrator instead of a judge or jury, may allow for more limited discovery than
+                  in court, and can be subject to very limited review by courts. Arbitrators can award the same
+                  damages and relief that a court can award. This agreement to arbitrate disputes includes all
+                  claims arising out of or relating to any aspect of these Terms, whether based in contract, tort,
+                  statute, fraud, misrepresentation, or any other legal theory, and regardless of whether a claim
+                  arises during or after the termination of these Terms. YOU UNDERSTAND AND AGREE THAT, BY ENTERING
+                  INTO THESE TERMS, YOU AND JURNE ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE
+                  IN A CLASS ACTION.
+                </li>
+                <li className='mb-2 mt-2'>
+                  15.2	<strong>Exceptions.</strong> Despite the provisions of Section 15.1, nothing in these Terms
+                  will be deemed to waive, preclude, or otherwise limit the right of either party to: (a) bring an
+                  individual action in small claims court; (b) pursue an enforcement action through the applicable
+                  federal, state, or local agency if that action is available; (c) seek injunctive relief in a court
+                  of law in aid of arbitration; or (d) to file suit in a court of law to address an intellectual
+                  property infringement claim.
+                </li>
+                <li className='mb-2 mt-2'>
+                  15.3	<strong>Opt-Out.</strong> If you do not wish to resolve disputes by binding arbitration,
+                  you may opt out of the provisions of this Section 15 within 30 days after the date that you agree
+                  to these Terms by sending a letter to Jurne, Inc., Attention: Legal Department – Arbitration
+                  Opt-Out, 1901 148th St. SE, Mill Creek, WA 98012, that specifies: your full legal name, the email
+                  address associated with your account on the Service, and a statement that you wish to opt out of
+                  arbitration (“<strong>Opt-Out Notice</strong>”). Once Jurne receives your Opt-Out Notice, this
+                  Section 15 will be void and any action arising out of these Terms will be resolved as set forth
+                  in Section 16.2. The remaining provisions of these Terms will not be affected by your Opt-Out Notice.
+                </li>
+                <li className='mb-2 mt-2'>
+                  15.4	<strong>Arbitrator.</strong> Any arbitration between you and Jurne will be settled under the
+                  Federal Arbitration Act and administered by the American Arbitration Association
+                  (“<strong>AAA</strong>”) under its Consumer Arbitration Rules (collectively,
+                  “<strong>AAA Rules</strong>”) as modified by these Terms. The AAA Rules and filing forms are
+                  available online at <a href='https://www.adr.org'>www.adr.org</a>, by calling the AAA at
+                  1-800-778-7879, or by contacting Jurne. The arbitrator has exclusive authority to resolve any
+                  dispute relating to the interpretation, applicability, or enforceability of this binding arbitration
+                  agreement.
+                </li>
+                <li className='mb-2 mt-2'>
+                  15.5	<strong>Notice of Arbitration; Process.</strong> A party who intends to seek arbitration must
+                  first send a written notice of the dispute to the other party by certified U.S. Mail or by Federal
+                  Express (signature required) or, only if that other party has not provided a current physical
+                  address, then by electronic mail (“<strong>Notice of Arbitration</strong>”). Jurne’s address for
+                  Notice is: Jurne, Inc., 1901 148th St. SE, Mill Creek, WA 98012. The Notice of Arbitration must:
+                  (a) describe the nature and basis of the claim or dispute; and (b) set forth the specific relief sought
+                  (“<strong>Demand</strong>”). The parties will make good faith efforts to resolve the claim directly,
+                  but if the parties do not reach an agreement to do so within 30 days after the Notice of Arbitration is received, you or Jurne
+                  may commence an arbitration proceeding. All arbitration proceedings between the parties will be
+                  confidential unless otherwise agreed by the parties in writing. During the arbitration, the amount
+                  of any settlement offer made by you or Jurne must not be disclosed to the arbitrator until after the
+                  arbitrator makes a final decision and award, if any. If the arbitrator awards you an amount higher
+                  than the last written settlement amount offered by Jurne in settlement of the dispute prior to the
+                  award, Jurne will pay to you the higher of: (i) the amount awarded by the arbitrator; or (ii) $10,000.
+                </li>
+                <li className='mb-2 mt-2'>
+                  15.6	<strong>Fees.</strong> If you commence arbitration in accordance with these Terms, Jurne will
+                  reimburse you for your payment of the filing fee, unless your claim is for more than $10,000, in
+                  which case the payment of any fees will be decided by the AAA Rules. Any arbitration hearing will
+                  take place at a location to be agreed upon in King County, Washington, but if the claim is for
+                  $10,000 or less, you may choose whether the arbitration will be conducted: (a) solely on the basis of
+                  documents submitted to the arbitrator; (b) through a non-appearance based telephone hearing; or (c)
+                  by an in-person hearing as established by the AAA Rules in the county (or parish) of your billing
+                  address. If the arbitrator finds that either the substance of your claim or the relief sought in the
+                  Demand is frivolous or brought for an improper purpose (as measured by the standards set forth in
+                  Federal Rule of Civil Procedure 11(b)), then the payment of all fees will be governed by the AAA
+                  Rules. In that case, you agree to reimburse Jurne for all monies previously disbursed by it that
+                  are otherwise your obligation to pay under the AAA Rules. Regardless of the manner in which the
+                  arbitration is conducted, the arbitrator must issue a reasoned written decision sufficient to explain
+                  the essential findings and conclusions on which the decision and award, if any, are based. The
+                  arbitrator may make rulings and resolve disputes as to the payment and reimbursement of fees or
+                  expenses at any time during the proceeding and upon request from either party made within 14 days
+                  of the arbitrator’s ruling on the merits.
+                </li>
+                <li className='mb-2 mt-2'>
+                  15.7	<strong>No Class Actions.</strong> YOU AND JURNE AGREE THAT EACH MAY BRING CLAIMS AGAINST
+                  THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY
+                  PURPORTED CLASS OR REPRESENTATIVE PROCEEDING. Further, unless both you and Jurne agree otherwise,
+                  the arbitrator may not consolidate more than one person’s claims, and may not otherwise preside
+                  over any form of a representative or class proceeding.
+                </li>
+                <li className='mb-2 mt-2'>
+                  15.8	<strong>Modifications to this Arbitration Provision.</strong> If Jurne makes any future change
+                  to this arbitration provision, other than a change to Jurne’s address for Notice of Arbitration,
+                  you may reject the change by sending us written notice within 30 days of the change to Jurne’s address
+                  for Notice of Arbitration, in which case your account with Jurne will be immediately terminated and this
+                  arbitration provision, as in effect immediately prior to the changes you rejected will survive.
+                </li>
+                <li className='mb-2 mt-2'>
+                  15.9	<strong>Enforceability.</strong> If Section 15.7 or the entirety of this Section 15 is found
+                  to be unenforceable, or if Jurne receives an Opt-Out Notice from you, then the entirety of this
+                  Section 15 will be null and void and, in that case, exclusive jurisdiction and venue described in
+                  Section 16.2 will govern any action arising out of or related to these Terms.
+                </li>
+              </ul>
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Miscellaneous</strong>
-              <p>
-                16.1	<strong>General Terms.</strong> These Terms, together with the Privacy Policy and any
-                other agreements expressly incorporated by reference into these Terms, are the entire and
-                exclusive understanding and agreement between you and Jurne regarding your use of the Service.
-                You may not assign or transfer these Terms or your rights under these Terms, in whole or in part,
-                by operation of law or otherwise, without our prior written consent. We may assign these Terms at
-                any time without notice or consent. These Terms are between you and Jurne (or its assigns), and
-                there are no intended third party beneficiaries under these Terms. The failure to require performance
-                of any provision will not affect our right to require performance at any other time after that, nor
-                will a waiver by us of any breach or default of these Terms, or any provision of these Terms, be a
-                waiver of any subsequent breach or default or a waiver of the provision itself. Use of section
-                headers in these Terms is for convenience only and will not have any impact on the interpretation
-                of any provision. Throughout these Terms the use of the word “including” means “including but not
-                limited to”. If any part of these Terms is held to be invalid or unenforceable, the unenforceable
-                part will be given effect to the greatest extent possible, and the remaining parts will remain in
-                full force and effect.
-              </p>
-              <p>
-                16.2	<strong>Governing Law.</strong> These Terms are governed by the laws of the State of Washington
-                without regard to conflict of law principles. You and Jurne submit to the personal and exclusive
-                jurisdiction of the state courts and federal courts located within King County, Washington for
-                resolution of any lawsuit or court proceeding permitted under these Terms. We operate the Service
-                from our offices in Washington, and we make no representation that Materials included in the Service
-                are appropriate or available for use in other locations.
-              </p>
-              <p>
-                16.3	<strong>Privacy Policy.</strong> Please read the
-                Jurne <Link to={ROUTES.PRIVACY}>Privacy Policy</Link> carefully for information relating to our
-                collection, use, storage, disclosure of your personal information. The Jurne Privacy Policy is
-                incorporated by this reference into, and made a part of, these Terms.
-              </p>
-              <p>
-                16.4	<strong>Additional Terms.</strong> Your use of the Service is subject to all additional
-                terms, policies, rules, or guidelines applicable to the Service or certain features of the
-                Service that we may post on or link to from the Service (the “Additional Terms”). All Additional
-                Terms are incorporated by this reference into, and made a part of, these Terms. For clarity,
-                any terms in the Test Drive Applications or any other Dealership Agreements are not part of
-                these Terms.
-              </p>
-              <p>
-                16.5	<strong>Consent to Electronic Communications.</strong> By using the Service, you consent
-                to receiving certain electronic communications from us as further described in our Privacy
-                Policy. Please read our Privacy Policy to learn more about our electronic communications
-                practices. You agree that any notices, agreements, disclosures, or other communications that
-                we send to you electronically will satisfy any legal communication requirements, including that
-                those communications be in writing.
-              </p>
-              <p>
-                16.6	<strong>Contact Information.</strong> The Service is offered by Jurne, Inc., located at
-                1901 148th St. SE, Mill Creek, WA 98012. You may contact us by sending correspondence to that
-                address or by emailing us at David@thejurne.com.
-              </p>
-              <p>
-               16.7	<strong>Notice to California Residents.</strong> If you are a California resident, under
-               California Civil Code Section 1789.3, you may contact the Complaint Assistance Unit of the
-               Division of Consumer Services of the California Department of Consumer Affairs in writing at
-               1625 N. Market Blvd., Suite S-202, Sacramento, California 95834, or by telephone at (800) 952-5210
-               in order to resolve a complaint regarding the Service or to receive further information regarding
-               use of the Service.
-              </p>
-              <p>
-                16.8	<strong>No Support.</strong> We are under no obligation to provide support for the Service.
-                In instances where we may offer support, the support will be subject to published policies.
-              </p>
-              <p>
-                16.9	<strong>International Use.</strong> The Service is intended for visitors located within
-                the United States. We make no representation that the Service is appropriate or available for
-                use outside of the United States. Access to the Service from countries or territories or by
-                individuals where such access is illegal is prohibited.
-              </p>
+              <ul type='none'>
+                <li className='mb-2 mt-2'>
+                  16.1	<strong>General Terms.</strong> These Terms, together with the Privacy Policy and any
+                  other agreements expressly incorporated by reference into these Terms, are the entire and
+                  exclusive understanding and agreement between you and Jurne regarding your use of the Service.
+                  You may not assign or transfer these Terms or your rights under these Terms, in whole or in part,
+                  by operation of law or otherwise, without our prior written consent. We may assign these Terms at
+                  any time without notice or consent. These Terms are between you and Jurne (or its assigns), and
+                  there are no intended third party beneficiaries under these Terms. The failure to require performance
+                  of any provision will not affect our right to require performance at any other time after that, nor
+                  will a waiver by us of any breach or default of these Terms, or any provision of these Terms, be a
+                  waiver of any subsequent breach or default or a waiver of the provision itself. Use of section
+                  headers in these Terms is for convenience only and will not have any impact on the interpretation
+                  of any provision. Throughout these Terms the use of the word “including” means “including but not
+                  limited to”. If any part of these Terms is held to be invalid or unenforceable, the unenforceable
+                  part will be given effect to the greatest extent possible, and the remaining parts will remain in
+                  full force and effect.
+                </li>
+                <li className='mb-2 mt-2'>
+                  16.2	<strong>Governing Law.</strong> These Terms are governed by the laws of the State of Washington
+                  without regard to conflict of law principles. You and Jurne submit to the personal and exclusive
+                  jurisdiction of the state courts and federal courts located within King County, Washington for
+                  resolution of any lawsuit or court proceeding permitted under these Terms. We operate the Service
+                  from our offices in Washington, and we make no representation that Materials included in the Service
+                  are appropriate or available for use in other locations.
+                </li>
+                <li className='mb-2 mt-2'>
+                  16.3	<strong>Privacy Policy.</strong> Please read the
+                  Jurne <Link to={ROUTES.PRIVACY}>Privacy Policy</Link> carefully for information relating to our
+                  collection, use, storage, disclosure of your personal information. The Jurne Privacy Policy is
+                  incorporated by this reference into, and made a part of, these Terms.
+                </li>
+                <li className='mb-2 mt-2'>
+                  16.4	<strong>Additional Terms.</strong> Your use of the Service is subject to all additional
+                  terms, policies, rules, or guidelines applicable to the Service or certain features of the
+                  Service that we may post on or link to from the Service (the “Additional Terms”). All Additional
+                  Terms are incorporated by this reference into, and made a part of, these Terms. For clarity,
+                  any terms in the Test Drive Applications or any other Dealership Agreements are not part of
+                  these Terms.
+                </li>
+                <li className='mb-2 mt-2'>
+                  16.5	<strong>Consent to Electronic Communications.</strong> By using the Service, you consent
+                  to receiving certain electronic communications from us as further described in our Privacy
+                  Policy. Please read our Privacy Policy to learn more about our electronic communications
+                  practices. You agree that any notices, agreements, disclosures, or other communications that
+                  we send to you electronically will satisfy any legal communication requirements, including that
+                  those communications be in writing.
+                </li>
+                <li className='mb-2 mt-2'>
+                  16.6	<strong>Contact Information.</strong> The Service is offered by Jurne, Inc., located at
+                  1901 148th St. SE, Mill Creek, WA 98012. You may contact us by sending correspondence to that
+                  address or by emailing us at David@thejurne.com.
+                </li>
+                <li className='mb-2 mt-2'>
+                16.7	<strong>Notice to California Residents.</strong> If you are a California resident, under
+                California Civil Code Section 1789.3, you may contact the Complaint Assistance Unit of the
+                Division of Consumer Services of the California Department of Consumer Affairs in writing at
+                1625 N. Market Blvd., Suite S-202, Sacramento, California 95834, or by telephone at (800) 952-5210
+                in order to resolve a complaint regarding the Service or to receive further information regarding
+                use of the Service.
+                </li>
+                <li className='mb-2 mt-2'>
+                  16.8	<strong>No Support.</strong> We are under no obligation to provide support for the Service.
+                  In instances where we may offer support, the support will be subject to published policies.
+                </li>
+                <li className='mb-2 mt-2'>
+                  16.9	<strong>International Use.</strong> The Service is intended for visitors located within
+                  the United States. We make no representation that the Service is appropriate or available for
+                  use outside of the United States. Access to the Service from countries or territories or by
+                  individuals where such access is illegal is prohibited.
+                </li>
+              </ul>
             </li>
-            <li>
+            <li className='mb-2 mt-2'>
               <strong>Notice Regarding Apple.</strong> This Section 17 only applies to the extent you are using
               our mobile application on an iOS device. You acknowledge that these Terms are between you and
               Jurne only, not with Apple Inc. (“<strong>Apple</strong>”), and Apple is not responsible for the Service or the
@@ -507,12 +516,6 @@ const TermsPage = () => (
               and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.
             </li>
         </ol>
-
-<Card.Text>
-
-
-
-                    </Card.Text>
       </Card.Body>
     </Card>
   </Container>
