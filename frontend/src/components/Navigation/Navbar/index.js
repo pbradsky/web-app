@@ -113,7 +113,7 @@ const NavLinks = ({ authUser, closeNav }) => {
       <NavLinkRoute to={ROUTES.LANDING} onClick={closeNav}>
         Home
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.CHOOSE_DEALER} onClick={closeNav} show={isSignedIn}>
+      <NavLinkRoute to={ROUTES.CHOOSE_DEALER} onClick={closeNav} show={isSignedIn && !isAdmin && !isDealer}>
         Dealerships
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.DEALER} onClick={closeNav} show={isDealer}>
