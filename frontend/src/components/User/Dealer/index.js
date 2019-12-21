@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'styled/Container';
 import UserList from 'components/User/UserList';
-import Loading from 'components/Util/Loading';
+import { WithPageLoad } from 'components/Util/Loading';
 import Search from 'components/Util/Search';
 
 import { withAuthorization } from 'api/Session';
@@ -59,14 +59,15 @@ class DealerPage extends Component {
 
     return (
       <Container>
-        <Jumbotron>
-          <h1>Dealer Dashboard</h1>
-          <p>This page is only accessible to our Dealership partners.</p>
-        </Jumbotron>
-        <Loading loading={loading} />
-        <Search searchQuery={searchQuery} onChange={this.onChange} />
-        <br />
-        <UserList users={searchedUsers} />
+        <WithPageLoad loading={loading}>
+          <Jumbotron>
+            <h1>Dealer Dashboard</h1>
+            <p>This page is only accessible to our Dealership partners.</p>
+          </Jumbotron>
+          <Search searchQuery={searchQuery} onChange={this.onChange} />
+          <br />
+          <UserList users={searchedUsers} />
+        </WithPageLoad>
       </Container>
     );
   }

@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'styled/Container';
 import PrintContractButton from 'components/Registration/Contract/print';
+import { WithPageLoad } from 'components/Util/Loading';
 
 import { withAuthorization } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
@@ -67,31 +68,31 @@ class UserDetailsPage extends Component {
 
     return (
       <Container>
-        {loading && <div>Loading...</div>}
-        {user &&
-          <>
-            <Jumbotron>
-              <h1>User Details</h1>
-              {user.email}
-            </Jumbotron>
-            <Card>
-              <Card.Body>
-                <Card.Title>{user.username}</Card.Title>
-                <hr />
-                <Card.Text>Admin Permissions: {CONDITIONS.isSignedInAdmin(user) ? 'Yes' : 'No'}</Card.Text>
-                <Button className='mb-2' onClick={this.onToggleRole(ROLES.ADMIN)}>
-                  Toggle Admin
-                </Button>
-                <hr />
-                <Card.Text>Dealer Permissions: {CONDITIONS.isSignedInDealer(user) ? 'Yes' : 'No'}</Card.Text>
-                <Button className='mb-2' onClick={this.onToggleRole(ROLES.DEALER)}>
-                  Toggle Dealer
-                </Button>
-                <PrintContractButton user={user} />
-              </Card.Body>
-            </Card>
-          </>
-        }
+        <WithPageLoad loading={loading}>
+          {user &&
+            <>
+              <Jumbotron>
+                <h1>User Details</h1>
+                {user.email}
+              </Jumbotron>
+              <Card>
+                <Card.Body>
+                  <Card.Title>{user.username}</Card.Title>
+                  <hr />
+                  <Card.Text>Admin Permissions: {CONDITIONS.isSignedInAdmin(user) ? 'Yes' : 'No'}</Card.Text>
+                  <Button className='mb-2' onClick={this.onToggleRole(ROLES.ADMIN)}>
+                    Toggle Admin
+                  </Button>
+                  <hr />
+                  <Card.Text>Dealer Permissions: {CONDITIONS.isSignedInDealer(user) ? 'Yes' : 'No'}</Card.Text>
+                  <Button className='mb-2' onClick={this.onToggleRole(ROLES.DEALER)}>
+                    Toggle Dealer
+                  </Button>
+                  <PrintContractButton user={user} />
+                </Card.Body>
+              </Card>
+            </>}
+        </WithPageLoad>
       </Container>
     );
   }
