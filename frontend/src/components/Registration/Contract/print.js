@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useRef } from 'react';
+import ReactToPrint from 'react-to-print';
 
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 import formatAddress from 'utils/address';
@@ -32,4 +34,27 @@ class PrintableContract extends Component {
   }
 }
 
-export default PrintableContract;
+const PrintContractButton = ({ user }) => {
+  const componentRef = useRef();
+  const printTrigger = () => <Button>Print Contract</Button>;
+
+  return (
+    !!user.contract
+      ? <>
+          <hr />
+          <ReactToPrint
+            trigger={printTrigger}
+            content={() => componentRef.current}
+          />
+          <div style={{display: 'none'}}>
+            <PrintableContract
+              ref={componentRef}
+              user={user}
+            />
+          </div>
+        </>
+      : null
+  );
+};
+
+export default PrintContractButton;

@@ -1,8 +1,9 @@
 import React from 'react';
 
 import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import Card from 'react-bootstrap/Card';
+import PrintContractButton from 'components/Registration/Contract/print';
 import { UserDetailsLink } from 'components/User/UserDetails';
 
 import * as CONDITIONS from 'constants/conditions';
@@ -40,19 +41,19 @@ const UserList = ({ users, isAdmin }) => {
                 className='p-2'>Incomplete</Badge>}
           </Accordion.Toggle>
           <Accordion.Collapse eventKey={user.uid}>
-              <Card.Body>
-                <Card className='m-2'>
-                  <Card.Body>
-                    <Card.Title>Account Info</Card.Title>
-                    <hr />
-                    <DataCard label='Full Name' data={user.fullName} />
-                    <DataCard label='Email' data={user.email} />
-                    <DataCard label='Phone Number' data={user.phone} />
-                    <DataCard label='Address' data={formatAddress(user)} />
-                    <DataCard label='License No' data={user.license} />
-                    <DataCard label='ID' data={user.uid} />
-                  </Card.Body>
-                </Card>
+            <Card.Body>
+              <Card className='m-2'>
+                <Card.Body>
+                  <Card.Title>Account Info</Card.Title>
+                  <hr />
+                  <DataCard label='Full Name' data={user.fullName} />
+                  <DataCard label='Email' data={user.email} />
+                  <DataCard label='Phone Number' data={user.phone} />
+                  <DataCard label='Address' data={formatAddress(user)} />
+                  <DataCard label='License No' data={user.license} />
+                  <DataCard label='ID' data={user.uid} />
+                </Card.Body>
+              </Card>
               {user.contract &&
                 <Card className='m-2'>
                   <Card.Body>
@@ -62,7 +63,8 @@ const UserList = ({ users, isAdmin }) => {
                     <DataCard label='Date' data={user.contract.date} />
                   </Card.Body>
                 </Card>}
-                <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />
+              <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />
+              <PrintContractButton user={user} />
               {user.roles && Object.keys(user.roles).map((role, index) =>
                 <Badge
                   variant='secondary'
