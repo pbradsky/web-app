@@ -1,3 +1,27 @@
-.custom-file:hover {
+#custom:hover {
+  cursor: pointer;
+}
+
+#inputGroupFile01:hover {
+  cursor: pointer;
+}
+
+#inputGroupFile02:hover {
+  cursor: pointer;
+}
+
+#inputGroupFile03:hover {
+  cursor: pointer;
+}
+
+#file-label-001:hover {
+  cursor: pointer;
+}
+
+#file-label-002:hover {
+  cursor: pointer;
+}
+
+#file-label-003:hover {
   cursor: pointer;
 }

@@ -32,7 +32,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             name='phone'
             value={phone}
             onChange={onChange}
-            placeholder='555-333-4444' 
+            placeholder='555-333-4444'
             isInvalid={phone && !validatePhone(phone) && filled}
           />
           <FormControl.Feedback type="invalid">
@@ -86,7 +86,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             name='zip'
             value={zip}
             onChange={onChange}
-            placeholder='11235' 
+            placeholder='11235'
             isInvalid={zip && !validateZip(zip) && filled}
           />
           <FormControl.Feedback type="invalid">
@@ -100,8 +100,8 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
           <Form.Control
               name='license'
               value={license}
-              onChange={onChange} 
-              isInvalid={license && !validateLicense(license) && filled}  
+              onChange={onChange}
+              isInvalid={license && !validateLicense(license) && filled}
             />
           <FormControl.Feedback type="invalid">
             Please provide a valid license number.
@@ -111,42 +111,42 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
       <Form.Row>
         <Form.Group as={Col} className='col-md-4 col-sm-12 col-12'>
             <Form.Label>Proof of Insurance</Form.Label>
-            <div className="custom-file">
+            <div className="custom-file" id='custom'>
               <Form.Control
                 type="file"
                 className="custom-file-input"
                 id="inputGroupFile01"
                 aria-describedby="inputGroupFileAddon01"
               />
-              <label className="custom-file-label" htmlFor="inputGroupFile01">
+              <label id='file-label-001' className="custom-file-label" htmlFor="inputGroupFile01">
                 Choose file
               </label>
             </div>
         </Form.Group>
         <Form.Group as={Col} className='col-md-4 col-sm-12 col-12'>
             <Form.Label>Driver's License (front)</Form.Label>
-            <div className="custom-file">
+            <div className="custom-file" id='custom'>
               <Form.Control
                 type="file"
                 className="custom-file-input"
-                id="inputGroupFile01"
-                aria-describedby="inputGroupFileAddon01"
+                id="inputGroupFile02"
+                aria-describedby="inputGroupFileAddon02"
               />
-              <label className="custom-file-label" htmlFor="inputGroupFile01">
+              <label id='file-label-002' className="custom-file-label" htmlFor="inputGroupFile02">
                 Choose file
               </label>
             </div>
         </Form.Group>
         <Form.Group as={Col} className='col-md-4 col-sm-12 col-12'>
             <Form.Label>Driver's License (back)</Form.Label>
-            <div className="custom-file">
+            <div className="custom-file" id='custom'>
               <Form.Control
                 type="file"
                 className="custom-file-input"
-                id="inputGroupFile01"
-                aria-describedby="inputGroupFileAddon01"
+                id="inputGroupFile03"
+                aria-describedby="inputGroupFileAddon03"
               />
-              <label className="custom-file-label" htmlFor="inputGroupFile01">
+              <label id='file-label-003' className="custom-file-label" htmlFor="inputGroupFile03">
                 Choose file
               </label>
             </div>
