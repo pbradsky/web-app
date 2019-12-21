@@ -100,7 +100,7 @@ const NavName = ({authUser}) => {
   return (
     isSignedIn
       ? <Badge className="ml-auto mr-3 p-2" variant='primary'> {authUser.username} </Badge>
-      : <Link to={ROUTES.SIGN_UP} className='ml-auto mr-3'><Button size='sm'>JOIN NOW</Button></Link>
+      : <Link to={ROUTES.SIGN_UP} className='ml-auto mr-3'><Button size='sm'>Join Now</Button></Link>
 
   )
 }
