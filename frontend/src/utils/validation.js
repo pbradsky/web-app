@@ -22,7 +22,7 @@ const validateSignature = (signature, fullName, date) => {
   } else if (!validator.equals(formatDate(signatureDate), today)) {
     errors.push('Please enter today\'s date.');
   }
-  if (signature.localeCompare(fullName) != 0) {
+  if (signature.localeCompare(fullName) !== 0) {
     errors.push('Please sign your full name.')
   }
 
@@ -31,7 +31,7 @@ const validateSignature = (signature, fullName, date) => {
 
 const validateForm = userInfo => {
   if (!validatePhone(userInfo.phone) ||
-      !validateLicense(userInfo.license) || 
+      !validateLicense(userInfo.license) ||
       !validateZip(userInfo.zip)) {
     return false;
   }
