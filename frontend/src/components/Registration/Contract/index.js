@@ -118,12 +118,6 @@ class ContractPage extends Component {
     event.preventDefault();
   };
 
-  componentWillUnmount() {
-    if (this.listener) {
-      this.listener();
-    }
-  }
-
   onSignatureSubmit = event => {
     const { signature, date } = this.state.signatureData;
     const fullName = this.state.formData.fullName;
