@@ -119,10 +119,10 @@ const NavLinks = ({ authUser, closeNav }) => {
         Dealerships
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.DEALER} onClick={closeNav} show={isDealer}>
-        Dealer Dashboard
+        Dashboard
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.ADMIN} onClick={closeNav} show={isAdmin}>
-        Admin Dashboard
+        Dashboard
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.ACCOUNT} onClick={closeNav} show={isSignedIn}>
         Account
