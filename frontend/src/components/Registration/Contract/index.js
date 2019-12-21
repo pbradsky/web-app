@@ -15,7 +15,7 @@ import * as CONDITIONS from 'constants/conditions';
 import * as CONTRACT from 'constants/contractText';
 import * as ROUTES from 'constants/routes';
 import formatAddress from 'utils/address';
-import { validateSignature } from 'utils/validation';
+import { validateSignature, validateForm } from 'utils/validation';
 import { sanitizeFormData } from 'utils/sanitize';
 
 const stages = {
@@ -50,13 +50,11 @@ const INITIAL_STATE = {
 class ContractPage extends Component {
   constructor(props) {
     super(props);
-
     if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
       INITIAL_STATE.oneShot = true;
     }
-    if (!CONDITIONS.isUser(this.props.authUser)) {
-      this.state = { ...INITIAL_STATE };
-    } else {
+    this.state = { ...INITIAL_STATE };
+    if (CONDITIONS.isUser(this.props.authUser) && this.props.authUser.contract) {
       const {
         fullName, phone, address, apt, city, state, zip, license
       } = this.props.authUser;
@@ -104,22 +102,34 @@ class ContractPage extends Component {
 
   onFormSubmit = event => {
     const { formData } = this.state;
+    const isValid = validateForm(formData)
     formData.filled = true;
-
     this.setState({
-      formData,
-      stage: stages.SIGNATURE,
-      maxStage: stages.SIGNATURE,
+      formData: formData
     });
+    if (isValid) {
+      this.setState({
+        formData,
+        stage: stages.SIGNATURE,
+        maxStage: stages.SIGNATURE,
+      });
+    }
 
     event.preventDefault();
   };
 
+  componentWillUnmount() {
+    if (this.listener) {
+      this.listener();
+    }
+  }
+
   onSignatureSubmit = event => {
     const { signature, date } = this.state.signatureData;
+    const fullName = this.state.formData.fullName;
     event.preventDefault();
 
-    const errors = validateSignature(date);
+    const errors = validateSignature(signature, fullName, date);
     if (errors.length > 0) {
       this.setState({ errors });
       return;

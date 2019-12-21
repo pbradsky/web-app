@@ -3,18 +3,18 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl'
+import { validatePhone, validateLicense, validateZip } from 'utils/validation'
 
 import STATES from 'constants/states';
 
 const ContractForm = ({ formData, onChange, onSubmit }) => {
-  const { fullName, phone, address, apt, city, state, zip, license } = formData;
-
-  const isInvalid = [
+  const { fullName, phone, address, apt, city, state, zip, license, filled } = formData;
+  const isNotEmpty = [
     fullName, phone, address, city, state, zip, license
   ].some(field => field === '');
-
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <h4>Personal Information</h4>
       <hr />
       <Form.Row>
@@ -32,7 +32,12 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             name='phone'
             value={phone}
             onChange={onChange}
-            placeholder='555-333-4444' />
+            placeholder='555-333-4444' 
+            isInvalid={phone && !validatePhone(phone) && filled}
+          />
+          <FormControl.Feedback type="invalid">
+            Please provide a valid phone number.
+          </FormControl.Feedback>
         </Form.Group>
       </Form.Row>
       <Form.Row>
@@ -81,7 +86,12 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             name='zip'
             value={zip}
             onChange={onChange}
-            placeholder='11235' />
+            placeholder='11235' 
+            isInvalid={zip && !validateZip(zip) && filled}
+          />
+          <FormControl.Feedback type="invalid">
+            Please provide a valid zip code.
+          </FormControl.Feedback>
         </Form.Group>
       </Form.Row>
       <Form.Row>
@@ -90,7 +100,12 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
           <Form.Control
               name='license'
               value={license}
-              onChange={onChange} />
+              onChange={onChange} 
+              isInvalid={license && !validateLicense(license) && filled}  
+            />
+          <FormControl.Feedback type="invalid">
+            Please provide a valid license number.
+          </FormControl.Feedback>
         </Form.Group>
       </Form.Row>
       <Form.Row>
@@ -138,8 +153,9 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
         </Form.Group>
       </Form.Row>
       <Button
-        onClick={onSubmit}
-        disabled={isInvalid}>
+        type="submit"
+        disabled={isNotEmpty}
+        >
         Submit
       </Button>
     </Form>
