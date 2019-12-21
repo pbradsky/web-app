@@ -5,8 +5,9 @@ handlers:
   - url: /
     static_files: build/index.html
     upload: build/index.html
+    secure: always
+    script: auto
   - url: /
     static_dir: build
-  - url: /
     secure: always
     script: auto
