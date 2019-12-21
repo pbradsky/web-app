@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 
 import UserList from 'components/User/UserList';
-import Loading from 'components/Util/Loading';
+import { WithPageLoad } from 'components/Util/Loading';
 import Search from 'components/Util/Search';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'styled/Container';
@@ -59,16 +59,17 @@ class AdminPage extends Component {
 
     return (
       <Container>
-        <Jumbotron>
-          <h3>Admin Dashboard</h3>
-          <p>
-            This page is only accessible to signed in admins.
-          </p>
-        </Jumbotron>
-        <Search searchQuery={searchQuery} onChange={this.onChange} />
-        <br />
-        <Loading loading={loading} />
-        <UserList users={searchedUsers} isAdmin={true} />
+        <WithPageLoad loading={loading}>
+          <Jumbotron>
+            <h3>Admin Dashboard</h3>
+            <p>
+              This page is only accessible to signed in admins.
+            </p>
+          </Jumbotron>
+          <Search searchQuery={searchQuery} onChange={this.onChange} />
+          <br />
+          <UserList users={searchedUsers} isAdmin={true} />
+        </WithPageLoad>
       </Container>
     );
   }

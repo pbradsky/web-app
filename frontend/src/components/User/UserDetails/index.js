@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ReactToPrint from 'react-to-print';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'styled/Container';
-import PrintableContract from 'components/Registration/Contract/print';
+import PrintContractButton from 'components/Registration/Contract/print';
+import { WithPageLoad } from 'components/Util/Loading';
 
 import { withAuthorization } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
@@ -52,7 +52,6 @@ class UserDetailsPage extends Component {
     }
 
     user.roles = roles;
-    console.log(user.roles, roles, user);
     this.setState({ user });
     this.props.firebase
       .user(user.uid)
@@ -64,51 +63,36 @@ class UserDetailsPage extends Component {
       .catch(error => console.log(error));
   }
 
-  printTrigger = () => <Button className='mb-2'>Print Contract</Button>;
-
   render() {
     const { user, loading } = this.state;
 
     return (
       <Container>
-        {loading && <div>Loading...</div>}
-        {user &&
-          <>
-            <Jumbotron>
-              <h1>User Details</h1>
-              {user.email}
-            </Jumbotron>
-            <Card>
-              <Card.Body>
-                <Card.Title>{user.username}</Card.Title>
-                <hr />
-                <Card.Text>Admin Permissions: {CONDITIONS.isSignedInAdmin(user) ? 'Yes' : 'No'}</Card.Text>
-                <Button className='mb-2' onClick={this.onToggleRole(ROLES.ADMIN)}>
-                  Toggle Admin
-                </Button>
-                <hr />
-                <Card.Text>Dealer Permissions: {CONDITIONS.isSignedInDealer(user) ? 'Yes' : 'No'}</Card.Text>
-                <Button className='mb-2' onClick={this.onToggleRole(ROLES.DEALER)}>
-                  Toggle Dealer
-                </Button>
-                {user.contract &&
-                  <>
-                    <hr />
-                    <ReactToPrint
-                      trigger={this.printTrigger}
-                      content={() => this.printComponentRef}
-                    />
-                    <div style={{display: 'none'}}>
-                      <PrintableContract
-                        ref={el => (this.printComponentRef = el)}
-                        user={user}
-                      />
-                    </div>
-                  </>}
-              </Card.Body>
-            </Card>
-          </>
-        }
+        <WithPageLoad loading={loading}>
+          {user &&
+            <>
+              <Jumbotron>
+                <h1>User Details</h1>
+                {user.email}
+              </Jumbotron>
+              <Card>
+                <Card.Body>
+                  <Card.Title>{user.username}</Card.Title>
+                  <hr />
+                  <Card.Text>Admin Permissions: {CONDITIONS.isSignedInAdmin(user) ? 'Yes' : 'No'}</Card.Text>
+                  <Button className='mb-2' onClick={this.onToggleRole(ROLES.ADMIN)}>
+                    Toggle Admin
+                  </Button>
+                  <hr />
+                  <Card.Text>Dealer Permissions: {CONDITIONS.isSignedInDealer(user) ? 'Yes' : 'No'}</Card.Text>
+                  <Button className='mb-2' onClick={this.onToggleRole(ROLES.DEALER)}>
+                    Toggle Dealer
+                  </Button>
+                  <PrintContractButton user={user} />
+                </Card.Body>
+              </Card>
+            </>}
+        </WithPageLoad>
       </Container>
     );
   }

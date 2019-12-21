@@ -25,5 +25,13 @@ const AppLoading = () => (
   </Spinner>
 );
 
-export { AppLoading };
+const PageLoading = AppLoading;
+
+const WithPageLoad = ({ loading, children }) => (
+  loading
+    ? <PageLoading />
+    : <>{children}</>
+);
+
+export { AppLoading, PageLoading, WithPageLoad };
 export default Loading;
