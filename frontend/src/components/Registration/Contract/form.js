@@ -4,15 +4,17 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
-import { validatePhone, validateLicense, validateZip } from 'utils/validation'
+
+import { validatePhone, validateLicense, validateZip, validateFileSize } from 'utils/validation'
 
 import STATES from 'constants/states';
 
-const ContractForm = ({ formData, onChange, onSubmit }) => {
-  const { fullName, phone, address, apt, city, state, zip, license, filled } = formData;
+const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
+  const { fullName, phone, address, apt, city, state, zip, license, 
+    proofOfInsurance, driversLicenseFront, driversLicenseBack, filled } = formData;
   const isNotEmpty = [
-    fullName, phone, address, city, state, zip, license
-  ].some(field => field === '');
+    fullName, phone, address, city, state, zip, license, proofOfInsurance, driversLicenseFront, driversLicenseBack
+  ].some(field => field === '' || !field);
   return (
     <Form onSubmit={onSubmit}>
       <h4>Personal Information</h4>
@@ -96,12 +98,12 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
       </Form.Row>
       <Form.Row>
         <Form.Group as={Col}>
-          <Form.Label>License Number</Form.Label>
+          <Form.Label>Driver's License Number</Form.Label>
           <Form.Control
               name='license'
               value={license}
               onChange={onChange}
-              isInvalid={license && !validateLicense(license) && filled}
+              isInvalid={license && state && !validateLicense(license, state) && filled}
             />
           <FormControl.Feedback type="invalid">
             Please provide a valid license number.
@@ -117,9 +119,16 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
                 className="custom-file-input"
                 id="inputGroupFile01"
                 aria-describedby="inputGroupFileAddon01"
+                name='proofOfInsurance'
+                onChange={onFileChange}
+                accept='image/*'
+                isInvalid={proofOfInsurance && !validateFileSize(proofOfInsurance)}
               />
+              <FormControl.Feedback type="invalid">
+                Image exceeds max size of 10 MB.
+              </FormControl.Feedback>
               <label id='file-label-001' className="custom-file-label" htmlFor="inputGroupFile01">
-                Choose file
+                {proofOfInsurance ? proofOfInsurance.name : 'Choose file'}
               </label>
             </div>
         </Form.Group>
@@ -131,9 +140,16 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
                 className="custom-file-input"
                 id="inputGroupFile02"
                 aria-describedby="inputGroupFileAddon02"
+                name='driversLicenseFront'
+                onChange={onFileChange}
+                accept='image/*'
+                isInvalid={driversLicenseFront && !validateFileSize(driversLicenseFront)}
               />
+              <FormControl.Feedback type="invalid">
+                Image exceeds max size of 10 MB.
+              </FormControl.Feedback>
               <label id='file-label-002' className="custom-file-label" htmlFor="inputGroupFile02">
-                Choose file
+                {driversLicenseFront ? driversLicenseFront.name : 'Choose file'}
               </label>
             </div>
         </Form.Group>
@@ -145,9 +161,16 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
                 className="custom-file-input"
                 id="inputGroupFile03"
                 aria-describedby="inputGroupFileAddon03"
+                name='driversLicenseBack'
+                onChange={onFileChange}
+                accept='image/*'
+                isInvalid={driversLicenseBack && !validateFileSize(driversLicenseBack)}
               />
+              <FormControl.Feedback type="invalid">
+                Image exceeds max size of 10 MB.
+              </FormControl.Feedback>
               <label id='file-label-003' className="custom-file-label" htmlFor="inputGroupFile03">
-                Choose file
+                {driversLicenseBack ? driversLicenseBack.name : 'Choose file'}
               </label>
             </div>
         </Form.Group>
