@@ -31,27 +31,43 @@ const validateSignature = (signature, fullName, date) => {
 
 const validateForm = userInfo => {
   if (!validatePhone(userInfo.phone) ||
-      !validateLicense(userInfo.license) ||
-      !validateZip(userInfo.zip)) {
+      !validateLicense(userInfo.license, userInfo.state) ||
+      !validateZip(userInfo.zip) ||
+      !validateFileSize(userInfo.proofOfInsurance) ||
+      !validateFileSize(userInfo.driversLicenseFront) ||
+      !validateFileSize(userInfo.driversLicenseBack)) {
     return false;
   }
   return true;
 }
 
 const validatePhone = phoneNum => {
-  let phonePattern = /^(\+[0-9]{1,2}[-. ]?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  const phonePattern = /^(\+[0-9]{1,2}[-. ]?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   return phoneNum.match(phonePattern) != null;
 }
 
-const validateLicense = licenseNum => {
-  licenseNum = licenseNum.toLowerCase();
-  let licensePattern = /^([0-9]|[a-z]){6,7}$/;
-  return licenseNum.match(licensePattern) != null;
+// TODO: validate for all states -- currently only validates Washington
+const validateLicense = (licenseNum, state) => {
+  if (state === 'WA') {
+    licenseNum = licenseNum.toLowerCase();
+    const licensePattern = /^([a-z]|[0-9]|\*){12}$/;
+    return licenseNum.match(licensePattern) != null;
+  }
+  return true;
 }
 
 const validateZip = zipcode => {
-  let zipPattern = /^[0-9]{5}$/;
+  const zipPattern = /^[0-9]{5}$/;
   return zipcode.match(zipPattern) != null;
 }
 
-export { validateCreateUser, validateSignature, validateForm, validatePhone, validateLicense, validateZip };
+// ensure image is not larger than 10 MB
+const validateFileSize = file => {
+  const size = file.size;
+  if (size > 10 ** 6) {
+    return false;
+  }
+  return true;
+}
+
+export { validateCreateUser, validateSignature, validateForm, validatePhone, validateLicense, validateZip, validateFileSize };

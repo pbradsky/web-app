@@ -34,6 +34,9 @@ const INITIAL_STATE = {
     state: '',
     zip: '',
     license: '',
+    proofOfInsurance: null,
+    driversLicenseFront: null,
+    driversLicenseBack: null,
     filled: false,
   },
   signatureData: {
@@ -61,7 +64,7 @@ class ContractPage extends Component {
       this.state = {
         ...INITIAL_STATE,
         formData: {
-          fullName, phone, address, apt, city, state, zip, license,
+          fullName, phone, address, apt, city, state, zip, license, 
           filled: true,
         },
         maxStage: stages.SIGNATURE,
@@ -91,6 +94,13 @@ class ContractPage extends Component {
   onFormChange = event => {
     const { formData } = this.state;
     formData[event.target.name] = event.target.value;
+    this.setState({ formData });
+  }
+
+  onFileChange = event => {
+    const file = event.target.files[0];
+    const { formData } = this.state;
+    formData[event.target.name] = file;
     this.setState({ formData });
   }
 
@@ -129,12 +139,14 @@ class ContractPage extends Component {
       return;
     }
 
-    const rawFormData = this.state.formData;
+    const rawFormData = {...this.state.formData};
     const contract = { signature, date };
     delete rawFormData.filled;
+    delete rawFormData.proofOfInsurance;
+    delete rawFormData.driversLicenseFront;
+    delete rawFormData.driversLicenseBack;
 
     const formData = sanitizeFormData(rawFormData);
-
     if (this.props.authUser) {
       this.props.firebase
         .user(this.props.authUser.uid)
@@ -143,6 +155,9 @@ class ContractPage extends Component {
           ...formData,
           contract,
         })
+      this.upload(this.state.formData.proofOfInsurance, '-proof_of_insurance')
+      this.upload(this.state.formData.driversLicenseFront, '-drivers_license_front')
+      this.upload(this.state.formData.driversLicenseBack, '-drivers_license_back')
       this.props.history.push(ROUTES.CONFIRMATION);
     } else {
       this.props.history.push(ROUTES.SIGN_IN)
@@ -163,6 +178,11 @@ class ContractPage extends Component {
       stage: newStage,
     });
     event.preventDefault();
+  }
+
+  upload = (file, type) => {
+    const storageRef = this.props.firebase.storage.ref();
+    storageRef.child('images/' + this.props.authUser.uid + type).put(file);
   }
 
   render() {
@@ -202,6 +222,7 @@ class ContractPage extends Component {
           <ContractForm
             formData={formData}
             onChange={this.onFormChange}
+            onFileChange={this.onFileChange}
             onSubmit={this.onFormSubmit} />
         );
         break;
