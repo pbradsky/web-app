@@ -18,6 +18,7 @@ const TermsPage = () => (
     <Card>
       <Card.Body>
         <Card.Title className='text-center'>Jurne, Inc. Terms of Service</Card.Title>
+        <hr />
         <Card.Text>Last Updated: 12/13/2019</Card.Text>
         <Card.Text>Welcome, and thank you for your interest in Jurne, Inc.
           (“<strong>Jurne</strong>,” “<strong>we</strong>,” or “<strong>us</strong>”)
