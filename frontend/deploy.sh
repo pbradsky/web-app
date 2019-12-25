@@ -1,2 +1,2 @@
-gcloud app deploy react-app.yaml --project jurne-prod
+gcloud app deploy app.yaml --project jurne-prod
 echo '\nDeployed 🚀'
