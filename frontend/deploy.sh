@@ -1,2 +1,2 @@
-gcloud app deploy app.yaml --project jurne-prod
+firebase deploy
 echo '\nDeployed 🚀'
