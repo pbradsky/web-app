@@ -9,7 +9,7 @@ import * as ROUTES from 'constants/routes';
 
 const agreeTextTOS = (
   <Card.Text>
-    I agree to the <Link to={ROUTES.TERMS} style={{textDecoration: 'none'}}>Terms of Service</Link> and <Link to={ROUTES.PRIVACY} style={{textDecoration: 'none'}}>Privacy Policy</Link>.
+    I agree to the Jurne <Link to={ROUTES.TERMS} style={{textDecoration: 'none'}}>Terms of Service</Link> and <Link to={ROUTES.PRIVACY} style={{textDecoration: 'none'}}>Privacy Policy</Link>.
   </Card.Text>
 );
 
@@ -17,7 +17,8 @@ const TermsPage = () => (
   <Container>
     <Card>
       <Card.Body>
-        <Card.Title className='text-center'>Jurne Terms of Service</Card.Title>
+        <Card.Title className='text-center'>Jurne, Inc. Terms of Service</Card.Title>
+        <hr />
         <Card.Text>Last Updated: 12/13/2019</Card.Text>
         <Card.Text>Welcome, and thank you for your interest in Jurne, Inc.
           (“<strong>Jurne</strong>,” “<strong>we</strong>,” or “<strong>us</strong>”)
@@ -48,15 +49,15 @@ const TermsPage = () => (
           <strong>ELECTRONIC SIGNATURES.</strong> By agreeing to these Terms, you consent to signing certain
           legal documents electronically, as further described in Section 6.
         </Card.Text>
-        <ol className='pl-3'>
+        <ul className='pl-3' type='none'>
           <li className='mb-2 mt-2'>
-            <strong>Jurne Service Overview.</strong> We offer a platform that is free for consumers who would
+            <strong>1. Jurne Service Overview.</strong> We offer a platform that is free for consumers who would
             like to test drive a car (the “<strong>Test Drive</strong>”) at one of our partner dealerships (the “<strong>Dealership</strong>”)
             to fill out the necessary paperwork online (the “<strong>Test Drive Application</strong>”). In other words, we are an
             intermediary streamlining the initial interactions between you and the Dealership.
           </li>
           <li className='mb-2 mt-2'>
-            <strong>Eligibility.</strong> You must be at least 18 years old and have a valid driver’s
+            <strong>2. Eligibility.</strong> You must be at least 18 years old and have a valid driver’s
             license to use the Service. Depending on the Dealership, you may be required to provide additional
             information such as proof of insurance to complete a Test Drive Application. By agreeing to these
             Terms, you represent and warrant to us that: (a) you are at least 18 years old; (b) you have a
@@ -67,7 +68,7 @@ const TermsPage = () => (
             and you agree to be bound by these Terms.
           </li>
           <li className='mb-2 mt-2'>
-            <strong>Accounts and Registration.</strong> To access most features of the Service, you must register
+            <strong>3. Accounts and Registration.</strong> To access most features of the Service, you must register
             for an account. When you register for an account, you may be required to provide us with some
             information about yourself, such as your name, email address, phone number, or other contact
             information, and your date of birth. You agree that the information you provide to us is accurate and
@@ -77,8 +78,8 @@ const TermsPage = () => (
             believe that your account is no longer secure, then you must immediately notify us at david@thejurne.com.
           </li>
             <li className='mb-2 mt-2'>
-              <strong>Licenses</strong>
-              <ul type='none'>
+              <strong>4. Licenses</strong>
+              <ul type='none' className='p-0 m-0'>
                 <SubItem prefix='4.1'>
                   <strong>Limited License.</strong> Subject to your complete and ongoing compliance with these Terms, Jurne grants
                   you, solely for your personal, non-commercial use, a limited, non-exclusive, non-transferable,
@@ -104,7 +105,7 @@ const TermsPage = () => (
               </ul>
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Ownership; Proprietary Rights.</strong> The Service is owned and operated by Jurne. The
+              <strong>5. Ownership; Proprietary Rights.</strong> The Service is owned and operated by Jurne. The
               visual interfaces, graphics, design, compilation, information, data, computer code (including
               source code or object code), products, software, services, and all other elements of the Service
               (“<strong>Materials</strong>”) provided by Jurne are protected by intellectual property and other laws. All Materials
@@ -113,15 +114,15 @@ const TermsPage = () => (
               not granted expressly in these Terms.
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Consent to E-Signatures.</strong> By signing and submitting a Test Drive Application on the
+              <strong>6. Consent to E-Signatures.</strong> By signing and submitting a Test Drive Application on the
               Service, you consent to signing the Test Drive Application electronically and to have Jurne collect,
               retain, and provide your e-signature to the Dealership for the sole purpose of providing the Service.
               You represent and warrant that you would only sign the Test Drive Application on your own behalf
               (or, on behalf of the organization for which you are authorized to sign).
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Third Party Terms</strong>
-              <ul type='none'>
+              <strong>7. Third Party Terms</strong>
+              <ul type='none' className='p-0 m-0'>
                 <SubItem prefix='7.1'>
                   <strong>Third Party Services and Linked Websites.</strong> Jurne may provide tools through the Service
                   that enable you to export information to third party services. By using one of these tools,
@@ -143,8 +144,8 @@ const TermsPage = () => (
               </ul>
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Communications.</strong>
-              <ul type='none'>
+              <strong>8. Communications.</strong>
+              <ul type='none' className='p-0 m-0'>
                 <SubItem prefix='8.1'>
                   <strong>Push Notifications.</strong> When you install our app on your mobile device,
                   you agree to receive push notifications, which are messages an app sends you on your mobile
@@ -160,46 +161,46 @@ const TermsPage = () => (
               </ul>
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Prohibited Conduct.</strong> BY USING THE SERVICE YOU AGREE NOT TO:
-              <ol type='a'>
-                <li className='mb-2 mt-2'>
+              <strong>9. Prohibited Conduct.</strong> BY USING THE SERVICE YOU AGREE NOT TO:
+              <ul type='none' className='p-0 m-0'>
+                <SubItem prefix='a.'>
                   use the Service for any illegal purpose or in violation of any local, state, national, or
                   international law;
-                </li>
-                <li className='mb-2 mt-2'>
+                </SubItem>
+                <SubItem prefix='b.'>
                   violate, or encourage others to violate, any right of a third party, including by infringing
                   or misappropriating any third party intellectual property right;
-                </li>
-                <li className='mb-2 mt-2'>
+                </SubItem>
+                <SubItem prefix='c.'>
                   interfere with security-related features of the Service, including by: (i) disabling or
                   circumventing features that prevent or limit use or copying of any content; or (ii) reverse
                   engineering or otherwise attempting to discover the source code of any portion of the Service
                   except to the extent that the activity is expressly permitted by applicable law;
-                </li>
-                <li className='mb-2 mt-2'>
+                </SubItem>
+                <SubItem prefix='d.'>
                   interfere with the operation of the Service or any user’s enjoyment of the Service, including
                   by: (i) uploading or otherwise disseminating any virus, adware, spyware, worm, or other
                   malicious code; (ii) collecting personal information about another user or third party without
                   consent; or (iii) interfering with or disrupting any network, equipment, or server connected
                   to or used to provide the Service;
-                </li>
-                <li className='mb-2 mt-2'>
+                </SubItem>
+                <SubItem prefix='e.'>
                   perform any fraudulent activity including impersonating any person or entity, claiming a false
                   affiliation, accessing any other Service account without permission, or falsifying your age
                   or date of birth;
-                </li>
-                <li className='mb-2 mt-2'>
+                </SubItem>
+                <SubItem prefix='f.'>
                   sell or otherwise transfer the access granted under these Terms or any Materials (as defined
                   in Section 5) or any right or ability to view, access, or use any Materials; or
-                </li>
-                <li className='mb-2 mt-2'>
+                </SubItem>
+                <SubItem prefix='g.'>
                   attempt to do any of the acts described in this Section 9 or assist or permit any person in
                   engaging in any of the acts described in this Section 9.
-                </li>
-              </ol>
+                </SubItem>
+              </ul>
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Modification of these Terms.</strong> We reserve the right to change these Terms on a
+              <strong>10. Modification of these Terms.</strong> We reserve the right to change these Terms on a
               going-forward basis at any time upon 7 days’ notice. Please check these Terms periodically for
               changes. If a change to these Terms materially modifies your rights or obligations, we may require
               that you accept the modified Terms in order to continue to use the Service. Material modifications
@@ -210,8 +211,8 @@ const TermsPage = () => (
               in effect at the time the dispute arose.
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Term, Termination and Modification of the Service</strong>
-              <ul type='none'>
+              <strong>11. Term, Termination and Modification of the Service</strong>
+              <ul type='none' className='p-0 m-0'>
                 <SubItem prefix='11.1'>
                   <strong>Term.</strong> These Terms are effective beginning when you accept the Terms or
                   first download, install, access, or use the Service, and ending when terminated as described in
@@ -241,7 +242,7 @@ const TermsPage = () => (
               </ul>
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Indemnity.</strong> To the fullest extent permitted by law, you are responsible for your
+              <strong>12. Indemnity.</strong> To the fullest extent permitted by law, you are responsible for your
               use of the Service, and you will defend and indemnify Jurne and its officers, directors, employees,
               consultants, affiliates, subsidiaries and agents (together, the “Jurne Entities”) from and against
               every claim brought by a third party, and any related liability, damage, loss, and expense, including
@@ -257,7 +258,7 @@ const TermsPage = () => (
 
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Disclaimers; No Warranties</strong>
+              <strong>13. Disclaimers; No Warranties</strong>
               <p>
                 THE TEST DRIVE APPLICATIONS AND ANY AND ALL OTHER AGREEMENTS THAT YOU MAY ENTER INTO WITH A
                 DEALERSHIP FOR PURPOSES OF THE TEST DRIVE OR THE ENSUING RENTAL OR PURCHASE OF A VEHICLE OR
@@ -293,7 +294,7 @@ const TermsPage = () => (
               </p>
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Limitation of Liability</strong>
+              <strong>14. Limitation of Liability</strong>
               <p>
                 TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT WILL THE JURNE ENTITIES BE LIABLE TO YOU FOR
                 ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES (INCLUDING DAMAGES FOR LOSS
@@ -318,8 +319,8 @@ const TermsPage = () => (
               </p>
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Dispute Resolution and Arbitration</strong>
-              <ul type='none'>
+              <strong>15. Dispute Resolution and Arbitration</strong>
+              <ul type='none' className='p-0 m-0'>
                 <SubItem prefix='15.1'>
                   <strong>Generally.</strong> In the interest of resolving disputes between you and Jurne
                   in the most expedient and cost effective manner, and except as described in Section 15.2 and
@@ -420,8 +421,8 @@ const TermsPage = () => (
               </ul>
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Miscellaneous</strong>
-              <ul type='none'>
+              <strong>16. Miscellaneous</strong>
+              <ul type='none' className='p-0 m-0'>
                 <SubItem prefix='16.1'>
                   <strong>General Terms.</strong> These Terms, together with the Privacy Policy and any
                   other agreements expressly incorporated by reference into these Terms, are the entire and
@@ -496,7 +497,7 @@ const TermsPage = () => (
               </ul>
             </li>
             <li className='mb-2 mt-2'>
-              <strong>Notice Regarding Apple.</strong> This Section 17 only applies to the extent you are using
+              <strong>17. Notice Regarding Apple.</strong> This Section 17 only applies to the extent you are using
               our mobile application on an iOS device. You acknowledge that these Terms are between you and
               Jurne only, not with Apple Inc. (“<strong>Apple</strong>”), and Apple is not responsible for the Service or the
               content thereof. Apple has no obligation to furnish any maintenance and support services with
@@ -517,7 +518,7 @@ const TermsPage = () => (
               embargo, or that has been designated by the U.S. Government as a “terrorist supporting” country;
               and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.
             </li>
-        </ol>
+        </ul>
       </Card.Body>
     </Card>
   </Container>

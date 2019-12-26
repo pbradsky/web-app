@@ -1,2 +1,2 @@
-gcloud app deploy react-app.yaml --project jurne-prod
+firebase deploy
 echo '\nDeployed 🚀'
