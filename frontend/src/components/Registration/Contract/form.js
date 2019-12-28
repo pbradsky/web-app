@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -12,25 +12,39 @@ import STATES from 'constants/states';
 const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
   const { fullName, phone, address, apt, city, state, zip, license,
     proofOfInsurance, driversLicenseFront, driversLicenseBack, filled } = formData;
-  const isUnfilled = [
-    fullName, phone, address, city, state, zip, license, proofOfInsurance, driversLicenseFront, driversLicenseBack
-  ].some(field => field === '' || !field);
+
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = event => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === true) {
+      onSubmit(event);
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+    setValidated(true);
+  }
+
   return (
-    <Form onSubmit={onSubmit}>
+    <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <h4>Personal Information</h4>
       <hr />
       <Form.Row>
-        <Form.Group as={Col}>
+        <Form.Group as={Col} controlId="validationCustom01">
           <Form.Label>Full Name</Form.Label>
           <Form.Control
+            required
             name='fullName'
             value={fullName}
             onChange={onChange}
-            placeholder='Full name' />
+            placeholder='Full name'
+            isValid={!!fullName} />
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>Phone Number</Form.Label>
           <Form.Control
+            required
             name='phone'
             value={phone}
             onChange={onChange}
@@ -44,8 +58,9 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
       </Form.Row>
       <Form.Row>
         <Form.Group as={Col}>
-          <Form.Label>Address</Form.Label>
+          <Form.Label>Street Address</Form.Label>
           <Form.Control
+            required
             name='address'
             value={address}
             onChange={onChange}
@@ -64,6 +79,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
         <Form.Group as={Col}>
           <Form.Label>City</Form.Label>
           <Form.Control
+            required
             name='city'
             value={city}
             onChange={onChange}
@@ -72,6 +88,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
         <Form.Group as={Col}>
           <Form.Label>State</Form.Label>
           <Form.Control
+            required
             name='state'
             value={state}
             onChange={onChange}
@@ -85,6 +102,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
         <Form.Group as={Col}>
           <Form.Label>Zip</Form.Label>
           <Form.Control
+            required
             name='zip'
             value={zip}
             onChange={onChange}
@@ -100,12 +118,13 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
         <Form.Group as={Col}>
           <Form.Label>Driver's License Number</Form.Label>
           <Form.Control
-              name='license'
-              value={license}
-              onChange={onChange}
-              placeholder={'Driver\'s license number'}
-              isInvalid={license && state && !validateLicense(license, state) && filled}
-            />
+            required
+            name='license'
+            value={license}
+            onChange={onChange}
+            placeholder={'Driver\'s license number'}
+            isInvalid={license && state && !validateLicense(license, state) && filled}
+          />
           <FormControl.Feedback type="invalid">
             Please provide a valid license number.
           </FormControl.Feedback>
@@ -116,6 +135,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             <Form.Label>Proof of Insurance</Form.Label>
             <div className="custom-file" id='custom'>
               <Form.Control
+                required
                 type="file"
                 className="custom-file-input"
                 id="inputGroupFile01"
@@ -137,6 +157,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             <Form.Label>Driver's License (front)</Form.Label>
             <div className="custom-file" id='custom'>
               <Form.Control
+                required
                 type="file"
                 className="custom-file-input"
                 id="inputGroupFile02"
@@ -158,6 +179,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             <Form.Label>Driver's License (back)</Form.Label>
             <div className="custom-file" id='custom'>
               <Form.Control
+                required
                 type="file"
                 className="custom-file-input"
                 id="inputGroupFile03"
@@ -178,7 +200,6 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
       </Form.Row>
       <Button
         type="submit"
-        disabled={isUnfilled}
       >
         Submit
       </Button>
