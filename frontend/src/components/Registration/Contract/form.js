@@ -10,9 +10,9 @@ import { validatePhone, validateLicense, validateZip, validateFileSize } from 'u
 import STATES from 'constants/states';
 
 const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
-  const { fullName, phone, address, apt, city, state, zip, license, 
+  const { fullName, phone, address, apt, city, state, zip, license,
     proofOfInsurance, driversLicenseFront, driversLicenseBack, filled } = formData;
-  const isNotEmpty = [
+  const isUnfilled = [
     fullName, phone, address, city, state, zip, license, proofOfInsurance, driversLicenseFront, driversLicenseBack
   ].some(field => field === '' || !field);
   return (
@@ -26,7 +26,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             name='fullName'
             value={fullName}
             onChange={onChange}
-            placeholder='Johnny Appleseed' />
+            placeholder='Full name' />
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>Phone Number</Form.Label>
@@ -34,7 +34,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             name='phone'
             value={phone}
             onChange={onChange}
-            placeholder='555-333-4444'
+            placeholder='Phone number'
             isInvalid={phone && !validatePhone(phone) && filled}
           />
           <FormControl.Feedback type="invalid">
@@ -49,7 +49,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             name='address'
             value={address}
             onChange={onChange}
-            placeholder='1234 Main St' />
+            placeholder='Street address' />
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>Address 2</Form.Label>
@@ -67,7 +67,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             name='city'
             value={city}
             onChange={onChange}
-            placeholder='New York City' />
+            placeholder='City' />
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>State</Form.Label>
@@ -76,10 +76,10 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             value={state}
             onChange={onChange}
             as='select'>
-            <option disabled>Choose a state...</option>
-            {Object.keys(STATES).map((state, index) => (
-              <option key={index} value={STATES[state]}>{state}</option>
-            ))}
+              <option value='' disabled>Choose a state...</option>
+              {Object.keys(STATES).map((state, index) => (
+                <option key={index} value={STATES[state]}>{state}</option>
+              ))}
           </Form.Control>
         </Form.Group>
         <Form.Group as={Col}>
@@ -88,7 +88,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             name='zip'
             value={zip}
             onChange={onChange}
-            placeholder='11235'
+            placeholder='Zip code'
             isInvalid={zip && !validateZip(zip) && filled}
           />
           <FormControl.Feedback type="invalid">
@@ -103,6 +103,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
               name='license'
               value={license}
               onChange={onChange}
+              placeholder={'Driver\'s license number'}
               isInvalid={license && state && !validateLicense(license, state) && filled}
             />
           <FormControl.Feedback type="invalid">
@@ -177,8 +178,8 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
       </Form.Row>
       <Button
         type="submit"
-        disabled={isNotEmpty}
-        >
+        disabled={isUnfilled}
+      >
         Submit
       </Button>
     </Form>
