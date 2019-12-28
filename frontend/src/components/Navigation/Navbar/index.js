@@ -6,7 +6,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavLinkRoute from './navLinkRoute';
 import SignOutButton from 'components/User/SignOut';
-import Badge from 'react-bootstrap/Badge';
 
 import Spread from 'assets/spread.png'
 
