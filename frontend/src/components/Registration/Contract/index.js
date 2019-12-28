@@ -169,7 +169,7 @@ class ContractPage extends Component {
 
     let newStage = stage + delta;
     if (newStage < 0) {
-      newStage = 0;
+      this.props.history.push(ROUTES.CHOOSE_DEALER);
     } else if (newStage >= NUM_STAGES) {
       newStage = NUM_STAGES - 1;
     }
@@ -196,7 +196,6 @@ class ContractPage extends Component {
       <>
         <Button
           className='mr-2'
-          disabled={stage <= 0}
           onClick={this.onChangeState(-1)}>
             Back
         </Button>
