@@ -57,77 +57,75 @@ const PreambleText = () => (
       Operator to possess and use the motor behicle descibed herein upon the
       terms and conditions set forth on both sides of this agreement.
     </Card.Text>
-    <Card.Text>
-      <ol>
-        <li>
-          Dealer and Operator expressly agree that for the term of this
-          agreement Operator is not and does not become an agent, servant, or
-          employee of Dealer in any manner whatsoever.
-        </li>
-        <li>
-          Operator acknowledges that the vehicle is the rightful property of
-          Dealer although registered title may be in some third party, and
-          further acknowledges that he received said vehicle in good and safe
-          mechanical condition and agrees that he will return said vehicle to
-          Dealer at Dealer’s address herein the same condition as he received
-          it, ordinary wear and tear excepted, on the return date stated or
-          sooner upon demand of Dealer. In states where the law is so
-          applicable, Operator acknowledges that failure to promptly return the
-          vehicle may result in criminal prosecution after notification pursuant
-          to said laws.
-        </li>
-        <li>
-          Operator agrees that the vehicle will not be operated in violation of
-          any law governing the use or return thereof, or in violation of any of
-          the other terms and conditions set forth above.
-        </li>
-        <li>
-          Operator agrees that he will not operate the vehicle outside the state
-          of Washington.
-        </li>
-        <li>
-          Operator expressly agrees that the motor vehicle given to him shall
-          not be operated:
-          <ol type='a'>
-            <li>
-              To carry passengers for a consideration, express or implied, or in
-              connection with the Operator’s employment;
-            </li>
-            <li>
-              In violation of any terms and conditions of this agreement;
-            </li>
-            <li>
-              In any race or speed test or contest;
-            </li>
-            <li>
-              To propel or tow any trailer or vehicle used as a trailer;
-            </li>
-            <li>
-              By any person under the influence of intoxicants or narcotics;
-            </li>
-            <li>
-              By any person with a suspended or revoked or invalid driver’s
-              license;
-            </li>
-            <li>
-              For any illegal purpose;
-            </li>
-            <li>
-              By any minor or anyone other than the Operator.
-            </li>
-          </ol>
-        </li>
-        <li>
-          The Dealer is not providing insurance of any nature or kind including
-          but not limited to collision or public liability insurance. Operator
-          must have his own insurance in order to be protected.
-        </li>
-        <li>
-          Operator agrees to replace gasoline used if the vehicle is driven over
-          50 miles.
-        </li>
-      </ol>
-    </Card.Text>
+    <ol>
+      <li>
+        Dealer and Operator expressly agree that for the term of this
+        agreement Operator is not and does not become an agent, servant, or
+        employee of Dealer in any manner whatsoever.
+      </li>
+      <li>
+        Operator acknowledges that the vehicle is the rightful property of
+        Dealer although registered title may be in some third party, and
+        further acknowledges that he received said vehicle in good and safe
+        mechanical condition and agrees that he will return said vehicle to
+        Dealer at Dealer’s address herein the same condition as he received
+        it, ordinary wear and tear excepted, on the return date stated or
+        sooner upon demand of Dealer. In states where the law is so
+        applicable, Operator acknowledges that failure to promptly return the
+        vehicle may result in criminal prosecution after notification pursuant
+        to said laws.
+      </li>
+      <li>
+        Operator agrees that the vehicle will not be operated in violation of
+        any law governing the use or return thereof, or in violation of any of
+        the other terms and conditions set forth above.
+      </li>
+      <li>
+        Operator agrees that he will not operate the vehicle outside the state
+        of Washington.
+      </li>
+      <li>
+        Operator expressly agrees that the motor vehicle given to him shall
+        not be operated:
+        <ol type='a'>
+          <li>
+            To carry passengers for a consideration, express or implied, or in
+            connection with the Operator’s employment;
+          </li>
+          <li>
+            In violation of any terms and conditions of this agreement;
+          </li>
+          <li>
+            In any race or speed test or contest;
+          </li>
+          <li>
+            To propel or tow any trailer or vehicle used as a trailer;
+          </li>
+          <li>
+            By any person under the influence of intoxicants or narcotics;
+          </li>
+          <li>
+            By any person with a suspended or revoked or invalid driver’s
+            license;
+          </li>
+          <li>
+            For any illegal purpose;
+          </li>
+          <li>
+            By any minor or anyone other than the Operator.
+          </li>
+        </ol>
+      </li>
+      <li>
+        The Dealer is not providing insurance of any nature or kind including
+        but not limited to collision or public liability insurance. Operator
+        must have his own insurance in order to be protected.
+      </li>
+      <li>
+        Operator agrees to replace gasoline used if the vehicle is driven over
+        50 miles.
+      </li>
+    </ol>
   </Card.Body>
 );
 
