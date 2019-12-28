@@ -8,11 +8,11 @@ import Container from 'styled/Container';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import ContractForm from './form';
 import SignatureForm from './signature';
+import { PreambleText, ContractFormText } from './text';
 
 import { withFirebase } from 'api/Firebase';
 import withUser from 'api/Session/withUser';
 import * as CONDITIONS from 'constants/conditions';
-import * as CONTRACT from 'constants/contractText';
 import * as ROUTES from 'constants/routes';
 import formatAddress from 'utils/address';
 import { validateSignature, validateForm } from 'utils/validation';
@@ -64,7 +64,7 @@ class ContractPage extends Component {
       this.state = {
         ...INITIAL_STATE,
         formData: {
-          fullName, phone, address, apt, city, state, zip, license, 
+          fullName, phone, address, apt, city, state, zip, license,
           filled: true,
         },
         maxStage: stages.SIGNATURE,
@@ -232,18 +232,8 @@ class ContractPage extends Component {
             <h4>Dealer's Permit for Demonstration</h4>
             <Card style={{overflowY: 'scroll', height: '50vh'}}>
               <Card.Body>
-                <Card.Text>
-                  {CONTRACT.CONTRACT_FORM(fullName, fullAddress, phone, license)}
-                </Card.Text>
-                <Card.Text>
-                  {CONTRACT.SIGNATURE_FORM}
-                </Card.Text>
-                <Card.Text>
-                  {CONTRACT.SIGNATURE}
-                </Card.Text>
-                <Card.Text>
-                  {CONTRACT.PREAMBLE}
-                </Card.Text>
+                <ContractFormText name={fullName} address={fullAddress} phone={phone} license={license} />
+                <PreambleText />
               </Card.Body>
             </Card>
             <br />
