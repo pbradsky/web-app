@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
+import FormInfoTooltip from './info';
 
 import { validatePhone, validateLicense, validateZip, validateFileSize } from 'utils/validation'
 
@@ -43,6 +44,9 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>Phone Number</Form.Label>
+          <FormInfoTooltip>
+            Phone number in the format 555-555-5555
+          </FormInfoTooltip>
           <Form.Control
             required
             name='phone'
@@ -67,7 +71,10 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             placeholder='Street address' />
         </Form.Group>
         <Form.Group as={Col}>
-          <Form.Label>Address 2</Form.Label>
+          <Form.Label>Address Line 2</Form.Label>
+          <FormInfoTooltip>
+            Appartment, studio, or floor number
+          </FormInfoTooltip>
           <Form.Control
             name='apt'
             value={apt}
@@ -100,7 +107,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
           </Form.Control>
         </Form.Group>
         <Form.Group as={Col}>
-          <Form.Label>Zip</Form.Label>
+          <Form.Label>Zip Code</Form.Label>
           <Form.Control
             required
             name='zip'
@@ -117,6 +124,9 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
       <Form.Row>
         <Form.Group as={Col}>
           <Form.Label>Driver's License Number</Form.Label>
+          <FormInfoTooltip>
+            License number found on your driver's license
+          </FormInfoTooltip>
           <Form.Control
             required
             name='license'
@@ -133,6 +143,10 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
       <Form.Row>
         <Form.Group as={Col} className='col-md-4 col-sm-12 col-12'>
             <Form.Label>Proof of Insurance</Form.Label>
+            <FormInfoTooltip>
+              Upload an image, scan, or copy of a document that is proof you
+              have car insurance (e.g., an insurance card)
+            </FormInfoTooltip>
             <div className="custom-file" id='custom'>
               <Form.Control
                 required
@@ -155,6 +169,10 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
         </Form.Group>
         <Form.Group as={Col} className='col-md-4 col-sm-12 col-12'>
             <Form.Label>Driver's License (front)</Form.Label>
+            <FormInfoTooltip>
+              Upload an image, scan, or copy of the front of your valid driver's
+              license
+            </FormInfoTooltip>
             <div className="custom-file" id='custom'>
               <Form.Control
                 required
@@ -177,6 +195,10 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
         </Form.Group>
         <Form.Group as={Col} className='col-md-4 col-sm-12 col-12'>
             <Form.Label>Driver's License (back)</Form.Label>
+            <FormInfoTooltip>
+              Upload an image, scan, or copy of the back of your valid driver's
+              license
+            </FormInfoTooltip>
             <div className="custom-file" id='custom'>
               <Form.Control
                 required
