@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef, forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
@@ -18,6 +18,7 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
 
+    this._toggleComponentRef = createRef();
     this.state = {
       isExpanded: false,
     };
@@ -42,7 +43,8 @@ class Navigation extends Component {
   }
 
   handleDocumentClick = event => {
-    if (this._element.contains(event.target)) {
+    // Do not toggle again if the <Navbar.Toggle /> is clicked.
+    if (this._toggleComponentRef.current.contains(event.target)) {
       return;
     }
 
@@ -53,21 +55,19 @@ class Navigation extends Component {
     const { isExpanded } = this.state;
 
     return (
-      <div ref={c => this._element = c}>
-        <AuthUserContext.Consumer>
-          {authUser =>
-            <NavContent
-              authUser={authUser}
-              setNav={this.setNav}
-              closeNav={this.closeNav}
-              isExpanded={isExpanded} />}
-        </AuthUserContext.Consumer>
-      </div>
+      <AuthUserContext.Consumer>
+        {authUser =>
+          <NavContent
+            authUser={authUser}
+            setNav={this.setNav}
+            isExpanded={isExpanded}
+            ref={this._toggleComponentRef} />}
+      </AuthUserContext.Consumer>
     );
   }
 }
 
-const NavContent = ({ authUser, setNav, closeNav, isExpanded }) => (
+const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
   <Navbar
     collapseOnSelect
     className='border-bottom mb-4'
@@ -86,14 +86,15 @@ const NavContent = ({ authUser, setNav, closeNav, isExpanded }) => (
     </Link>
     <NavName authUser={authUser}/>
     <Navbar.Toggle
+      ref={ref}
       aria-controls='responsive-navbar-nav'
       style={{ border: '0px', outline: 'none' }}
     />
     <Navbar.Collapse id='responsive-navbar-nav'>
-      <NavLinks closeNav={closeNav} authUser={authUser} />
+      <NavLinks authUser={authUser} />
     </Navbar.Collapse>
   </Navbar>
-);
+));
 
 const NavName = ({authUser}) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
@@ -105,35 +106,35 @@ const NavName = ({authUser}) => {
   )
 }
 
-const NavLinks = ({ authUser, closeNav }) => {
+const NavLinks = ({ authUser }) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   const isAdmin = CONDITIONS.isSignedInAdmin(authUser);
   const isDealer = CONDITIONS.isSignedInDealer(authUser);
 
   return (
     <Nav>
-      <NavLinkRoute to={ROUTES.LANDING} onClick={closeNav}>
+      <NavLinkRoute to={ROUTES.LANDING} >
         Home
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.CHOOSE_DEALER} onClick={closeNav} show={isSignedIn && !isAdmin && !isDealer}>
+      <NavLinkRoute to={ROUTES.CHOOSE_DEALER} show={isSignedIn && !isAdmin && !isDealer}>
         Dealerships
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.DEALER} onClick={closeNav} show={isDealer}>
+      <NavLinkRoute to={ROUTES.DEALER} show={isDealer}>
         Dashboard
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.ADMIN} onClick={closeNav} show={isAdmin}>
+      <NavLinkRoute to={ROUTES.ADMIN} show={isAdmin}>
         Dashboard
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.ACCOUNT} onClick={closeNav} show={isSignedIn}>
+      <NavLinkRoute to={ROUTES.ACCOUNT} show={isSignedIn}>
         Account
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.SIGN_IN} onClick={closeNav} show={!isSignedIn}>
+      <NavLinkRoute to={ROUTES.SIGN_IN} show={!isSignedIn}>
         Sign In
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.SIGN_UP} onClick={closeNav} show={!isSignedIn}>
+      <NavLinkRoute to={ROUTES.SIGN_UP} show={!isSignedIn}>
         Join Now
       </NavLinkRoute>
-      {isSignedIn && <SignOutButton onClick={closeNav} />}
+      {isSignedIn && <SignOutButton />}
     </Nav>
   );
 }
