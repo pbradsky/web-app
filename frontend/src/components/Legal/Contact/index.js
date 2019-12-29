@@ -23,7 +23,7 @@ const ContactPage = () => (
 const ContactCard = () => (
   <Card>
     <Card.Body>
-      <Card.Title>Reach out</Card.Title>
+      <Card.Title>Reach Out</Card.Title>
       <hr />
       <Card.Text>
         If you have feedback,

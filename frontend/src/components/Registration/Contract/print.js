@@ -3,9 +3,9 @@ import ReactToPrint from 'react-to-print';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { PreambleText, ContractFormText, SignedUserText } from './text';
 
 import formatAddress from 'utils/address';
-import * as CONTRACT from 'constants/contractText';
 
 class PrintableContract extends Component {
   render() {
@@ -14,21 +14,9 @@ class PrintableContract extends Component {
 
     return (
       <Card.Body style={{whiteSpace: 'pre-line'}}>
-        <Card.Text>
-          {CONTRACT.CONTRACT_FORM(fullName, fullAddress, phone, license)}
-        </Card.Text>
-        <Card.Text>
-          {CONTRACT.SIGNATURE_FORM}
-        </Card.Text>
-        <Card.Text>
-          {CONTRACT.SIGNATURE}
-        </Card.Text>
-        <Card.Text>
-          {CONTRACT.PREAMBLE}
-        </Card.Text>
-        <Card.Text>
-          {CONTRACT.SIGNED_USER(contract)}
-        </Card.Text>
+        <ContractFormText name={fullName} address={fullAddress} phone={phone} license={license} />
+        <PreambleText />
+        <SignedUserText contract={contract} />
       </Card.Body>
     );
   }
