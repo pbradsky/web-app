@@ -100,7 +100,7 @@ const NavName = ({authUser}) => {
   return (
     isSignedIn
       ? <Link className='ml-auto mr-3' to={ROUTES.ACCOUNT}>
-          <Button size='sm'>{authUser.username}</Button>
+          <Button className='p-2' size='sm' style={{lineHeight: '0.75em', borderRadius: '50%'}}>{authUser.username[0]}</Button>
         </Link>
       : <Link to={ROUTES.SIGN_UP} className='ml-auto mr-3'>
           <Button size='sm'>Join Now</Button>
