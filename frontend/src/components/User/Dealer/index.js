@@ -66,7 +66,7 @@ class DealerPage extends Component {
           </Jumbotron>
           <Search searchQuery={searchQuery} onChange={this.onChange} />
           <br />
-          <UserList users={searchedUsers} />
+          <UserList users={searchedUsers} isAdmin={false}/>
         </WithPageLoad>
       </Container>
     );

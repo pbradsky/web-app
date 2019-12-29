@@ -63,7 +63,10 @@ const UserList = ({ users, isAdmin }) => {
                     <DataCard label='Date' data={user.contract.date} />
                   </Card.Body>
                 </Card>}
-              <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />
+              {isAdmin && 
+                <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />}
+              {!isAdmin && CONDITIONS.isSignedInCompleteUser(user) &&
+                <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />}
               <PrintContractButton user={user} />
               {user.roles && Object.keys(user.roles).map((role, index) =>
                 <Badge
