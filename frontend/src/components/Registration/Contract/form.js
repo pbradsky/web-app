@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
 import FormInfoTooltip from './info';
 
-import { validatePhone, validateLicense, validateZip, validateFileSize } from 'utils/validation'
+import { validatePhone, validateLicense, validateZip, validateFileUpload } from 'utils/validation'
 
 import STATES from 'constants/states';
 
@@ -157,10 +157,10 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
                 name='proofOfInsurance'
                 onChange={onFileChange}
                 accept='image/*'
-                isInvalid={proofOfInsurance && !validateFileSize(proofOfInsurance)}
+                isInvalid={proofOfInsurance && !validateFileUpload(proofOfInsurance)}
               />
               <FormControl.Feedback type="invalid">
-                Image exceeds max size of 10 MB.
+                Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB
               </FormControl.Feedback>
               <label id='file-label-001' className="custom-file-label" htmlFor="inputGroupFile01">
                 {proofOfInsurance ? proofOfInsurance.name : 'Choose file'}
@@ -183,10 +183,10 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
                 name='driversLicenseFront'
                 onChange={onFileChange}
                 accept='image/*'
-                isInvalid={driversLicenseFront && !validateFileSize(driversLicenseFront)}
+                isInvalid={driversLicenseFront && !validateFileUpload(driversLicenseFront)}
               />
               <FormControl.Feedback type="invalid">
-                Image exceeds max size of 10 MB.
+                Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB
               </FormControl.Feedback>
               <label id='file-label-002' className="custom-file-label" htmlFor="inputGroupFile02">
                 {driversLicenseFront ? driversLicenseFront.name : 'Choose file'}
@@ -209,10 +209,10 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
                 name='driversLicenseBack'
                 onChange={onFileChange}
                 accept='image/*'
-                isInvalid={driversLicenseBack && !validateFileSize(driversLicenseBack)}
+                isInvalid={driversLicenseBack && !validateFileUpload(driversLicenseBack)}
               />
               <FormControl.Feedback type="invalid">
-                Image exceeds max size of 10 MB.
+                Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB
               </FormControl.Feedback>
               <label id='file-label-003' className="custom-file-label" htmlFor="inputGroupFile03">
                 {driversLicenseBack ? driversLicenseBack.name : 'Choose file'}

@@ -33,9 +33,9 @@ const validateForm = userInfo => {
   if (!validatePhone(userInfo.phone) ||
       !validateLicense(userInfo.license, userInfo.state) ||
       !validateZip(userInfo.zip) ||
-      !validateFileSize(userInfo.proofOfInsurance) ||
-      !validateFileSize(userInfo.driversLicenseFront) ||
-      !validateFileSize(userInfo.driversLicenseBack)) {
+      !validateFileUpload(userInfo.proofOfInsurance) ||
+      !validateFileUpload(userInfo.driversLicenseFront) ||
+      !validateFileUpload(userInfo.driversLicenseBack)) {
     return false;
   }
   return true;
@@ -61,13 +61,15 @@ const validateZip = zipcode => {
   return zipcode.match(zipPattern) != null;
 }
 
-// ensure image is not larger than 10 MB
-const validateFileSize = file => {
+// ensure image is not larger than 10 MB & is of right file type
+const validateFileUpload = file => {
+  const validFileTypes = ['jpg', 'png', 'jpeg'];
   const size = file.size;
-  if (size > 10 ** 7) {
+  const type = file.type.split('/').pop()
+  if (size > 10 ** 7 || !validFileTypes.includes(type)) {
     return false;
   }
   return true;
 }
 
-export { validateCreateUser, validateSignature, validateForm, validatePhone, validateLicense, validateZip, validateFileSize };
+export { validateCreateUser, validateSignature, validateForm, validatePhone, validateLicense, validateZip, validateFileUpload };
