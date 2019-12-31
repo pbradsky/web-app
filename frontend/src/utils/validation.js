@@ -64,7 +64,7 @@ const validateZip = zipcode => {
 // ensure image is not larger than 10 MB
 const validateFileSize = file => {
   const size = file.size;
-  if (size > 10 ** 6) {
+  if (size > 10 ** 7) {
     return false;
   }
   return true;
