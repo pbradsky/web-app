@@ -69,29 +69,30 @@ class Navigation extends Component {
 const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
   <Navbar
     collapseOnSelect
-    className='border-bottom mb-4'
-    expand='none'
+    expand='md'
     fixed='top'
     style={{ backgroundColor: '#ffffff' }}
     expanded={isExpanded}
     onToggle={setNav}
+    id='navbar-state'
   >
     <Link to={ROUTES.LANDING}>
       <img
         src={Spread}
-        height='50'
+        height='40'
         alt='jurne logo'
       />
     </Link>
-    <NavName authUser={authUser}/>
     <Navbar.Toggle
       ref={ref}
       aria-controls='responsive-navbar-nav'
       style={{ border: '0px', outline: 'none' }}
+      className='ml-auto'
     />
     <Navbar.Collapse id='responsive-navbar-nav'>
-      <NavLinks authUser={authUser} />
+      <NavLinks authUser={authUser}  />
     </Navbar.Collapse>
+    <NavName authUser={authUser} />
   </Navbar>
 ));
 
@@ -99,13 +100,9 @@ const NavName = ({authUser}) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   return (
     isSignedIn
-      ? <Link className='ml-auto mr-3' to={ROUTES.ACCOUNT}>
+      && <Link to={ROUTES.ACCOUNT}>
           <Button className='p-2' size='sm' style={{lineHeight: '0.75em', borderRadius: '50%'}}>{authUser.username[0]}</Button>
         </Link>
-      : <Link to={ROUTES.SIGN_UP} className='ml-auto mr-3'>
-          <Button size='sm'>Join Now</Button>
-        </Link>
-
   )
 }
 
