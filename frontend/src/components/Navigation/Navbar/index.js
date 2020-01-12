@@ -71,7 +71,7 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
     collapseOnSelect
     expand='md'
     fixed='top'
-    style={{ backgroundColor: '#ffffff' }}
+    style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #dddddd' }}
     expanded={isExpanded}
     onToggle={setNav}
     id='navbar-state'
@@ -112,10 +112,7 @@ const NavLinks = ({ authUser }) => {
   const isDealer = CONDITIONS.isSignedInDealer(authUser);
 
   return (
-    <Nav>
-      <NavLinkRoute to={ROUTES.LANDING} >
-        Home
-      </NavLinkRoute>
+    <Nav className='ml-auto mr-2'>
       <NavLinkRoute to={ROUTES.CHOOSE_DEALER} show={isSignedIn && !isAdmin && !isDealer}>
         Dealerships
       </NavLinkRoute>
@@ -124,9 +121,6 @@ const NavLinks = ({ authUser }) => {
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.ADMIN} show={isAdmin}>
         Dashboard
-      </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.ACCOUNT} show={isSignedIn}>
-        Account
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.SIGN_IN} show={!isSignedIn}>
         Sign In
