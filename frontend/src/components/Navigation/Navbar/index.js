@@ -2,6 +2,7 @@ import React, { Component, createRef, forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavLinkRoute from './navLinkRoute';
@@ -76,23 +77,25 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
     onToggle={setNav}
     id='navbar-state'
   >
-    <Link to={ROUTES.LANDING}>
-      <img
-        src={Spread}
-        height='40'
-        alt='jurne logo'
+    <Container>
+      <Link to={ROUTES.LANDING}>
+        <img
+          src={Spread}
+          height='40'
+          alt='jurne logo'
+        />
+      </Link>
+      <NavName authUser={authUser} linkClass='ml-auto d-md-none' />
+      <Navbar.Toggle
+        ref={ref}
+        aria-controls='responsive-navbar-nav'
+        style={{ border: '0px', outline: 'none' }}
       />
-    </Link>
-    <NavName authUser={authUser} linkClass='ml-auto d-md-none' />
-    <Navbar.Toggle
-      ref={ref}
-      aria-controls='responsive-navbar-nav'
-      style={{ border: '0px', outline: 'none' }}
-    />
-    <Navbar.Collapse id='responsive-navbar-nav'>
-      <NavLinks authUser={authUser} />
-    </Navbar.Collapse>
-    <NavName authUser={authUser} linkClass='d-none d-md-block' />
+      <Navbar.Collapse id='responsive-navbar-nav'>
+        <NavLinks authUser={authUser} />
+      </Navbar.Collapse>
+      <NavName authUser={authUser} linkClass='d-none d-md-block' />
+    </Container>
   </Navbar>
 ));
 
@@ -101,7 +104,7 @@ const NavName = ({authUser, linkClass}) => {
   return (
     isSignedIn
       && <Link className={linkClass} to={ROUTES.ACCOUNT}>
-          <Button className='p-2' size='sm' style={{lineHeight: '0.75em', borderRadius: '50%'}}>{authUser.username[0]}</Button>
+          <Button className='p-2 ml-2' size='sm' style={{lineHeight: '0.75em', borderRadius: '50%'}}>{authUser.username[0]}</Button>
         </Link>
   )
 }
@@ -112,7 +115,7 @@ const NavLinks = ({ authUser }) => {
   const isDealer = CONDITIONS.isSignedInDealer(authUser);
 
   return (
-    <Nav className='ml-auto mr-2'>
+    <Nav className='ml-auto'>
       <NavLinkRoute to={ROUTES.CHOOSE_DEALER} show={isSignedIn && !isAdmin && !isDealer}>
         Dealerships
       </NavLinkRoute>
@@ -122,11 +125,15 @@ const NavLinks = ({ authUser }) => {
       <NavLinkRoute to={ROUTES.ADMIN} show={isAdmin}>
         Dashboard
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.SIGN_IN} show={!isSignedIn}>
-        Sign In
+      <NavLinkRoute className='p-0 mb-1 mt-1 mr-2' to={ROUTES.SIGN_IN} show={!isSignedIn}>
+        <Button className='m-0' variant='outline-primary' size='sm'>
+         Sign In
+        </Button>
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.SIGN_UP} show={!isSignedIn}>
-        Join Now
+      <NavLinkRoute className='p-0 mb-1 mt-1' to={ROUTES.SIGN_UP} show={!isSignedIn}>
+        <Button className='m-0' variant='primary' size='sm'>
+         Join Now
+        </Button>
       </NavLinkRoute>
       {isSignedIn && <SignOutButton />}
     </Nav>
