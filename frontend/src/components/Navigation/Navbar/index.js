@@ -83,26 +83,24 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
         alt='jurne logo'
       />
     </Link>
-    <NavName authUser={authUser} />
+    <NavName authUser={authUser} linkClass='ml-auto d-md-none' />
     <Navbar.Toggle
       ref={ref}
       aria-controls='responsive-navbar-nav'
       style={{ border: '0px', outline: 'none' }}
     />
     <Navbar.Collapse id='responsive-navbar-nav'>
-      <NavLinks authUser={authUser}  />
+      <NavLinks authUser={authUser} />
     </Navbar.Collapse>
-    {//New NavName Below
-
-    }
+    <NavName authUser={authUser} linkClass='d-none d-md-block' />
   </Navbar>
 ));
 
-const NavName = ({authUser}) => {
+const NavName = ({authUser, linkClass}) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   return (
     isSignedIn
-      && <Link className='ml-auto d-md-none' to={ROUTES.ACCOUNT}>
+      && <Link className={linkClass} to={ROUTES.ACCOUNT}>
           <Button className='p-2' size='sm' style={{lineHeight: '0.75em', borderRadius: '50%'}}>{authUser.username[0]}</Button>
         </Link>
   )
