@@ -72,6 +72,7 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
     collapseOnSelect
     expand='md'
     fixed='top'
+    height='40px'
     style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #dddddd' }}
     expanded={isExpanded}
     onToggle={setNav}

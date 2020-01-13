@@ -26,7 +26,7 @@ const Footer = () => (
     </Link>
     <Navbar.Text className='nav-link'
           style={{fontSize: '10px'}}>
-      {copyright} 2019 Jurne Inc.
+      {copyright} 2020 Jurne Inc.
     </Navbar.Text>
   </Navbar>
 );
