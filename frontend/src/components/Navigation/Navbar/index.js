@@ -7,11 +7,17 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavLinkRoute from './navLinkRoute';
 import SignOutButton from 'components/User/SignOut';
 
-import Spread from 'assets/spread.png'
+import Spread from 'assets/spread.png';
+import styled from 'styled-components';
 
 import { AuthUserContext } from 'api/Session';
 import * as ROUTES from 'constants/routes';
 import * as CONDITIONS from 'constants/conditions';
+
+const Hamburger = styled(Navbar.Toggle)`
+  border: 0px;
+  outline: none!important;
+`
 
 class Navigation extends Component {
   constructor(props) {
@@ -77,26 +83,25 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
     <Link to={ROUTES.LANDING}>
       <img src={Spread} height='40' alt='jurne logo' />
     </Link>
-      <NavName authUser={authUser} linkClass='ml-auto d-md-none' />
-      <Navbar.Toggle
+      <UserBadge authUser={authUser} linkClass='ml-auto d-md-none' />
+      <Hamburger
         ref={ref}
         aria-controls='responsive-navbar-nav'
-        style={{border: '0px', outline: 'none' }}
       />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <NavLinks authUser={authUser} />
       </Navbar.Collapse>
-      <NavName authUser={authUser} linkClass='d-none d-md-block' />
+      <UserBadge authUser={authUser} linkClass='d-none d-md-block' />
   </Navbar>
 ));
 
-const NavName = ({authUser, linkClass}) => {
+const UserBadge = ({authUser, linkClass}) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   return (
-    isSignedIn
-      && <Link className={linkClass} to={ROUTES.ACCOUNT}>
-          <Button className='p-2 ml-2' size='sm' style={{lineHeight: '0.75em', borderRadius: '50%'}}>{authUser.username[0]}</Button>
-        </Link>
+    isSignedIn &&
+      <Link className={linkClass} to={ROUTES.ACCOUNT}>
+        <Button className='p-2 ml-2' size='sm' style={{lineHeight: '0.75em', borderRadius: '50%'}}>{authUser.username[0]}</Button>
+      </Link>
   )
 }
 
