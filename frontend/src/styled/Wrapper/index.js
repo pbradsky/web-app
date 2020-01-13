@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const footerHeight = 72;
 
-const Container = styled.div`
+const Wrapper = styled.div`
     min-height: calc(100vh - ${footerHeight}px);
 `;
 
-export default Container;
+export default Wrapper;
