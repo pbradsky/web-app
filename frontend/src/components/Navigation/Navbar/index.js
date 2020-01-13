@@ -80,18 +80,13 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
     onToggle={setNav}
     id='navbar-state'
   >
-    <Link to={ROUTES.LANDING}>
-      <img src={Spread} height='40' alt='jurne logo' />
-    </Link>
-      <UserBadge authUser={authUser} linkClass='ml-auto d-md-none' />
-      <Hamburger
-        ref={ref}
-        aria-controls='responsive-navbar-nav'
-      />
-      <Navbar.Collapse id='responsive-navbar-nav'>
-        <NavLinks authUser={authUser} />
-      </Navbar.Collapse>
-      <UserBadge authUser={authUser} linkClass='d-none d-md-block' />
+    <Link to={ROUTES.LANDING}><img src={Spread} height='44' alt='jurne logo' /></Link>
+    <UserBadge authUser={authUser} linkClass='ml-auto d-md-none' />
+    <Hamburger ref={ref} aria-controls='responsive-navbar-nav' />
+    <Navbar.Collapse id='responsive-navbar-nav'>
+      <NavLinks authUser={authUser} />
+    </Navbar.Collapse>
+    <UserBadge authUser={authUser} linkClass='d-none d-md-block' />
   </Navbar>
 ));
 
