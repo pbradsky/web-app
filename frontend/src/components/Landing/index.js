@@ -38,7 +38,7 @@ const LandingJumbotron = () => (
 
 const AboutUsButton = () => (
   <Link to={ROUTES.LANDING}>
-    <Button variant='secondary' className='mb-auto'>
+    <Button variant='outline-secondary' className='mb-auto'>
       Learn More
     </Button>
   </Link>
