@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import CardDeck from 'react-bootstrap/CardDeck';
 import Container from 'react-bootstrap/Container';
 import Wrapper from 'styled/Wrapper';
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -21,46 +20,33 @@ const LandingJumbotron = () => (
     <Container className='text-center'>
       <br /><br /><br />
       <h1 className=' mt-5 text-white'>Your Drive Starts Here</h1>
-      <p className='text-white'>We give you the power to put yourself behind the wheel.</p>
+      <p className='text-white'>The easiest way to test-drive.</p>
       <Link to={ROUTES.SIGN_UP}>
         <Button className='mt-4' size='lg'>
           Test Drive Today
         </Button>
       </Link>
       <br /><br /><br />
+      <br /><br /><br />
+      <br /><br /><br />
+      <br /><br /><br />
+      <br />
+      <AboutUsButton />
     </Container>
   </Jumbotron>
 );
 
 const AboutUsButton = () => (
   <Link to={ROUTES.LANDING}>
-    <Button variant='primary'>
+    <Button variant='secondary'>
       Learn More
     </Button>
   </Link>
 );
 
-const AboutCard = () => (
-  <Card>
-    <Card.Body>
-      <Card.Title>About Us</Card.Title>
-      <hr />
-      <Card.Text>
-        Our application allows you to fill out your test-drive form online.
-      </Card.Text>
-      <AboutUsButton />
-    </Card.Body>
-  </Card>
-);
-
 const Landing = () => (
   <Wrapper>
     <LandingJumbotron />
-    <Container>
-      <CardDeck>
-        <AboutCard />
-      </CardDeck>
-    </Container>
   </Wrapper>
 );
 
