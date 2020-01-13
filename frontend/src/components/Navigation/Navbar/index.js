@@ -85,7 +85,7 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
     onToggle={setNav}
     id='navbar-state'
   >
-    <Link to={ROUTES.LANDING}><img src={Spread} height='44' alt='jurne logo' /></Link>
+    <Link to={ROUTES.LANDING}><img src={Spread} height='54' alt='jurne logo' /></Link>
     <UserBadge authUser={authUser} linkClass='ml-auto d-md-none' />
     <Hamburger ref={ref} aria-controls='responsive-navbar-nav' />
     <Navbar.Collapse id='responsive-navbar-nav'>
@@ -130,8 +130,8 @@ const NavLinks = ({ authUser }) => {
       <NavLinkRoute className='d-block d-md-none' to={ROUTES.SIGN_UP} show={!isSignedIn}>
          Join Now
       </NavLinkRoute>
-      <NavLinkRoute className='d-none d-md-block p-0 mb-1 mt-1 ml-2' to={ROUTES.SIGN_UP} show={!isSignedIn}>
-        <Button variant='primary' size='sm'>
+      <NavLinkRoute className='d-none d-md-block' to={ROUTES.SIGN_UP} show={!isSignedIn}>
+        <Button variant='primary' size='md'>
          Join Now
         </Button>
       </NavLinkRoute>
