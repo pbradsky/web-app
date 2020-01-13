@@ -23,27 +23,25 @@ import * as ROUTES from 'constants/routes';
 
 const App = () => (
   <Router>
-    <div style={{backgroundColor: '#f9f9f9'}}>
       <Navigation />
-
-      <Route path={ROUTES.ADMIN} component={AdminPage} />
-      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route exact path={ROUTES.USER_DETAILS + '/:id'} component={UserDetailsPage} />
-      <Route path={ROUTES.CHOOSE_DEALER} component={ChooseDealerPage} />
-      <Route path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
-      <Route path={ROUTES.CONTACT} component={ContactPage} />
-      <Route exact path={ROUTES.CONTRACT} component={ContractPage} />
-      <Route exact path={ROUTES.CONTRACT_ONESHOT} component={ContractPage} />
-      <Route path={ROUTES.DEALER} component={DealerPage} />
-      <Route exact path={ROUTES.LANDING} component={LandingPage} />
-      <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-      <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-      <Route path={ROUTES.TERMS} component={TermsPage} />
-
+      <div style={{backgroundColor: '#f9f9f9'}}>
+        <Route path={ROUTES.ADMIN} component={AdminPage} />
+        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+        <Route exact path={ROUTES.USER_DETAILS + '/:id'} component={UserDetailsPage} />
+        <Route path={ROUTES.CHOOSE_DEALER} component={ChooseDealerPage} />
+        <Route path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
+        <Route path={ROUTES.CONTACT} component={ContactPage} />
+        <Route exact path={ROUTES.CONTRACT} component={ContractPage} />
+        <Route exact path={ROUTES.CONTRACT_ONESHOT} component={ContractPage} />
+        <Route path={ROUTES.DEALER} component={DealerPage} />
+        <Route exact path={ROUTES.LANDING} component={LandingPage} />
+        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+        <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
+        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route path={ROUTES.TERMS} component={TermsPage} />
+      </div>
       <Footer />
-    </div>
   </Router>
 );
 
