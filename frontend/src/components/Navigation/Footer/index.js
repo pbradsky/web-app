@@ -38,7 +38,7 @@ const Footer = () => (
       <FooterLink to={ROUTES.TERMS}>Terms</FooterLink>
       <FooterLink to={ROUTES.PRIVACY}>Privacy</FooterLink>
       <FooterLink to={ROUTES.CONTACT}>Contact</FooterLink>
-      <Navbar.Text>{copyright} 2020 Jurne Inc.</Navbar.Text>
+      <Navbar.Text>{copyright} {new Date().getFullYear()} Jurne Inc.</Navbar.Text>
     </Navbar>
   </Styles>
 );
