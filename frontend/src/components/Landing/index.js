@@ -18,7 +18,7 @@ const LandingJumbotron = () => (
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'bottom'}}
   >
-    <Container className=''>
+    <Container className='text-center'>
       <br /><br /><br />
       <h1 className=' mt-5 text-white'>Your Drive Starts Here</h1>
       <p className='text-white'>We give you the power to put yourself behind the wheel.</p>
