@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Navbar from 'react-bootstrap/Navbar';
 
+import styled from 'styled-components';
 import * as ROUTES from 'constants/routes';
 
 const copyright = '\u00a9';
@@ -19,7 +20,7 @@ const Styles = styled.div`
     color: #7f7f7f;
     margin: 8px 8px 8px 8px;
   }
-`
+`;
 
 const FooterLink = styled(Link)`
   font-size: 10px;
@@ -31,7 +32,7 @@ const FooterLink = styled(Link)`
     text-decoration: none;
     color: #cccccc
   }
-`
+`;
 
 const Footer = () => (
   <Styles>
