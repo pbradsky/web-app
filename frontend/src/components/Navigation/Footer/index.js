@@ -2,33 +2,45 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Navbar from 'react-bootstrap/Navbar';
-
 import * as ROUTES from 'constants/routes';
+import styled from 'styled-components';
 
 const copyright = '\u00a9';
 
+const Styles = styled.div`
+  .navbar {
+    justify-content: center;
+    background-color: #ffffff;
+  }
+
+  .navbar-text {
+    font-size: 10px;
+    color: #7f7f7f;
+    margin: 8px 8px 8px 8px;
+  }
+`
+
+const FooterLink = styled(Link)`
+  font-size: 10px;
+  color: #7f7f7f;
+  text-decoration: none;
+  margin: 8px 8px 8px 8px;
+
+  &:hover {
+    text-decoration: none;
+    color: #cccccc
+  }
+`
+
 const Footer = () => (
-  <Navbar bg='white' style={{justifyContent: 'center'}}>
-    <Link className='nav-link'
-          style={{fontSize: '10px', color: '#7f7f7f'}}
-          to={ROUTES.TERMS}>
-      Terms
-    </Link>
-    <Link className='nav-link'
-          style={{fontSize: '10px', color: '#7f7f7f'}}
-          to={ROUTES.PRIVACY}>
-      Privacy
-    </Link>
-    <Link className='nav-link'
-          style={{fontSize: '10px', color: '#7f7f7f'}}
-          to={ROUTES.CONTACT}>
-      Contact
-    </Link>
-    <Navbar.Text className='nav-link'
-          style={{fontSize: '10px'}}>
-      {copyright} 2020 Jurne Inc.
-    </Navbar.Text>
-  </Navbar>
+  <Styles>
+    <Navbar>
+      <FooterLink to={ROUTES.TERMS}>Terms</FooterLink>
+      <FooterLink to={ROUTES.PRIVACY}>Privacy</FooterLink>
+      <FooterLink to={ROUTES.CONTACT}>Contact</FooterLink>
+      <Navbar.Text>{copyright} 2020 Jurne Inc.</Navbar.Text>
+    </Navbar>
+  </Styles>
 );
 
 export default Footer;
