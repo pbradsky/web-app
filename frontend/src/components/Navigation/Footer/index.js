@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Navbar from 'react-bootstrap/Navbar';
+
 import * as ROUTES from 'constants/routes';
 import styled from 'styled-components';
 
@@ -11,9 +12,10 @@ const Styles = styled.div`
   .navbar {
     justify-content: center;
     background-color: #ffffff;
+    flex-shrink: 0;
   }
 
-  .navbar-text {
+  p {
     font-size: 10px;
     color: #7f7f7f;
     margin: 8px 8px 8px 8px;
@@ -38,7 +40,7 @@ const Footer = () => (
       <FooterLink to={ROUTES.TERMS}>Terms</FooterLink>
       <FooterLink to={ROUTES.PRIVACY}>Privacy</FooterLink>
       <FooterLink to={ROUTES.CONTACT}>Contact</FooterLink>
-      <Navbar.Text>{copyright} {new Date().getFullYear()} Jurne Inc.</Navbar.Text>
+      <p>{copyright} {new Date().getFullYear()} Jurne Inc.</p>
     </Navbar>
   </Styles>
 );
