@@ -2,7 +2,6 @@ import React, { Component, createRef, forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavLinkRoute from './navLinkRoute';
@@ -71,32 +70,23 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
   <Navbar
     collapseOnSelect
     expand='md'
-    fixed='top'
-    height='40px'
-    style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #dddddd' }}
     expanded={isExpanded}
     onToggle={setNav}
     id='navbar-state'
   >
-    <Container>
-      <Link to={ROUTES.LANDING}>
-        <img
-          src={Spread}
-          height='40'
-          alt='jurne logo'
-        />
-      </Link>
+    <Link to={ROUTES.LANDING}>
+      <img src={Spread} height='40' alt='jurne logo' />
+    </Link>
       <NavName authUser={authUser} linkClass='ml-auto d-md-none' />
       <Navbar.Toggle
         ref={ref}
         aria-controls='responsive-navbar-nav'
-        style={{ border: '0px', outline: 'none' }}
+        style={{border: '0px', outline: 'none' }}
       />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <NavLinks authUser={authUser} />
       </Navbar.Collapse>
       <NavName authUser={authUser} linkClass='d-none d-md-block' />
-    </Container>
   </Navbar>
 ));
 
@@ -132,10 +122,10 @@ const NavLinks = ({ authUser }) => {
       <NavLinkRoute to={ROUTES.SIGN_IN} show={!isSignedIn}>
          Sign In
       </NavLinkRoute>
-      <NavLinkRoute className='d-sm-block d-md-none' to={ROUTES.SIGN_UP} show={!isSignedIn}>
+      <NavLinkRoute className='d-block d-md-none' to={ROUTES.SIGN_UP} show={!isSignedIn}>
          Join Now
       </NavLinkRoute>
-      <NavLinkRoute className=' d-sm-none d-md-block p-0 mb-1 mt-1 ml-2' to={ROUTES.SIGN_UP} show={!isSignedIn}>
+      <NavLinkRoute className='d-none d-md-block p-0 mb-1 mt-1 ml-2' to={ROUTES.SIGN_UP} show={!isSignedIn}>
         <Button variant='primary' size='sm'>
          Join Now
         </Button>
