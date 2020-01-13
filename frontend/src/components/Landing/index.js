@@ -7,7 +7,7 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import Container from 'react-bootstrap/Container';
 import Wrapper from 'styled/Wrapper';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import bgimage from './carousel1.jpeg';
+import bgimage from 'assets/carousel1.jpeg';
 
 import * as ROUTES from 'constants/routes';
 
