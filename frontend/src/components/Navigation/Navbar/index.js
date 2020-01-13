@@ -17,7 +17,12 @@ import * as CONDITIONS from 'constants/conditions';
 const Hamburger = styled(Navbar.Toggle)`
   border: 0px;
   outline: none!important;
-`
+`;
+
+const StyledUserBadge = styled(Button)`
+  line-height: 0.75em;
+  border-radius: 50%;
+`;
 
 class Navigation extends Component {
   constructor(props) {
@@ -95,9 +100,9 @@ const UserBadge = ({authUser, linkClass}) => {
   return (
     isSignedIn &&
       <Link className={linkClass} to={ROUTES.ACCOUNT}>
-        <Button className='p-2 ml-2' size='sm' style={{lineHeight: '0.75em', borderRadius: '50%'}}>{authUser.username[0]}</Button>
+        <StyledUserBadge className='p-2 ml-2' size='sm'>{authUser.username[0]}</StyledUserBadge>
       </Link>
-  )
+  );
 }
 
 const NavLinks = ({ authUser }) => {
