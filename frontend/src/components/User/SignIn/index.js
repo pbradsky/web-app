@@ -20,6 +20,7 @@ const SignInPage = () => (
         <Card.Title>Sign In</Card.Title>
         <hr />
         <SignInForm />
+        <hr />
         <PasswordForgetLink />
         <SignUpLink />
       </Card.Body>
