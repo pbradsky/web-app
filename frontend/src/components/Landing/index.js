@@ -20,10 +20,10 @@ const LandingJumbotron = () => (
   >
     <Container className='text-center'>
       <div>
-        <h1 className='mt-5 text-white'>Your Drive Starts Here</h1>
+        <h1 className='m-auto text-white'>Your Drive Starts Here</h1>
         <p className='text-white'>The easiest way to test-drive.</p>
         <Link to={ROUTES.SIGN_UP}>
-          <Button className='mt-4' size='lg'>
+          <Button className='m-auto' size='lg'>
             Test Drive Today
           </Button>
         </Link>

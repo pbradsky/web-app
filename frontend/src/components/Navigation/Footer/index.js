@@ -8,7 +8,7 @@ import * as ROUTES from 'constants/routes';
 const copyright = '\u00a9';
 
 const Footer = () => (
-  <Navbar bg='white' className='border-top mt-4' style={{justifyContent: 'center'}}>
+  <Navbar bg='white' style={{justifyContent: 'center'}}>
     <Link className='nav-link'
           style={{fontSize: '10px', color: '#7f7f7f'}}
           to={ROUTES.TERMS}>
