@@ -238,7 +238,7 @@ class ContractPage extends Component {
             <br />
             <SignatureForm
               signatureData={signatureData}
-              name={fullName}
+              name='Your Name Here'
               errors={errors}
               onChange={this.onSignatureChange} />
           </>
