@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Col from 'react-bootstrap/Col';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Row from 'react-bootstrap/Row';
-import Container from 'styled/Container';
+import CardGroup from 'react-bootstrap/CardGroup'
+import Container from 'react-bootstrap/Container';
 
 import PasswordChangeCard from '../PasswordChange';
 import DeleteAccountCard from '../DeleteAccount';
@@ -20,14 +19,10 @@ const AccountPage = () => (
           <p>{authUser.email}</p>
           <hr />
         </Jumbotron>
-        <Row>
-            <Col md>
+        <CardGroup className='mb-4'>
               <PasswordChangeCard />
-            </Col>
-            <Col md>
               <DeleteAccountCard />
-            </Col>
-        </Row>
+        </CardGroup>
       </Container>
     )}
   </AuthUserContext.Consumer>
