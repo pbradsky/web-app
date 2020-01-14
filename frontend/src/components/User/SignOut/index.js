@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { compose } from 'recompose';
 
-import NavLink from 'styled/Nav';
+import Nav from 'react-bootstrap/Nav';
 
 import { withFirebase } from 'api/Firebase';
 import * as ROUTES from 'constants/routes';
@@ -14,9 +14,9 @@ const SignOutButton = ({ firebase, ...props }) => {
   }
 
   return (
-    <NavLink onClick={handleClick(firebase, props)}>
+    <Nav.Link onClick={handleClick(firebase, props)}>
       Sign Out
-    </NavLink>
+    </Nav.Link>
   );
 }
 
