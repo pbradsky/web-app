@@ -40,7 +40,7 @@ const Backdrop = () => (
 );
 
 const AboutUsButton = () => (
-  <Link to={ROUTES.LANDING}>
+  <Link to={ROUTES.NOT_FOUND}>
     <Button variant='outline-secondary'>
       Learn More
     </Button>

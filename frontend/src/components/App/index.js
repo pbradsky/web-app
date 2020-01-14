@@ -11,6 +11,7 @@ import DealerPage from 'components/User/Dealer';
 import Footer from 'components/Navigation/Footer';
 import LandingPage from 'components/Landing';
 import Navigation from 'components/Navigation/Navbar';
+import NotFound from 'components/NotFound';
 import PasswordForgetPage from 'components/User/PasswordForget';
 import PrivacyPage from 'components/Legal/Privacy';
 import SignInPage from 'components/User/SignIn';
@@ -42,6 +43,7 @@ const App = () => (
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.TERMS} component={TermsPage} />
         <Route exact path={ROUTES.USER_DETAILS + '/:id'} component={UserDetailsPage} />
+        <Route path={ROUTES.NOT_FOUND} component={NotFound} />
       </Content>
       <Footer />
   </Router>
