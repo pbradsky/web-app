@@ -97,11 +97,10 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
 
 const UserBadge = ({authUser, linkClass}) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
-  return (
-    isSignedIn &&
-      <Link className={linkClass} to={ROUTES.ACCOUNT}>
-        <StyledUserBadge className='p-2 ml-2' size='sm'>{authUser.username[0]}</StyledUserBadge>
-      </Link>
+  return (isSignedIn &&
+    <Link className={linkClass} to={ROUTES.ACCOUNT}>
+      <StyledUserBadge className='p-2 ml-2' size='sm'>{authUser.username[0]}</StyledUserBadge>
+    </Link>
   );
 }
 
@@ -127,7 +126,7 @@ const NavLinks = ({ authUser }) => {
       <NavLinkRoute to={ROUTES.SIGN_IN} show={!isSignedIn}>
          Sign In
       </NavLinkRoute>
-      <NavLinkRoute className='d-block d-md-none' to={ROUTES.SIGN_UP} show={!isSignedIn}>
+      <NavLinkRoute className='d-block d-md-none nav-link' to={ROUTES.SIGN_UP} show={!isSignedIn}>
          Join Now
       </NavLinkRoute>
       <NavLinkRoute className='d-none d-md-block' to={ROUTES.SIGN_UP} show={!isSignedIn}>
