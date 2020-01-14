@@ -22,7 +22,7 @@ const validateSignature = (signature, fullName, date) => {
   } else if (!validator.equals(formatDate(signatureDate), today)) {
     errors.push('Please enter today\'s date.');
   }
-  if (signature.localeCompare(fullName) !== 0) {
+  if (!signature) {
     errors.push('Please sign your full name.')
   }
 
