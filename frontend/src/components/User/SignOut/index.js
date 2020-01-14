@@ -14,7 +14,7 @@ const SignOutButton = ({ firebase, ...props }) => {
   }
 
   return (
-    <Nav.Link onClick={handleClick(firebase, props)}>
+    <Nav.Link onClick={handleClick(firebase, props)} {...props}>
       Sign Out
     </Nav.Link>
   );

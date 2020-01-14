@@ -2,6 +2,8 @@ import React, { Component, createRef, forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavLinkRoute from './navLinkRoute';
@@ -17,6 +19,15 @@ import * as CONDITIONS from 'constants/conditions';
 const Hamburger = styled(Navbar.Toggle)`
   border: 0px;
   outline: none!important;
+`;
+
+const StyledUserDropdown = styled(DropdownButton)`
+  .dropdown-toggle {
+    border-radius: 50%;
+  }
+  .dropdown-toggle::after {
+    display: none;
+  }
 `;
 
 const StyledUserBadge = styled(Button)`
@@ -91,9 +102,29 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
     <Navbar.Collapse id='responsive-navbar-nav'>
       <NavLinks authUser={authUser} />
     </Navbar.Collapse>
-    <UserBadge authUser={authUser} linkClass='d-none d-md-block' />
+    <UserDropdown authUser={authUser} linkClass='d-none d-md-block' />
   </Navbar>
 ));
+
+const UserDropdown = ({authUser, linkClass}) => {
+  const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
+  return (isSignedIn &&
+    <StyledUserDropdown
+      title={authUser.username[0]}
+      className={`p-2 ml-2 ${linkClass}`}
+      variant='primary'
+      alignRight >
+        <Dropdown.Item
+          as={Link}
+          className={linkClass}
+          href='#'
+          to={ROUTES.ACCOUNT}>
+            Account
+        </Dropdown.Item>
+        <SignOutButton as={Dropdown.Item} />
+    </StyledUserDropdown>
+  );
+}
 
 const UserBadge = ({authUser, linkClass}) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
