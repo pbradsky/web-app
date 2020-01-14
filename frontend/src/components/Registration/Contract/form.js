@@ -53,7 +53,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             value={phone}
             onChange={onChange}
             placeholder='Phone number'
-            isInvalid={phone && !validatePhone(phone) && filled}
+            isInvalid={phone && !validatePhone(phone) && validated}
           />
           <FormControl.Feedback type="invalid">
             Please provide a valid phone number.
@@ -114,7 +114,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             value={zip}
             onChange={onChange}
             placeholder='Zip code'
-            isInvalid={zip && !validateZip(zip) && filled}
+            isInvalid={zip && !validateZip(zip) && validated}
           />
           <FormControl.Feedback type="invalid">
             Please provide a valid zip code.
@@ -133,7 +133,7 @@ const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
             value={license}
             onChange={onChange}
             placeholder={'Driver\'s license number'}
-            isInvalid={license && state && !validateLicense(license, state) && filled}
+            isInvalid={license && state && !validateLicense(license, state) && validated}
           />
           <FormControl.Feedback type="invalid">
             Please provide a valid license number.
