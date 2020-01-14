@@ -111,9 +111,6 @@ const NavLinks = ({ authUser }) => {
 
   return (
     <Nav className='ml-auto'>
-      <NavLinkRoute to={ROUTES.CONTACT}>
-        Contact
-      </NavLinkRoute>
       <NavLinkRoute to={ROUTES.CHOOSE_DEALER} show={isSignedIn && !isAdmin && !isDealer}>
         Dealerships
       </NavLinkRoute>
@@ -129,7 +126,7 @@ const NavLinks = ({ authUser }) => {
       <NavLinkRoute className='d-block d-md-none nav-link' to={ROUTES.SIGN_UP} show={!isSignedIn}>
          Join Now
       </NavLinkRoute>
-      <NavLinkRoute className='d-none d-md-block' to={ROUTES.SIGN_UP} show={!isSignedIn}>
+      <NavLinkRoute className='d-none d-md-block ml-2' to={ROUTES.SIGN_UP} show={!isSignedIn}>
         <Button variant='primary' size='md'>
          Join Now
         </Button>

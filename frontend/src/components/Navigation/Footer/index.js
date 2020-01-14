@@ -9,7 +9,7 @@ import * as ROUTES from 'constants/routes';
 const copyright = '\u00a9';
 const currentYear = new Date().getFullYear();
 
-const Styles = styled.div`
+const StyleWrapper = styled.div`
   .navbar {
     justify-content: center;
     background-color: #ffffff;
@@ -36,14 +36,14 @@ const FooterLink = styled(Link)`
 `;
 
 const Footer = () => (
-  <Styles>
+  <StyleWrapper>
     <Navbar>
       <FooterLink to={ROUTES.TERMS}>Terms</FooterLink>
       <FooterLink to={ROUTES.PRIVACY}>Privacy</FooterLink>
       <FooterLink to={ROUTES.CONTACT}>Contact</FooterLink>
       <p>{copyright} {currentYear} Jurne Inc.</p>
     </Navbar>
-  </Styles>
+  </StyleWrapper>
 );
 
 export default Footer;
