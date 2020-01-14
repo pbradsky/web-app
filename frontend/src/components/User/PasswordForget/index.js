@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import Container from 'styled/Container';
+import Container from 'react-bootstrap/Container';
 
 import { withFirebase } from 'api/Firebase';
 import * as ROUTES from 'constants/routes';
@@ -12,7 +12,7 @@ import * as ROUTES from 'constants/routes';
 const PasswordForgetPage = () => (
   <Container>
     <br />
-    <Card>
+    <Card className='mt-4'>
       <Card.Header>Forgot your password?</Card.Header>
       <Card.Body>
         <PasswordForgetForm />

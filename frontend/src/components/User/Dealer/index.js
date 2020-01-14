@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Container from 'styled/Container';
+import Container from 'react-bootstrap/Container';
 import UserList from 'components/User/UserList';
 import { WithPageLoad } from 'components/Util/Loading';
 import Search from 'components/Util/Search';

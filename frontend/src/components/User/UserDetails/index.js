@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Container from 'styled/Container';
+import Container from 'react-bootstrap/Container';
 import PrintContractButton from 'components/Registration/Contract/print';
 import Image from 'react-bootstrap/Image'
 import { WithPageLoad } from 'components/Util/Loading';
@@ -43,11 +43,11 @@ class UserDetailsPage extends Component {
     if (!CONDITIONS.isSignedInAdmin(this.props.authUser)) {
       this.getImages();
     } else {
-      this.setState({ 
+      this.setState({
         loading: false
       });
     }
-    
+
   }
 
   getImages = () => {
@@ -168,6 +168,7 @@ class UserDetailsPage extends Component {
                   <Button className='mb-2' onClick={this.onToggleRole(ROLES.DEALER)}>
                     Toggle Dealer
                   </Button>
+                  <hr />
                   <PrintContractButton user={user} />
                 </Card.Body>
               </Card>
@@ -176,7 +177,7 @@ class UserDetailsPage extends Component {
       </Container>
     );
   }
-  
+
   dealerView = () => {
     const { user, loading, proofOfInsurance, driversLicenseBack, driversLicenseFront, errors } = this.state;
     return (
@@ -198,10 +199,10 @@ class UserDetailsPage extends Component {
               {driversLicenseBack &&
                 <Card.Body>
                   <Card.Title>Driver's License (back)</Card.Title>
-                  <Image src={driversLicenseBack} fluid />  
+                  <Image src={driversLicenseBack} fluid />
                 </Card.Body>
               }
-              {driversLicenseFront && 
+              {driversLicenseFront &&
                 <Card.Body>
                   <Card.Title>Driver's License (front)</Card.Title>
                   <Image src={driversLicenseFront} fluid />
@@ -217,7 +218,7 @@ class UserDetailsPage extends Component {
   }
 
   render() {
-    if (CONDITIONS.isSignedInAdmin(this.props.authUser)) 
+    if (CONDITIONS.isSignedInAdmin(this.props.authUser))
       return this.adminView();
     return this.dealerView();
   }
