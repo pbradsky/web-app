@@ -41,7 +41,7 @@ const Backdrop = () => (
 
 const AboutUsButton = () => (
   <Link to={ROUTES.LANDING}>
-    <Button variant='outline-secondary' className='mb-auto'>
+    <Button variant='outline-secondary'>
       Learn More
     </Button>
   </Link>
