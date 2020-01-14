@@ -23,7 +23,7 @@ const UserList = ({ users, isAdmin }) => {
     : users.filter(CONDITIONS.isDealerViewable);
 
   return (
-    <Accordion>
+    <Accordion className='mb-4'>
       <Card bg='primary' text='white'>
         <Card.Header as='h3'>User List</Card.Header>
       </Card>
@@ -34,11 +34,20 @@ const UserList = ({ users, isAdmin }) => {
             style={{cursor: 'pointer'}}
             eventKey={user.uid}>
             {user.username}
+            {user.roles && Object.keys(user.roles).map((role, index) =>
+              <Badge
+                    style={{float: 'right', width: '100px'}}
+                    variant='secondary'
+                    key={index}>
+                      {role}
+              </Badge>
+            )}
+            {/* Could be useful later on...
             {isAdmin && !CONDITIONS.isSignedInCompleteUser(user) &&
               <Badge
                 style={{float: 'right'}}
                 variant='secondary'
-                className='p-2'>Incomplete</Badge>}
+                className='p-2'>Incomplete</Badge>} */}
           </Accordion.Toggle>
           <Accordion.Collapse eventKey={user.uid}>
             <Card.Body>
@@ -62,18 +71,13 @@ const UserList = ({ users, isAdmin }) => {
                     <DataCard label='Signature' data={user.contract.signature} />
                     <DataCard label='Date' data={user.contract.date} />
                   </Card.Body>
-                </Card>}
-              {isAdmin && 
+                </Card>
+              }
+              {isAdmin &&
                 <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />}
               {!isAdmin && CONDITIONS.isSignedInCompleteUser(user) &&
                 <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />}
-              <PrintContractButton user={user} />
-              {user.roles && Object.keys(user.roles).map((role, index) =>
-                <Badge
-                  variant='secondary'
-                  key={index}
-                  className='m-2 p-2'>{role}</Badge>
-              )}
+                <PrintContractButton user={user} />
             </Card.Body>
           </Accordion.Collapse>
         </Card>

@@ -24,12 +24,11 @@ class PrintableContract extends Component {
 
 const PrintContractButton = ({ user }) => {
   const componentRef = useRef();
-  const printTrigger = () => <Button>Print Contract</Button>;
+  const printTrigger = () => <Button size='sm'>Print Contract</Button>;
 
   return (
     !!user.contract
       ? <>
-          <hr />
           <ReactToPrint
             trigger={printTrigger}
             content={() => componentRef.current}
