@@ -12,7 +12,7 @@ import STATES from 'constants/states';
 
 const ContractForm = ({ formData, onChange, onFileChange, onSubmit }) => {
   const { fullName, phone, address, apt, city, state, zip, license,
-    proofOfInsurance, driversLicenseFront, driversLicenseBack, filled } = formData;
+    proofOfInsurance, driversLicenseFront, driversLicenseBack } = formData;
 
   const [validated, setValidated] = useState(false);
 
