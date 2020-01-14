@@ -5,7 +5,7 @@ import { compose } from 'recompose';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import Container from 'styled/Container';
+import Container from 'react-bootstrap/Container';
 
 import { SignUpLink } from 'components/Registration/SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
@@ -15,7 +15,7 @@ import * as ROUTES from 'constants/routes';
 
 const SignInPage = () => (
   <Container>
-    <Card>
+    <Card className='mt-4'>
       <Card.Body>
         <Card.Title>Sign In</Card.Title>
         <hr />
@@ -26,7 +26,6 @@ const SignInPage = () => (
       </Card.Body>
     </Card>
   </Container>
-
 );
 
 const INITIAL_STATE = {

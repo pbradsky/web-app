@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
-import Container from 'styled/Container';
+import Container from 'react-bootstrap/Container';
 
 import * as ROUTES from 'constants/routes';
 
 const PrivacyPage = () => (
   <Container>
-    <Card>
+    <Card className='mt-4 mb-4'>
       <Card.Body>
         <Card.Title className='text-center'>Jurne, Inc. Privacy Policy</Card.Title>
         <hr />
