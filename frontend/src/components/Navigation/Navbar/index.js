@@ -30,11 +30,6 @@ const StyledUserDropdown = styled(DropdownButton)`
   }
 `;
 
-const StyledUserBadge = styled(Button)`
-  line-height: 0.75em;
-  border-radius: 50%;
-`;
-
 class Navigation extends Component {
   constructor(props) {
     super(props);
@@ -97,7 +92,7 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
     id='navbar-state'
   >
     <Link to={ROUTES.LANDING}><img src={Spread} height='54' alt='jurne logo' /></Link>
-    <UserBadge authUser={authUser} linkClass='ml-auto d-md-none' />
+    <UserDropdown authUser={authUser} linkClass='ml-auto d-md-none' />
     <Hamburger ref={ref} aria-controls='responsive-navbar-nav' />
     <Navbar.Collapse id='responsive-navbar-nav'>
       <NavLinks authUser={authUser} />
@@ -115,23 +110,14 @@ const UserDropdown = ({authUser, linkClass}) => {
       variant='primary'
       alignRight >
         <Dropdown.Item
+          className='nav-link'
           as={Link}
-          className={linkClass}
           href='#'
           to={ROUTES.ACCOUNT}>
             Account
         </Dropdown.Item>
         <SignOutButton as={Dropdown.Item} />
     </StyledUserDropdown>
-  );
-}
-
-const UserBadge = ({authUser, linkClass}) => {
-  const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
-  return (isSignedIn &&
-    <Link className={linkClass} to={ROUTES.ACCOUNT}>
-      <StyledUserBadge className='p-2 ml-2' size='sm'>{authUser.username[0]}</StyledUserBadge>
-    </Link>
   );
 }
 
@@ -162,7 +148,6 @@ const NavLinks = ({ authUser }) => {
          Join Now
         </Button>
       </NavLinkRoute>
-      {isSignedIn && <SignOutButton />}
     </Nav>
   );
 }
