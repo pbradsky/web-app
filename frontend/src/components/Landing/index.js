@@ -10,7 +10,7 @@ import bgimage from 'assets/jumboImage.jpeg';
 import * as ROUTES from 'constants/routes';
 
 const LandingJumbotron = () => (
-  <Jumbotron fluid style={{
+  <div style={{
     backgroundImage: `url(${bgimage})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -33,7 +33,7 @@ const LandingJumbotron = () => (
         <AboutUsButton />
       </div>
     </Container>
-  </Jumbotron>
+  </div>
 );
 
 const AboutUsButton = () => (
