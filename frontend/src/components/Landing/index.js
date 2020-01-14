@@ -4,20 +4,23 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Wrapper from 'styled/Wrapper';
-import Jumbotron from 'react-bootstrap/Jumbotron';
 import bgimage from 'assets/jumboImage.jpeg';
+
+import styled from 'styled-components';
 
 import * as ROUTES from 'constants/routes';
 
-const LandingJumbotron = () => (
-  <div style={{
-    backgroundImage: `url(${bgimage})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'bottom',
-    paddingBottom: '15em',
-    paddingTop: '15em'}}
-  >
+const BackdropImage = styled.div`
+    background-image: url(${bgimage});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding-bottom: 15em;
+    padding-top: 15em;
+`;
+
+const Backdrop = () => (
+  <BackdropImage>
     <Container className='text-center'>
       <div>
         <h1 className='m-auto text-white'>Your Drive Starts Here</h1>
@@ -33,7 +36,7 @@ const LandingJumbotron = () => (
         <AboutUsButton />
       </div>
     </Container>
-  </div>
+  </BackdropImage>
 );
 
 const AboutUsButton = () => (
@@ -46,7 +49,7 @@ const AboutUsButton = () => (
 
 const Landing = () => (
   <Wrapper>
-    <LandingJumbotron />
+    <Backdrop />
   </Wrapper>
 );
 
