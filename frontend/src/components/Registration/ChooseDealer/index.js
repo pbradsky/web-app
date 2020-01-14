@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Container from 'styled/Container';
+import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 
 import { AuthUserContext } from 'api/Session';

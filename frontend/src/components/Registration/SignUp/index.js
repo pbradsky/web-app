@@ -5,7 +5,7 @@ import { compose } from 'recompose';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import Container from 'styled/Container';
+import Container from 'react-bootstrap/Container';
 
 import { agreeTextTOS } from 'components/Legal/Terms';
 import SignInLink from 'components/User/SignInLink';
@@ -18,7 +18,7 @@ import { validateCreateUser } from 'utils/validation';
 
 const SignUpPage = () => (
   <Container>
-    <Card>
+    <Card className='mt-4 mb-4'>
       <Card.Body>
         <Card.Title>Sign Up</Card.Title>
         <hr />

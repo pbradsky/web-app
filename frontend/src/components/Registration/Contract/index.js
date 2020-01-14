@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Container from 'styled/Container';
+import Container from 'react-bootstrap/Container';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import ContractForm from './form';
 import SignatureForm from './signature';
@@ -250,19 +250,14 @@ class ContractPage extends Component {
 
     return (
       <Container>
-        <Card>
-          <Card.Header as='h3'>
-            Contract
-            <hr />
+        <Card className='mt-4 mb-4'>
+          <Card.Header>
             <ProgressBar now={progress} />
-            <br />
-            {ContractNav}
           </Card.Header>
           <Card.Body style={{whiteSpace: 'pre-line'}}>
             {stageContent}
           </Card.Body>
           <Card.Footer>
-            <br />
             {ContractNav}
           </Card.Footer>
         </Card>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Container from 'styled/Container';
+import Container from 'react-bootstrap/Container';
 
 import { withAuthorization } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
@@ -11,7 +11,7 @@ import * as ROUTES from 'constants/routes';
 
 const ConfirmationPage = () => (
   <Container>
-    <Card>
+    <Card className='mt-4'>
       <Card.Body>
         <Card.Title>All done!</Card.Title>
         <hr />
