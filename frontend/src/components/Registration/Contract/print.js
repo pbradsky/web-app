@@ -14,7 +14,9 @@ class PrintableContract extends Component {
 
     return (
       <Card.Body style={{whiteSpace: 'pre-line'}}>
+        <Card.Title className='text-center'><strong>Dealer's Permit For Demonstration</strong></Card.Title>
         <ContractFormText name={fullName} address={fullAddress} phone={phone} license={license} />
+        {/* TO DO: Put Images Here Philip / Tim */}
         <PreambleText />
         <SignedUserText contract={contract} />
       </Card.Body>
