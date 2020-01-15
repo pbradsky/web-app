@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { AppLoading } from 'components/Util/Loading';
-
 import AuthUserContext from './context';
 import { withFirebase } from 'api/Firebase';
 
@@ -40,13 +38,11 @@ const withAuthentication = Component => {
     }
 
     render() {
-      const { authUser, loading } = this.state;
+      const { authUser } = this.state;
 
       return (
         <AuthUserContext.Provider value={authUser}>
-          {loading
-            ? <AppLoading />
-            : <Component {...this.props} />}
+          <Component {...this.props} />
         </AuthUserContext.Provider>
       );
     }
