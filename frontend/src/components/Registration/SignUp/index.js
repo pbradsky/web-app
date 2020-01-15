@@ -88,7 +88,6 @@ class SignUpFormBase extends Component {
       this.props.firebase
         .doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser => {
-          console.log(authUser);
           return this.props.firebase
             .user(authUser.user.uid)
             .set({
@@ -137,13 +136,13 @@ class SignUpFormBase extends Component {
       <Form onSubmit={this.onSubmit}>
         <Form.Row>
           <Form.Group className='col-md-12 col-lg-6'>
-            <Form.Label>Full Name</Form.Label>
+            <Form.Label>Nickname</Form.Label>
             <Form.Control
               name='username'
               value={username}
               onChange={this.onChange}
               type='text'
-              placeholder='Full Name'
+              placeholder='Nickname'
             />
           </Form.Group>
           <Form.Group className='col-md-12 col-lg-6'>
