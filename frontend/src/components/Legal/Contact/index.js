@@ -10,7 +10,7 @@ import * as ROUTES from 'constants/routes';
 
 const ContactPage = () => (
   <Container>
-    <Card>
+    <Card className='mt-4'>
       <Card.Body>
         <Card.Title>Contact Us</Card.Title>
         <ContactForm />
