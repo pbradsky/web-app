@@ -244,7 +244,6 @@ class ContractPage extends Component {
           <ContractForm
             formData={formData}
             onChange={this.onFormChange}
-            onFileChange={this.onFileChange}
             onSubmit={this.onFormSubmit} />
         );
         break;
