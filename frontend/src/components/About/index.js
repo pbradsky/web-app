@@ -1,19 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
-
-import * as ROUTES from 'constants/routes';
-
-const AboutUsButton = () => (
-  <Link to={ROUTES.ABOUT}>
-    <Button variant='outline-secondary'>
-      Learn More
-    </Button>
-  </Link>
-);
 
 const AboutPage = () => (
   <Container>
@@ -41,4 +29,3 @@ const AboutPage = () => (
 );
 
 export default AboutPage;
-export {AboutUsButton};
