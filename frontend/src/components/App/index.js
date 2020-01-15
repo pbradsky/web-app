@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navigation from 'components/Navigation/Navbar';
 import Footer from 'components/Navigation/Footer';
-import { PageLoading } from 'components/Util/Loading';
+import { BlankLoading } from 'components/Util/Loading';
 
 import Content from 'styled/Content';
 
@@ -32,7 +32,7 @@ const App = () => (
   <Router>
     <Navigation />
     <Content>
-      <Suspense fallback={<PageLoading />}>
+      <Suspense fallback={<BlankLoading />}>
         <Switch>
           <Route path={ROUTES.ABOUT} component={AboutPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />

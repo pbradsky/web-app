@@ -27,11 +27,13 @@ const AppLoading = () => (
 
 const PageLoading = AppLoading;
 
+const BlankLoading = () => <></>;
+
 const WithPageLoad = ({ loading, children }) => (
   loading
     ? <PageLoading />
     : <>{children}</>
 );
 
-export { AppLoading, PageLoading, WithPageLoad };
+export { AppLoading, PageLoading, WithPageLoad, BlankLoading };
 export default Loading;
