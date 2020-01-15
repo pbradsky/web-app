@@ -39,7 +39,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             value={fullName}
             onChange={onChange}
             placeholder='Full name'
-            isValid={!!fullName} />
+            isInvalid={fullName && fullName.length === 0} />
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>Phone Number</Form.Label>
