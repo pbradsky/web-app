@@ -85,6 +85,8 @@ class Navigation extends Component {
 
 const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
   <Navbar
+    className='fixed-top'
+    style={{backgroundColor: '#ffffff'}}
     collapseOnSelect
     expand='md'
     expanded={isExpanded}
