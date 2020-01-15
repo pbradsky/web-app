@@ -53,9 +53,9 @@ class UserDetailsPage extends Component {
   getImages = () => {
     const errors = [];
     const storage = this.props.firebase.storage.ref();
-    const proofOfInsuranceRef = storage.child(`images/${this.props.match.params.id}-proof_of_insurance`);
-    const driversLicenseBackRef = storage.child(`images/${this.props.match.params.id}-drivers_license_back`);
-    const driversLicenseFrontRef = storage.child(`images/${this.props.match.params.id}-drivers_license_front`);
+    const proofOfInsuranceRef = storage.child(`images/${this.props.match.params.id}/proof_of_insurance`);
+    const driversLicenseBackRef = storage.child(`images/${this.props.match.params.id}/drivers_license_back`);
+    const driversLicenseFrontRef = storage.child(`images/${this.props.match.params.id}/drivers_license_front`);
 
     const promise0 = new Promise((resolve, reject) => {
       proofOfInsuranceRef.getDownloadURL().then(proofOfInsuranceURL => {

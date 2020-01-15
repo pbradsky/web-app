@@ -175,10 +175,16 @@ class ContractPage extends Component {
           ...formData,
           contract,
         })
+<<<<<<< Updated upstream
       this.upload(proofOfInsurance, '-proof_of_insurance')
       this.upload(driversLicenseFront, '-drivers_license_front')
       this.upload(driversLicenseBack, '-drivers_license_back')
       this.setState({ ...INITIAL_STATE });
+=======
+      this.upload(this.state.formData.proofOfInsurance, 'proof_of_insurance')
+      this.upload(this.state.formData.driversLicenseFront, 'drivers_license_front')
+      this.upload(this.state.formData.driversLicenseBack, 'drivers_license_back')
+>>>>>>> Stashed changes
       this.props.history.push(ROUTES.CONFIRMATION);
     } else {
       this.props.history.push(ROUTES.SIGN_IN)
@@ -203,7 +209,7 @@ class ContractPage extends Component {
 
   upload = (file, type) => {
     const storageRef = this.props.firebase.storage.ref();
-    storageRef.child('images/' + this.props.authUser.uid + type).put(file);
+    storageRef.child(`images/${this.props.authUser.uid}/` + type).put(file);
   }
 
   render() {
