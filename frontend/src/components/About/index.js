@@ -15,13 +15,11 @@ const AboutPage = () => (
         </Card.Text>
         <Card.Text>
           We do this by allowing you to sign-up for test-drives online, right here on our website.
+          By partnering with dealerships dedicated to excellent customer service and cutting edge technology
+          we hope to change the car-buying experience for the better!
         </Card.Text>
         <Card.Text>
-          We are partner with dealerships dedicated to excellent service and cutting edge technology
-          to move our vision forward.
-        </Card.Text>
-        <Card.Text>
-          We hope to provide you with a seamless experience, saving you time (and money too)!
+          With us you'll be saving you time (and money too)!
         </Card.Text>
       </Card.Body>
     </Card>
