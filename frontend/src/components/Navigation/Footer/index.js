@@ -38,6 +38,7 @@ const FooterLink = styled(Link)`
 const Footer = () => (
   <StyleWrapper>
     <Navbar>
+      <FooterLink to={ROUTES.ABOUT}>About</FooterLink>
       <FooterLink to={ROUTES.TERMS}>Terms</FooterLink>
       <FooterLink to={ROUTES.PRIVACY}>Privacy</FooterLink>
       <FooterLink to={ROUTES.CONTACT}>Contact</FooterLink>
