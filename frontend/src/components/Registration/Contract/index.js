@@ -72,6 +72,8 @@ class ContractPage extends Component {
           fullName, phone, address, apt, city, state, zip, license,
           filled: true,
         },
+        uploadData: { ...INITIAL_STATE.uploadData },
+        signatureData: { ...INITIAL_STATE.signatureData },
         maxStage: stages.FORM + 1,
       };
     }
@@ -132,7 +134,7 @@ class ContractPage extends Component {
     event.preventDefault();
   };
 
-  onUploadSubmit = event => {
+  onUploadSubmit = () => {
     const { uploadData } = this.state;
     const isValid = validateUpload(uploadData);
     uploadData.filled = true;
@@ -145,14 +147,11 @@ class ContractPage extends Component {
     } else {
       this.setState({ uploadData });
     }
-
-    event.preventDefault();
   }
 
-  onSignatureSubmit = event => {
+  onSignatureSubmit = () => {
     const { signature, date } = this.state.signatureData;
     const fullName = this.state.formData.fullName;
-    event.preventDefault();
 
     const errors = validateSignature(signature, fullName, date);
     if (errors.length > 0) {
@@ -179,6 +178,7 @@ class ContractPage extends Component {
       this.upload(proofOfInsurance, '-proof_of_insurance')
       this.upload(driversLicenseFront, '-drivers_license_front')
       this.upload(driversLicenseBack, '-drivers_license_back')
+      this.setState({ ...INITIAL_STATE });
       this.props.history.push(ROUTES.CONFIRMATION);
     } else {
       this.props.history.push(ROUTES.SIGN_IN)
