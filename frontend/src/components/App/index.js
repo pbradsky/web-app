@@ -1,53 +1,58 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import AboutPage from 'components/About';
-import AdminPage from 'components/User/Admin';
-import AccountPage from 'components/User/Account';
-import ChooseDealerPage from 'components/Registration/ChooseDealer';
-import ConfirmationPage from 'components/Registration/Confirmation';
-import ContactPage from 'components/Legal/Contact';
-import ContractPage from 'components/Registration/Contract';
-import DealerPage from 'components/User/Dealer';
-import Footer from 'components/Navigation/Footer';
-import LandingPage from 'components/Landing';
 import Navigation from 'components/Navigation/Navbar';
-import NotFound from 'components/NotFound';
-import PasswordForgetPage from 'components/User/PasswordForget';
-import PrivacyPage from 'components/Legal/Privacy';
-import SignInPage from 'components/User/SignIn';
-import SignUpPage from 'components/Registration/SignUp';
-import TermsPage from 'components/Legal/Terms';
-import UserDetailsPage from 'components/User/UserDetails';
+import Footer from 'components/Navigation/Footer';
+import { PageLoading } from 'components/Util/Loading';
 
 import Content from 'styled/Content';
 
 import { withAuthentication } from 'api/Session';
 import * as ROUTES from 'constants/routes';
 
+// lazy page loading and chunking
+const AboutPage = lazy(() => import('components/About'));
+const AdminPage = lazy(() => import('components/User/Admin'));
+const AccountPage = lazy(() => import('components/User/Account'));
+const ChooseDealerPage = lazy(() => import('components/Registration/ChooseDealer'));
+const ConfirmationPage = lazy(() => import('components/Registration/Confirmation'));
+const ContactPage = lazy(() => import('components/Legal/Contact'));
+const ContractPage = lazy(() => import('components/Registration/Contract'));
+const DealerPage = lazy(() => import('components/User/Dealer'));
+const LandingPage = lazy(() => import('components/Landing'));
+const NotFound = lazy(() => import('components/NotFound'));
+const PasswordForgetPage = lazy(() => import('components/User/PasswordForget'));
+const PrivacyPage = lazy(() => import('components/Legal/Privacy'));
+const SignInPage = lazy(() => import('components/User/SignIn'));
+const SignUpPage = lazy(() => import('components/Registration/SignUp'));
+const TermsPage = lazy(() => import('components/Legal/Terms'));
+const UserDetailsPage = lazy(() => import('components/User/UserDetails'));
+
 const App = () => (
   <Router>
     <Navigation />
     <Content>
-      <Switch>
-        <Route path={ROUTES.ABOUT} component={AboutPage} />
-        <Route path={ROUTES.ADMIN} component={AdminPage} />
-        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-        <Route path={ROUTES.CHOOSE_DEALER} component={ChooseDealerPage} />
-        <Route path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
-        <Route path={ROUTES.CONTACT} component={ContactPage} />
-        <Route exact path={ROUTES.CONTRACT} component={ContractPage} />
-        <Route exact path={ROUTES.CONTRACT_ONESHOT} component={ContractPage} />
-        <Route path={ROUTES.DEALER} component={DealerPage} />
-        <Route exact path={ROUTES.LANDING} component={LandingPage} />
-        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-        <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
-        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-        <Route path={ROUTES.TERMS} component={TermsPage} />
-        <Route exact path={ROUTES.USER_DETAILS + '/:id'} component={UserDetailsPage} />
-        <Route component={NotFound} />
-      </Switch>
+      <Suspense fallback={<PageLoading />}>
+        <Switch>
+          <Route path={ROUTES.ABOUT} component={AboutPage} />
+          <Route path={ROUTES.ADMIN} component={AdminPage} />
+          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+          <Route path={ROUTES.CHOOSE_DEALER} component={ChooseDealerPage} />
+          <Route path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
+          <Route path={ROUTES.CONTACT} component={ContactPage} />
+          <Route exact path={ROUTES.CONTRACT} component={ContractPage} />
+          <Route exact path={ROUTES.CONTRACT_ONESHOT} component={ContractPage} />
+          <Route path={ROUTES.DEALER} component={DealerPage} />
+          <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+          <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
+          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.TERMS} component={TermsPage} />
+          <Route exact path={ROUTES.USER_DETAILS + '/:id'} component={UserDetailsPage} />
+          <Route component={NotFound} />
+        </Switch>
+      </Suspense>
     </Content>
     <Footer />
   </Router>
