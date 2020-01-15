@@ -7,6 +7,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import ContractForm from './form';
+import UploadForm from './upload';
 import SignatureForm from './signature';
 import { PreambleText, ContractFormText } from './text';
 
@@ -15,12 +16,13 @@ import withUser from 'api/Session/withUser';
 import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
 import formatAddress from 'utils/address';
-import { validateSignature, validateForm } from 'utils/validation';
+import { validateSignature, validateForm, validateUpload } from 'utils/validation';
 import { sanitizeFormData } from 'utils/sanitize';
 
 const stages = {
   FORM: 0,
-  SIGNATURE: 1,
+  UPLOAD: 1,
+  SIGNATURE: 2,
 };
 const NUM_STAGES = Object.keys(stages).length;
 
@@ -34,6 +36,9 @@ const INITIAL_STATE = {
     state: '',
     zip: '',
     license: '',
+    filled: false,
+  },
+  uploadData: {
     proofOfInsurance: null,
     driversLicenseFront: null,
     driversLicenseBack: null,
@@ -67,7 +72,7 @@ class ContractPage extends Component {
           fullName, phone, address, apt, city, state, zip, license,
           filled: true,
         },
-        maxStage: stages.SIGNATURE,
+        maxStage: stages.FORM + 1,
       };
     }
   }
@@ -99,9 +104,9 @@ class ContractPage extends Component {
 
   onFileChange = event => {
     const file = event.target.files[0];
-    const { formData } = this.state;
-    formData[event.target.name] = file;
-    this.setState({ formData });
+    const { uploadData } = this.state;
+    uploadData[event.target.name] = file;
+    this.setState({ uploadData });
   }
 
   onSignatureChange = event => {
@@ -112,21 +117,37 @@ class ContractPage extends Component {
 
   onFormSubmit = event => {
     const { formData } = this.state;
-    const isValid = validateForm(formData)
+    const isValid = validateForm(formData);
     formData.filled = true;
-    this.setState({
-      formData: formData
-    });
     if (isValid) {
       this.setState({
         formData,
-        stage: stages.SIGNATURE,
-        maxStage: stages.SIGNATURE,
+        stage: stages.FORM + 1,
+        maxStage: stages.FORM + 1,
       });
+    } else {
+      this.setState({ formData });
     }
 
     event.preventDefault();
   };
+
+  onUploadSubmit = event => {
+    const { uploadData } = this.state;
+    const isValid = validateUpload(uploadData);
+    uploadData.filled = true;
+    if (isValid) {
+      this.setState({
+        uploadData,
+        stage: stages.UPLOAD + 1,
+        maxStage: stages.UPLOAD + 1,
+      });
+    } else {
+      this.setState({ uploadData });
+    }
+
+    event.preventDefault();
+  }
 
   onSignatureSubmit = event => {
     const { signature, date } = this.state.signatureData;
@@ -139,12 +160,12 @@ class ContractPage extends Component {
       return;
     }
 
-    const rawFormData = {...this.state.formData};
+    const {
+      proofOfInsurance, driversLicenseFront, driversLicenseBack
+    } = this.state.uploadData;
+    const rawFormData = { ...this.state.formData };
     const contract = { signature, date };
     delete rawFormData.filled;
-    delete rawFormData.proofOfInsurance;
-    delete rawFormData.driversLicenseFront;
-    delete rawFormData.driversLicenseBack;
 
     const formData = sanitizeFormData(rawFormData);
     if (this.props.authUser) {
@@ -155,9 +176,9 @@ class ContractPage extends Component {
           ...formData,
           contract,
         })
-      this.upload(this.state.formData.proofOfInsurance, '-proof_of_insurance')
-      this.upload(this.state.formData.driversLicenseFront, '-drivers_license_front')
-      this.upload(this.state.formData.driversLicenseBack, '-drivers_license_back')
+      this.upload(proofOfInsurance, '-proof_of_insurance')
+      this.upload(driversLicenseFront, '-drivers_license_front')
+      this.upload(driversLicenseBack, '-drivers_license_back')
       this.props.history.push(ROUTES.CONFIRMATION);
     } else {
       this.props.history.push(ROUTES.SIGN_IN)
@@ -186,7 +207,9 @@ class ContractPage extends Component {
   }
 
   render() {
-    const { formData, signatureData, stage, maxStage, errors } = this.state;
+    const {
+      formData, uploadData, signatureData, stage, maxStage, errors
+    } = this.state;
     const { fullName, phone, license } = formData;
 
     const progress = (stage + 1) / NUM_STAGES * 100;
@@ -223,6 +246,14 @@ class ContractPage extends Component {
             onChange={this.onFormChange}
             onFileChange={this.onFileChange}
             onSubmit={this.onFormSubmit} />
+        );
+        break;
+      case stages.UPLOAD:
+        stageContent = (
+          <UploadForm
+            uploadData={uploadData}
+            onFileChange={this.onFileChange}
+            onSubmit={this.onUploadSubmit} />
         );
         break;
       case stages.SIGNATURE:
