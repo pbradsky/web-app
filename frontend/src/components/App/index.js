@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import AboutPage from 'components/About';
 import AdminPage from 'components/User/Admin';
@@ -27,8 +27,9 @@ import * as ROUTES from 'constants/routes';
 
 const App = () => (
   <Router>
-      <Navigation />
-      <Content>
+    <Navigation />
+    <Content>
+      <Switch>
         <Route path={ROUTES.ABOUT} component={AboutPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
@@ -45,9 +46,10 @@ const App = () => (
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.TERMS} component={TermsPage} />
         <Route exact path={ROUTES.USER_DETAILS + '/:id'} component={UserDetailsPage} />
-        <Route path={ROUTES.NOT_FOUND} component={NotFound} />
-      </Content>
-      <Footer />
+        <Route component={NotFound} />
+      </Switch>
+    </Content>
+    <Footer />
   </Router>
 );
 
