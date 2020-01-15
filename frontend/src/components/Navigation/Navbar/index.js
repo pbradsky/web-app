@@ -104,6 +104,10 @@ const NavContent = forwardRef(({ authUser, setNav, isExpanded }, ref) => (
   </Navbar>
 ));
 
+const DropdownItem = ({ staticContext, ...props }) => (
+  <Dropdown.Item {...props} />
+);
+
 const UserDropdown = ({authUser, linkClass}) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   return (isSignedIn &&
@@ -112,14 +116,14 @@ const UserDropdown = ({authUser, linkClass}) => {
       className={`p-2 ml-2 ${linkClass}`}
       variant='primary'
       alignRight >
-        <Dropdown.Item
+        <DropdownItem
           className='nav-link'
           as={Link}
           href='#'
           to={ROUTES.ACCOUNT}>
             Account
-        </Dropdown.Item>
-        <SignOutButton as={Dropdown.Item} />
+        </DropdownItem>
+        <SignOutButton as={DropdownItem} />
     </StyledUserDropdown>
   );
 }
