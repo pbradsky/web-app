@@ -38,12 +38,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             name='fullName'
             value={fullName}
             onChange={onChange}
-<<<<<<< Updated upstream
-            placeholder='Full name'
-            isInvalid={fullName && fullName.length === 0} />
-=======
             placeholder='Full name' />
->>>>>>> Stashed changes
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>Phone Number</Form.Label>
