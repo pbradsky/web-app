@@ -24,6 +24,7 @@ const Hamburger = styled(Navbar.Toggle)`
 const StyledUserDropdown = styled(DropdownButton)`
   .dropdown-toggle {
     border-radius: 50%;
+    line-height: 1.5;
   }
   .dropdown-toggle::after {
     display: none;
