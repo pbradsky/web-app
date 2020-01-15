@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Wrapper from 'styled/Wrapper';
 import bgimage from 'assets/jumboImage.jpeg';
 import {AboutUsButton} from 'components/About';
 
@@ -16,34 +14,28 @@ const BackdropImage = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
-    padding-bottom: 15em;
-    padding-top: 15em;
+    min-height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 `;
 
-const Backdrop = () => (
-  <BackdropImage>
-    <Container className='text-center'>
-      <div>
-        <h1 className='m-auto text-white'>Your Drive Starts Here</h1>
-        <p className='text-white'>The easiest way to test-drive.</p>
-        <Link to={ROUTES.SIGN_UP}>
-          <Button className='m-auto' size='lg'>
-            Test Drive Today
-          </Button>
-        </Link>
-      </div>
-      <br />
-      <div className='mb-2 h-100'>
-        <AboutUsButton />
-      </div>
-    </Container>
-  </BackdropImage>
-);
-
 const Landing = () => (
-  <Wrapper>
-    <Backdrop />
-  </Wrapper>
+  <BackdropImage>
+    <div className='mt-auto'>
+      <h1 className='text-white'>Your Drive Starts Here</h1>
+      <p className='text-white'>The easiest way to test-drive.</p>
+      <Link to={ROUTES.SIGN_UP}>
+        <Button size='lg'>
+          Test Drive Today
+        </Button>
+      </Link>
+    </div>
+    <div className='mt-auto mb-4'>
+      <AboutUsButton />
+    </div>
+  </BackdropImage>
 );
 
 export default Landing;
