@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import bgimage from 'assets/jumboImage.jpeg';
-import {AboutUsButton} from 'components/About';
 
 import styled from 'styled-components';
 
@@ -21,6 +20,16 @@ const BackdropImage = styled.div`
     text-align: center;
 `;
 
+const AboutUsButton = () => (
+  <div className='mt-auto mb-4'>
+    <Link to={ROUTES.ABOUT}>
+      <Button variant='outline-secondary'>
+        Learn More
+      </Button>
+    </Link>
+  </div>
+);
+
 const Landing = () => (
   <BackdropImage>
     <div className='mt-auto'>
@@ -32,9 +41,7 @@ const Landing = () => (
         </Button>
       </Link>
     </div>
-    <div className='mt-auto mb-4'>
-      <AboutUsButton />
-    </div>
+    <AboutUsButton />
   </BackdropImage>
 );
 
