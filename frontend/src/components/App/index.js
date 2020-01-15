@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import AboutPage from 'components/About';
 import AdminPage from 'components/User/Admin';
 import AccountPage from 'components/User/Account';
 import ChooseDealerPage from 'components/Registration/ChooseDealer';
@@ -28,6 +29,7 @@ const App = () => (
   <Router>
       <Navigation />
       <Content>
+        <Route path={ROUTES.ABOUT} component={AboutPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.CHOOSE_DEALER} component={ChooseDealerPage} />

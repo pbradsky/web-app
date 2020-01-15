@@ -11,10 +11,10 @@ import * as ROUTES from 'constants/routes';
 
 const PasswordForgetPage = () => (
   <Container>
-    <br />
     <Card className='mt-4'>
-      <Card.Header>Forgot your password?</Card.Header>
       <Card.Body>
+        <Card.Title>Forgot your password?</Card.Title>
+        <hr />
         <PasswordForgetForm />
       </Card.Body>
     </Card>

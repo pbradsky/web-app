@@ -1,3 +1,4 @@
+export const ABOUT = '/about';
 export const ADMIN = '/admin';
 export const ACCOUNT = '/account';
 export const CHOOSE_DEALER = '/choose-dealer';

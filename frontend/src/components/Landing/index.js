@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Wrapper from 'styled/Wrapper';
 import bgimage from 'assets/jumboImage.jpeg';
+import {AboutUsButton} from 'components/About';
 
 import styled from 'styled-components';
 
@@ -37,14 +38,6 @@ const Backdrop = () => (
       </div>
     </Container>
   </BackdropImage>
-);
-
-const AboutUsButton = () => (
-  <Link to={ROUTES.NOT_FOUND}>
-    <Button variant='outline-secondary'>
-      Learn More
-    </Button>
-  </Link>
 );
 
 const Landing = () => (
