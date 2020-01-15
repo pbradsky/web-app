@@ -19,7 +19,7 @@ import SignUpPage from 'components/Registration/SignUp';
 import TermsPage from 'components/Legal/Terms';
 import UserDetailsPage from 'components/User/UserDetails';
 
-import Content from 'components/Content';
+import Content from 'styled/Content';
 
 import { withAuthentication } from 'api/Session';
 import * as ROUTES from 'constants/routes';
