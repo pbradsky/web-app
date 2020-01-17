@@ -11,7 +11,7 @@ import { agreeTextTOS } from 'components/Legal/Terms';
 import SignInLink from 'components/User/SignInLink';
 
 import { withFirebase } from 'api/Firebase';
-import withUser from 'api/Session/withUser';
+import { withUser } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
 import { validateCreateUser } from 'utils/validation';

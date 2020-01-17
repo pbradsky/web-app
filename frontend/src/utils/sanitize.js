@@ -5,6 +5,8 @@ const sanitizeText = text => {
 };
 
 const sanitizeFormData = formData => {
+  delete formData.filled;
+
   formData.fullName = sanitizeText(formData.fullName);
 
   return formData;

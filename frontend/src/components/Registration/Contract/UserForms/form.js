@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
-import FormInfoTooltip from './info';
+import FormInfoTooltip from '../Util/info';
 
 import { validatePhone, validateLicense, validateZip } from 'utils/validation'
 
@@ -38,8 +38,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             name='fullName'
             value={fullName}
             onChange={onChange}
-            placeholder='Full name'
-            isInvalid={fullName && fullName.length === 0} />
+            placeholder='Full name' />
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>Phone Number</Form.Label>

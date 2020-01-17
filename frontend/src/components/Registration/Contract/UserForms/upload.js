@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
-import FormInfoTooltip from './info';
+import FormInfoTooltip from '../Util/info';
 
 import { validateFileUpload } from 'utils/validation'
 

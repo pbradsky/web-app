@@ -1,11 +1,17 @@
 import React from 'react';
 
+import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { getTodaysDate } from 'utils/date';
 
-const SignatureForm = ({ signatureData, name, errors, onChange }) => {
-  const { signature, date } = signatureData;
+const state = {
+  signature: '',
+  date: '',
+};
+
+const SignatureForm = ({ state, onChangeForm }) => {
+  const { signature, date } = state;
 
   return (
     <Form>
@@ -15,21 +21,25 @@ const SignatureForm = ({ signatureData, name, errors, onChange }) => {
           <Form.Control
             name='signature'
             value={signature}
-            onChange={onChange}
-            placeholder={name} />
+            onChange={onChangeForm}
+            placeholder='Signature' />
         </Form.Group>
         <Form.Group className='col-sm-4'>
           <Form.Label>Date</Form.Label>
           <Form.Control
             name='date'
             value={date}
-            onChange={onChange}
+            onChange={onChangeForm}
             placeholder={getTodaysDate()} />
         </Form.Group>
       </Form.Row>
-      {errors.map((error, index) => <p key={index}>{error}</p>)}
     </Form>
   );
 }
 
-export default SignatureForm;
+const SignatureFormStage = {
+  state,
+  Component: SignatureForm,
+}
+
+export default SignatureFormStage;

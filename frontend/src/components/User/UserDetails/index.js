@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
-import PrintContractButton from 'components/Registration/Contract/print';
+import PrintContractButton from 'components/Registration/Contract/Util/print';
 import Image from 'react-bootstrap/Image'
 import { WithPageLoad } from 'components/Util/Loading';
 
@@ -53,9 +53,9 @@ class UserDetailsPage extends Component {
   getImages = () => {
     const errors = [];
     const storage = this.props.firebase.storage.ref();
-    const proofOfInsuranceRef = storage.child(`images/${this.props.match.params.id}-proof_of_insurance`);
-    const driversLicenseBackRef = storage.child(`images/${this.props.match.params.id}-drivers_license_back`);
-    const driversLicenseFrontRef = storage.child(`images/${this.props.match.params.id}-drivers_license_front`);
+    const proofOfInsuranceRef = storage.child(`images/${this.props.match.params.id}/proof_of_insurance`);
+    const driversLicenseBackRef = storage.child(`images/${this.props.match.params.id}/drivers_license_back`);
+    const driversLicenseFrontRef = storage.child(`images/${this.props.match.params.id}/drivers_license_front`);
 
     const promise0 = new Promise((resolve, reject) => {
       proofOfInsuranceRef.getDownloadURL().then(proofOfInsuranceURL => {
