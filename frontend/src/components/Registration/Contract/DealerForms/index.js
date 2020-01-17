@@ -1,3 +1,27 @@
+import React from 'react';
+
+import MultiStageForm from '../MultiStageForm';
+
+const One = () => <h1>Stage ONE</h1>;
+const Two = () => <h1>Stage TWO</h1>;
+
+const forms = [
+  {
+    state: {},
+    Component: One,
+  },
+  {
+    state: {},
+    Component: Two,
+  }
+];
+
+const FinalizeContractPage = () => (
+  <MultiStageForm forms={forms} />
+);
+
+export default FinalizeContractPage;
+
 /*
 
   signatureData: {

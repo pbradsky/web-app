@@ -5,22 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
-const One = () => <h1>Stage ONE</h1>;
-const Two = () => <h1>Stage TWO</h1>;
-
-const forms = [
-  One, Two
-];
-
-const getInitialState = () => {
-  return {
-    forms: forms,
-    stage: 0,
-    maxStage: 0,
-  };
-};
-
-const ContractNav = ({ onChangeStage, progress, canAdvance }) => {
+const ContractNav = ({ onChangeStage, progress }) => {
   const onFirstPage = progress === 0;
   const onLastPage = progress === 1;
 
@@ -34,7 +19,6 @@ const ContractNav = ({ onChangeStage, progress, canAdvance }) => {
       </Button>
       <Button
         className='ml-2'
-        disabled={!canAdvance}
         onClick={onChangeStage(1)}>
           {onLastPage ? 'Submit' : 'Next'}
       </Button>
@@ -45,7 +29,10 @@ const ContractNav = ({ onChangeStage, progress, canAdvance }) => {
 class MultiStageForm extends Component {
   constructor(props) {
     super(props);
-    this.state = getInitialState();
+    this.state = {
+      forms: this.props.forms,
+      stage: 0,
+    };
   }
 
   onChangeStage = delta => event => {
@@ -63,10 +50,10 @@ class MultiStageForm extends Component {
   }
 
   render() {
-    const { forms, stage, maxStage } = this.state;
+    const { forms, stage } = this.state;
     const progressRaw = stage / (forms.length - 1);
     const progressPercent = (stage + 1) / forms.length * 100;
-    const StageForm = forms[stage];
+    const StageForm = forms[stage].Component;
 
     return (
       <Container>
@@ -80,8 +67,7 @@ class MultiStageForm extends Component {
           <Card.Footer>
             <ContractNav
               onChangeStage={this.onChangeStage}
-              progress={progressRaw}
-              canAdvance={stage < maxStage} />
+              progress={progressRaw} />
           </Card.Footer>
         </Card>
       </Container>

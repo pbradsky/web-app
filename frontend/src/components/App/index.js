@@ -19,6 +19,7 @@ const ConfirmationPage = lazy(() => import('components/Registration/Confirmation
 const ContactPage = lazy(() => import('components/Legal/Contact'));
 const ContractPage = lazy(() => import('components/Registration/Contract/UserForms'));
 const DealerPage = lazy(() => import('components/User/Dealer'));
+const FinalizeContractPage = lazy(() => import('components/Registration/Contract/DealerForms'));
 const LandingPage = lazy(() => import('components/Landing'));
 const MyContractPage = lazy(() => import ('components/User/MyContract'));
 const NotFound = lazy(() => import('components/NotFound'));
@@ -44,6 +45,7 @@ const App = () => (
           <Route exact path={ROUTES.CONTRACT} component={ContractPage} />
           <Route exact path={ROUTES.CONTRACT_ONESHOT} component={ContractPage} />
           <Route path={ROUTES.DEALER} component={DealerPage} />
+          <Route path={ROUTES.FINALIZE_CONTRACT} component={FinalizeContractPage} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.MY_CONTRACT} component={MyContractPage} />
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
