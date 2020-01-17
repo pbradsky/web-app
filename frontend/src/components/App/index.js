@@ -17,7 +17,7 @@ const AccountPage = lazy(() => import('components/User/Account'));
 const ChooseDealerPage = lazy(() => import('components/Registration/ChooseDealer'));
 const ConfirmationPage = lazy(() => import('components/Registration/Confirmation'));
 const ContactPage = lazy(() => import('components/Legal/Contact'));
-const ContractPage = lazy(() => import('components/Registration/Contract'));
+const ContractPage = lazy(() => import('components/Registration/Contract/UserForms'));
 const DealerPage = lazy(() => import('components/User/Dealer'));
 const LandingPage = lazy(() => import('components/Landing'));
 const MyContractPage = lazy(() => import ('components/User/MyContract'));

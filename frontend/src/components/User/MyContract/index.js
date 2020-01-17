@@ -9,7 +9,7 @@ import {
   PreambleText,
   ContractFormText,
   SignedUserText
-} from 'components/Registration/Contract/text';
+} from 'components/Registration/Contract/Util/text';
 
 import { withAuthorization, withUser } from 'api/Session';
 import formatAddress from 'utils/address';

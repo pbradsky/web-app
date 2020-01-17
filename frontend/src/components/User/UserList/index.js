@@ -3,7 +3,7 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
-import PrintContractButton from 'components/Registration/Contract/print';
+import PrintContractButton from 'components/Registration/Contract/Util/print';
 import { UserDetailsLink } from 'components/User/UserDetails';
 
 import * as CONDITIONS from 'constants/conditions';

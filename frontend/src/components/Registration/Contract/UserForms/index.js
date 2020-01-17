@@ -8,8 +8,8 @@ import Container from 'react-bootstrap/Container';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import ContractForm from './form';
 import UploadForm from './upload';
-import SignatureForm from './signature';
-import { PreambleText, ContractFormText } from './text';
+import SignatureForm from '../DealerForms/signature';
+import { PreambleText, ContractFormText } from '../Util/text';
 
 import { withFirebase } from 'api/Firebase';
 import { withUser } from 'api/Session';

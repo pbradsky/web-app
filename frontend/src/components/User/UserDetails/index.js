@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
-import PrintContractButton from 'components/Registration/Contract/print';
+import PrintContractButton from 'components/Registration/Contract/Util/print';
 import Image from 'react-bootstrap/Image'
 import { WithPageLoad } from 'components/Util/Loading';
 
