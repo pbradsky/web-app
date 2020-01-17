@@ -8,21 +8,17 @@ import Container from 'react-bootstrap/Container';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import ContractForm from './form';
 import UploadForm from './upload';
-import SignatureForm from '../DealerForms/signature';
-import { PreambleText, ContractFormText } from '../Util/text';
 
 import { withFirebase } from 'api/Firebase';
 import { withUser } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
-import formatAddress from 'utils/address';
-import { validateSignature, validateForm, validateUpload } from 'utils/validation';
+import { validateForm, validateUpload } from 'utils/validation';
 import { sanitizeFormData } from 'utils/sanitize';
 
 const stages = {
   FORM: 0,
   UPLOAD: 1,
-  SIGNATURE: 2,
 };
 const NUM_STAGES = Object.keys(stages).length;
 
@@ -44,15 +40,9 @@ const INITIAL_STATE = {
     driversLicenseBack: null,
     filled: false,
   },
-  signatureData: {
-    signature: '',
-    date: '',
-    filled: false,
-  },
   oneShot: false,
   stage: stages.FORM,
   maxStage: stages.FORM,
-  errors: [],
 };
 
 class ContractPage extends Component {
@@ -73,7 +63,6 @@ class ContractPage extends Component {
           filled: true,
         },
         uploadData: { ...INITIAL_STATE.uploadData },
-        signatureData: { ...INITIAL_STATE.signatureData },
         maxStage: stages.FORM + 1,
       };
     }
@@ -111,12 +100,6 @@ class ContractPage extends Component {
     this.setState({ uploadData });
   }
 
-  onSignatureChange = event => {
-    const { signatureData } = this.state;
-    signatureData[event.target.name] = event.target.value;
-    this.setState({ signatureData });
-  };
-
   onFormSubmit = event => {
     const { formData } = this.state;
     const isValid = validateForm(formData);
@@ -138,43 +121,33 @@ class ContractPage extends Component {
     const { uploadData } = this.state;
     const isValid = validateUpload(uploadData);
     uploadData.filled = true;
-    if (isValid) {
-      this.setState({
-        uploadData,
-        stage: stages.UPLOAD + 1,
-        maxStage: stages.UPLOAD + 1,
-      });
-    } else {
+    if (!isValid) {
       this.setState({ uploadData });
-    }
-  }
-
-  onSignatureSubmit = () => {
-    const { signature, date } = this.state.signatureData;
-    const fullName = this.state.formData.fullName;
-
-    const errors = validateSignature(signature, fullName, date);
-    if (errors.length > 0) {
-      this.setState({ errors });
       return;
     }
 
+    this.setState({
+      uploadData,
+      stage: stages.UPLOAD + 1,
+      maxStage: stages.UPLOAD + 1,
+    });
+
+    this.onUserContractSubmit();
+  }
+
+  onUserContractSubmit = () => {
     const {
       proofOfInsurance, driversLicenseFront, driversLicenseBack
     } = this.state.uploadData;
-    const rawFormData = { ...this.state.formData };
-    const contract = { signature, date };
-    delete rawFormData.filled;
+    const formData = sanitizeFormData(this.state.formData);
 
-    const formData = sanitizeFormData(rawFormData);
     if (this.props.authUser) {
       this.props.firebase
         .user(this.props.authUser.uid)
         .set({
           ...this.props.authUser,
           ...formData,
-          contract,
-        })
+        });
       this.upload(proofOfInsurance, 'proof_of_insurance')
       this.upload(driversLicenseFront, 'drivers_license_front')
       this.upload(driversLicenseBack, 'drivers_license_back')
@@ -208,12 +181,10 @@ class ContractPage extends Component {
 
   render() {
     const {
-      formData, uploadData, signatureData, stage, maxStage, errors
+      formData, uploadData, stage, maxStage
     } = this.state;
-    const { fullName, phone, license } = formData;
 
     const progress = (stage + 1) / NUM_STAGES * 100;
-    const fullAddress = formatAddress(formData);
 
     const ContractNav = (
       <>
@@ -253,25 +224,6 @@ class ContractPage extends Component {
             uploadData={uploadData}
             onFileChange={this.onFileChange}
             onSubmit={this.onUploadSubmit} />
-        );
-        break;
-      case stages.SIGNATURE:
-        stageContent = (
-          <>
-            <h4>Dealer's Permit for Demonstration</h4>
-            <Card style={{overflowY: 'scroll', height: '50vh'}}>
-              <Card.Body>
-                <ContractFormText name={fullName} address={fullAddress} phone={phone} license={license} />
-                <PreambleText />
-              </Card.Body>
-            </Card>
-            <br />
-            <SignatureForm
-              signatureData={signatureData}
-              name='Your Name Here'
-              errors={errors}
-              onChange={this.onSignatureChange} />
-          </>
         );
         break;
       default:
