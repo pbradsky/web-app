@@ -1,14 +1,15 @@
 import React from 'react';
 
+import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { getTodaysDate } from 'utils/date';
 
-const SignatureForm = ({ signatureData, name, errors, onChange }) => {
+const SignatureForm = ({ signatureData, name, errors, onChange, onSubmit }) => {
   const { signature, date } = signatureData;
 
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <Form.Row>
         <Form.Group className='col-sm-8'>
           <Form.Label>Signature</Form.Label>
@@ -28,6 +29,9 @@ const SignatureForm = ({ signatureData, name, errors, onChange }) => {
         </Form.Group>
       </Form.Row>
       {errors.map((error, index) => <p key={index}>{error}</p>)}
+      <Button type="submit">
+        Submit
+      </Button>
     </Form>
   );
 }
