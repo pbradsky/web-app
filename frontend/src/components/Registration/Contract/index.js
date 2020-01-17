@@ -175,9 +175,10 @@ class ContractPage extends Component {
           ...formData,
           contract,
         })
-      this.upload(this.state.formData.proofOfInsurance, 'proof_of_insurance')
-      this.upload(this.state.formData.driversLicenseFront, 'drivers_license_front')
-      this.upload(this.state.formData.driversLicenseBack, 'drivers_license_back')
+      this.upload(proofOfInsurance, 'proof_of_insurance')
+      this.upload(driversLicenseFront, 'drivers_license_front')
+      this.upload(driversLicenseBack, 'drivers_license_back')
+      this.setState({ ...INITIAL_STATE });
       this.props.history.push(ROUTES.CONFIRMATION);
     } else {
       this.props.history.push(ROUTES.SIGN_IN)
