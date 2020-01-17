@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 import bgimage from 'assets/jumboImage.jpeg';
-import processimage from 'assets/process.png';
 
 import styled from 'styled-components';
 

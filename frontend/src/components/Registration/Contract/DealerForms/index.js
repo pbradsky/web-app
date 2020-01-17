@@ -4,8 +4,6 @@ import NotesFormStage from './notes';
 import MultiStageForm from '../MultiStageForm';
 import SignatureFormStage from './signature';
 
-const Two = () => <h1>Stage TWO</h1>;
-
 const forms = [
   { ...NotesFormStage },
   { ...SignatureFormStage },
