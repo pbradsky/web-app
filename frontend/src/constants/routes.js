@@ -8,6 +8,7 @@ export const CONTRACT = '/contract';
 export const CONTRACT_ONESHOT = '/contract/oneshot';
 export const DEALER = '/dealer';
 export const LANDING = '/';
+export const MY_CONTRACT = '/my-contract';
 export const PASSWORD_FORGET = '/pw-forget';
 export const PRIVACY = '/privacy';
 export const SIGN_IN = '/signin';
