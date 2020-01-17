@@ -4,15 +4,23 @@ import NotesFormStage from './notes';
 import MultiStageForm from '../MultiStageForm';
 import SignatureFormStage from './signature';
 
-const Two = () => <h1>Stage TWO</h1>;
-
 const forms = [
   { ...NotesFormStage },
   { ...SignatureFormStage },
 ];
 
+const onSubmit = forms => {
+  const { vin, notes } = forms[0].state;
+  const { signature, date } = forms[1].state;
+
+  // TODO(tim): add validation/errors
+
+  console.log(vin, notes, signature, date);
+  // TODO(tim): add db publish and routing
+}
+
 const FinalizeContractPage = () => (
-  <MultiStageForm forms={forms} />
+  <MultiStageForm forms={forms} onSubmit={onSubmit} />
 );
 
 export default FinalizeContractPage;
@@ -53,26 +61,4 @@ export default FinalizeContractPage;
       this.props.history.push(ROUTES.SIGN_IN)
     }
   }
-
-
-
-      case stages.SIGNATURE:
-        stageContent = (
-          <>
-            <h4>Dealer's Permit for Demonstration</h4>
-            <Card style={{overflowY: 'scroll', height: '50vh'}}>
-              <Card.Body>
-                <ContractFormText name={fullName} address={fullAddress} phone={phone} license={license} />
-                <PreambleText />
-              </Card.Body>
-            </Card>
-            <br />
-            <SignatureForm
-              signatureData={signatureData}
-              name='Your Name Here'
-              errors={errors}
-              onChange={this.onSignatureChange} />
-          </>
-        );
-        break;
 */

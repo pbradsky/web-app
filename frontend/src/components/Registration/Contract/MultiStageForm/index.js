@@ -12,13 +12,12 @@ const ContractNav = ({ onChangeStage, progress }) => {
   return (
     <>
       <Button
-        className='mr-2'
         disabled={onFirstPage}
         onClick={onChangeStage(-1)}>
           Back
       </Button>
       <Button
-        className='ml-2'
+        className='float-right'
         onClick={onChangeStage(1)}>
           {onLastPage ? 'Submit' : 'Next'}
       </Button>
@@ -43,16 +42,17 @@ class MultiStageForm extends Component {
 
   onChangeStage = delta => event => {
     const { forms, stage } = this.state;
+    event.preventDefault();
 
     let newStage = stage + delta;
     if (newStage < 0) {
       newStage = 0;
     } else if (newStage >= forms.length) {
-      console.log('submitted!');
+      this.props.onSubmit(forms);
+      return;
     }
 
     this.setState({ stage: newStage });
-    event.preventDefault();
   }
 
   render() {

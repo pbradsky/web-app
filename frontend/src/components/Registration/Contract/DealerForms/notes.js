@@ -4,14 +4,25 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
 const state = {
+  vin: '',
   notes: '',
 };
 
 const NotesForm = ({ state, onChangeForm }) => {
-  const { notes } = state;
+  const { vin, notes } = state;
 
   return (
     <Form>
+      <Form.Row>
+        <Form.Group as={Col}>
+          <Form.Label>VIN</Form.Label>
+          <Form.Control
+            name='vin'
+            value={vin}
+            onChange={onChangeForm}
+            placeholder='VIN' />
+        </Form.Group>
+      </Form.Row>
       <Form.Row>
         <Form.Group as={Col}>
           <Form.Label>Notes</Form.Label>
