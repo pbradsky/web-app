@@ -12,7 +12,7 @@ import SignatureForm from './signature';
 import { PreambleText, ContractFormText } from './text';
 
 import { withFirebase } from 'api/Firebase';
-import withUser from 'api/Session/withUser';
+import { withUser } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
 import formatAddress from 'utils/address';
