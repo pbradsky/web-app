@@ -130,6 +130,7 @@ const UserDropdown = ({authUser, linkClass}) => {
 
 const NavLinks = ({ authUser }) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
+  const isSignedInComplete = CONDITIONS.isSignedInCompleteUser(authUser);
   const isAdmin = CONDITIONS.isSignedInAdmin(authUser);
   const isDealer = CONDITIONS.isSignedInDealer(authUser);
 
@@ -143,6 +144,9 @@ const NavLinks = ({ authUser }) => {
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.ADMIN} show={isAdmin}>
         Dashboard
+      </NavLinkRoute>
+      <NavLinkRoute to={ROUTES.MY_CONTRACT} show={isSignedInComplete}>
+        My Contract
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.SIGN_IN} show={!isSignedIn}>
          Sign In
