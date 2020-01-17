@@ -1,29 +1,41 @@
 import React from 'react';
 
-import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
+import bgimage from 'assets/jumboImage.jpeg';
+
+import styled from 'styled-components';
+
+const BackdropImage = styled.div`
+    background-image: url(${bgimage});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    min-height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+`;
 
 const AboutPage = () => (
-  <Container>
-    <Card className='mt-4 mb-4'>
-      <Card.Body>
-        <Card.Title>About Us</Card.Title>
-        <hr />
-        <Card.Text>
-          Jurne is a virtual contracting service that allows users to quickly and effectively get
-          behind the wheel of cars that they would like to test drive.
-        </Card.Text>
-        <Card.Text>
-          We do this by allowing you to sign-up for test-drives online, right here on our website.
-          By partnering with dealerships dedicated to excellent customer service and cutting edge technology
-          we hope to change the car-buying experience for the better!
-        </Card.Text>
-        <Card.Text>
-          With us you'll be saving you time (and money too)!
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  </Container>
+  <BackdropImage>
+   <Container>
+      <Row>
+        <Col></Col>
+        <Col></Col>
+        <Col></Col>
+        <Col></Col>
+      </Row>
+      <Row className='text-white text-center mt-4'>
+        <Col className='col-3'><p>Create a Jurne Account</p></Col>
+        <Col className='col-3'><p>Select a Dealership</p></Col>
+        <Col className='col-3'><p>Fill Out a Contract</p></Col>
+        <Col className='col-3'><p>Go Test Drive!</p></Col>
+      </Row>
+    </Container>
+  </BackdropImage>
+
 );
 
 export default AboutPage;
