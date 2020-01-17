@@ -1,34 +1,34 @@
 import React from 'react';
 
-import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
-const NotesForm = ({ notesData, onChange, onSubmit }) => {
-  const { vehicle, notes } = notesData;
+const state = {
+  notes: '',
+};
+
+const NotesForm = ({ state, onChangeForm }) => {
+  const { notes } = state;
 
   return (
-    <Form onSubmit={onSubmit}>
-      <Form.Group className='col-sm-8'>
-        <Form.Label>Vehicle</Form.Label>
-        <Form.Control
-          name='vehicle'
-          value={vehicle}
-          onChange={onChange}
-          placeholder="Vehicle info" />
-      </Form.Group>
-      <Form.Group className='col-sm-4'>
-        <Form.Label>Notes</Form.Label>
-        <Form.Control
-          name='notes'
-          value={notes}
-          onChange={onChange}
-          placeholder="Additional Information" />
-      </Form.Group>
-      <Button type="submit">
-        Submit
-      </Button>
+    <Form>
+      <Form.Row>
+        <Form.Group as={Col}>
+          <Form.Label>Notes</Form.Label>
+          <Form.Control
+            name='notes'
+            value={notes}
+            onChange={onChangeForm}
+            placeholder='Notes' />
+        </Form.Group>
+      </Form.Row>
     </Form>
   );
+};
+
+const NotesFormStage = {
+  state,
+  Component: NotesForm,
 }
 
-export default NotesForm;
+export default NotesFormStage;

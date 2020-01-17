@@ -1,19 +1,14 @@
 import React from 'react';
 
+import NotesFormStage from './notes';
 import MultiStageForm from '../MultiStageForm';
+import SignatureFormStage from './signature';
 
-const One = () => <h1>Stage ONE</h1>;
 const Two = () => <h1>Stage TWO</h1>;
 
 const forms = [
-  {
-    state: {},
-    Component: One,
-  },
-  {
-    state: {},
-    Component: Two,
-  }
+  { ...NotesFormStage },
+  { ...SignatureFormStage },
 ];
 
 const FinalizeContractPage = () => (
@@ -23,25 +18,6 @@ const FinalizeContractPage = () => (
 export default FinalizeContractPage;
 
 /*
-
-  signatureData: {
-    signature: '',
-    date: '',
-    filled: false,
-  },
-
-
-  signatureData: { ...INITIAL_STATE.signatureData },
-
-
-  onSignatureChange = event => {
-    const { signatureData } = this.state;
-    signatureData[event.target.name] = event.target.value;
-    this.setState({ signatureData });
-  };
-
-
-
   onSignatureSubmit = () => {
     const { signature, date } = this.state.signatureData;
     const fullName = this.state.formData.fullName;

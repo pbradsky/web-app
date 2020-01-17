@@ -35,6 +35,12 @@ class MultiStageForm extends Component {
     };
   }
 
+  onChangeForm = event => {
+    const { forms, stage } = this.state;
+    forms[stage].state[event.target.name] = event.target.value;
+    this.setState({ forms });
+  }
+
   onChangeStage = delta => event => {
     const { forms, stage } = this.state;
 
@@ -62,7 +68,10 @@ class MultiStageForm extends Component {
             <ProgressBar now={progressPercent} />
           </Card.Header>
           <Card.Body style={{whiteSpace: 'pre-line'}}>
-            <StageForm />
+            <StageForm
+              state={forms[stage].state}
+              onChangeForm={this.onChangeForm}
+              />
           </Card.Body>
           <Card.Footer>
             <ContractNav
