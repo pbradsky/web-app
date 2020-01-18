@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
 import FormInfoTooltip from '../Util/info';
 
-import { validatePhone, validateLicense, validateZip } from 'utils/validation'
+import { isValidPhone, isValidLicense, isValidZip } from 'utils/validation'
 
 import STATES from 'constants/states';
 
@@ -51,7 +51,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             value={phone}
             onChange={onChange}
             placeholder='Phone number'
-            isInvalid={phone && !validatePhone(phone) && validated}
+            isInvalid={validated && !isValidPhone(phone)}
           />
           <FormControl.Feedback type="invalid">
             Please provide a valid phone number.
@@ -112,7 +112,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             value={zip}
             onChange={onChange}
             placeholder='Zip code'
-            isInvalid={zip && !validateZip(zip) && validated}
+            isInvalid={validated && !isValidZip(zip)}
           />
           <FormControl.Feedback type="invalid">
             Please provide a valid zip code.
@@ -131,7 +131,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             value={license}
             onChange={onChange}
             placeholder={'Driver\'s license number'}
-            isInvalid={license && state && !validateLicense(license, state) && validated}
+            isInvalid={validated && !isValidLicense(license, state)}
           />
           <FormControl.Feedback type="invalid">
             Please provide a valid license number.

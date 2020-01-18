@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
 import FormInfoTooltip from '../Util/info';
 
-import { validateFileUpload } from 'utils/validation'
+import { isValidFileUpload } from 'utils/validation'
 
 const UploadForm = ({ uploadData, onFileChange, onSubmit }) => {
   const { proofOfInsurance, driversLicenseFront, driversLicenseBack } = uploadData;
@@ -45,7 +45,7 @@ const UploadForm = ({ uploadData, onFileChange, onSubmit }) => {
               name='proofOfInsurance'
               onChange={onFileChange}
               accept='image/*'
-              isInvalid={proofOfInsurance && !validateFileUpload(proofOfInsurance)}
+              isInvalid={!isValidFileUpload(proofOfInsurance)}
             />
             <FormControl.Feedback type="invalid">
               Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB
@@ -71,7 +71,7 @@ const UploadForm = ({ uploadData, onFileChange, onSubmit }) => {
               name='driversLicenseFront'
               onChange={onFileChange}
               accept='image/*'
-              isInvalid={driversLicenseFront && !validateFileUpload(driversLicenseFront)}
+              isInvalid={!isValidFileUpload(driversLicenseFront)}
             />
             <FormControl.Feedback type="invalid">
               Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB
@@ -97,7 +97,7 @@ const UploadForm = ({ uploadData, onFileChange, onSubmit }) => {
               name='driversLicenseBack'
               onChange={onFileChange}
               accept='image/*'
-              isInvalid={driversLicenseBack && !validateFileUpload(driversLicenseBack)}
+              isInvalid={!isValidFileUpload(driversLicenseBack)}
             />
             <FormControl.Feedback type="invalid">
               Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB

@@ -13,7 +13,7 @@ import { withFirebase } from 'api/Firebase';
 import { withUser } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
-import { validateForm, validateUpload } from 'utils/validation';
+import { isValidForm, isValidUpload } from 'utils/validation';
 import { sanitizeFormData } from 'utils/sanitize';
 
 const stages = {
@@ -102,7 +102,7 @@ class ContractPage extends Component {
 
   onFormSubmit = event => {
     const { formData } = this.state;
-    const isValid = validateForm(formData);
+    const isValid = isValidForm(formData);
     formData.filled = true;
     if (isValid) {
       this.setState({
@@ -119,7 +119,7 @@ class ContractPage extends Component {
 
   onUploadSubmit = () => {
     const { uploadData } = this.state;
-    const isValid = validateUpload(uploadData);
+    const isValid = isValidUpload(uploadData);
     uploadData.filled = true;
     if (!isValid) {
       this.setState({ uploadData });

@@ -8,7 +8,7 @@ import { ContractFormText, PreambleText } from '../Util/text';
 
 import { withUser } from 'api/Session';
 import { getTodaysDate } from 'utils/date';
-import { validateSignature, validateSignatureDate } from 'utils/validation';
+import { isValidSignature, isValidSignatureDate } from 'utils/validation';
 
 // Stores the state that should be managed by the form manager
 const state = {
@@ -48,7 +48,7 @@ const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
                 value={signature}
                 onChange={onChangeForm}
                 placeholder='Signature'
-                isInvalid={validated && !validateSignature(signature)} />
+                isInvalid={validated && !isValidSignature(signature)} />
               <FormControl.Feedback type="invalid">
                 Please enter your electronic signature.
               </FormControl.Feedback>
@@ -61,7 +61,7 @@ const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
                 value={date}
                 onChange={onChangeForm}
                 placeholder={getTodaysDate()}
-                isInvalid={validated && !validateSignatureDate(date)} />
+                isInvalid={validated && !isValidSignatureDate(date)} />
               <FormControl.Feedback type="invalid">
                 Please enter today's date in the format mm/dd/yyyy.
               </FormControl.Feedback>
