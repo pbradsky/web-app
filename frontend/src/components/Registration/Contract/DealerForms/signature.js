@@ -15,7 +15,7 @@ const state = {
 };
 
 // A component that renders the form given its state
-const SignatureForm = ({ state, onChangeForm }) => {
+const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
   const { signature, date } = state;
 
   return (
@@ -33,25 +33,29 @@ const SignatureForm = ({ state, onChangeForm }) => {
         </Card.Body>
       </Card>
       <br />
-      <Form>
-        <Form.Row>
-          <Form.Group className='col-sm-8'>
-            <Form.Label>Signature</Form.Label>
-            <Form.Control
-              name='signature'
-              value={signature}
-              onChange={onChangeForm}
-              placeholder='Signature' />
-          </Form.Group>
-          <Form.Group className='col-sm-4'>
-            <Form.Label>Date</Form.Label>
-            <Form.Control
-              name='date'
-              value={date}
-              onChange={onChangeForm}
-              placeholder={getTodaysDate()} />
-          </Form.Group>
-        </Form.Row>
+      <Form
+        id='form-stage'
+        noValidate
+        validated={validated}
+        onSubmit={onSubmit}>
+          <Form.Row>
+            <Form.Group className='col-sm-8'>
+              <Form.Label>Signature</Form.Label>
+              <Form.Control
+                name='signature'
+                value={signature}
+                onChange={onChangeForm}
+                placeholder='Signature' />
+            </Form.Group>
+            <Form.Group className='col-sm-4'>
+              <Form.Label>Date</Form.Label>
+              <Form.Control
+                name='date'
+                value={date}
+                onChange={onChangeForm}
+                placeholder={getTodaysDate()} />
+            </Form.Group>
+          </Form.Row>
       </Form>
     </>
   );

@@ -5,6 +5,9 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
+const BACK = -1;
+const FORWARD = 1;
+
 const ContractNav = ({ onChangeStage, progress }) => {
   const onFirstPage = progress === 0;
   const onLastPage = progress === 1;
@@ -13,12 +16,13 @@ const ContractNav = ({ onChangeStage, progress }) => {
     <>
       <Button
         disabled={onFirstPage}
-        onClick={onChangeStage(-1)}>
+        onClick={onChangeStage(BACK)}>
           Back
       </Button>
       <Button
-        className='float-right'
-        onClick={onChangeStage(1)}>
+        form='form-stage'
+        type='submit'
+        className='float-right'>
           {onLastPage ? 'Submit' : 'Next'}
       </Button>
     </>
@@ -31,6 +35,7 @@ class MultiStageForm extends Component {
     this.state = {
       forms: this.props.forms,
       stage: 0,
+      validated: false,
     };
   }
 
@@ -44,19 +49,32 @@ class MultiStageForm extends Component {
     const { forms, stage } = this.state;
     event.preventDefault();
 
+    if (delta === FORWARD) {
+      const form = event.target;
+      console.log(form);
+      if (form.checkValidity() === false) {
+        this.setState({ validated: true });
+        return;
+      }
+    }
+
     let newStage = stage + delta;
     if (newStage < 0) {
       newStage = 0;
     } else if (newStage >= forms.length) {
+      // Submitted final stage
       this.props.onSubmit(forms);
       return;
     }
 
-    this.setState({ stage: newStage });
+    this.setState({
+      stage: newStage,
+      validated: false
+    });
   }
 
   render() {
-    const { forms, stage } = this.state;
+    const { forms, stage, validated } = this.state;
     const { Header } = this.props;
     const progressRaw = stage / (forms.length - 1);
     const progressPercent = (stage + 1) / forms.length * 100;
@@ -73,7 +91,9 @@ class MultiStageForm extends Component {
           <Card.Body style={{whiteSpace: 'pre-line'}}>
             <StageForm
               state={forms[stage].state}
+              validated={validated}
               onChangeForm={this.onChangeForm}
+              onSubmit={this.onChangeStage(FORWARD)}
               />
           </Card.Body>
           <Card.Footer>
