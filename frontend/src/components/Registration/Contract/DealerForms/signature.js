@@ -2,11 +2,13 @@ import React from 'react';
 
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
 
 import { ContractFormText, PreambleText } from '../Util/text';
 
 import { withUser } from 'api/Session';
 import { getTodaysDate } from 'utils/date';
+import { validateSignature, validateSignatureDate } from 'utils/validation';
 
 // Stores the state that should be managed by the form manager
 const state = {
@@ -42,18 +44,28 @@ const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
             <Form.Group className='col-sm-8'>
               <Form.Label>Signature</Form.Label>
               <Form.Control
+                required
                 name='signature'
                 value={signature}
                 onChange={onChangeForm}
-                placeholder='Signature' />
+                placeholder='Signature'
+                isInvalid={validated && !validateSignature(signature)} />
+              <FormControl.Feedback type="invalid">
+                Please enter your electronic signature.
+              </FormControl.Feedback>
             </Form.Group>
             <Form.Group className='col-sm-4'>
               <Form.Label>Date</Form.Label>
               <Form.Control
+                required
                 name='date'
                 value={date}
                 onChange={onChangeForm}
-                placeholder={getTodaysDate()} />
+                placeholder={getTodaysDate()}
+                isInvalid={validated && !validateSignatureDate(date)} />
+              <FormControl.Feedback type="invalid">
+                Please enter today's date in the format mm/dd/yyyy.
+              </FormControl.Feedback>
             </Form.Group>
           </Form.Row>
       </Form>

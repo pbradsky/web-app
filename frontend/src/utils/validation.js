@@ -12,22 +12,19 @@ const validateCreateUser = email => {
   return errors;
 };
 
-const validateSignature = (signature, fullName, date) => {
-  const errors = [];
+const validateSignature = signature => {
+  return signature && signature.length > 0;
+}
 
+const validateSignatureDate = date => {
   const today = getTodaysDate();
   const signatureDate = new Date(date);
-  if (signatureDate.toString() === 'Invalid Date') {
-    errors.push('Please enter the date in a valid format (mm/dd/yyyy).');
-  } else if (!validator.equals(formatDate(signatureDate), today)) {
-    errors.push('Please enter today\'s date.');
-  }
-  if (!signature) {
-    errors.push('Please sign your full name.')
-  }
-
-  return errors;
-};
+  return (
+    date &&
+    signatureDate.toString() !== 'Invalid Date' &&
+    validator.equals(formatDate(signatureDate), today)
+  );
+}
 
 const validateForm = userInfo => {
   if (!validatePhone(userInfo.phone) ||
@@ -81,6 +78,7 @@ const validateFileUpload = file => {
 export {
   validateCreateUser,
   validateSignature,
+  validateSignatureDate,
   validateForm,
   validatePhone,
   validateLicense,
