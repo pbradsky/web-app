@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 import bgimage from 'assets/jumboImage.jpeg';
+import steps from 'assets/jurne-steps.png';
 
 import styled from 'styled-components';
 
@@ -20,20 +20,19 @@ const BackdropImage = styled.div`
 
 const AboutPage = () => (
   <BackdropImage>
-   <Container>
+   <div className='mt-auto mb-auto p-4'>
       <Row>
-        <Col></Col>
-        <Col></Col>
-        <Col></Col>
-        <Col></Col>
+        <Col className='p-0'>
+          <img className='p-0 col-12' src={steps} alt='jurne easy process' />
+        </Col>
       </Row>
-      <Row className='text-white text-center mt-4'>
-        <Col className='col-3'><p>Create a Jurne Account</p></Col>
-        <Col className='col-3'><p>Select a Dealership</p></Col>
-        <Col className='col-3'><p>Fill Out a Contract</p></Col>
+      <Row className='text-white text-center mt-4 mb-auto'>
+        <Col className='col-3'><p>Make an Account</p></Col>
+        <Col className='col-3'><p>Complete our Form</p></Col>
+        <Col className='col-3'><p>Finalize with Dealership</p></Col>
         <Col className='col-3'><p>Go Test Drive!</p></Col>
       </Row>
-    </Container>
+    </div>
   </BackdropImage>
 
 );

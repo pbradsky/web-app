@@ -54,7 +54,7 @@ const PreambleText = () => (
     <Card.Title>AGREEMENT FOR DEMONSTRATION USE OF VEHICLE</Card.Title>
     <Card.Text>
       In consideration of the agreements contained herein, Dealer hereby permits
-      Operator to possess and use the motor behicle descibed herein upon the
+      Operator to possess and use the motor vehicle descibed herein upon the
       terms and conditions set forth on both sides of this agreement.
     </Card.Text>
     <ol>
