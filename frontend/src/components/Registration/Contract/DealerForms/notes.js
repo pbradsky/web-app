@@ -16,7 +16,6 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
     <Form
       id='form-stage'
       noValidate
-      validated={validated}
       onSubmit={onSubmit}>
         <Form.Row>
           <Form.Group as={Col}>
@@ -26,7 +25,8 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
               name='vin'
               value={vin}
               onChange={onChangeForm}
-              placeholder='VIN' />
+              placeholder='VIN'
+              isInvalid={validated && vin.length === 0} />
             <FormControl.Feedback type="invalid">
               The VIN field is required.
             </FormControl.Feedback>

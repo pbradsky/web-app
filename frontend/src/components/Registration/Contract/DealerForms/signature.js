@@ -38,7 +38,6 @@ const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
       <Form
         id='form-stage'
         noValidate
-        validated={validated}
         onSubmit={onSubmit}>
           <Form.Row>
             <Form.Group className='col-sm-8'>
