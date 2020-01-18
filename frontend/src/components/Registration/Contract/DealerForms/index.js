@@ -13,8 +13,6 @@ const onSubmit = forms => {
   const { vin, notes } = forms[0].state;
   const { signature, date } = forms[1].state;
 
-  // TODO(tim): add validation/errors
-
   console.log(vin, notes, signature, date);
   // TODO(tim): add db publish and routing
 
@@ -38,12 +36,6 @@ export default FinalizeContractPage;
   onSignatureSubmit = () => {
     const { signature, date } = this.state.signatureData;
     const fullName = this.state.formData.fullName;
-
-    const errors = validateSignature(signature, fullName, date);
-    if (errors.length > 0) {
-      this.setState({ errors });
-      return;
-    }
 
     const {
       proofOfInsurance, driversLicenseFront, driversLicenseBack

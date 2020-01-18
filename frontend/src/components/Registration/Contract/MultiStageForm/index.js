@@ -51,7 +51,6 @@ class MultiStageForm extends Component {
 
     if (delta === FORWARD) {
       const form = event.target;
-      console.log(form);
       if (form.checkValidity() === false) {
         this.setState({ validated: true });
         return;
