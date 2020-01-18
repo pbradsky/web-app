@@ -57,6 +57,7 @@ class MultiStageForm extends Component {
 
   render() {
     const { forms, stage } = this.state;
+    const { Header } = this.props;
     const progressRaw = stage / (forms.length - 1);
     const progressPercent = (stage + 1) / forms.length * 100;
     const StageForm = forms[stage].Component;
@@ -64,7 +65,9 @@ class MultiStageForm extends Component {
     return (
       <Container>
         <Card className='mt-4 mb-4'>
-          <Card.Header>
+          <Card.Header >
+            <Header />
+            <br />
             <ProgressBar now={progressPercent} />
           </Card.Header>
           <Card.Body style={{whiteSpace: 'pre-line'}}>

@@ -17,10 +17,19 @@ const onSubmit = forms => {
 
   console.log(vin, notes, signature, date);
   // TODO(tim): add db publish and routing
+
+  return
 }
 
+const Header = () => (
+  <h1>Finalize User Contract</h1>
+);
+
 const FinalizeContractPage = () => (
-  <MultiStageForm forms={forms} onSubmit={onSubmit} />
+  <MultiStageForm
+    Header={Header}
+    forms={forms}
+    onSubmit={onSubmit} />
 );
 
 export default FinalizeContractPage;
