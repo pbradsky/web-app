@@ -23,9 +23,9 @@ const FinalizeContractPage = lazy(() => import('components/Registration/Contract
 const LandingPage = lazy(() => import('components/Landing'));
 const MyContractPage = lazy(() => import ('components/User/MyContract'));
 const NotFound = lazy(() => import('components/NotFound'));
-const PasswordForgetPage = lazy(() => import('components/User/PasswordForget'));
+const PasswordForgetPage = lazy(() => import('components/User/Account/PasswordForget'));
 const PrivacyPage = lazy(() => import('components/Legal/Privacy'));
-const SignInPage = lazy(() => import('components/User/SignIn'));
+const SignInPage = lazy(() => import('components/User/Account/SignIn'));
 const SignUpPage = lazy(() => import('components/Registration/SignUp'));
 const TermsPage = lazy(() => import('components/Legal/Terms'));
 const UserDetailsPage = lazy(() => import('components/User/UserDetails'));

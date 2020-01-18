@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
 import { agreeTextTOS } from 'components/Legal/Terms';
-import SignInLink from 'components/User/SignInLink';
+import SignInLink from 'components/User/Account/SignIn/SignInLink';
 
 import { withFirebase } from 'api/Firebase';
 import { withUser } from 'api/Session';
