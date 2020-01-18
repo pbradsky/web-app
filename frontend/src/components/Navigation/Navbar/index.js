@@ -7,7 +7,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavLinkRoute from './navLinkRoute';
-import SignOutButton from 'components/User/SignOut';
+import SignOutButton from 'components/User/Account/SignOut';
 
 import Spread from 'assets/spread.png';
 import styled from 'styled-components';

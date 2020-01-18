@@ -5,8 +5,8 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import CardGroup from 'react-bootstrap/CardGroup'
 import Container from 'react-bootstrap/Container';
 
-import PasswordChangeCard from '../PasswordChange';
-import DeleteAccountCard from '../DeleteAccount';
+import PasswordChangeCard from './PasswordChange';
+import DeleteAccountCard from './DeleteAccount';
 
 import { withAuthorization, withUser } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
