@@ -62,9 +62,7 @@ class MultiStageForm extends Component {
     if (newStage < 0) {
       newStage = 0;
     } else if (newStage >= forms.length) {
-      // Submitted final stage
-      const formData = this.props.onSubmit(forms);
-      this.onFinalSubmit(formData);
+      this.props.onSubmit(forms);
       return;
     }
 
@@ -72,14 +70,6 @@ class MultiStageForm extends Component {
       stage: newStage,
       validated: false
     });
-  }
-
-  onFinalSubmit = formData => {
-    const { dbData, redirectRoute } = formData;
-
-    console.log(dbData);
-
-    this.props.history.push(redirectRoute);
   }
 
   render() {

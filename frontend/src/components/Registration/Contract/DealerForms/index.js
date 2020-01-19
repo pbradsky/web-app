@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import NotesFormStage from './notes';
 import MultiStageForm from '../MultiStageForm';
@@ -11,36 +12,38 @@ const forms = [
   { ...SignatureFormStage },
 ];
 
-const onSubmit = forms => {
-  const { vin, notes } = forms[0].state;
-  const { signature, date } = forms[1].state;
+const FinalizeContractPage = ({ history }) => {
+  const onSubmit = forms => {
+    const { vin, notes } = forms[0].state;
+    const { signature, date } = forms[1].state;
 
-  console.log(vin, notes, signature, date);
-  // TODO(tim): add db publish and routing
+    // TODO(tim): add db publish
+    console.log({
+      dbData: {
+        vehicleInfo: {
+          vin,
+          notes
+        },
+        contract: {
+          signature,
+          date
+        },
+      }
+    });
 
-  return {
-    dbData: {
-      vehicleInfo: {
-        vin,
-        notes
-      },
-      contract: {
-        signature,
-        date
-      },
-    },
-    redirectRoute: ROUTES.LANDING,
-  };
-}
+    // TODO(tim): update route
+    history.push(ROUTES.LANDING);
+  }
 
-const FinalizeContractPage = () => (
-  <MultiStageForm
-    title='Finalize User Contract'
-    forms={forms}
-    onSubmit={onSubmit} />
-);
+  return (
+    <MultiStageForm
+      title='Finalize User Contract'
+      forms={forms}
+      onSubmit={onSubmit} />
+  );
+};
 
-export default FinalizeContractPage;
+export default withRouter(FinalizeContractPage);
 
 /*
   onSignatureSubmit = () => {
