@@ -4,10 +4,10 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 
-const state = {
+const state = () => ({
   vin: '',
   notes: '',
-};
+});
 
 const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
   const { vin, notes } = state;

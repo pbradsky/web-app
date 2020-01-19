@@ -7,11 +7,11 @@ import FormInfoTooltip from '../Util/info';
 
 import { isValidFileUpload } from 'utils/validation'
 
-const state = {
+const state = () => ({
   proofOfInsurance: null,
   driversLicenseFront: null,
   driversLicenseBack: null,
-};
+});
 
 const UploadForm = ({ state, validated, onChangeForm, onSubmit }) => {
   const { proofOfInsurance, driversLicenseFront, driversLicenseBack } = state;

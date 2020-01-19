@@ -48,17 +48,19 @@ constructor:
     }
 
   missing:
-    => prefill functionality
     => oneshot functionality
     => required form validation
 */
 
-const forms = [
-  { ...ContractFormStage },
-  { ...UploadFormStage },
-];
-
 const UserContractPage = ({ authUser, firebase, history }) => {
+  const forms = [
+    {
+      ...ContractFormStage,
+      state: ContractFormStage.state(authUser),
+    },
+    { ...UploadFormStage },
+  ];
+
   const upload = (file, type) => {
     const storageRef = firebase.storage.ref();
     storageRef.child(`images/${authUser.uid}/` + type).put(file);

@@ -11,10 +11,10 @@ import { getTodaysDate } from 'utils/date';
 import { isValidSignature, isValidSignatureDate } from 'utils/validation';
 
 // Stores the state that should be managed by the form manager
-const state = {
+const state = () => ({
   signature: '',
   date: '',
-};
+});
 
 // A component that renders the form given its state
 const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {

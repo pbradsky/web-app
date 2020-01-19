@@ -10,15 +10,30 @@ import { isValidPhone, isValidLicense, isValidZip } from 'utils/validation'
 
 import STATES from 'constants/states';
 
-const state = {
-  fullName: '',
-  phone: '',
-  address: '',
-  apt: '',
-  city: '',
-  state: '',
-  zip: '',
-  license: '',
+const state = userData => () => {
+  if (userData && userData.contract) {
+    return {
+      fullName: userData.fullName,
+      phone: userData.phone,
+      address: userData.address,
+      apt: userData.apt,
+      city: userData.city,
+      state: userData.state,
+      zip: userData.zip,
+      license: userData.license,
+    }
+  }
+
+  return {
+    fullName: '',
+    phone: '',
+    address: '',
+    apt: '',
+    city: '',
+    state: '',
+    zip: '',
+    license: '',
+  };
 };
 
 const ContractForm = props => {

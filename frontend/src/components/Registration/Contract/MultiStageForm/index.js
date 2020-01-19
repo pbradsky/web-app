@@ -35,12 +35,14 @@ class MultiStageForm extends Component {
     super(props);
 
     // Shallow copy initial state
-    this.props.forms.forEach(form => {
-      form.initialState = { ...form.state };
-    });
+    const forms = this.props.forms.map(form => ({
+      ...form,
+      state: form.state(),
+      initialState: form.state(),
+    }));
 
     this.state = {
-      forms: this.props.forms,
+      forms,
       stage: 0,
       validated: false,
     };
