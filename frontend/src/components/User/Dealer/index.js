@@ -54,36 +54,9 @@ class DealerPage extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  usernameFilter = query => user => {
-    return user.username.toLowerCase().includes(query.toLowerCase());
-  }
-
-  emailFilter = query => user => {
-    return (
-      user.email &&
-      user.email.toLowerCase().includes(query.toLowerCase())
-    );
-  }
-
-  phoneNumberFilter = query => user => {
-    if (!user.phone) {
-      return false;
-    }
-    query = query.replace(/[^\d]/g, '');
-    return (
-      query &&
-      user.phone.replace(/[^\d]/g, '').includes(query.replace(/[^\d]/g, ''))
-    );
-  }
-
   render() {
     const { loading, users, searchQuery, fuse } = this.state;
 
-    // const searchedUsers = users.filter(user => (
-    //   this.usernameFilter(searchQuery)(user) ||
-    //   this.emailFilter(searchQuery)(user) ||
-    //   this.phoneNumberFilter(searchQuery)(user)
-    // )).sort();
     const searchedUsers = searchQuery
       ? fuse.search(searchQuery)
       : users;
