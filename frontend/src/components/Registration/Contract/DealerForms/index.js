@@ -33,13 +33,9 @@ const onSubmit = forms => {
   };
 }
 
-const Header = () => (
-  <h1>Finalize User Contract</h1>
-);
-
 const FinalizeContractPage = () => (
   <MultiStageForm
-    Header={Header}
+    title='Finalize User Contract'
     forms={forms}
     onSubmit={onSubmit} />
 );
