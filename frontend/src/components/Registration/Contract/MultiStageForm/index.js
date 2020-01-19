@@ -33,6 +33,12 @@ const ContractNav = ({ onChangeStage, progress }) => {
 class MultiStageForm extends Component {
   constructor(props) {
     super(props);
+
+    // Shallow copy initial state
+    this.props.forms.forEach(form => {
+      form.initialState = { ...form.state };
+    });
+
     this.state = {
       forms: this.props.forms,
       stage: 0,
@@ -40,7 +46,19 @@ class MultiStageForm extends Component {
     };
   }
 
-  // TODO(tim): handle file submits
+  resetState = () => {
+    const { forms } = this.state;
+    forms.forEach(form => {
+      form.state = { ...form.initialState };
+    });
+
+    this.setState({
+      forms,
+      stage: 0,
+      validated: false,
+    });
+  }
+
   onChangeForm = event => {
     const { forms, stage } = this.state;
     const data = event.target.type === 'file'
@@ -68,6 +86,7 @@ class MultiStageForm extends Component {
       newStage = 0;
     } else if (newStage >= forms.length) {
       this.props.onSubmit(forms);
+      this.resetState();
       return;
     }
 

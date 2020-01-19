@@ -50,7 +50,6 @@ constructor:
   missing:
     => prefill functionality
     => oneshot functionality
-    => stale upload prefill bug
     => required form validation
 */
 
