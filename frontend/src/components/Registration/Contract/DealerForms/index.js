@@ -4,6 +4,8 @@ import NotesFormStage from './notes';
 import MultiStageForm from '../MultiStageForm';
 import SignatureFormStage from './signature';
 
+import * as ROUTES from 'constants/routes';
+
 const forms = [
   { ...NotesFormStage },
   { ...SignatureFormStage },
@@ -16,7 +18,19 @@ const onSubmit = forms => {
   console.log(vin, notes, signature, date);
   // TODO(tim): add db publish and routing
 
-  return
+  return {
+    dbData: {
+      vehicleInfo: {
+        vin,
+        notes
+      },
+      contract: {
+        signature,
+        date
+      },
+    },
+    redirectRoute: ROUTES.LANDING,
+  };
 }
 
 const Header = () => (

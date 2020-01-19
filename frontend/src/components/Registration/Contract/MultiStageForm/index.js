@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -62,7 +63,8 @@ class MultiStageForm extends Component {
       newStage = 0;
     } else if (newStage >= forms.length) {
       // Submitted final stage
-      this.props.onSubmit(forms);
+      const formData = this.props.onSubmit(forms);
+      this.onFinalSubmit(formData);
       return;
     }
 
@@ -70,6 +72,14 @@ class MultiStageForm extends Component {
       stage: newStage,
       validated: false
     });
+  }
+
+  onFinalSubmit = formData => {
+    const { dbData, redirectRoute } = formData;
+
+    console.log(dbData);
+
+    this.props.history.push(redirectRoute);
   }
 
   render() {
@@ -106,4 +116,4 @@ class MultiStageForm extends Component {
   }
 }
 
-export default MultiStageForm;
+export default withRouter(MultiStageForm);
