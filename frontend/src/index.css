@@ -13,14 +13,6 @@ body {
   height: 100%;
 }
 
-#inputGroupFile01:hover {
-  cursor: pointer;
-}
-
-#inputGroupFile02:hover {
-  cursor: pointer;
-}
-
-#inputGroupFile03:hover {
+.custom-file-input:hover {
   cursor: pointer;
 }

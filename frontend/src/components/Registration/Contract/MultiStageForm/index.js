@@ -43,21 +43,15 @@ class MultiStageForm extends Component {
   // TODO(tim): handle file submits
   onChangeForm = event => {
     const { forms, stage } = this.state;
-
-    let data;
-    if (event.target.type === 'file') {
-      console.log('file upload!');
-      data = event.target.files[0];
-    } else {
-      data = event.target.value;
-    }
+    const data = event.target.type === 'file'
+      ? event.target.files[0]
+      : event.target.value;
 
     forms[stage].state[event.target.name] = data;
     this.setState({ forms });
   }
 
   onChangeStage = delta => event => {
-    console.log('change stage');
     const { forms, stage } = this.state;
     event.preventDefault();
 

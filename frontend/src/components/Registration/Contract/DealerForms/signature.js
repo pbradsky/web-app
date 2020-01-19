@@ -47,7 +47,7 @@ const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
               placeholder='Signature'
               isValid={validated && isValidSignature(signature)}
               isInvalid={validated && !isValidSignature(signature)} />
-            <FormControl.Feedback type="invalid">
+            <FormControl.Feedback type='invalid'>
               Please enter your electronic signature.
             </FormControl.Feedback>
           </Form.Group>
@@ -61,7 +61,7 @@ const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
               placeholder={getTodaysDate()}
               isValid={validated && isValidSignatureDate(date)}
               isInvalid={validated && !isValidSignatureDate(date)} />
-            <FormControl.Feedback type="invalid">
+            <FormControl.Feedback type='invalid'>
               Please enter today's date in the format mm/dd/yyyy.
             </FormControl.Feedback>
           </Form.Group>

@@ -30,7 +30,7 @@ const ContractForm = props => {
       <h4>Personal Information</h4>
       <hr />
       <Form.Row>
-        <Form.Group as={Col} controlId="validationCustom01">
+        <Form.Group as={Col}>
           <Form.Label>Full Name</Form.Label>
           <Form.Control
             required
@@ -53,7 +53,7 @@ const ContractForm = props => {
             isValid={validated && isValidPhone(phone)}
             isInvalid={validated && !isValidPhone(phone)}
           />
-          <FormControl.Feedback type="invalid">
+          <FormControl.Feedback type='invalid'>
             Please provide a valid phone number.
           </FormControl.Feedback>
         </Form.Group>
@@ -115,7 +115,7 @@ const ContractForm = props => {
             isValid={validated && isValidZip(zip)}
             isInvalid={validated && !isValidZip(zip)}
           />
-          <FormControl.Feedback type="invalid">
+          <FormControl.Feedback type='invalid'>
             Please provide a valid zip code.
           </FormControl.Feedback>
         </Form.Group>
@@ -135,7 +135,7 @@ const ContractForm = props => {
             isValid={validated && isValidLicense(license, state)}
             isInvalid={validated && !isValidLicense(license, state)}
           />
-          <FormControl.Feedback type="invalid">
+          <FormControl.Feedback type='invalid'>
             Please provide a valid license number.
           </FormControl.Feedback>
         </Form.Group>
