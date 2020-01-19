@@ -2,8 +2,8 @@ import React from 'react';
 
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
 
+import FormGroup from '../Util/FormGroup';
 import { ContractFormText, PreambleText } from '../Util/text';
 
 import { withUser } from 'api/Session';
@@ -37,34 +37,30 @@ const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
       <br />
       <Form id='form-stage' noValidate onSubmit={onSubmit}>
         <Form.Row>
-          <Form.Group className='col-sm-8'>
-            <Form.Label>Signature</Form.Label>
-            <Form.Control
-              required
-              name='signature'
-              value={signature}
-              onChange={onChangeForm}
-              placeholder='Signature'
-              isValid={validated && isValidSignature(signature)}
-              isInvalid={validated && !isValidSignature(signature)} />
-            <FormControl.Feedback type='invalid'>
-              Please enter your electronic signature.
-            </FormControl.Feedback>
-          </Form.Group>
-          <Form.Group className='col-sm-4'>
-            <Form.Label>Date</Form.Label>
-            <Form.Control
-              required
-              name='date'
-              value={date}
-              onChange={onChangeForm}
-              placeholder={getTodaysDate()}
-              isValid={validated && isValidSignatureDate(date)}
-              isInvalid={validated && !isValidSignatureDate(date)} />
-            <FormControl.Feedback type='invalid'>
-              Please enter today's date in the format mm/dd/yyyy.
-            </FormControl.Feedback>
-          </Form.Group>
+          <FormGroup
+            className='col-sm-8'
+            label='Signature'
+            required
+            name='signature'
+            value={signature}
+            placeholder='Signature'
+            onChange={onChangeForm}
+            validated={validated}
+            isValid={isValidSignature(signature)}
+            errorText='Please enter your electronic signature.'
+          />
+          <FormGroup
+            className='col-sm-4'
+            label='Date'
+            required
+            name='date'
+            value={date}
+            placeholder={getTodaysDate()}
+            onChange={onChangeForm}
+            validated={validated}
+            isValid={isValidSignatureDate(date)}
+            errorText={'Please enter today\'s date in the format mm/dd/yyyy.'}
+          />
         </Form.Row>
       </Form>
     </>

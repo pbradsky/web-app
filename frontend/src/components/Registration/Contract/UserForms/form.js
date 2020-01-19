@@ -52,7 +52,9 @@ const ContractForm = props => {
             name='fullName'
             value={fullName}
             onChange={onChangeForm}
-            placeholder='Full name' />
+            placeholder='Full name'
+            isValid={validated && fullName.length > 0}
+            isInvalid={validated &&  fullName.length > 0} />
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>Phone Number</Form.Label>
