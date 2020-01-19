@@ -13,28 +13,25 @@ import { sanitizeFormData } from 'utils/sanitize';
 
 /*
 constructor:
-if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
-      INITIAL_STATE.oneShot = true;
-    }
-    this.state = { ...INITIAL_STATE };
-    if (CONDITIONS.isUser(this.props.authUser) && this.props.authUser.contract) {
-      const {
-        fullName, phone, address, apt, city, state, zip, license
-      } = this.props.authUser;
-      this.state = {
-        ...INITIAL_STATE,
-        formData: {
-          fullName, phone, address, apt, city, state, zip, license,
-          filled: true,
-        },
-        uploadData: { ...INITIAL_STATE.uploadData },
-        maxStage: stages.FORM + 1,
-      };
-    }
+  if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
+    INITIAL_STATE.oneShot = true;
+  }
+  this.state = { ...INITIAL_STATE };
+  if (CONDITIONS.isUser(this.props.authUser) && this.props.authUser.contract) {
+    const {
+      fullName, phone, address, apt, city, state, zip, license
+    } = this.props.authUser;
+    this.state = {
+      ...INITIAL_STATE,
+      formData: {
+        fullName, phone, address, apt, city, state, zip, license,
+      },
+      uploadData: { ...INITIAL_STATE.uploadData },
+    };
+  }
 
   componentDidMount:
-  const { oneShot } = this.state;
-
+    const { oneShot } = this.state;
     if (oneShot && !CONDITIONS.isUser(this.props.authUser)) {
       this.props.firebase
         .doSignInAnonymously()
@@ -50,20 +47,11 @@ if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
         })
     }
 
-  onFileChange = event => {
-    const file = event.target.files[0];
-    const { uploadData } = this.state;
-    uploadData[event.target.name] = file;
-    this.setState({ uploadData });
-  }
-
   missing:
-    formData.filled
-    uploadData.filled
-
     => prefill functionality
     => oneshot functionality
     => stale upload prefill bug
+    => required form validation
 */
 
 const forms = [
@@ -84,7 +72,8 @@ const UserContractPage = ({ authUser, firebase, history }) => {
     } = forms[1].state;
 
     if (!authUser) {
-      history.push(ROUTES.SIGN_IN)
+      history.push(ROUTES.SIGN_IN);
+      return;
     }
 
     firebase
