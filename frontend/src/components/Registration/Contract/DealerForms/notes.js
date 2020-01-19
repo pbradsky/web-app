@@ -26,6 +26,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
               value={vin}
               onChange={onChangeForm}
               placeholder='VIN'
+              isValid={validated && vin.length > 0}
               isInvalid={validated && vin.length === 0} />
             <FormControl.Feedback type="invalid">
               The VIN field is required.
