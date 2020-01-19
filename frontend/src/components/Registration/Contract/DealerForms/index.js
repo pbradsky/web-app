@@ -44,35 +44,3 @@ const FinalizeContractPage = ({ history }) => {
 };
 
 export default withRouter(FinalizeContractPage);
-
-/*
-  onSignatureSubmit = () => {
-    const { signature, date } = this.state.signatureData;
-    const fullName = this.state.formData.fullName;
-
-    const {
-      proofOfInsurance, driversLicenseFront, driversLicenseBack
-    } = this.state.uploadData;
-    const rawFormData = { ...this.state.formData };
-    const contract = { signature, date };
-    delete rawFormData.filled;
-
-    const formData = sanitizeFormData(rawFormData);
-    if (this.props.authUser) {
-      this.props.firebase
-        .user(this.props.authUser.uid)
-        .set({
-          ...this.props.authUser,
-          ...formData,
-          contract,
-        })
-      this.upload(proofOfInsurance, 'proof_of_insurance')
-      this.upload(driversLicenseFront, 'drivers_license_front')
-      this.upload(driversLicenseBack, 'drivers_license_back')
-      this.setState({ ...INITIAL_STATE });
-      this.props.history.push(ROUTES.CONFIRMATION);
-    } else {
-      this.props.history.push(ROUTES.SIGN_IN)
-    }
-  }
-*/
