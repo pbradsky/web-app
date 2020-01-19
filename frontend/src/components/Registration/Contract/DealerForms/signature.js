@@ -35,40 +35,37 @@ const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
         </Card.Body>
       </Card>
       <br />
-      <Form
-        id='form-stage'
-        noValidate
-        onSubmit={onSubmit}>
-          <Form.Row>
-            <Form.Group className='col-sm-8'>
-              <Form.Label>Signature</Form.Label>
-              <Form.Control
-                required
-                name='signature'
-                value={signature}
-                onChange={onChangeForm}
-                placeholder='Signature'
-                isValid={validated && isValidSignature(signature)}
-                isInvalid={validated && !isValidSignature(signature)} />
-              <FormControl.Feedback type="invalid">
-                Please enter your electronic signature.
-              </FormControl.Feedback>
-            </Form.Group>
-            <Form.Group className='col-sm-4'>
-              <Form.Label>Date</Form.Label>
-              <Form.Control
-                required
-                name='date'
-                value={date}
-                onChange={onChangeForm}
-                placeholder={getTodaysDate()}
-                isValid={validated && isValidSignatureDate(date)}
-                isInvalid={validated && !isValidSignatureDate(date)} />
-              <FormControl.Feedback type="invalid">
-                Please enter today's date in the format mm/dd/yyyy.
-              </FormControl.Feedback>
-            </Form.Group>
-          </Form.Row>
+      <Form id='form-stage' noValidate onSubmit={onSubmit}>
+        <Form.Row>
+          <Form.Group className='col-sm-8'>
+            <Form.Label>Signature</Form.Label>
+            <Form.Control
+              required
+              name='signature'
+              value={signature}
+              onChange={onChangeForm}
+              placeholder='Signature'
+              isValid={validated && isValidSignature(signature)}
+              isInvalid={validated && !isValidSignature(signature)} />
+            <FormControl.Feedback type="invalid">
+              Please enter your electronic signature.
+            </FormControl.Feedback>
+          </Form.Group>
+          <Form.Group className='col-sm-4'>
+            <Form.Label>Date</Form.Label>
+            <Form.Control
+              required
+              name='date'
+              value={date}
+              onChange={onChangeForm}
+              placeholder={getTodaysDate()}
+              isValid={validated && isValidSignatureDate(date)}
+              isInvalid={validated && !isValidSignatureDate(date)} />
+            <FormControl.Feedback type="invalid">
+              Please enter today's date in the format mm/dd/yyyy.
+            </FormControl.Feedback>
+          </Form.Group>
+        </Form.Row>
       </Form>
     </>
   );

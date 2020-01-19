@@ -1,54 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import ContractForm from './form';
-import UploadForm from './upload';
+import ContractFormStage from './form';
+import UploadFormStage from './upload';
+import MultiStageForm from '../MultiStageForm';
 
 import { withFirebase } from 'api/Firebase';
 import { withUser } from 'api/Session';
-import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
-import { isValidForm, isValidUpload } from 'utils/validation';
 import { sanitizeFormData } from 'utils/sanitize';
 
-const stages = {
-  FORM: 0,
-  UPLOAD: 1,
-};
-const NUM_STAGES = Object.keys(stages).length;
-
-const INITIAL_STATE = {
-  formData: {
-    fullName: '',
-    phone: '',
-    address: '',
-    apt: '',
-    city: '',
-    state: '',
-    zip: '',
-    license: '',
-    filled: false,
-  },
-  uploadData: {
-    proofOfInsurance: null,
-    driversLicenseFront: null,
-    driversLicenseBack: null,
-    filled: false,
-  },
-  oneShot: false,
-  stage: stages.FORM,
-  maxStage: stages.FORM,
-};
-
-class ContractPage extends Component {
-  constructor(props) {
-    super(props);
-    if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
+/*
+constructor:
+if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
       INITIAL_STATE.oneShot = true;
     }
     this.state = { ...INITIAL_STATE };
@@ -66,10 +31,9 @@ class ContractPage extends Component {
         maxStage: stages.FORM + 1,
       };
     }
-  }
 
-  componentDidMount() {
-    const { oneShot } = this.state;
+  componentDidMount:
+  const { oneShot } = this.state;
 
     if (oneShot && !CONDITIONS.isUser(this.props.authUser)) {
       this.props.firebase
@@ -85,13 +49,6 @@ class ContractPage extends Component {
             });
         })
     }
-  }
-
-  onFormChange = event => {
-    const { formData } = this.state;
-    formData[event.target.name] = event.target.value;
-    this.setState({ formData });
-  }
 
   onFileChange = event => {
     const file = event.target.files[0];
@@ -100,156 +57,58 @@ class ContractPage extends Component {
     this.setState({ uploadData });
   }
 
-  onFormSubmit = event => {
-    const { formData } = this.state;
-    const isValid = isValidForm(formData);
-    formData.filled = true;
-    if (isValid) {
-      this.setState({
-        formData,
-        stage: stages.FORM + 1,
-        maxStage: stages.FORM + 1,
-      });
-    } else {
-      this.setState({ formData });
-    }
+  missing:
+    formData.filled
+    uploadData.filled
 
-    event.preventDefault();
-  };
+    => prefill functionality
+    => oneshot functionality
+    => stale upload prefill bug
+*/
 
-  onUploadSubmit = () => {
-    const { uploadData } = this.state;
-    const isValid = isValidUpload(uploadData);
-    uploadData.filled = true;
-    if (!isValid) {
-      this.setState({ uploadData });
-      return;
-    }
+const forms = [
+  { ...ContractFormStage },
+  { ...UploadFormStage },
+];
 
-    this.setState({
-      uploadData,
-      stage: stages.UPLOAD + 1,
-      maxStage: stages.UPLOAD + 1,
-    });
-
-    this.onUserContractSubmit();
+const UserContractPage = ({ authUser, firebase, history }) => {
+  const upload = (file, type) => {
+    const storageRef = firebase.storage.ref();
+    storageRef.child(`images/${authUser.uid}/` + type).put(file);
   }
 
-  onUserContractSubmit = () => {
+  const onSubmit = forms => {
+    const formData = sanitizeFormData(forms[0].state);
     const {
       proofOfInsurance, driversLicenseFront, driversLicenseBack
-    } = this.state.uploadData;
-    const formData = sanitizeFormData(this.state.formData);
+    } = forms[1].state;
 
-    if (this.props.authUser) {
-      this.props.firebase
-        .user(this.props.authUser.uid)
-        .set({
-          ...this.props.authUser,
-          ...formData,
-        });
-      this.upload(proofOfInsurance, 'proof_of_insurance')
-      this.upload(driversLicenseFront, 'drivers_license_front')
-      this.upload(driversLicenseBack, 'drivers_license_back')
-      this.setState({ ...INITIAL_STATE });
-      this.props.history.push(ROUTES.CONFIRMATION);
-    } else {
-      this.props.history.push(ROUTES.SIGN_IN)
-    }
-  }
-
-  onChangeState = delta => event => {
-    const { stage } = this.state;
-
-    let newStage = stage + delta;
-    if (newStage < 0) {
-      this.props.history.push(ROUTES.CHOOSE_DEALER);
-    } else if (newStage >= NUM_STAGES) {
-      newStage = NUM_STAGES - 1;
+    if (!authUser) {
+      history.push(ROUTES.SIGN_IN)
     }
 
-    this.setState({
-      stage: newStage,
-    });
-    event.preventDefault();
+    firebase
+      .user(authUser.uid)
+      .set({
+        ...authUser,
+        ...formData,
+      });
+    upload(proofOfInsurance, 'proof_of_insurance')
+    upload(driversLicenseFront, 'drivers_license_front')
+    upload(driversLicenseBack, 'drivers_license_back')
+    history.push(ROUTES.CONFIRMATION);
   }
 
-  upload = (file, type) => {
-    const storageRef = this.props.firebase.storage.ref();
-    storageRef.child(`images/${this.props.authUser.uid}/` + type).put(file);
-  }
-
-  render() {
-    const {
-      formData, uploadData, stage, maxStage
-    } = this.state;
-
-    const progress = (stage + 1) / NUM_STAGES * 100;
-
-    const ContractNav = (
-      <>
-        <Button
-          className='mr-2'
-          onClick={this.onChangeState(-1)}>
-            Back
-        </Button>
-        {stage >= NUM_STAGES - 1
-          ? <Button
-              className='ml-2'
-              onClick={this.onSignatureSubmit}>
-                Finish
-            </Button>
-          : <Button
-              className='ml-2'
-              disabled={stage >= maxStage}
-              onClick={this.onChangeState(1)}>
-                Forward
-            </Button>}
-      </>
-    );
-
-    let stageContent = null;
-    switch (stage) {
-      case stages.FORM:
-        stageContent = (
-          <ContractForm
-            formData={formData}
-            onChange={this.onFormChange}
-            onSubmit={this.onFormSubmit} />
-        );
-        break;
-      case stages.UPLOAD:
-        stageContent = (
-          <UploadForm
-            uploadData={uploadData}
-            onFileChange={this.onFileChange}
-            onSubmit={this.onUploadSubmit} />
-        );
-        break;
-      default:
-        break;
-    }
-
-    return (
-      <Container>
-        <Card className='mt-4 mb-4'>
-          <Card.Header>
-            <ProgressBar now={progress} />
-          </Card.Header>
-          <Card.Body style={{whiteSpace: 'pre-line'}}>
-            {stageContent}
-          </Card.Body>
-          <Card.Footer>
-            {ContractNav}
-          </Card.Footer>
-        </Card>
-      </Container>
-    );
-  }
-}
+  return (
+    <MultiStageForm
+      title='User Details Form'
+      forms={forms}
+      onSubmit={onSubmit} />
+  );
+};
 
 export default compose(
   withUser,
   withRouter,
   withFirebase
-)(ContractPage);
+)(UserContractPage);

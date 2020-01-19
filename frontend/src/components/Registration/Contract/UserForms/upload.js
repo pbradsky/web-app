@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
@@ -8,24 +7,17 @@ import FormInfoTooltip from '../Util/info';
 
 import { isValidFileUpload } from 'utils/validation'
 
-const UploadForm = ({ uploadData, onFileChange, onSubmit }) => {
-  const { proofOfInsurance, driversLicenseFront, driversLicenseBack } = uploadData;
+const state = {
+  proofOfInsurance: null,
+  driversLicenseFront: null,
+  driversLicenseBack: null,
+};
 
-  const [validated, setValidated] = useState(false);
-
-  const handleSubmit = event => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === true) {
-      onSubmit(event);
-    }
-
-    event.preventDefault();
-    event.stopPropagation();
-    setValidated(true);
-  }
+const UploadForm = ({ state, validated, onChangeForm, onSubmit }) => {
+  const { proofOfInsurance, driversLicenseFront, driversLicenseBack } = state;
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form id='form-stage' noValidate onSubmit={onSubmit}>
       <h4>Additional Information</h4>
       <hr />
       <Form.Row>
@@ -43,12 +35,13 @@ const UploadForm = ({ uploadData, onFileChange, onSubmit }) => {
               id="inputGroupFile01"
               aria-describedby="inputGroupFileAddon01"
               name='proofOfInsurance'
-              onChange={onFileChange}
+              onChange={onChangeForm}
               accept='image/*'
-              isInvalid={!isValidFileUpload(proofOfInsurance)}
+              isValid={validated && isValidFileUpload(proofOfInsurance)}
+              isInvalid={validated && !isValidFileUpload(proofOfInsurance)}
             />
             <FormControl.Feedback type="invalid">
-              Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB
+              Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB.
             </FormControl.Feedback>
             <label id='file-label-001' className="custom-file-label" htmlFor="inputGroupFile01">
               {proofOfInsurance ? proofOfInsurance.name : 'Choose file'}
@@ -69,12 +62,13 @@ const UploadForm = ({ uploadData, onFileChange, onSubmit }) => {
               id="inputGroupFile02"
               aria-describedby="inputGroupFileAddon02"
               name='driversLicenseFront'
-              onChange={onFileChange}
+              onChange={onChangeForm}
               accept='image/*'
-              isInvalid={!isValidFileUpload(driversLicenseFront)}
+              isValid={validated && isValidFileUpload(driversLicenseFront)}
+              isInvalid={validated && !isValidFileUpload(driversLicenseFront)}
             />
             <FormControl.Feedback type="invalid">
-              Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB
+              Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB.
             </FormControl.Feedback>
             <label id='file-label-002' className="custom-file-label" htmlFor="inputGroupFile02">
               {driversLicenseFront ? driversLicenseFront.name : 'Choose file'}
@@ -95,12 +89,13 @@ const UploadForm = ({ uploadData, onFileChange, onSubmit }) => {
               id="inputGroupFile03"
               aria-describedby="inputGroupFileAddon03"
               name='driversLicenseBack'
-              onChange={onFileChange}
+              onChange={onChangeForm}
               accept='image/*'
-              isInvalid={!isValidFileUpload(driversLicenseBack)}
+              isValid={validated && isValidFileUpload(driversLicenseBack)}
+              isInvalid={validated && !isValidFileUpload(driversLicenseBack)}
             />
             <FormControl.Feedback type="invalid">
-              Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB
+              Please upload a .jpg, .jpeg, or .png image that does not exceed 10 MB.
             </FormControl.Feedback>
             <label id='file-label-003' className="custom-file-label" htmlFor="inputGroupFile03">
               {driversLicenseBack ? driversLicenseBack.name : 'Choose file'}
@@ -108,11 +103,13 @@ const UploadForm = ({ uploadData, onFileChange, onSubmit }) => {
           </div>
         </Form.Group>
       </Form.Row>
-      <Button type="submit">
-        Submit
-      </Button>
     </Form>
   );
 }
 
-export default UploadForm;
+const UploadFormStage = {
+  state,
+  Component: UploadForm,
+};
+
+export default UploadFormStage;

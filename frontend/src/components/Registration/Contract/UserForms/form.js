@@ -1,33 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl'
+import FormControl from 'react-bootstrap/FormControl';
+
 import FormInfoTooltip from '../Util/info';
 
 import { isValidPhone, isValidLicense, isValidZip } from 'utils/validation'
 
 import STATES from 'constants/states';
 
-const ContractForm = ({ formData, onChange, onSubmit }) => {
-  const { fullName, phone, address, apt, city, state, zip, license } = formData;
+const state = {
+  fullName: '',
+  phone: '',
+  address: '',
+  apt: '',
+  city: '',
+  state: '',
+  zip: '',
+  license: '',
+};
 
-  const [validated, setValidated] = useState(false);
-
-  const handleSubmit = event => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === true) {
-      onSubmit(event);
-    }
-
-    event.preventDefault();
-    event.stopPropagation();
-    setValidated(true);
-  }
+const ContractForm = props => {
+  const { validated, onChangeForm, onSubmit } = props;
+  const { fullName, phone, address, apt, city, state, zip, license } = props.state;
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form id='form-stage' noValidate onSubmit={onSubmit}>
       <h4>Personal Information</h4>
       <hr />
       <Form.Row>
@@ -37,7 +36,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             required
             name='fullName'
             value={fullName}
-            onChange={onChange}
+            onChange={onChangeForm}
             placeholder='Full name' />
         </Form.Group>
         <Form.Group as={Col}>
@@ -49,8 +48,9 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             required
             name='phone'
             value={phone}
-            onChange={onChange}
+            onChange={onChangeForm}
             placeholder='Phone number'
+            isValid={validated && isValidPhone(phone)}
             isInvalid={validated && !isValidPhone(phone)}
           />
           <FormControl.Feedback type="invalid">
@@ -65,7 +65,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             required
             name='address'
             value={address}
-            onChange={onChange}
+            onChange={onChangeForm}
             placeholder='Street address' />
         </Form.Group>
         <Form.Group as={Col}>
@@ -76,7 +76,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
           <Form.Control
             name='apt'
             value={apt}
-            onChange={onChange}
+            onChange={onChangeForm}
             placeholder='Apartment, studio, or floor' />
         </Form.Group>
       </Form.Row>
@@ -87,7 +87,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             required
             name='city'
             value={city}
-            onChange={onChange}
+            onChange={onChangeForm}
             placeholder='City' />
         </Form.Group>
         <Form.Group as={Col}>
@@ -96,7 +96,7 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             required
             name='state'
             value={state}
-            onChange={onChange}
+            onChange={onChangeForm}
             as='select'>
               <option value='' disabled>Choose a state...</option>
               {Object.keys(STATES).map((state, index) => (
@@ -110,8 +110,9 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             required
             name='zip'
             value={zip}
-            onChange={onChange}
+            onChange={onChangeForm}
             placeholder='Zip code'
+            isValid={validated && isValidZip(zip)}
             isInvalid={validated && !isValidZip(zip)}
           />
           <FormControl.Feedback type="invalid">
@@ -129,8 +130,9 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
             required
             name='license'
             value={license}
-            onChange={onChange}
+            onChange={onChangeForm}
             placeholder={'Driver\'s license number'}
+            isValid={validated && isValidLicense(license, state)}
             isInvalid={validated && !isValidLicense(license, state)}
           />
           <FormControl.Feedback type="invalid">
@@ -138,13 +140,13 @@ const ContractForm = ({ formData, onChange, onSubmit }) => {
           </FormControl.Feedback>
         </Form.Group>
       </Form.Row>
-      <Button
-        type="submit"
-      >
-        Submit
-      </Button>
     </Form>
   );
 }
 
-export default ContractForm;
+const ContractFormStage = {
+  state,
+  Component: ContractForm,
+};
+
+export default ContractFormStage;
