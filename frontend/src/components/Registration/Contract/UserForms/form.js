@@ -2,9 +2,8 @@ import React from 'react';
 
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
 
-import FormInfoTooltip from '../Util/info';
+import FormGroup from '../Util/FormGroup';
 
 import { isValidPhone, isValidLicense, isValidZip } from 'utils/validation'
 
@@ -45,68 +44,57 @@ const ContractForm = props => {
       <h4>Personal Information</h4>
       <hr />
       <Form.Row>
-        <Form.Group as={Col}>
-          <Form.Label>Full Name</Form.Label>
-          <Form.Control
-            required
-            name='fullName'
-            value={fullName}
-            onChange={onChangeForm}
-            placeholder='Full name'
-            isValid={validated && fullName.length > 0}
-            isInvalid={validated &&  fullName.length > 0} />
-        </Form.Group>
-        <Form.Group as={Col}>
-          <Form.Label>Phone Number</Form.Label>
-          <FormInfoTooltip>
-            Phone number in the format 555-555-5555
-          </FormInfoTooltip>
-          <Form.Control
-            required
-            name='phone'
-            value={phone}
-            onChange={onChangeForm}
-            placeholder='Phone number'
-            isValid={validated && isValidPhone(phone)}
-            isInvalid={validated && !isValidPhone(phone)}
-          />
-          <FormControl.Feedback type='invalid'>
-            Please provide a valid phone number.
-          </FormControl.Feedback>
-        </Form.Group>
+        <FormGroup
+          label='Full Name'
+          required
+          name='fullName'
+          value={fullName}
+          placeholder='Full name'
+          onChange={onChangeForm}
+          validated={validated}
+        />
+        <FormGroup
+          label='Phone Number'
+          tooltip='Phone number in the format 555-555-5555'
+          required
+          name='phone'
+          value={phone}
+          placeholder='Phone number'
+          onChange={onChangeForm}
+          validated={validated}
+          isValid={isValidPhone(phone)}
+          errorText='Please provide a valid phone number.'
+        />
       </Form.Row>
       <Form.Row>
-        <Form.Group as={Col}>
-          <Form.Label>Street Address</Form.Label>
-          <Form.Control
-            required
-            name='address'
-            value={address}
-            onChange={onChangeForm}
-            placeholder='Street address' />
-        </Form.Group>
-        <Form.Group as={Col}>
-          <Form.Label>Address Line 2</Form.Label>
-          <FormInfoTooltip>
-            Appartment, studio, or floor number
-          </FormInfoTooltip>
-          <Form.Control
-            name='apt'
-            value={apt}
-            onChange={onChangeForm}
-            placeholder='Apartment, studio, or floor' />
-        </Form.Group>
+        <FormGroup
+          label='Street Address'
+          required
+          name='address'
+          value={address}
+          placeholder='Street address'
+          onChange={onChangeForm}
+          validated={validated}
+        />
+        <FormGroup
+          label='Address Line 2'
+          tooltip='Appartment, studio, or floor number'
+          name='apt'
+          value={apt}
+          placeholder='Apartment, studio, or floor'
+          onChange={onChangeForm}
+        />
       </Form.Row>
       <Form.Row>
-        <Form.Group as={Col}>
-          <Form.Label>City</Form.Label>
-          <Form.Control
-            required
-            name='city'
-            value={city}
-            onChange={onChangeForm}
-            placeholder='City' />
-        </Form.Group>
+        <FormGroup
+          label='City'
+          required
+          name='city'
+          value={city}
+          placeholder='City'
+          onChange={onChangeForm}
+          validated={validated}
+        />
         <Form.Group as={Col}>
           <Form.Label>State</Form.Label>
           <Form.Control
@@ -114,6 +102,8 @@ const ContractForm = props => {
             name='state'
             value={state}
             onChange={onChangeForm}
+            isValid={validated && state.length > 0}
+            isInvalid={validated && state.length === 0}
             as='select'>
               <option value='' disabled>Choose a state...</option>
               {Object.keys(STATES).map((state, index) => (
@@ -121,41 +111,31 @@ const ContractForm = props => {
               ))}
           </Form.Control>
         </Form.Group>
-        <Form.Group as={Col}>
-          <Form.Label>Zip Code</Form.Label>
-          <Form.Control
-            required
-            name='zip'
-            value={zip}
-            onChange={onChangeForm}
-            placeholder='Zip code'
-            isValid={validated && isValidZip(zip)}
-            isInvalid={validated && !isValidZip(zip)}
-          />
-          <FormControl.Feedback type='invalid'>
-            Please provide a valid zip code.
-          </FormControl.Feedback>
-        </Form.Group>
+        <FormGroup
+          label='Zip Code'
+          required
+          name='zip'
+          value={zip}
+          placeholder='Zip code'
+          onChange={onChangeForm}
+          validated={validated}
+          isValid={isValidZip(zip)}
+          errorText='Please provide a valid zip code.'
+        />
       </Form.Row>
       <Form.Row>
-        <Form.Group as={Col}>
-          <Form.Label>Driver's License Number</Form.Label>
-          <FormInfoTooltip>
-            License number found on your driver's license
-          </FormInfoTooltip>
-          <Form.Control
-            required
-            name='license'
-            value={license}
-            onChange={onChangeForm}
-            placeholder={'Driver\'s license number'}
-            isValid={validated && isValidLicense(license, state)}
-            isInvalid={validated && !isValidLicense(license, state)}
-          />
-          <FormControl.Feedback type='invalid'>
-            Please provide a valid license number.
-          </FormControl.Feedback>
-        </Form.Group>
+        <FormGroup
+          label={'Driver\'s License Number'}
+          tooltip={'License number found on your driver\'s license'}
+          required
+          name='license'
+          value={license}
+          placeholder={'Driver\'s license number'}
+          onChange={onChangeForm}
+          validated={validated}
+          isValid={isValidLicense(license, state)}
+          errorText='Please provide a valid license number.'
+        />
       </Form.Row>
     </Form>
   );

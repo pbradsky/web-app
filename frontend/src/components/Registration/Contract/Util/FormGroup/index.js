@@ -9,7 +9,7 @@ import FormInfoTooltip from '../info';
 const FormGroup = ({
   label, tooltip, required, validated, isValid, errorText, value, className, ...rest
 }) => {
-  // Ensure required fields are tested for length
+  // Ensure required fields show validation and errorText
   if (required) {
     if (isValid === undefined) {
       isValid = value.length > 0;

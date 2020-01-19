@@ -12,23 +12,23 @@ import * as ROUTES from 'constants/routes';
 import { sanitizeFormData } from 'utils/sanitize';
 
 /*
-constructor:
-  if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
-    INITIAL_STATE.oneShot = true;
-  }
-  this.state = { ...INITIAL_STATE };
-  if (CONDITIONS.isUser(this.props.authUser) && this.props.authUser.contract) {
-    const {
-      fullName, phone, address, apt, city, state, zip, license
-    } = this.props.authUser;
-    this.state = {
-      ...INITIAL_STATE,
-      formData: {
-        fullName, phone, address, apt, city, state, zip, license,
-      },
-      uploadData: { ...INITIAL_STATE.uploadData },
-    };
-  }
+  constructor:
+    if (props.location.pathname === ROUTES.CONTRACT_ONESHOT) {
+      INITIAL_STATE.oneShot = true;
+    }
+    this.state = { ...INITIAL_STATE };
+    if (CONDITIONS.isUser(this.props.authUser) && this.props.authUser.contract) {
+      const {
+        fullName, phone, address, apt, city, state, zip, license
+      } = this.props.authUser;
+      this.state = {
+        ...INITIAL_STATE,
+        formData: {
+          fullName, phone, address, apt, city, state, zip, license,
+        },
+        uploadData: { ...INITIAL_STATE.uploadData },
+      };
+    }
 
   componentDidMount:
     const { oneShot } = this.state;
@@ -49,7 +49,6 @@ constructor:
 
   missing:
     => oneshot functionality
-    => required form validation
 */
 
 const UserContractPage = ({ authUser, firebase, history }) => {
