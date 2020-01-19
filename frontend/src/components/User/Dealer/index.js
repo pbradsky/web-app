@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
+import Fuse from 'fuse.js';
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+
 import UserList from 'components/User/UserList';
 import { WithPageLoad } from 'components/Util/Loading';
 import Search from 'components/Util/Search';
 
 import { withAuthorization } from 'api/Session';
 import { withFirebase } from 'api/Firebase';
+import { userSearchOptions } from 'utils/search';
+
 import * as CONDITIONS from 'constants/conditions';
 
 class DealerPage extends Component {
@@ -16,6 +20,7 @@ class DealerPage extends Component {
     super(props);
 
     this.state = {
+      fuse: new Fuse([], userSearchOptions),
       users: [],
       loading: false,
       searchQuery: '',
@@ -34,6 +39,7 @@ class DealerPage extends Component {
       }));
 
       this.setState({
+        fuse: new Fuse(usersList, userSearchOptions),
         users: usersList,
         loading: false,
       });
@@ -52,10 +58,35 @@ class DealerPage extends Component {
     return user.username.toLowerCase().includes(query.toLowerCase());
   }
 
-  render() {
-    const { loading, users, searchQuery } = this.state;
+  emailFilter = query => user => {
+    return (
+      user.email &&
+      user.email.toLowerCase().includes(query.toLowerCase())
+    );
+  }
 
-    const searchedUsers = users.filter(this.usernameFilter(searchQuery)).sort();
+  phoneNumberFilter = query => user => {
+    if (!user.phone) {
+      return false;
+    }
+    query = query.replace(/[^\d]/g, '');
+    return (
+      query &&
+      user.phone.replace(/[^\d]/g, '').includes(query.replace(/[^\d]/g, ''))
+    );
+  }
+
+  render() {
+    const { loading, users, searchQuery, fuse } = this.state;
+
+    // const searchedUsers = users.filter(user => (
+    //   this.usernameFilter(searchQuery)(user) ||
+    //   this.emailFilter(searchQuery)(user) ||
+    //   this.phoneNumberFilter(searchQuery)(user)
+    // )).sort();
+    const searchedUsers = searchQuery
+      ? fuse.search(searchQuery)
+      : users;
 
     return (
       <Container>
