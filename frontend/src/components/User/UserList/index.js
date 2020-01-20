@@ -17,7 +17,7 @@ const DataCard = ({ label, data }) => (
     : null
 );
 
-const UserList = ({ users, isAdmin }) => {
+const UserList = ({ users, isAdmin, storage }) => {
   const filteredUsers = isAdmin
     ? users
     : users.filter(CONDITIONS.isDealerViewable);
@@ -77,7 +77,7 @@ const UserList = ({ users, isAdmin }) => {
                 <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />}
               {!isAdmin && CONDITIONS.isSignedInCompleteUser(user) &&
                 <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />}
-                <PrintContractButton user={user} />
+                <PrintContractButton user={user} storage={storage}/>
             </Card.Body>
           </Accordion.Collapse>
         </Card>

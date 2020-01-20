@@ -68,7 +68,7 @@ class AdminPage extends Component {
           </Jumbotron>
           <Search searchQuery={searchQuery} onChange={this.onChange} />
           <br />
-          <UserList users={searchedUsers} isAdmin={true} />
+          <UserList users={searchedUsers} isAdmin={true} storage={this.props.firebase.storage.ref()} />
         </WithPageLoad>
       </Container>
     );

@@ -2,13 +2,32 @@ import React from 'react';
 
 import Card from 'react-bootstrap/Card';
 
-const ContractFormText = ({ name, address, phone, license }) => (
+
+const ContractFormText = ({ name, address, phone, license, proofOfInsurance, driversLicenseFront, driversLicenseBack }) => (
   <Card.Body>
     <Card.Title>Operator:</Card.Title>
     <Card.Text>Name: {name}</Card.Text>
     <Card.Text>Address: {address}</Card.Text>
     <Card.Text>Phone Number: {phone}</Card.Text>
     <Card.Text>Operator License Number: {license}</Card.Text>
+    {proofOfInsurance && 
+      <Card.Body>
+        <Card.Text>Proof of Insurance</Card.Text>
+        {proofOfInsurance}
+      </Card.Body>
+    }
+    {driversLicenseFront &&
+      <Card.Body>
+        <Card.Text>Driver's License (front)</Card.Text>
+        {driversLicenseFront}
+      </Card.Body>
+    }
+    {driversLicenseBack &&
+      <Card.Body>
+        <Card.Text>Driver's License (back)</Card.Text>
+        {driversLicenseBack}
+      </Card.Body>
+    }
   </Card.Body>
 );
 

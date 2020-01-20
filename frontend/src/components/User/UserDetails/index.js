@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import PrintContractButton from 'components/Registration/Contract/Util/print';
 import Image from 'react-bootstrap/Image'
 import { WithPageLoad } from 'components/Util/Loading';
+import { getImages } from 'utils/images';
 
 import { withAuthorization } from 'api/Session';
 import * as CONDITIONS from 'constants/conditions';
@@ -41,82 +42,21 @@ class UserDetailsPage extends Component {
       });
     // load imgs if dealer
     if (!CONDITIONS.isSignedInAdmin(this.props.authUser)) {
-      this.getImages();
+      getImages(this.props.firebase.storage.ref(), this.props.match.params.id).then(values => {
+        this.setState({
+          proofOfInsurance: values.proofOfInsurance,
+          driversLicenseBack: values.driversLicenseBack,
+          driversLicenseFront: values.driversLicenseFront,
+          errors: values.errors,
+          loading: false
+        });
+      });
     } else {
       this.setState({
         loading: false
       });
     }
 
-  }
-
-  getImages = () => {
-    const errors = [];
-    const storage = this.props.firebase.storage.ref();
-    const proofOfInsuranceRef = storage.child(`images/${this.props.match.params.id}/proof_of_insurance`);
-    const driversLicenseBackRef = storage.child(`images/${this.props.match.params.id}/drivers_license_back`);
-    const driversLicenseFrontRef = storage.child(`images/${this.props.match.params.id}/drivers_license_front`);
-
-    const promise0 = new Promise((resolve, reject) => {
-      proofOfInsuranceRef.getDownloadURL().then(proofOfInsuranceURL => {
-        this.setState({
-          proofOfInsurance: proofOfInsuranceURL
-        })
-        resolve(proofOfInsuranceURL);
-      }).catch(err => reject(err));
-    }).catch(err => {
-      switch (err.code) {
-        case 'storage/object-not-found':
-          errors.push('Proof of Insurance not found');
-          break;
-        default:
-          errors.push('Error retrieving Proof of Insurance');
-      }
-      console.log(err);
-    });
-
-    const promise1 = new Promise((resolve, reject) => {
-      driversLicenseBackRef.getDownloadURL().then(driversLicenseBackURL => {
-        this.setState({
-          driversLicenseBack: driversLicenseBackURL
-        });
-        resolve(driversLicenseBackURL);
-      }).catch(err => reject(err));
-    }).catch(err => {
-      switch (err.code) {
-        case 'storage/object-not-found':
-          errors.push('Driver\'s License (back) not found');
-          break;
-        default:
-          errors.push('Error retrieving Driver\'s License (back)');
-      }
-      console.log(err);
-    });
-
-    const promise2 = new Promise((resolve, reject) => {
-      driversLicenseFrontRef.getDownloadURL().then(driversLicenseFrontURL => {
-        this.setState({
-          driversLicenseFront: driversLicenseFrontURL,
-        });
-        resolve(driversLicenseFrontURL);
-      }).catch(err => reject(err));
-    }).catch(err => {
-      switch (err.code) {
-        case 'storage/object-not-found':
-          errors.push('Driver\'s License (front) not found');
-          break;
-        default:
-          errors.push('Error retrieving Driver\'s License (front)');
-      }
-      console.log(err);
-    });
-
-    Promise.all([promise0, promise1, promise2]).then(values => {
-      this.setState({
-        loading: false,
-        errors: errors
-      });
-    });
   }
 
   onToggleRole = role => () => {
@@ -169,7 +109,7 @@ class UserDetailsPage extends Component {
                     Toggle Dealer
                   </Button>
                   <hr />
-                  <PrintContractButton user={user} />
+                  <PrintContractButton user={user} storage={this.props.firebase.storage.ref()} />
                 </Card.Body>
               </Card>
             </>}

@@ -70,7 +70,7 @@ class DealerPage extends Component {
           </Jumbotron>
           <Search searchQuery={searchQuery} onChange={this.onChange} />
           <br />
-          <UserList users={searchedUsers} isAdmin={false}/>
+          <UserList users={searchedUsers} isAdmin={false} storage={this.props.firebase.storage.ref()} />
         </WithPageLoad>
       </Container>
     );
