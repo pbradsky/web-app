@@ -2,17 +2,33 @@ import React from 'react';
 
 import Card from 'react-bootstrap/Card';
 
-const ContractFormText = ({ name, address, phone, license, dob}) => (
+const ContractFormText = ({ name, address, phone, license }) => (
   <Card.Body>
     <Card.Title>Customer Information:</Card.Title>
     <Card.Text>Name: {name}</Card.Text>
     <Card.Text>Address: {address}</Card.Text>
     <Card.Text>Driver's License Number: {license.number}</Card.Text>
-    <Card.Text>Driver's License State: {license.state}</Card.Text>
-    <Card.Text>Driver's License Expiration: {license.expiration}</Card.Text>
-    <Card.Text>Date of Birth: {dob}</Card.Text>
     <Card.Text>Phone Number: {phone}</Card.Text>
-    <Card.Text>Insurance Information: (see below)</Card.Text>
+    <Card.Text>Insurance and License Information: (see below)</Card.Text>
+  </Card.Body>
+);
+
+const VehicleInfoForm = ({ out, due, vin, plate, year, make, model, color, milesAllowed, mileageOut, rate, fuel, notes }) => (
+  <Card.Body>
+    <Card.Title>Vehicle Information:</Card.Title>
+    <Card.Text>Date and Time Out: {out}</Card.Text>
+    <Card.Text>Date and Time Due In: {due}</Card.Text>
+    <Card.Text>Vehicle VIN: {vin}</Card.Text>
+    <Card.Text>License No.: {plate}</Card.Text>
+    <Card.Text>Year: {year}</Card.Text>
+    <Card.Text>Make: {make}</Card.Text>
+    <Card.Text>Model: {model}</Card.Text>
+    <Card.Text>Color: {color}</Card.Text>
+    <Card.Text>Miles Allowed: {milesAllowed}</Card.Text>
+    <Card.Text>Mileage Out: {mileageOut} </Card.Text>
+    <Card.Text>Rate Per Day (in dollars): {rate}</Card.Text>
+    <Card.Text>Fuel: {fuel}</Card.Text>
+    <Card.Text>Other Notes: {notes}</Card.Text>
   </Card.Body>
 );
 
