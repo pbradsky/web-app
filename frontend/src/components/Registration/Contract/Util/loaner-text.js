@@ -69,4 +69,4 @@ const SignedUserText = ({ contract }) => (
   </Card.Body>
 );
 
-export { PreambleText, ContractFormText, SignedUserText };
+export { PreambleText, VehicleInfoForm, ContractFormText, SignedUserText };
