@@ -8,12 +8,11 @@ import SignatureFormStage from './signature';
 import * as ROUTES from 'constants/routes';
 
 const forms = [
-  { ...VehicleFormStage },
   { ...NotesFormStage },
   { ...SignatureFormStage },
 ];
 
-const FinalizeContractPage = ({ history }) => {
+const FinaleContractPage = ({ history }) => {
   const onSubmit = forms => {
     const { out, due, vin, plate, year, make, model,
             color, milesAllowed, mileageOut, rate, fuel, notes} = forms[0].state;
@@ -37,6 +36,7 @@ const FinalizeContractPage = ({ history }) => {
     });
 
     // TODO(tim): update route
+    history.push(ROUTES.LANDING);
   }
 
   return (
@@ -47,4 +47,4 @@ const FinalizeContractPage = ({ history }) => {
   );
 };
 
-export default withRouter(FinalizeContractPage);
+export default withRouter(FinaleContractPage);

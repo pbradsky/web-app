@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
 import FormGroup from '../Util/FormGroup';
-import { ContractFormText, VehicleInfoForm, PreambleText } from '../Util/text';
+import { ContractFormText, VehicleInfoForm, PreambleText } from '../Util/loaner-text';
 
 import { withUser } from 'api/Session';
 import { getTodaysDate } from 'utils/date';

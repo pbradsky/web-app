@@ -7,7 +7,7 @@ const ContractFormText = ({ name, address, phone, license }) => (
     <Card.Title>Customer Information:</Card.Title>
     <Card.Text>Name: {name}</Card.Text>
     <Card.Text>Address: {address}</Card.Text>
-    <Card.Text>Driver's License Number: {license.number}</Card.Text>
+    <Card.Text>Driver's License Number: {license}</Card.Text>
     <Card.Text>Phone Number: {phone}</Card.Text>
     <Card.Text>Insurance and License Information: (see below)</Card.Text>
   </Card.Body>

@@ -25,7 +25,6 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
 
   return (
     <Form id='form-stage' noValidate onSubmit={onSubmit}>
-      <Form.Title>Vehicle Information:</Form.Title>
       <Form.Row>
         <FormGroup
           required
@@ -96,7 +95,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
           placeholder='Vehicle Make'
         />
       </Form.Row>
-      <Form.Row>Model: {model}
+      <Form.Row>
         <FormGroup
           required
           label='Model:'
