@@ -11,7 +11,6 @@ import { withAuthentication } from 'api/Session';
 import * as ROUTES from 'constants/routes';
 
 // lazy page loading and chunking
-const AboutPage = lazy(() => import('components/About'));
 const AdminPage = lazy(() => import('components/User/Admin'));
 const AccountPage = lazy(() => import('components/User/Account'));
 const ChooseDealerPage = lazy(() => import('components/Registration/ChooseDealer'));
@@ -36,7 +35,6 @@ const App = () => (
     <Content>
       <Suspense fallback={<BlankLoading />}>
         <Switch>
-          <Route path={ROUTES.ABOUT} component={AboutPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.CHOOSE_DEALER} component={ChooseDealerPage} />
