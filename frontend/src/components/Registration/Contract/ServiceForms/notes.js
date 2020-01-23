@@ -7,6 +7,17 @@ import FormGroup from '../Util/FormGroup';
 const state = () => ({
   vin: '',
   notes: '',
+  out: '',
+  due: '',
+  plate: '',
+  year: '',
+  make: '',
+  model: '',
+  color: '',
+  milesAllowed: '',
+  mileageOut: '',
+  rate: '',
+  fuel: '',
 });
 
 const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
