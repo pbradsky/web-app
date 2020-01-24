@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import NotesFormStage from './notes';
-import MultiStageForm from '../MultiStageForm';
+import MultiStageForm from '../Util/MultiStageForm';
 import SignatureFormStage from './signature';
 
 import * as ROUTES from 'constants/routes';
@@ -12,7 +12,7 @@ const forms = [
   { ...SignatureFormStage },
 ];
 
-const FinalizeContractPage = ({ history }) => {
+const TestDriveFormPage = ({ history }) => {
   const onSubmit = forms => {
     const { vin, notes } = forms[0].state;
     const { signature, date } = forms[1].state;
@@ -43,4 +43,4 @@ const FinalizeContractPage = ({ history }) => {
   );
 };
 
-export default withRouter(FinalizeContractPage);
+export default withRouter(TestDriveFormPage);

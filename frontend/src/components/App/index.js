@@ -16,11 +16,9 @@ const AccountPage = lazy(() => import('components/User/Account'));
 const ChooseDealerPage = lazy(() => import('components/Registration/ChooseDealer'));
 const ConfirmationPage = lazy(() => import('components/Registration/Confirmation'));
 const ContactPage = lazy(() => import('components/Legal/Contact'));
-const ContractPage = lazy(() => import('components/Registration/Contract/UserForms'));
 const DealerPage = lazy(() => import('components/User/Dealer'));
-const FinalizeContractPage = lazy(() => import('components/Registration/Contract/DealerForms'));
-const FinaleContractPage = lazy(() => import('components/Registration/Contract/ServiceForms'))
 const LandingPage = lazy(() => import('components/Landing'));
+const LoanerFormPage = lazy(() => import('components/Registration/Contract/LoanerForm'))
 const MyContractPage = lazy(() => import ('components/User/MyContract'));
 const NotFound = lazy(() => import('components/NotFound'));
 const PasswordForgetPage = lazy(() => import('components/User/Account/PasswordForget'));
@@ -28,6 +26,8 @@ const PrivacyPage = lazy(() => import('components/Legal/Privacy'));
 const SignInPage = lazy(() => import('components/User/Account/SignIn'));
 const SignUpPage = lazy(() => import('components/Registration/SignUp'));
 const TermsPage = lazy(() => import('components/Legal/Terms'));
+const TestDriveFormPage = lazy(() => import('components/Registration/Contract/TestDriveForm'));
+const UserDetailsFormPage = lazy(() => import('components/Registration/Contract/UserDetailsForm'));
 const UserDetailsPage = lazy(() => import('components/User/UserDetails'));
 
 const App = () => (
@@ -41,11 +41,11 @@ const App = () => (
           <Route path={ROUTES.CHOOSE_DEALER} component={ChooseDealerPage} />
           <Route path={ROUTES.CONFIRMATION} component={ConfirmationPage} />
           <Route path={ROUTES.CONTACT} component={ContactPage} />
-          <Route exact path={ROUTES.CONTRACT} component={ContractPage} />
-          <Route exact path={ROUTES.CONTRACT_ONESHOT} component={ContractPage} />
+          <Route exact path={ROUTES.CONTRACT} component={UserDetailsFormPage} />
+          {/* <Route exact path={ROUTES.CONTRACT_ONESHOT} component={UserDetailsFormPage} /> */}
           <Route path={ROUTES.DEALER} component={DealerPage} />
-          <Route path={ROUTES.FINALIZE_CONTRACT} component={FinalizeContractPage} />
-          <Route path={ROUTES.FINALE_CONTRACT} component={FinaleContractPage} />
+          <Route path={ROUTES.TEST_DRIVE_CONTRACT} component={TestDriveFormPage} />
+          <Route path={ROUTES.LOANER_CONTRACT} component={LoanerFormPage} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.MY_CONTRACT} component={MyContractPage} />
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />

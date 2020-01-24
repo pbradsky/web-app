@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 
 import ContractFormStage from './form';
 import UploadFormStage from './upload';
-import MultiStageForm from '../MultiStageForm';
+import MultiStageForm from '../Util/MultiStageForm';
 
 import { withFirebase } from 'api/Firebase';
 import { withUser } from 'api/Session';
@@ -51,7 +51,7 @@ import { sanitizeFormData } from 'utils/sanitize';
     => oneshot functionality
 */
 
-const UserContractPage = ({ authUser, firebase, history }) => {
+const UserDetailsFormPage = ({ authUser, firebase, history }) => {
   const forms = [
     {
       ...ContractFormStage,
@@ -100,4 +100,4 @@ export default compose(
   withUser,
   withRouter,
   withFirebase
-)(UserContractPage);
+)(UserDetailsFormPage);
