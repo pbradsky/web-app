@@ -112,6 +112,7 @@ class UserDetailsPage extends Component {
                   </Card.Text>
                   <Button className='mb-2' onClick={this.onToggleRole(ROLES.DEALER)}>
                     Toggle Dealer
+                    {/* TODO(tim): attach dealer to an active dealership */}
                   </Button>
                   <hr />
                   <Card.Text>
@@ -119,6 +120,7 @@ class UserDetailsPage extends Component {
                   </Card.Text>
                   <Button className='mb-2' onClick={this.onToggleRole(ROLES.SERVICE)}>
                     Toggle Service
+                    {/* TODO(tim): attach service to an active dealership */}
                   </Button>
                   <hr />
                   <PrintContractButton user={user} storage={this.props.firebase.storage.ref()} />
