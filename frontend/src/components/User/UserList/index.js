@@ -69,11 +69,9 @@ const UserList = ({ users, isAdmin, storage }) => {
                   </Card.Body>
                 </Card>
               }
-              {isAdmin &&
+              {(isAdmin || CONDITIONS.isSignedInCompleteUser(user)) &&
                 <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />}
-              {!isAdmin && CONDITIONS.isSignedInCompleteUser(user) &&
-                <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />}
-                <PrintContractButton user={user} storage={storage}/>
+              <PrintContractButton user={user} storage={storage}/>
             </Card.Body>
           </Accordion.Collapse>
         </Card>
