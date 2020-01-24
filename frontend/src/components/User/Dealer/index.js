@@ -36,7 +36,7 @@ class DealerPage extends Component {
       const usersList = Object.keys(usersObject).map(key => ({
         ...usersObject[key],
         uid: key
-      }));
+      })).filter(CONDITIONS.isDealerViewable);
 
       this.setState({
         fuse: new Fuse(usersList, userSearchOptions),

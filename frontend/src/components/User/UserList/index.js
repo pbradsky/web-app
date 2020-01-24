@@ -18,16 +18,12 @@ const DataCard = ({ label, data }) => (
 );
 
 const UserList = ({ users, isAdmin, storage }) => {
-  const filteredUsers = isAdmin
-    ? users
-    : users.filter(CONDITIONS.isDealerViewable);
-
   return (
     <Accordion className='mb-4'>
       <Card bg='primary' text='white'>
         <Card.Header as='h3'>User List</Card.Header>
       </Card>
-      {filteredUsers.map(user => (
+      {users.map(user => (
         <Card key={user.uid}>
           <Accordion.Toggle
             as={Card.Header}
