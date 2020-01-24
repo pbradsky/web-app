@@ -12,6 +12,7 @@ export const LOANER_CONTRACT = '/loaner-contract';
 export const MY_CONTRACT = '/my-contract';
 export const PRIVACY = '/privacy';
 export const PASSWORD_FORGET = '/pw-forget';
+export const SERVICE = '/service';
 export const SIGN_IN = '/signin';
 export const SIGN_UP = '/signup';
 export const TERMS = '/terms';

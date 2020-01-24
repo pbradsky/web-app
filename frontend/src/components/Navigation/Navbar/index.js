@@ -141,10 +141,13 @@ const NavLinks = ({ authUser }) => {
       <NavLinkRoute to={ROUTES.CHOOSE_DEALER} show={isSignedInRegular}>
         Dealerships
       </NavLinkRoute>
+      <NavLinkRoute to={ROUTES.ADMIN} show={isAdmin}>
+        Dashboard
+      </NavLinkRoute>
       <NavLinkRoute to={ROUTES.DEALER} show={isDealer}>
         Dashboard
       </NavLinkRoute>
-      <NavLinkRoute to={ROUTES.ADMIN} show={isAdmin}>
+      <NavLinkRoute to={ROUTES.SERVICE} show={isService}>
         Dashboard
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.MY_CONTRACT} show={isSignedInComplete}>

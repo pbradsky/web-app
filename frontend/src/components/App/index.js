@@ -10,19 +10,20 @@ import Content from 'styled/Content';
 import { withAuthentication } from 'api/Session';
 import * as ROUTES from 'constants/routes';
 
-// lazy page loading and chunking
-const AdminPage = lazy(() => import('components/User/Admin'));
+// Lazy page loading and chunking
+const AdminPage = lazy(() => import('components/User/Dashboard/Admin'));
 const AccountPage = lazy(() => import('components/User/Account'));
 const ChooseDealerPage = lazy(() => import('components/Registration/ChooseDealer'));
 const ConfirmationPage = lazy(() => import('components/Registration/Confirmation'));
 const ContactPage = lazy(() => import('components/Legal/Contact'));
-const DealerPage = lazy(() => import('components/User/Dealer'));
+const DealerPage = lazy(() => import('components/User/Dashboard/Dealer'));
 const LandingPage = lazy(() => import('components/Landing'));
 const LoanerFormPage = lazy(() => import('components/Registration/Contract/LoanerForm'))
 const MyContractPage = lazy(() => import ('components/User/MyContract'));
 const NotFound = lazy(() => import('components/NotFound'));
 const PasswordForgetPage = lazy(() => import('components/User/Account/PasswordForget'));
 const PrivacyPage = lazy(() => import('components/Legal/Privacy'));
+const ServicePage = lazy(() => import('components/User/Dashboard/Service'));
 const SignInPage = lazy(() => import('components/User/Account/SignIn'));
 const SignUpPage = lazy(() => import('components/Registration/SignUp'));
 const TermsPage = lazy(() => import('components/Legal/Terms'));
@@ -50,6 +51,7 @@ const App = () => (
           <Route path={ROUTES.MY_CONTRACT} component={MyContractPage} />
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
           <Route path={ROUTES.PRIVACY} component={PrivacyPage} />
+          <Route path={ROUTES.SERVICE} component={ServicePage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.TERMS} component={TermsPage} />
