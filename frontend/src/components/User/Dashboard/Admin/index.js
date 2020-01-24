@@ -11,7 +11,9 @@ import Container from 'react-bootstrap/Container';
 import { withFirebase } from 'api/Firebase';
 import { withAuthorization } from 'api/Session';
 import { userSearchOptions } from 'utils/search';
+
 import * as CONDITIONS from 'constants/conditions';
+import * as ROLES from 'constants/roles';
 
 class AdminPage extends Component {
   constructor(props) {
@@ -69,7 +71,10 @@ class AdminPage extends Component {
           </Jumbotron>
           <Search searchQuery={searchQuery} onChange={this.onChange} />
           <br />
-          <UserList users={searchedUsers} isAdmin={true} storage={this.props.firebase.storage.ref()} />
+          <UserList
+            users={searchedUsers}
+            role={ROLES.ADMIN}
+            storage={this.props.firebase.storage.ref()} />
         </WithPageLoad>
       </Container>
     );

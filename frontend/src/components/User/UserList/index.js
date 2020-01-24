@@ -7,6 +7,7 @@ import PrintContractButton from 'components/Registration/Contract/Util/print';
 import { UserDetailsLink } from 'components/User/UserDetails';
 
 import * as CONDITIONS from 'constants/conditions';
+import * as ROLES from 'constants/roles';
 import formatAddress from 'utils/address';
 
 const DataCard = ({ label, data }) => (
@@ -17,7 +18,9 @@ const DataCard = ({ label, data }) => (
     : null
 );
 
-const UserList = ({ users, isAdmin, storage }) => {
+const UserList = ({ users, role, storage }) => {
+  const isAdmin = role === ROLES.ADMIN;
+
   return (
     <Accordion className='mb-4'>
       <Card bg='primary' text='white'>
@@ -70,7 +73,7 @@ const UserList = ({ users, isAdmin, storage }) => {
                 </Card>
               }
               {(isAdmin || CONDITIONS.isSignedInCompleteUser(user)) &&
-                <UserDetailsLink isAdmin={isAdmin} uid={user.uid} />}
+                <UserDetailsLink role={role} uid={user.uid} />}
               <PrintContractButton user={user} storage={storage}/>
             </Card.Body>
           </Accordion.Collapse>

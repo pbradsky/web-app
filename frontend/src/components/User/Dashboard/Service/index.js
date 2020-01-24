@@ -15,6 +15,7 @@ import { withFirebase } from 'api/Firebase';
 import { userSearchOptions } from 'utils/search';
 
 import * as CONDITIONS from 'constants/conditions';
+import * as ROLES from 'constants/roles';
 
 class ServicePage extends Component {
   constructor(props) {
@@ -82,7 +83,10 @@ class ServicePage extends Component {
           <Button onClick={this.addLoaner}>New</Button>
           <Search searchQuery={searchQuery} onChange={this.onChange} />
           <br />
-          <UserList users={searchedUsers} isAdmin={false} storage={this.props.firebase.storage.ref()} />
+          <UserList
+            users={searchedUsers}
+            role={ROLES.SERVICE}
+            storage={this.props.firebase.storage.ref()} />
         </WithPageLoad>
       </Container>
     );

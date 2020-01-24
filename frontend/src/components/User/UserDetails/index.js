@@ -178,15 +178,27 @@ class UserDetailsPage extends Component {
   }
 }
 
-const UserDetailsLink = ({ isAdmin, uid }) => (
-  isAdmin
-    ? <Link className='m-2' to={ROUTES.USER_DETAILS + `/${uid}`}>
-        <Button size='sm'>Edit User</Button>
-      </Link>
-    : <Link className='m-2' to={ROUTES.USER_DETAILS + `/${uid}`}>
-        <Button size='sm'>View Images</Button>
-      </Link>
-);
+const UserDetailsLink = ({ role, uid }) => {
+  switch (role) {
+    case ROLES.ADMIN:
+      return (
+        <Link className='m-2' to={ROUTES.USER_DETAILS + `/${uid}`}>
+          <Button size='sm'>Edit User</Button>
+        </Link>
+      );
+
+    case ROLES.DEALER:
+    case ROLES.SERVICE:
+      return (
+        <Link className='m-2' to={ROUTES.USER_DETAILS + `/${uid}`}>
+          <Button size='sm'>View Images</Button>
+        </Link>
+      );
+
+    default:
+      return <></>;
+  }
+};
 
 export { UserDetailsLink };
 export default withAuthorization(CONDITIONS.isSignedInAdminOrDealer)(UserDetailsPage);

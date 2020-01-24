@@ -14,6 +14,7 @@ import { withFirebase } from 'api/Firebase';
 import { userSearchOptions } from 'utils/search';
 
 import * as CONDITIONS from 'constants/conditions';
+import * as ROLES from 'constants/roles';
 
 class DealerPage extends Component {
   constructor(props) {
@@ -70,7 +71,10 @@ class DealerPage extends Component {
           </Jumbotron>
           <Search searchQuery={searchQuery} onChange={this.onChange} />
           <br />
-          <UserList users={searchedUsers} isAdmin={false} storage={this.props.firebase.storage.ref()} />
+          <UserList
+            users={searchedUsers}
+            role={ROLES.DEALER}
+            storage={this.props.firebase.storage.ref()} />
         </WithPageLoad>
       </Container>
     );
