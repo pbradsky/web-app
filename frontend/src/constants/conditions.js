@@ -11,8 +11,12 @@ export const isSignedInDealer = authUser =>
   !!authUser && !!authUser.roles && !!authUser.roles[ROLES.DEALER];
 export const isSignedInService = authUser =>
   !!authUser && !!authUser.roles && !!authUser.roles[ROLES.SERVICE];
-export const isDealerViewable = user =>
-  !user.roles || !(user.roles[ROLES.DEALER] || user.roles[ROLES.ADMIN]);
+export const isDealerViewable = user => (
+  !user.roles ||
+  !(user.roles[ROLES.ADMIN] ||
+    user.roles[ROLES.DEALER] ||
+    user.roles[ROLES.SERVICE])
+);
 export const isSignedInAdminOrDealer = authUser => (
   !!authUser && !!authUser.roles &&
   (!!authUser.roles[ROLES.ADMIN] || !!authUser.roles[ROLES.DEALER])
