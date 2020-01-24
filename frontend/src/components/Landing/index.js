@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import bgimage from 'assets/jumboImage.jpeg';
 
 import styled from 'styled-components';
-import AboutPage from 'components/About';
+import AboutPage from 'components/Legal/About';
 
 import * as ROUTES from 'constants/routes';
 
