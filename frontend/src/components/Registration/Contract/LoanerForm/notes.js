@@ -27,6 +27,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
     <Form id='form-stage' noValidate onSubmit={onSubmit}>
       <Form.Row>
         <FormGroup
+          className='col-12 col-md-6'
           required
           label='VIN'
           name='vin'
@@ -35,14 +36,52 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
           placeholder='VIN'
           validated={validated}
         />
+        <FormGroup
+          className='col-12 col-md-6'
+          required
+          label='License Plate Number:'
+          name='plate'
+          value={plate}
+          onChange={onChangeForm}
+          placeholder='Vehicle License Plate'
+        />
       </Form.Row>
       <Form.Row>
         <FormGroup
-          label='Notes'
-          name='notes'
-          value={notes}
+          className='col-6 col-lg-3'
+          required
+          label='Year:'
+          name='year'
+          value={year}
           onChange={onChangeForm}
-          placeholder='Notes'
+          placeholder='Vehicle Year'
+        />
+        <FormGroup
+          className='col-6 col-lg-3'
+          required
+          label='Make:'
+          name='make'
+          value={make}
+          onChange={onChangeForm}
+          placeholder='Vehicle Make'
+        />
+        <FormGroup
+          className='col-6 col-lg-3'
+          required
+          label='Model:'
+          name='model'
+          value={model}
+          onChange={onChangeForm}
+          placeholder='Vehicle Model'
+        />
+        <FormGroup
+          className='col-6 col-lg-3'
+          required
+          label='Color:'
+          name='color'
+          value={color}
+          onChange={onChangeForm}
+          placeholder='Vehicle Color'
         />
       </Form.Row>
       <Form.Row>
@@ -54,8 +93,6 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
           onChange={onChangeForm}
           placeholder='Date and Time Out'
         />
-      </Form.Row>
-      <Form.Row>
         <FormGroup
           required
           label='Date and Time Due In:'
@@ -68,54 +105,12 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
       <Form.Row>
         <FormGroup
           required
-          label='License No.:'
-          name='plate'
-          value={plate}
+          label='Mileage Out:'
+          name='mileageOut'
+          value={mileageOut}
           onChange={onChangeForm}
-          placeholder='Vehicle License Plate'
+          placeholder='Mileage Out'
         />
-      </Form.Row>
-      <Form.Row>
-        <FormGroup
-          required
-          label='Year:'
-          name='year'
-          value={year}
-          onChange={onChangeForm}
-          placeholder='Vehicle Year'
-        />
-      </Form.Row>
-      <Form.Row>
-        <FormGroup
-          required
-          label='Make:'
-          name='make'
-          value={make}
-          onChange={onChangeForm}
-          placeholder='Vehicle Make'
-        />
-      </Form.Row>
-      <Form.Row>
-        <FormGroup
-          required
-          label='Model:'
-          name='model'
-          value={model}
-          onChange={onChangeForm}
-          placeholder='Vehicle Model'
-        />
-      </Form.Row>
-      <Form.Row>
-        <FormGroup
-          required
-          label='Color:'
-          name='color'
-          value={color}
-          onChange={onChangeForm}
-          placeholder='Vehicle Color'
-        />
-      </Form.Row>
-      <Form.Row>
         <FormGroup
           required
           label='Miles Allowed:'
@@ -127,30 +122,29 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
       </Form.Row>
       <Form.Row>
         <FormGroup
-          required
-          label='Mileage Out:'
-          name='mileageOut'
-          value={mileageOut}
-          onChange={onChangeForm}
-          placeholder='Mileage Out'
-        />
-      </Form.Row>
-      <Form.Row>
-        <FormGroup
+          className='col-12 col-md-6'
           label='Rate per Day (in dollars):'
           name='rate'
           value={rate}
           onChange={onChangeForm}
           placeholder='Rate per Day Out'
         />
-      </Form.Row>
-      <Form.Row>
         <FormGroup
-          label='Fuel:'
+          className='col-12 col-md-6'
+          label='Fuel Level Out:'
           name='fuel'
           value={fuel}
           onChange={onChangeForm}
           placeholder='Fuel'
+        />
+      </Form.Row>
+      <Form.Row>
+        <FormGroup
+          label='Additional Notes:'
+          name='notes'
+          value={notes}
+          onChange={onChangeForm}
+          placeholder='Notes'
         />
       </Form.Row>
     </Form>
