@@ -131,12 +131,14 @@ const UserDropdown = ({authUser, linkClass}) => {
 const NavLinks = ({ authUser }) => {
   const isSignedIn = CONDITIONS.isSignedInKnownUser(authUser);
   const isSignedInComplete = CONDITIONS.isSignedInCompleteUser(authUser);
+  const isSignedInRegular = CONDITIONS.isSignedInRegularUser(authUser);
   const isAdmin = CONDITIONS.isSignedInAdmin(authUser);
   const isDealer = CONDITIONS.isSignedInDealer(authUser);
+  const isService = CONDITIONS.isSignedInService(authUser);
 
   return (
     <Nav className='ml-auto'>
-      <NavLinkRoute to={ROUTES.CHOOSE_DEALER} show={isSignedIn && !isAdmin && !isDealer}>
+      <NavLinkRoute to={ROUTES.CHOOSE_DEALER} show={isSignedInRegular}>
         Dealerships
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.DEALER} show={isDealer}>
@@ -149,14 +151,14 @@ const NavLinks = ({ authUser }) => {
         My Contract
       </NavLinkRoute>
       <NavLinkRoute to={ROUTES.SIGN_IN} show={!isSignedIn}>
-         Sign In
+        Sign In
       </NavLinkRoute>
       <NavLinkRoute className='d-block d-md-none nav-link' to={ROUTES.SIGN_UP} show={!isSignedIn}>
-         Join Now
+        Join Now
       </NavLinkRoute>
       <NavLinkRoute className='d-none d-md-block ml-2' to={ROUTES.SIGN_UP} show={!isSignedIn}>
         <Button variant='primary' size='md'>
-         Join Now
+          Join Now
         </Button>
       </NavLinkRoute>
     </Nav>
