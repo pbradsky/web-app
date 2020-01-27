@@ -14,7 +14,7 @@ const AddVehicleModal = ( props, {onSubmit, onChangeForm, validated}) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant='light' style={{color: '#0077f6', outline: 'none', float: 'right', textAlign: 'center'}} onClick={handleShow}>
       +
       </Button>
 
@@ -93,9 +93,11 @@ const AddVehicleModal = ( props, {onSubmit, onChangeForm, validated}) => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-          <Button variant="primary" onClick={handleClose}>
-            Submit
+          <Button variant='secondary' onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant='primary' onClick={handleClose}>
+            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

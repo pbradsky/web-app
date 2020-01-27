@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import Fuse from 'fuse.js';
 
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
@@ -95,10 +94,8 @@ class LoanerFleetPage extends Component {
             <h1>Loaner Fleet Dashboard</h1>
           </Jumbotron>
           <div>
-            Loaner Fleet
             {/* TODO(tim): add loaner fleet list component */}
           </div>
-          <Button onClick={this.addLoaner}>New</Button>
           <Search searchQuery={searchQuery} onChange={this.onChange} />
           <br />
           <LoanerList vehicles={searchedVehicles} />

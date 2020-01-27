@@ -4,6 +4,8 @@ import Accordion from 'react-bootstrap/Accordion';
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 
+import AddVehicleModal from '../AddVehicleModal';
+
 const DataCard = ({ label, data }) => (
   !!data
     ? <Card.Text>
@@ -19,7 +21,10 @@ const DataCard = ({ label, data }) => (
 const VehicleList = ({ vehicles }) => (
   <Accordion className='mb-4'>
     <Card bg='primary' text='white'>
-      <Card.Header as='h3'>Loaner Vehicle List</Card.Header>
+      <Card.Header as='h3'>
+        Loaner Vehicle List
+        <AddVehicleModal />
+      </Card.Header>
     </Card>
     {vehicles.map(vehicle => (
       <Card key={vehicle.vin}>
