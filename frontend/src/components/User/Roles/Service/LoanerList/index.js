@@ -1,4 +1,4 @@
-import React from 'react
+import React from 'react';
 
 // This is part of the Service Dept. Suite
 // 1. Vehicles can be added/removed from the list.

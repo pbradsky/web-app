@@ -11,19 +11,19 @@ import { withAuthentication } from 'api/Session';
 import * as ROUTES from 'constants/routes';
 
 // Lazy page loading and chunking
-const AdminPage = lazy(() => import('components/User/Dashboard/Admin'));
+const AdminPage = lazy(() => import('components/User/Roles/Admin'));
 const AccountPage = lazy(() => import('components/User/Account'));
 const ChooseDealerPage = lazy(() => import('components/Registration/ChooseDealer'));
 const ConfirmationPage = lazy(() => import('components/Registration/Confirmation'));
 const ContactPage = lazy(() => import('components/Legal/Contact'));
-const DealerPage = lazy(() => import('components/User/Dashboard/Dealer'));
+const DealerPage = lazy(() => import('components/User/Roles/Dealer'));
 const LandingPage = lazy(() => import('components/Landing'));
 const LoanerFormPage = lazy(() => import('components/Registration/Contract/LoanerForm'))
 const MyContractPage = lazy(() => import ('components/User/MyContract'));
 const NotFound = lazy(() => import('components/NotFound'));
 const PasswordForgetPage = lazy(() => import('components/User/Account/PasswordForget'));
 const PrivacyPage = lazy(() => import('components/Legal/Privacy'));
-const ServicePage = lazy(() => import('components/User/Dashboard/Service'));
+const ServicePage = lazy(() => import('components/User/Roles/Service/Dashboard'));
 const SignInPage = lazy(() => import('components/User/Account/SignIn'));
 const SignUpPage = lazy(() => import('components/Registration/SignUp'));
 const TermsPage = lazy(() => import('components/Legal/Terms'));
