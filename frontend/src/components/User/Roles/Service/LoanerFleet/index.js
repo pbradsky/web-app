@@ -49,22 +49,22 @@ class LoanerFleetPage extends Component {
   }
 
   componentDidMount() {
-    this.setState({ loading: true });
+    // this.setState({ loading: true });
 
-    this.props.firebase.vehicles().on('value', snapshot => {
-      const vehiclesObject = snapshot.val();
+    // this.props.firebase.vehicles().on('value', snapshot => {
+    //   const vehiclesObject = snapshot.val();
 
-      const vehiclesList = Object.keys(vehiclesObject).map(key => ({
-        ...vehiclesObject[key],
-        vin: key
-      }));
+    //   const vehiclesList = Object.keys(vehiclesObject).map(key => ({
+    //     ...vehiclesObject[key],
+    //     vin: key
+    //   }));
 
-      this.setState({
-        fuse: new Fuse(vehiclesList, vehicleSearchOptions),
-        vehicles: vehiclesList,
-        loading: false,
-      });
-    });
+    //   this.setState({
+    //     fuse: new Fuse(vehiclesList, vehicleSearchOptions),
+    //     vehicles: vehiclesList,
+    //     loading: false,
+    //   });
+    // });
   }
 
   componentWillUnmount() {
@@ -108,7 +108,8 @@ class LoanerFleetPage extends Component {
   }
 }
 
-export default compose(
-  withAuthorization(CONDITIONS.isSignedInService),
-  withFirebase
-)(LoanerFleetPage);
+export default LoanerFleetPage;
+// export default compose(
+//   withAuthorization(CONDITIONS.isSignedInService),
+//   withFirebase
+// )(LoanerFleetPage);
