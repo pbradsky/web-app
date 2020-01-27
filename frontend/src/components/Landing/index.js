@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
 
 import bgimage from 'assets/jumboImage.jpeg';
-import AboutPage from 'components/Legal/About';
+import AboutPage from 'components/Landing/About';
 
 import * as ROUTES from 'constants/routes';
 
@@ -14,7 +14,7 @@ const BackdropImage = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 68px);
     display: flex;
     flex-direction: column;
     justify-content: center;
