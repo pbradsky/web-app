@@ -150,6 +150,9 @@ const NavLinks = ({ authUser }) => {
       <NavLinkRoute to={ROUTES.SERVICE} show={isService}>
         Dashboard
       </NavLinkRoute>
+      <NavLinkRoute to={ROUTES.LOANER_FLEET} show={isService}>
+        Fleet
+      </NavLinkRoute>
       <NavLinkRoute to={ROUTES.MY_CONTRACT} show={isSignedInComplete}>
         My Contract
       </NavLinkRoute>
