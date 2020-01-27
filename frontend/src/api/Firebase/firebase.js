@@ -91,7 +91,7 @@ class Firebase {
 
   /* VEHICLE API */
 
-  vehicle = vid => this.db.ref(`vehicles/${vid}`);
+  vehicle = vin => this.db.ref(`vehicles/${vin}`);
 
   vehicles = () => this.db.ref('vehicles');
 }

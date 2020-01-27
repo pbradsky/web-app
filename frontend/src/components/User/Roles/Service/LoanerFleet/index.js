@@ -15,7 +15,6 @@ import { withFirebase } from 'api/Firebase';
 import { vehicleSearchOptions } from 'utils/search';
 
 import * as CONDITIONS from 'constants/conditions';
-import * as ROLES from 'constants/roles';
 
 // This is part of the Service Dept. Suite
 // 1. Vehicles can be added/removed from the list.
@@ -50,26 +49,26 @@ class LoanerFleetPage extends Component {
   }
 
   componentDidMount() {
-    // this.setState({ loading: true });
+    this.setState({ loading: true });
 
-    // this.props.firebase.users().on('value', snapshot => {
-    //   const usersObject = snapshot.val();
+    this.props.firebase.vehicles().on('value', snapshot => {
+      const vehiclesObject = snapshot.val();
 
-    //   const usersList = Object.keys(usersObject).map(key => ({
-    //     ...usersObject[key],
-    //     uid: key
-    //   })).filter(CONDITIONS.isDealerViewable);
+      const vehiclesList = Object.keys(vehiclesObject).map(key => ({
+        ...vehiclesObject[key],
+        vin: key
+      }));
 
-    //   this.setState({
-    //     fuse: new Fuse(usersList, userSearchOptions),
-    //     users: usersList,
-    //     loading: false,
-    //   });
-    // });
+      this.setState({
+        fuse: new Fuse(vehiclesList, vehicleSearchOptions),
+        vehicles: vehiclesList,
+        loading: false,
+      });
+    });
   }
 
   componentWillUnmount() {
-    // this.props.firebase.users().off();
+    this.props.firebase.vehicles().off();
   }
 
   onChange = event => {
@@ -109,4 +108,7 @@ class LoanerFleetPage extends Component {
   }
 }
 
-export default LoanerFleetPage;
+export default compose(
+  withAuthorization(CONDITIONS.isSignedInService),
+  withFirebase
+)(LoanerFleetPage);
