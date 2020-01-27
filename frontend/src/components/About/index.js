@@ -8,13 +8,17 @@ import steps from 'assets/jurne-steps.png';
 import styled from 'styled-components';
 
 const BackdropImage = styled.div`
-    background-color: #f7f7f7;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    min-height: calc(100vh - 70px);
-    display: flex;
-    flex-direction: column;
+  background-color: #f7f7f7;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+`;
+
+const P = styled.p`
+  font-weight: 900;
 `;
 
 const AboutPage = React.forwardRef((props, ref) => (
@@ -26,10 +30,10 @@ const AboutPage = React.forwardRef((props, ref) => (
         </Col>
       </Row>
       <Row className='text-center mt-4 mb-auto'>
-        <Col className='col-3'><p>Make an Account</p></Col>
-        <Col className='col-3'><p>Complete our Form</p></Col>
-        <Col className='col-3'><p>Finalize with Dealership</p></Col>
-        <Col className='col-3'><p>Go Test Drive!</p></Col>
+        <Col className='col-3'><P>Make an Account</P></Col>
+        <Col className='col-3'><P>Complete our Form</P></Col>
+        <Col className='col-3'><P>Finalize with Dealership</P></Col>
+        <Col className='col-3'><P>Go Test Drive!</P></Col>
       </Row>
     </div>
   </BackdropImage>
