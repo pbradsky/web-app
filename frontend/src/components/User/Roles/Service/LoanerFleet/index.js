@@ -35,7 +35,7 @@ class LoanerFleetPage extends Component {
         year: '2002',
         color: 'gray',
         license: 'L1C3N53',
-        status: 'available'
+        status: 'Available'
       }
     ];
 
