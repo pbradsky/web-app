@@ -23,6 +23,7 @@ class AdminPage extends Component {
       fuse: new Fuse([], userSearchOptions),
       loading: false,
       searchQuery: '',
+      users: [],
     };
   }
 
