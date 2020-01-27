@@ -1,11 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 import steps from 'assets/jurne-steps.png';
-
-import styled from 'styled-components';
 
 const BackdropImage = styled.div`
   background-color: #f7f7f7;
@@ -21,7 +20,7 @@ const P = styled.p`
   font-weight: 900;
 `;
 
-const AboutPage = React.forwardRef((props, ref) => (
+const AboutPage = React.forwardRef((_props, ref) => (
   <BackdropImage ref={ref}>
     <div className='m-auto w-75'>
       <Row>

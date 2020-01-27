@@ -34,14 +34,13 @@ class UserDetailsPage extends Component {
       .once('value')
       .then(snapshot => {
         const user = snapshot.val();
-
         this.setState({
           user: user
         });
-
       });
-    // load imgs if dealer
-    if (!CONDITIONS.isSignedInAdmin(this.props.authUser)) {
+
+    // Load imgs if dealer
+    if (CONDITIONS.isSignedInDealer(this.props.authUser)) {
       getImages(this.props.firebase.storage.ref(), this.props.match.params.id).then(values => {
         this.setState({
           proofOfInsurance: values.proofOfInsurance,
@@ -73,14 +72,16 @@ class UserDetailsPage extends Component {
     }
 
     user.roles = roles;
-    this.setState({ user });
     this.props.firebase
       .user(user.uid)
       .set({
         ...user,
         roles,
       })
-      .then(() => console.log(`Updated role '${role}'!`))
+      .then(() => {
+        console.log(`Updated role '${role}' for user '${user.uid}'!`);
+        this.setState({ user });
+      })
       .catch(error => console.log(error));
   }
 
@@ -99,14 +100,27 @@ class UserDetailsPage extends Component {
                 <Card.Body>
                   <Card.Title>{user.username}</Card.Title>
                   <hr />
-                  <Card.Text>Admin Permissions: {CONDITIONS.isSignedInAdmin(user) ? 'Yes' : 'No'}</Card.Text>
+                  <Card.Text>
+                    Admin Permissions: {CONDITIONS.isSignedInAdmin(user) ? 'Yes' : 'No'}
+                  </Card.Text>
                   <Button className='mb-2' onClick={this.onToggleRole(ROLES.ADMIN)}>
                     Toggle Admin
                   </Button>
                   <hr />
-                  <Card.Text>Dealer Permissions: {CONDITIONS.isSignedInDealer(user) ? 'Yes' : 'No'}</Card.Text>
+                  <Card.Text>
+                    Dealer Permissions: {CONDITIONS.isSignedInDealer(user) ? 'Yes' : 'No'}
+                  </Card.Text>
                   <Button className='mb-2' onClick={this.onToggleRole(ROLES.DEALER)}>
                     Toggle Dealer
+                    {/* TODO(tim): attach dealer to an active dealership */}
+                  </Button>
+                  <hr />
+                  <Card.Text>
+                    Service Permissions: {CONDITIONS.isSignedInService(user) ? 'Yes' : 'No'}
+                  </Card.Text>
+                  <Button className='mb-2' onClick={this.onToggleRole(ROLES.SERVICE)}>
+                    Toggle Service
+                    {/* TODO(tim): attach service to an active dealership */}
                   </Button>
                   <hr />
                   <PrintContractButton user={user} storage={this.props.firebase.storage.ref()} />
@@ -164,15 +178,27 @@ class UserDetailsPage extends Component {
   }
 }
 
-const UserDetailsLink = ({ isAdmin, uid }) => (
-  isAdmin
-    ? <Link className='m-2' to={ROUTES.USER_DETAILS + `/${uid}`}>
-        <Button size='sm'>Edit User</Button>
-      </Link>
-    : <Link className='m-2' to={ROUTES.USER_DETAILS + `/${uid}`}>
-        <Button size='sm'>View Images</Button>
-      </Link>
-);
+const UserDetailsLink = ({ role, uid }) => {
+  switch (role) {
+    case ROLES.ADMIN:
+      return (
+        <Link className='m-2' to={ROUTES.USER_DETAILS + `/${uid}`}>
+          <Button size='sm'>Edit User</Button>
+        </Link>
+      );
+
+    case ROLES.DEALER:
+    case ROLES.SERVICE:
+      return (
+        <Link className='m-2' to={ROUTES.USER_DETAILS + `/${uid}`}>
+          <Button size='sm'>View Images</Button>
+        </Link>
+      );
+
+    default:
+      return <></>;
+  }
+};
 
 export { UserDetailsLink };
 export default withAuthorization(CONDITIONS.isSignedInAdminOrDealer)(UserDetailsPage);

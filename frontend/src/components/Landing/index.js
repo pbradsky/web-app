@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Button from 'react-bootstrap/Button';
-import bgimage from 'assets/jumboImage.jpeg';
 
-import styled from 'styled-components';
-import AboutPage from 'components/About';
+import bgimage from 'assets/jumboImage.jpeg';
+import AboutPage from 'components/Legal/About';
 
 import * as ROUTES from 'constants/routes';
 
@@ -23,18 +23,16 @@ const BackdropImage = styled.div`
 
 class Landing extends Component {
   constructor(props) {
-     super(props)
-     this.state = {
-        field: 1,
-     }
-     //creates a reference for your element to use
-     this.myDivToFocus = React.createRef()
+     super(props);
+
+     // Create a reference to about page
+     this.aboutPage = React.createRef()
   }
 
-  handleOnClick = (event) => {
-      //.current is verification that your element has rendered
-      if(this.myDivToFocus.current){
-          this.myDivToFocus.current.scrollIntoView({
+  handleOnClick = () => {
+      // Make sure about page rendered
+      if (this.aboutPage.current) {
+          this.aboutPage.current.scrollIntoView({
              behavior: "smooth",
              block: "nearest"
           })
@@ -60,7 +58,7 @@ class Landing extends Component {
             </Button>
           </div>
         </BackdropImage>
-        <AboutPage ref={this.myDivToFocus}/>
+        <AboutPage ref={this.aboutPage}/>
       </>
     )
   }
