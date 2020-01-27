@@ -7,6 +7,8 @@ import Button from 'react-bootstrap/Button';
 import bgimage from 'assets/jumboImage.jpeg';
 import AboutPage from 'components/Landing/About';
 
+import AddVehicleModal from 'components/User/Roles/Service/AddVehicleModal';
+
 import * as ROUTES from 'constants/routes';
 
 const BackdropImage = styled.div`
