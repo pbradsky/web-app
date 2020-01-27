@@ -18,7 +18,8 @@ const ConfirmationPage = lazy(() => import('components/Registration/Confirmation
 const ContactPage = lazy(() => import('components/Legal/Contact'));
 const DealerPage = lazy(() => import('components/User/Roles/Dealer'));
 const LandingPage = lazy(() => import('components/Landing'));
-const LoanerFormPage = lazy(() => import('components/Registration/Contract/LoanerForm'))
+const LoanerFormPage = lazy(() => import('components/Registration/Contract/LoanerForm'));
+const LoanerFleetPage = lazy(() => import('components/User/Roles/Service/LoanerFleet'));
 const MyContractPage = lazy(() => import ('components/User/Roles/User/MyContract'));
 const NotFound = lazy(() => import('components/NotFound'));
 const PasswordForgetPage = lazy(() => import('components/User/Account/PasswordForget'));
@@ -47,6 +48,7 @@ const App = () => (
           <Route path={ROUTES.DEALER} component={DealerPage} />
           <Route path={ROUTES.TEST_DRIVE_CONTRACT} component={TestDriveFormPage} />
           <Route path={ROUTES.LOANER_CONTRACT} component={LoanerFormPage} />
+          <Route path={ROUTES.LOANER_FLEET} component={LoanerFleetPage} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.MY_CONTRACT} component={MyContractPage} />
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />

@@ -27,11 +27,10 @@ const VehicleList = ({ vehicles }) => (
           as={Card.Header}
           style={{cursor: 'pointer'}}
           eventKey={vehicle.vin}>
-          {vehicle.model}
+          {vehicle.year} {vehicle.make} {vehicle.model} {vehicle.license}
           <Badge
             style={{float: 'right', width: '100px'}}
-            variant='secondary'
-            key={index}>
+            variant='secondary'>
               {vehicle.status}
           </Badge>
         </Accordion.Toggle>
