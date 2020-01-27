@@ -19,7 +19,7 @@ const ContactPage = lazy(() => import('components/Legal/Contact'));
 const DealerPage = lazy(() => import('components/User/Roles/Dealer'));
 const LandingPage = lazy(() => import('components/Landing'));
 const LoanerFormPage = lazy(() => import('components/Registration/Contract/LoanerForm'))
-const MyContractPage = lazy(() => import ('components/User/MyContract'));
+const MyContractPage = lazy(() => import ('components/User/Roles/User/MyContract'));
 const NotFound = lazy(() => import('components/NotFound'));
 const PasswordForgetPage = lazy(() => import('components/User/Account/PasswordForget'));
 const PrivacyPage = lazy(() => import('components/Legal/Privacy'));
