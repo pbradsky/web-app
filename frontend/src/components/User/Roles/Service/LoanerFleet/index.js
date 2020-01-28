@@ -54,10 +54,12 @@ class LoanerFleetPage extends Component {
     this.props.firebase.vehicles(dealerId).on('value', snapshot => {
       const vehiclesObject = snapshot.val();
 
-      const vehiclesList = Object.keys(vehiclesObject).map(key => ({
-        ...vehiclesObject[key],
-        vin: key
-      }));
+      const vehiclesList = vehiclesObject
+        ? Object.keys(vehiclesObject).map(key => ({
+            ...vehiclesObject[key],
+            vin: key
+          }))
+        : [];
 
       this.setState({
         fuse: new Fuse(vehiclesList, vehicleSearchOptions),
