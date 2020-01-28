@@ -50,6 +50,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
         <FormGroup
           className='col-6 col-lg-3'
           required
+          validated={validated}
           label='Year:'
           name='year'
           value={year}
@@ -59,6 +60,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
         <FormGroup
           className='col-6 col-lg-3'
           required
+          validated={validated}
           label='Make:'
           name='make'
           value={make}
@@ -68,6 +70,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
         <FormGroup
           className='col-6 col-lg-3'
           required
+          validated={validated}
           label='Model:'
           name='model'
           value={model}
@@ -77,6 +80,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
         <FormGroup
           className='col-6 col-lg-3'
           required
+          validated={validated}
           label='Color:'
           name='color'
           value={color}
@@ -87,6 +91,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
       <Form.Row>
         <FormGroup
           required
+          validated={validated}
           label='Date and Time Out:'
           name='out'
           value={out}
@@ -95,6 +100,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
         />
         <FormGroup
           required
+          validated={validated}
           label='Date and Time Due In:'
           name='due'
           value={due}
@@ -105,6 +111,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
       <Form.Row>
         <FormGroup
           required
+          validated={validated}
           label='Mileage Out:'
           name='mileageOut'
           value={mileageOut}
@@ -113,6 +120,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
         />
         <FormGroup
           required
+          validated={validated}
           label='Miles Allowed:'
           name='milesAllowed'
           value={milesAllowed}
