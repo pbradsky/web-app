@@ -9,7 +9,7 @@ import LoanerList from './list';
 import { WithPageLoad } from 'components/Util/Loading';
 import Search from 'components/Util/Search';
 
-import { withAuthorization } from 'api/Session';
+import { withAuthorization, withUser } from 'api/Session';
 import { withFirebase } from 'api/Firebase';
 import { vehicleSearchOptions } from 'utils/search';
 
@@ -48,26 +48,28 @@ class LoanerFleetPage extends Component {
   }
 
   componentDidMount() {
-    // this.setState({ loading: true });
+    this.setState({ loading: true });
+    const dealerId = this.props.authUser.dealership;
 
-    // this.props.firebase.vehicles().on('value', snapshot => {
-    //   const vehiclesObject = snapshot.val();
+    this.props.firebase.vehicles(dealerId).on('value', snapshot => {
+      const vehiclesObject = snapshot.val();
 
-    //   const vehiclesList = Object.keys(vehiclesObject).map(key => ({
-    //     ...vehiclesObject[key],
-    //     vin: key
-    //   }));
+      const vehiclesList = Object.keys(vehiclesObject).map(key => ({
+        ...vehiclesObject[key],
+        vin: key
+      }));
 
-    //   this.setState({
-    //     fuse: new Fuse(vehiclesList, vehicleSearchOptions),
-    //     vehicles: vehiclesList,
-    //     loading: false,
-    //   });
-    // });
+      this.setState({
+        fuse: new Fuse(vehiclesList, vehicleSearchOptions),
+        vehicles: vehiclesList,
+        loading: false,
+      });
+    });
   }
 
   componentWillUnmount() {
-    // this.props.firebase.vehicles().off();
+    const dealerId = this.props.authUser.dealership;
+    this.props.firebase.vehicles(dealerId).off();
   }
 
   onChange = event => {
@@ -98,5 +100,6 @@ class LoanerFleetPage extends Component {
 
 export default compose(
   withAuthorization(CONDITIONS.isSignedInService),
+  withUser,
   withFirebase
 )(LoanerFleetPage);
