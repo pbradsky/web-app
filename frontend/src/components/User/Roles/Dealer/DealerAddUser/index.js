@@ -164,6 +164,8 @@ class AddUserForm extends Component {
             <Form.Label>Email Address</Form.Label>
             <Form.Control
               name='email'
+              required
+              validated={validated}
               value={email}
               onChange={this.onChange}
               type='text'
