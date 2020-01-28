@@ -16,7 +16,8 @@ const AccountPage = lazy(() => import('components/User/Account'));
 const ChooseDealerPage = lazy(() => import('components/Registration/ChooseDealer'));
 const ConfirmationPage = lazy(() => import('components/Registration/Confirmation'));
 const ContactPage = lazy(() => import('components/Legal/Contact'));
-const DealerPage = lazy(() => import('components/User/Roles/Dealer'));
+const DealerPage = lazy(() => import('components/User/Roles/Dealer/Dashboard'));
+const AddUserPage = lazy(() => import('components/User/Roles/Dealer/DealerAddUser'));
 const LandingPage = lazy(() => import('components/Landing'));
 const LoanerFormPage = lazy(() => import('components/Registration/Contract/LoanerForm'));
 const LoanerFleetPage = lazy(() => import('components/User/Roles/Service/LoanerFleet'));
@@ -46,6 +47,7 @@ const App = () => (
           <Route exact path={ROUTES.CONTRACT} component={UserDetailsFormPage} />
           {/* <Route exact path={ROUTES.CONTRACT_ONESHOT} component={UserDetailsFormPage} /> */}
           <Route path={ROUTES.DEALER} component={DealerPage} />
+          <Route path={ROUTES.DEALER_ADD_USER} component={AddUserPage} />
           <Route path={ROUTES.TEST_DRIVE_CONTRACT} component={TestDriveFormPage} />
           <Route path={ROUTES.LOANER_CONTRACT} component={LoanerFormPage} />
           <Route path={ROUTES.LOANER_FLEET} component={LoanerFleetPage} />

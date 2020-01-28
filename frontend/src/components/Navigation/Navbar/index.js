@@ -141,6 +141,9 @@ const NavLinks = ({ authUser }) => {
       <NavLinkRoute to={ROUTES.CHOOSE_DEALER} show={isSignedInRegular}>
         Dealerships
       </NavLinkRoute>
+      <NavLinkRoute to={ROUTES.DEALER_ADD_USER} show={isDealer}>
+        Add User
+      </NavLinkRoute>
       <NavLinkRoute to={ROUTES.ADMIN} show={isAdmin}>
         Dashboard
       </NavLinkRoute>
