@@ -9,7 +9,7 @@ import LoanerList from './list';
 import { WithPageLoad } from 'components/Util/Loading';
 import Search from 'components/Util/Search';
 
-import { withAuthorization } from 'api/Session';
+import { withAuthorization, withUser } from 'api/Session';
 import { withFirebase } from 'api/Firebase';
 import { vehicleSearchOptions } from 'utils/search';
 
@@ -22,7 +22,7 @@ import * as CONDITIONS from 'constants/conditions';
 // 4. Accordion gives more details about the car.
 // 5. Search on this page looks for vehicles by Make, Model, VIN, status.
 // 6. This page updates the dropdown menu and autofill on Loaner Form.
-// Vehicle sshould have VIN, Make, Model, Year, Color, License, Status, Mileage
+// Vehicle should have VIN, Make, Model, Year, Color, License, Status, Mileage
 class LoanerFleetPage extends Component {
   constructor(props) {
     super(props);
@@ -48,36 +48,34 @@ class LoanerFleetPage extends Component {
   }
 
   componentDidMount() {
-    // this.setState({ loading: true });
+    this.setState({ loading: true });
+    const dealerId = this.props.authUser.dealership;
 
-    // this.props.firebase.vehicles().on('value', snapshot => {
-    //   const vehiclesObject = snapshot.val();
+    this.props.firebase.vehicles(dealerId).on('value', snapshot => {
+      const vehiclesObject = snapshot.val();
 
-    //   const vehiclesList = Object.keys(vehiclesObject).map(key => ({
-    //     ...vehiclesObject[key],
-    //     vin: key
-    //   }));
+      const vehiclesList = vehiclesObject
+        ? Object.keys(vehiclesObject).map(key => ({
+            ...vehiclesObject[key],
+            vin: key
+          }))
+        : [];
 
-    //   this.setState({
-    //     fuse: new Fuse(vehiclesList, vehicleSearchOptions),
-    //     vehicles: vehiclesList,
-    //     loading: false,
-    //   });
-    // });
+      this.setState({
+        fuse: new Fuse(vehiclesList, vehicleSearchOptions),
+        vehicles: vehiclesList,
+        loading: false,
+      });
+    });
   }
 
   componentWillUnmount() {
-    this.props.firebase.vehicles().off();
+    const dealerId = this.props.authUser.dealership;
+    this.props.firebase.vehicles(dealerId).off();
   }
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value })
-  }
-
-  addLoaner = () => {
-    // TODO(tim): add form to get loaner vehicle information and add to db
-    //     using a modal/popup?
-    console.log('add loaner vehicle');
   }
 
   render() {
@@ -93,9 +91,6 @@ class LoanerFleetPage extends Component {
           <Jumbotron>
             <h1>Loaner Fleet Dashboard</h1>
           </Jumbotron>
-          <div>
-            {/* TODO(tim): add loaner fleet list component */}
-          </div>
           <Search searchQuery={searchQuery} onChange={this.onChange} />
           <br />
           <LoanerList vehicles={searchedVehicles} />
@@ -105,8 +100,8 @@ class LoanerFleetPage extends Component {
   }
 }
 
-export default LoanerFleetPage;
-// export default compose(
-//   withAuthorization(CONDITIONS.isSignedInService),
-//   withFirebase
-// )(LoanerFleetPage);
+export default compose(
+  withAuthorization(CONDITIONS.isSignedInService),
+  withUser,
+  withFirebase
+)(LoanerFleetPage);
