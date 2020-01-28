@@ -1,8 +1,15 @@
 {
   "rules": {
+    ".read": "root.child('users/' + auth.uid + '/roles/ADMIN').val() === 'ADMIN'",
+    ".write": "root.child('users/' + auth.uid + '/roles/ADMIN').val() === 'ADMIN'",
+    "dealerships" : {
+      "$dealerId": {
+        ".read": "(root.child('users/' + auth.uid + '/roles/DEALER').val() === 'DEALER' || root.child('users/' + auth.uid + '/roles/SERVICE').val() === 'SERVICE') && root.child('users/' + auth.uid + '/dealership').val() === $dealerId",
+        ".write": "(root.child('users/' + auth.uid + '/roles/DEALER').val() === 'DEALER' || root.child('users/' + auth.uid + '/roles/SERVICE').val() === 'SERVICE') && root.child('users/' + auth.uid + '/dealership').val() === $dealerId"
+      }
+    },
     "users": {
-      ".read": "root.child('users/' + auth.uid + '/roles/ADMIN').val() === 'ADMIN' || root.child('users/' + auth.uid + '/roles/DEALER').val() === 'DEALER' || root.child('users/' + auth.uid + '/roles/SERVICE').val() === 'SERVICE'",
-      ".write": "root.child('users/' + auth.uid + '/roles/ADMIN').val() === 'ADMIN'",
+      ".read": "root.child('users/' + auth.uid + '/roles/DEALER').val() === 'DEALER' || root.child('users/' + auth.uid + '/roles/SERVICE').val() === 'SERVICE'",
       "$uid": {
         ".read": "$uid === auth.uid",
         ".write": "$uid === auth.uid"
