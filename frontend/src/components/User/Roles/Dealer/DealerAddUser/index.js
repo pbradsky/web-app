@@ -25,9 +25,16 @@ class AddUserPage extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    this.setState({
-      validated: true,
-    });
+
+    const form = event.target;
+    if (form.checkValidity() === false) {
+      this.setState({
+        validated: true,
+      });
+      return;
+    }
+
+    console.log('submitted!');
   }
 
   render() {
@@ -38,7 +45,7 @@ class AddUserPage extends Component {
         <Card className='mt-4 mb-4'>
           <Card.Body>
             <Card.Title>Sign Up</Card.Title>
-            <Form id='form' onSubmit={this.onSubmit}>
+            <Form id='form' noValidate onSubmit={this.onSubmit}>
               <Form.Row>
                 <FormGroup
                   className='col-md-9'
