@@ -22,7 +22,7 @@ import * as CONDITIONS from 'constants/conditions';
 // 4. Accordion gives more details about the car.
 // 5. Search on this page looks for vehicles by Make, Model, VIN, status.
 // 6. This page updates the dropdown menu and autofill on Loaner Form.
-// Vehicle sshould have VIN, Make, Model, Year, Color, License, Status, Mileage
+// Vehicle should have VIN, Make, Model, Year, Color, License, Status, Mileage
 class LoanerFleetPage extends Component {
   constructor(props) {
     super(props);
@@ -67,17 +67,11 @@ class LoanerFleetPage extends Component {
   }
 
   componentWillUnmount() {
-    this.props.firebase.vehicles().off();
+    // this.props.firebase.vehicles().off();
   }
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value })
-  }
-
-  addLoaner = () => {
-    // TODO(tim): add form to get loaner vehicle information and add to db
-    //     using a modal/popup?
-    console.log('add loaner vehicle');
   }
 
   render() {
@@ -93,9 +87,6 @@ class LoanerFleetPage extends Component {
           <Jumbotron>
             <h1>Loaner Fleet Dashboard</h1>
           </Jumbotron>
-          <div>
-            {/* TODO(tim): add loaner fleet list component */}
-          </div>
           <Search searchQuery={searchQuery} onChange={this.onChange} />
           <br />
           <LoanerList vehicles={searchedVehicles} />
@@ -105,8 +96,7 @@ class LoanerFleetPage extends Component {
   }
 }
 
-export default LoanerFleetPage;
-// export default compose(
-//   withAuthorization(CONDITIONS.isSignedInService),
-//   withFirebase
-// )(LoanerFleetPage);
+export default compose(
+  withAuthorization(CONDITIONS.isSignedInService),
+  withFirebase
+)(LoanerFleetPage);
