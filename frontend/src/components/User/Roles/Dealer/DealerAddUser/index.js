@@ -5,6 +5,8 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
+import FormGroup from 'Contract/Util/FormGroup';
+
 import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
 import { validateCreateUser } from 'utils/validation';
@@ -126,16 +128,16 @@ class AddUserForm extends Component {
     return (
       <Form onSubmit={this.onSubmit}>
         <Form.Row>
-          <Form.Group className='col-md-9'>
-            <Form.Label>Nickname</Form.Label>
-            <Form.Control
-              name='username'
-              value={username}
-              onChange={this.onChange}
-              type='text'
-              placeholder='Nickname'
-            />
-          </Form.Group>
+          <FormGroup
+            className='col-md-9'
+            required
+            validated={validated}
+            label='Nickname'
+            name='nickname'
+            value=''
+            onChange={onChangeForm}
+            placeholder='Nickname'
+          />
           <Form.Group className='col-md-3'>
             <Form.Label>User Role</Form.Label>
             <Form.Control
@@ -148,10 +150,22 @@ class AddUserForm extends Component {
               <option>Service</option>
             </Form.Control>
           </Form.Group>
-          <Form.Group className='col-md-12 col-lg-6'>
+          <FormGroup
+            className='col-md-12'
+            required
+            validated={validated}
+            label='Email'
+            name='email'
+            value=''
+            onChange={onChangeForm}
+            placeholder='Email Address'
+          />
+          <Form.Group className='col-md-12'>
             <Form.Label>Email Address</Form.Label>
             <Form.Control
               name='email'
+              required
+              validated={validated}
               value={email}
               onChange={this.onChange}
               type='text'
