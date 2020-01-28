@@ -8,6 +8,7 @@ export const CONTACT = '/contact';
 export const CONTRACT = '/contract';
 export const CONTRACT_ONESHOT = '/contract/oneshot';
 export const DEALER = '/dealer';
+export const DEALER_ADD_USER = '/add-user';
 export const LOANER_CONTRACT = '/loaner-contract';
 export const LOANER_FLEET = '/loaner-fleet';
 export const MY_CONTRACT = '/my-contract';

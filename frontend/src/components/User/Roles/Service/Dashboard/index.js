@@ -9,7 +9,6 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import Fuse from 'fuse.js';
 
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
