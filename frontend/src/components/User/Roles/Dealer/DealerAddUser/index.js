@@ -72,18 +72,6 @@ class AddUserPage extends Component {
                   onChange={this.onChange}
                   placeholder='Email Address'
                 />
-                <Form.Group className='col-md-12'>
-                  <Form.Label>Email Address</Form.Label>
-                  <Form.Control
-                    name='email'
-                    required
-                    validated={validated}
-                    value={email}
-                    onChange={this.onChange}
-                    type='text'
-                    placeholder='Email Address'
-                  />
-                </Form.Group>
               </Form.Row>
               <Button variant='primary' onClick={this.onSubmit}>
                 Add User
