@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
-import FormGroup from 'Contract/Util/FormGroup';
+import FormGroup from 'components/Registration/Contract/Util/FormGroup';
 
 import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
@@ -29,6 +29,7 @@ const INITIAL_STATE = {
   role: '',
   errors: [],
   error: null,
+  validated: false,
 };
 
 class AddUserForm extends Component {
@@ -42,6 +43,9 @@ class AddUserForm extends Component {
     const { username, email, passwordOne } = this.state;
 
     event.preventDefault();
+    this.setState({
+      validated: true,
+    });
 
     const errors = validateCreateUser(email);
     this.setState({ errors });
@@ -115,6 +119,7 @@ class AddUserForm extends Component {
       role,
       errors,
       error,
+      validated
     } = this.state;
 
     const isInvalid =
@@ -135,7 +140,7 @@ class AddUserForm extends Component {
             label='Nickname'
             name='nickname'
             value=''
-            onChange={onChangeForm}
+            onChange={this.onChange}
             placeholder='Nickname'
           />
           <Form.Group className='col-md-3'>
@@ -157,7 +162,7 @@ class AddUserForm extends Component {
             label='Email'
             name='email'
             value=''
-            onChange={onChangeForm}
+            onChange={this.onChange}
             placeholder='Email Address'
           />
           <Form.Group className='col-md-12'>
