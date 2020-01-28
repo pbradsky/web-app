@@ -84,14 +84,14 @@ class Firebase {
     });
 
   /* USER API */
-
   user = uid => this.db.ref(`users/${uid}`);
-
   users = () => this.db.ref('users');
 
   /* VEHICLE API */
-
   vehicles = dealerId => this.db.ref(`dealerships/${dealerId}/vehicles`);
+
+  /* DEALERSHIP API */
+  dealership = dealerId => this.db.ref(`dealerships/${dealerId}`);
 }
 
 export default Firebase;
