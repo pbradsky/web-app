@@ -38,7 +38,7 @@ class AddUserPage extends Component {
         <Card className='mt-4 mb-4'>
           <Card.Body>
             <Card.Title>Sign Up</Card.Title>
-            <Form onSubmit={this.onSubmit}>
+            <Form id='form' onSubmit={this.onSubmit}>
               <Form.Row>
                 <FormGroup
                   className='col-md-9'
@@ -85,7 +85,10 @@ class AddUserPage extends Component {
                   />
                 </Form.Group>
               </Form.Row>
-              <Button variant='primary' onClick={this.onSubmit}>
+              <Button
+                variant='primary'
+                form='form'
+                type='submit'>
                 Add User
               </Button>
             </Form>

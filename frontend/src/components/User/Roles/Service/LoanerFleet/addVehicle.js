@@ -84,7 +84,7 @@ class AddVehicleModal extends Component {
           </Modal.Header>
           <Modal.Body>
             <h4>Vehicle Information</h4>
-            <Form id='form-stage' noValidate onSubmit={this.onSubmit}>
+            <Form id='form' noValidate onSubmit={this.onSubmit}>
               <Form.Row>
                 <FormGroup
                   className='col-12 col-md-6'
@@ -157,7 +157,7 @@ class AddVehicleModal extends Component {
             </Button>
             <Button
               variant='primary'
-              form='form-stage'
+              form='form'
               type='submit'>
               Save Changes
             </Button>
