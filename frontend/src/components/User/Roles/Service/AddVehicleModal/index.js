@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-import FormGroup from '../../../../Registration/Contract/Util/FormGroup';
+import FormGroup from 'Contract/Util/FormGroup';
 
 const AddVehicleModal = ( props, {onSubmit, onChangeForm, validated}) => {
   const [show, setShow] = React.useState(false);
@@ -50,6 +50,7 @@ const AddVehicleModal = ( props, {onSubmit, onChangeForm, validated}) => {
                 value=''
                 onChange={onChangeForm}
                 placeholder='Vehicle License Plate'
+                validated={validated}
               />
             </Form.Row>
             <Form.Row>
@@ -61,6 +62,7 @@ const AddVehicleModal = ( props, {onSubmit, onChangeForm, validated}) => {
                 value=''
                 onChange={onChangeForm}
                 placeholder='Vehicle Year'
+                validated={validated}
               />
               <FormGroup
                 className='col-6 col-lg-3'
@@ -70,6 +72,7 @@ const AddVehicleModal = ( props, {onSubmit, onChangeForm, validated}) => {
                 value=''
                 onChange={onChangeForm}
                 placeholder='Vehicle Make'
+                validated={validated}
               />
               <FormGroup
                 className='col-6 col-lg-3'
@@ -79,6 +82,7 @@ const AddVehicleModal = ( props, {onSubmit, onChangeForm, validated}) => {
                 value=''
                 onChange={onChangeForm}
                 placeholder='Vehicle Model'
+                validated={validated}
               />
               <FormGroup
                 className='col-6 col-lg-3'
@@ -88,6 +92,7 @@ const AddVehicleModal = ( props, {onSubmit, onChangeForm, validated}) => {
                 value=''
                 onChange={onChangeForm}
                 placeholder='Vehicle Color'
+                validated={validated}
               />
             </Form.Row>
           </Form>
