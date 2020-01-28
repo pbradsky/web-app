@@ -44,6 +44,7 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
           value={plate}
           onChange={onChangeForm}
           placeholder='Vehicle License Plate'
+          validated={validated}
         />
       </Form.Row>
       <Form.Row>
