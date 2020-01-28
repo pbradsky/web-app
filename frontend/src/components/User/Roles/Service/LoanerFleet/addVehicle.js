@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { compose } from 'recompose';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 import FormGroup from 'components/Registration/Contract/Util/FormGroup';
+
+import { withFirebase } from 'api/Firebase';
+import { withUser } from 'api/Session';
 
 class AddVehicleModal extends Component {
   constructor(props) {
@@ -23,7 +27,7 @@ class AddVehicleModal extends Component {
   }
 
   onChange = event => {
-    this.setState({ [event.target.name ]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   onSubmit = event => {
@@ -77,7 +81,7 @@ class AddVehicleModal extends Component {
                   className='col-12 col-md-6'
                   required
                   label='License Plate Number:'
-                  name='plate'
+                  name='license'
                   value={license}
                   onChange={this.onChange}
                   placeholder='Vehicle License Plate'
@@ -142,4 +146,7 @@ class AddVehicleModal extends Component {
   }
 }
 
-export default AddVehicleModal;
+export default compose(
+  withUser,
+  withFirebase
+)(AddVehicleModal);
