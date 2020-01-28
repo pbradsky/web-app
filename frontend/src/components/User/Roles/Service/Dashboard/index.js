@@ -36,28 +36,28 @@ class ServicePage extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.setState({ loading: true });
+  componentDidMount() {
+    this.setState({ loading: true });
 
-  //   this.props.firebase.users().on('value', snapshot => {
-  //     const usersObject = snapshot.val();
+    this.props.firebase.users().on('value', snapshot => {
+      const usersObject = snapshot.val();
 
-  //     const usersList = Object.keys(usersObject).map(key => ({
-  //       ...usersObject[key],
-  //       uid: key
-  //     })).filter(CONDITIONS.isDealerViewable);
+      const usersList = Object.keys(usersObject).map(key => ({
+        ...usersObject[key],
+        uid: key
+      })).filter(CONDITIONS.isDealerViewable);
 
-  //     this.setState({
-  //       fuse: new Fuse(usersList, userSearchOptions),
-  //       users: usersList,
-  //       loading: false,
-  //     });
-  //   });
-  // }
+      this.setState({
+        fuse: new Fuse(usersList, userSearchOptions),
+        users: usersList,
+        loading: false,
+      });
+    });
+  }
 
-  // componentWillUnmount() {
-  //   this.props.firebase.users().off();
-  // }
+  componentWillUnmount() {
+    this.props.firebase.users().off();
+  }
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value })
