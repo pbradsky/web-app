@@ -10,6 +10,8 @@ import FormGroup from 'components/Registration/Contract/Util/FormGroup';
 import { withFirebase } from 'api/Firebase';
 import { withUser } from 'api/Session';
 
+import * as VEHICLE_STATUS from 'constants/vehicleStatus';
+
 class AddVehicleModal extends Component {
   constructor(props) {
     super(props);
@@ -31,10 +33,27 @@ class AddVehicleModal extends Component {
   }
 
   onSubmit = event => {
+    const { vin, license, year, make, model, color } = this.state;
+    const { authUser, firebase } = this.props;
+
     event.preventDefault();
-    this.setState({
-      validated: true
-    });
+    const form = event.target;
+    if (form.checkValidity() === false) {
+      this.setState({ validated: true });
+      return;
+    }
+
+    const vehicle = {
+      vin, license, year, make, model, color,
+      status: VEHICLE_STATUS.AVAILABLE
+    };
+    firebase
+      .vehicle(authUser.dealership, vin)
+      .set({
+        ...vehicle,
+      });
+
+    this.setShow(false)();
   }
 
   setShow = show => () => {
@@ -65,7 +84,7 @@ class AddVehicleModal extends Component {
           </Modal.Header>
           <Modal.Body>
             <h4>Vehicle Information</h4>
-            <Form noValidate onSubmit={this.onSubmit}>
+            <Form id='form-stage' noValidate onSubmit={this.onSubmit}>
               <Form.Row>
                 <FormGroup
                   className='col-12 col-md-6'
@@ -136,7 +155,10 @@ class AddVehicleModal extends Component {
             <Button variant='secondary' onClick={this.setShow(false)}>
               Close
             </Button>
-            <Button variant='primary' onClick={this.onSubmit}>
+            <Button
+              variant='primary'
+              form='form-stage'
+              type='submit'>
               Save Changes
             </Button>
           </Modal.Footer>

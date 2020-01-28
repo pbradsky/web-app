@@ -88,6 +88,7 @@ class Firebase {
   users = () => this.db.ref('users');
 
   /* VEHICLE API */
+  vehicle = (dealerId, vin) => this.db.ref(`dealerships/${dealerId}/vehicles/${vin}`);
   vehicles = dealerId => this.db.ref(`dealerships/${dealerId}/vehicles`);
 
   /* DEALERSHIP API */
