@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { compose } from 'recompose';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 import FormGroup from 'components/Registration/Contract/Util/FormGroup';
+
+import { withFirebase } from 'api/Firebase';
+import { withUser } from 'api/Session';
+
+import * as VEHICLE_STATUS from 'constants/vehicleStatus';
 
 class AddVehicleModal extends Component {
   constructor(props) {
@@ -23,14 +29,31 @@ class AddVehicleModal extends Component {
   }
 
   onChange = event => {
-    this.setState({ [event.target.name ]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   onSubmit = event => {
+    const { vin, license, year, make, model, color } = this.state;
+    const { authUser, firebase } = this.props;
+
     event.preventDefault();
-    this.setState({
-      validated: true
-    });
+    const form = event.target;
+    if (form.checkValidity() === false) {
+      this.setState({ validated: true });
+      return;
+    }
+
+    const vehicle = {
+      vin, license, year, make, model, color,
+      status: VEHICLE_STATUS.AVAILABLE
+    };
+    firebase
+      .vehicle(authUser.dealership, vin)
+      .set({
+        ...vehicle,
+      });
+
+    this.setShow(false)();
   }
 
   setShow = show => () => {
@@ -61,7 +84,7 @@ class AddVehicleModal extends Component {
           </Modal.Header>
           <Modal.Body>
             <h4>Vehicle Information</h4>
-            <Form noValidate onSubmit={this.onSubmit}>
+            <Form id='form-stage' noValidate onSubmit={this.onSubmit}>
               <Form.Row>
                 <FormGroup
                   className='col-12 col-md-6'
@@ -77,7 +100,7 @@ class AddVehicleModal extends Component {
                   className='col-12 col-md-6'
                   required
                   label='License Plate Number:'
-                  name='plate'
+                  name='license'
                   value={license}
                   onChange={this.onChange}
                   placeholder='Vehicle License Plate'
@@ -132,7 +155,10 @@ class AddVehicleModal extends Component {
             <Button variant='secondary' onClick={this.setShow(false)}>
               Close
             </Button>
-            <Button variant='primary' onClick={this.onSubmit}>
+            <Button
+              variant='primary'
+              form='form-stage'
+              type='submit'>
               Save Changes
             </Button>
           </Modal.Footer>
@@ -142,4 +168,7 @@ class AddVehicleModal extends Component {
   }
 }
 
-export default AddVehicleModal;
+export default compose(
+  withUser,
+  withFirebase
+)(AddVehicleModal);
