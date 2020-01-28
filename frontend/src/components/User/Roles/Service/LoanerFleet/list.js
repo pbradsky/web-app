@@ -4,7 +4,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 
-import AddVehicleModal from '../AddVehicleModal';
+import AddVehicleModal from './addVehicle';
 
 const DataCard = ({ label, data }) => (
   !!data
