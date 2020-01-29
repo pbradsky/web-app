@@ -80,7 +80,6 @@ class TestDriveFormPage extends Component {
   }
 };
 
-// TODO(tim): secure page
 export default compose(
   withAuthorization(CONDITIONS.isSignedInDealer),
   withRouter,

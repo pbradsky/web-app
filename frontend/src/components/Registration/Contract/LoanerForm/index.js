@@ -84,7 +84,6 @@ class LoanerFormPage extends Component {
   }
 };
 
-// TODO(tim): secure page
 export default compose(
   withAuthorization(CONDITIONS.isSignedInService),
   withRouter,
