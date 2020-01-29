@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 import NotesFormStage from './notes';
 import MultiStageForm from '../Util/MultiStageForm';
 import SignatureFormStage from './signature';
+import { WithPageLoad } from 'components/Util/Loading';
+
+import { withFirebase } from 'api/Firebase';
 
 import * as ROUTES from 'constants/routes';
 
@@ -12,8 +16,31 @@ const forms = [
   { ...SignatureFormStage },
 ];
 
-const LoanerFormPage = ({ history }) => {
-  const onSubmit = forms => {
+class LoanerFormPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: null,
+      loading: false,
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ loading: true });
+    this.props.firebase.user(this.props.match.params.id)
+      .once('value')
+      .then(snapshot => {
+        const user = snapshot.val();
+        this.setState({
+          user: user,
+          loading: false
+        });
+      });
+  }
+
+  onSubmit = forms => {
+    const { history } = this.props;
     const { out, due, vin, plate, year, make, model,
             color, milesAllowed, mileageOut, rate, fuel, notes} = forms[0].state;
     const { signature, date } = forms[1].state;
@@ -39,12 +66,23 @@ const LoanerFormPage = ({ history }) => {
     history.push(ROUTES.LANDING);
   }
 
-  return (
-    <MultiStageForm
-      title='Finalize User Contract'
-      forms={forms}
-      onSubmit={onSubmit} />
-  );
+  render() {
+    const { loading, user } = this.state;
+
+    return (
+      <WithPageLoad loading={loading}>
+        {user &&
+          <MultiStageForm
+            title={`Finalize User Contract for ${user.username}`}
+            forms={forms}
+            onSubmit={this.onSubmit}
+            user={user} />}
+      </WithPageLoad>
+    );
+  }
 };
 
-export default withRouter(LoanerFormPage);
+export default compose(
+  withRouter,
+  withFirebase
+)(LoanerFormPage);

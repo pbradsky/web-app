@@ -7,6 +7,7 @@ import FormGroup from '../Util/FormGroup';
 import { ContractFormText, VehicleInfoForm, PreambleText } from '../Util/loaner-text';
 
 import { withUser } from 'api/Session';
+import { formatAddress } from 'utils/address';
 import { getTodaysDate } from 'utils/date';
 import { isValidSignature, isValidSignatureDate } from 'utils/validation';
 
@@ -17,8 +18,10 @@ const state = () => ({
 });
 
 // A component that renders the form given its state
-const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
+const SignatureForm = ({ state, validated, onChangeForm, onSubmit, user }) => {
   const { signature, date } = state;
+
+  const fullAddress = formatAddress(user);
 
   return (
     <>
@@ -26,10 +29,10 @@ const SignatureForm = ({ state, validated, onChangeForm, onSubmit }) => {
       <Card style={{overflowY: 'scroll', height: '50vh'}}>
         <Card.Body>
           <ContractFormText
-            // name={authUser.fullName}
-            // address={fullAddress}
-            // phone={authUser.phone}
-            // license={authUser.license}
+            name={user.fullName}
+            address={fullAddress}
+            phone={user.phone}
+            license={user.license}
             />
           <VehicleInfoForm
             // Extension of above...
