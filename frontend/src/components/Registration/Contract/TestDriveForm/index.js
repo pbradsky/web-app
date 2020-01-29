@@ -29,11 +29,17 @@ class TestDriveFormPage extends Component {
   }
 
   componentDidMount() {
+    const { match, history } = this.props;
+
     this.setState({ loading: true });
-    this.props.firebase.user(this.props.match.params.id)
+    this.props.firebase.user(match.params.id)
       .once('value')
       .then(snapshot => {
         const user = snapshot.val();
+        if (!user) {
+          history.push(ROUTES.NOT_FOUND);
+        }
+
         this.setState({
           user: user,
           loading: false

@@ -60,6 +60,7 @@ const App = () => (
           <Route path={ROUTES.TERMS} component={TermsPage} />
           <Route exact path={ROUTES.TEST_DRIVE_CONTRACT + '/:id'} component={TestDriveFormPage} />
           <Route exact path={ROUTES.USER_DETAILS + '/:id'} component={UserDetailsPage} />
+          <Route exact path={ROUTES.NOT_FOUND} component={NotFound} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>

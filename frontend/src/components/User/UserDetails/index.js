@@ -29,19 +29,25 @@ class UserDetailsPage extends Component {
   }
 
   componentDidMount() {
+    const { authUser, firebase, history, match,  } = this.props;
+
     this.setState({ loading: true });
-    this.props.firebase.user(this.props.match.params.id)
+    this.props.firebase.user(match.params.id)
       .once('value')
       .then(snapshot => {
         const user = snapshot.val();
+        if (!user) {
+          history.push(ROUTES.NOT_FOUND);
+        }
+
         this.setState({
           user: user
         });
       });
 
     // Load imgs if dealer
-    if (CONDITIONS.isSignedInDealer(this.props.authUser)) {
-      getImages(this.props.firebase.storage.ref(), this.props.match.params.id).then(values => {
+    if (CONDITIONS.isSignedInDealer(authUser)) {
+      getImages(firebase.storage.ref(), match.params.id).then(values => {
         this.setState({
           proofOfInsurance: values.proofOfInsurance,
           driversLicenseBack: values.driversLicenseBack,
