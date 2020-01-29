@@ -22,11 +22,11 @@ class PrintableContract extends Component {
       <Container>
         <Card.Body style={{whiteSpace: 'pre-line'}}>
           <Card.Title className='text-center'><strong>Dealer's Permit For Demonstration</strong></Card.Title>
-          <ContractFormText 
-            name={fullName} 
-            address={fullAddress} 
-            phone={phone} 
-            license={license} 
+          <ContractFormText
+            name={fullName}
+            address={fullAddress}
+            phone={phone}
+            license={license}
             proofOfInsurance={proofOfInsurance}
             driversLicenseFront={driversLicenseFront}
             driversLicenseBack={driversLicenseBack}
@@ -72,13 +72,13 @@ const PrintContractButton = ({ user, storage }) => {
   return (
     !!user.contract
       ?
-      <>
+      <span className='m-2'>
         <ReactToPrint
           trigger={printTrigger}
           content={() => componentRef.current}
           onBeforeGetContent={prepareContent}
         />
-        {images && 
+        {images &&
           <div style={{display: 'none'}}>
             <PrintableContract
               ref={componentRef}
@@ -87,7 +87,7 @@ const PrintContractButton = ({ user, storage }) => {
             />
           </div>
         }
-      </>
+      </span>
       : null
   );
 };
