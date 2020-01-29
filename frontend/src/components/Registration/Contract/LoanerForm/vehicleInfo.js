@@ -20,7 +20,7 @@ const state = () => ({
   fuel: '',
 });
 
-const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
+const VehicleInfoForm = ({ state, validated, onChangeForm, onSubmit }) => {
   const { out, due, vin, plate, year, make, model, color, milesAllowed, mileageOut, rate, fuel, notes } = state;
 
   return (
@@ -160,9 +160,9 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
   );
 };
 
-const NotesFormStage = {
+const VehicleInfoFormStage = {
   state,
-  Component: NotesForm,
+  Component: VehicleInfoForm,
 }
 
-export default NotesFormStage;
+export default VehicleInfoFormStage;

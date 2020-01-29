@@ -9,7 +9,7 @@ const state = () => ({
   notes: '',
 });
 
-const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
+const VehicleInfoForm = ({ state, validated, onChangeForm, onSubmit }) => {
   const { vin, notes } = state;
 
   return (
@@ -38,9 +38,9 @@ const NotesForm = ({ state, validated, onChangeForm, onSubmit }) => {
   );
 };
 
-const NotesFormStage = {
+const VehicleInfoFormStage = {
   state,
-  Component: NotesForm,
+  Component: VehicleInfoForm,
 }
 
-export default NotesFormStage;
+export default VehicleInfoFormStage;

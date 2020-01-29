@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import NotesFormStage from './notes';
+import VehicleInfoFormStage from './vehicleInfo';
 import MultiStageForm from '../Util/MultiStageForm';
 import SignatureFormStage from './signature';
 import { WithPageLoad } from 'components/Util/Loading';
@@ -12,7 +12,7 @@ import { withFirebase } from 'api/Firebase';
 import * as ROUTES from 'constants/routes';
 
 const forms = [
-  { ...NotesFormStage },
+  { ...VehicleInfoFormStage },
   { ...SignatureFormStage },
 ];
 
@@ -73,7 +73,7 @@ class LoanerFormPage extends Component {
       <WithPageLoad loading={loading}>
         {user &&
           <MultiStageForm
-            title={`Finalize User Contract for ${user.username}`}
+            title={`Loaner Contract for ${user.username}`}
             forms={forms}
             onSubmit={this.onSubmit}
             user={user} />}
