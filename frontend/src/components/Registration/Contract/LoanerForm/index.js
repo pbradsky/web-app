@@ -8,7 +8,9 @@ import SignatureFormStage from './signature';
 import { WithPageLoad } from 'components/Util/Loading';
 
 import { withFirebase } from 'api/Firebase';
+import { withAuthorization } from 'api/Session';
 
+import * as CONDITIONS from 'constants/conditions';
 import * as ROUTES from 'constants/routes';
 
 const forms = [
@@ -84,6 +86,7 @@ class LoanerFormPage extends Component {
 
 // TODO(tim): secure page
 export default compose(
+  withAuthorization(CONDITIONS.isSignedInService),
   withRouter,
   withFirebase
 )(LoanerFormPage);
