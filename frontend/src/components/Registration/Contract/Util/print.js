@@ -9,7 +9,7 @@ import Image from 'react-bootstrap/Image'
 import { PreambleText, ContractFormText, SignedUserText } from './text';
 
 import { getImages } from 'utils/images';
-import formatAddress from 'utils/address';
+import { formatAddress } from 'utils/address';
 
 class PrintableContract extends Component {
 

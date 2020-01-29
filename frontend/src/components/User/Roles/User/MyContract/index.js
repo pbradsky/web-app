@@ -12,7 +12,7 @@ import {
 } from 'components/Registration/Contract/Util/text';
 
 import { withAuthorization, withUser } from 'api/Session';
-import formatAddress from 'utils/address';
+import { formatAddress } from 'utils/address';
 import * as CONDITIONS from 'constants/conditions';
 
 const MyContractPage = ({ authUser }) => {

@@ -100,7 +100,7 @@ class MultiStageForm extends Component {
 
   render() {
     const { forms, stage, validated } = this.state;
-    const { title } = this.props;
+    const { title, user } = this.props;
     const progressRaw = stage / (forms.length - 1);
     const progressPercent = (stage + 1) / forms.length * 100;
     const StageForm = forms[stage].Component;
@@ -119,6 +119,7 @@ class MultiStageForm extends Component {
               validated={validated}
               onChangeForm={this.onChangeForm}
               onSubmit={this.onChangeStage(FORWARD)}
+              user={user}  // May be passed in for usage by forms
               />
           </Card.Body>
           <Card.Footer>

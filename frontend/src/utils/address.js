@@ -7,4 +7,4 @@ const formatAddress = addressData => {
   return `${streetAddress}, ${city}, ${state} ${zip}`;
 }
 
-export default formatAddress;
+export { formatAddress };

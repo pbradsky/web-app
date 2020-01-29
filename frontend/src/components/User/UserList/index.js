@@ -1,14 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Accordion from 'react-bootstrap/Accordion';
 import Badge from 'react-bootstrap/Badge';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+
 import PrintContractButton from 'components/Registration/Contract/Util/print';
 import { UserDetailsLink } from 'components/User/UserDetails';
 
+import { formatAddress } from 'utils/address';
 import * as CONDITIONS from 'constants/conditions';
 import * as ROLES from 'constants/roles';
-import formatAddress from 'utils/address';
+import * as ROUTES from 'constants/routes';
 
 const DataCard = ({ label, data }) => (
   !!data
@@ -18,8 +22,22 @@ const DataCard = ({ label, data }) => (
     : null
 );
 
+const LoanerFormLink = ({ uid }) => (
+  <Link className='m-2' to={ROUTES.LOANER_CONTRACT + `/${uid}`}>
+    <Button size='sm'>Loaner Form</Button>
+  </Link>
+);
+
+const TestDriveFormLink = ({ uid }) => (
+  <Link className='m-2' to={ROUTES.TEST_DRIVE_CONTRACT + `/${uid}`}>
+    <Button size='sm'>Test Drive Form</Button>
+  </Link>
+);
+
 const UserList = ({ users, role, storage }) => {
   const isAdmin = role === ROLES.ADMIN;
+  const isDealer = role === ROLES.DEALER;
+  const isService = role === ROLES.SERVICE;
 
   return (
     <Accordion className='mb-4'>
@@ -74,6 +92,10 @@ const UserList = ({ users, role, storage }) => {
               }
               {(isAdmin || CONDITIONS.isSignedInCompleteUser(user)) &&
                 <UserDetailsLink role={role} uid={user.uid} />}
+              {isDealer && CONDITIONS.isSignedInRegularUser(user) &&
+                <TestDriveFormLink uid={user.uid} />}
+              {isService && CONDITIONS.isSignedInRegularUser(user) &&
+                <LoanerFormLink uid={user.uid} />}
               <PrintContractButton user={user} storage={storage}/>
             </Card.Body>
           </Accordion.Collapse>

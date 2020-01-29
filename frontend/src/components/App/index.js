@@ -48,8 +48,7 @@ const App = () => (
           {/* <Route exact path={ROUTES.CONTRACT_ONESHOT} component={UserDetailsFormPage} /> */}
           <Route path={ROUTES.DEALER} component={DealerPage} />
           <Route path={ROUTES.DEALER_ADD_USER} component={AddUserPage} />
-          <Route path={ROUTES.TEST_DRIVE_CONTRACT} component={TestDriveFormPage} />
-          <Route path={ROUTES.LOANER_CONTRACT} component={LoanerFormPage} />
+          <Route exact path={ROUTES.LOANER_CONTRACT + '/:id'} component={LoanerFormPage} />
           <Route path={ROUTES.LOANER_FLEET} component={LoanerFleetPage} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.MY_CONTRACT} component={MyContractPage} />
@@ -59,6 +58,7 @@ const App = () => (
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.TERMS} component={TermsPage} />
+          <Route exact path={ROUTES.TEST_DRIVE_CONTRACT + '/:id'} component={TestDriveFormPage} />
           <Route exact path={ROUTES.USER_DETAILS + '/:id'} component={UserDetailsPage} />
           <Route component={NotFound} />
         </Switch>
