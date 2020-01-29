@@ -7,7 +7,7 @@ import * as ROUTES from 'constants/routes';
 const SignInLink = () => (
   <p>
     Already have an account? <Link to={ROUTES.SIGN_IN} style={{textDecoration: 'none'}}>
-      Sign In!
+      Sign in!
     </Link>
   </p>
 );
